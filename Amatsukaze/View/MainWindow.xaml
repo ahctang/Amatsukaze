@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Amatsukaze.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">    
+        Title="MainWindow" Height="720" Width="1280">
+    <Window.Resources>        
+    </Window.Resources>
     <Grid>
-        <TextBlock Text="Hello World!" Foreground="{StaticResource BaseColor}"></TextBlock>        
+        <DockPanel LastChildFill="True">
+            <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Background="{StaticResource MenuBarColor}" Width="50">
+                <Menu Background="Transparent">
+                    <Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                        <DockPanel VerticalAlignment="Stretch"/>
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>
+                    <MenuItem Height="50" Width="50" BorderThickness="0" DockPanel.Dock="Top" Background="Transparent">
+                        <MenuItem.Header>
+                            <Image Source="{StaticResource HomeIcon}" HorizontalAlignment="Center" Height="40" Width="40" VerticalAlignment="Center"></Image>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="50" Width="50" BorderThickness="0" DockPanel.Dock="Top" Background="Transparent">
+                        <MenuItem.Header>
+                            <Image Source="{StaticResource FolderIcon}" HorizontalAlignment="Center" Height="40" Width="40" VerticalAlignment="Center"></Image>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="50" Width="50" BorderThickness="0" DockPanel.Dock="Top" Background="Transparent">
+                        <MenuItem.Header>
+                            <Image Source="{StaticResource SocialNetworkIcon}" HorizontalAlignment="Center" Height="40" Width="40" VerticalAlignment="Center"></Image>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="50" Width="50" BorderThickness="0" DockPanel.Dock="Top" Background="Transparent">
+                        <MenuItem.Header>
+                            <Image Source="{StaticResource PlayIcon}" HorizontalAlignment="Center" Height="40" Width="40" VerticalAlignment="Center"></Image>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem Height="50" Width="50" BorderThickness="0" VerticalAlignment="Bottom" Background="Transparent">
+                        <MenuItem.Header>
+                            <Image Source="{StaticResource SettingsIcon}" HorizontalAlignment="Center" Height="40" Width="40" VerticalAlignment="Center"></Image>
+                        </MenuItem.Header>
+                    </MenuItem>
+                </Menu>                
+            </DockPanel>
+            <Grid x:Name="MainDisplaySpace" Background="{StaticResource BaseColor}">
+                <ContentPresenter Height="Auto" Width="Auto"></ContentPresenter>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
