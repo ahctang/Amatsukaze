@@ -21,6 +21,7 @@
                          Color="{StaticResource AmatsukazeBrown}" />
         <SolidColorBrush x:Key="MenuBarColor" 
                          Color="{StaticResource AmatsukazeRed}" />
-
+        <SolidColorBrush x:Key="MenuBarMouseOverColor" 
+                         Color="{StaticResource AmatsukazeWhite}" />
     </Application.Resources>
 </Application>
