@@ -109,7 +109,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\menu-48.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\folder-48.png" />
     <Resource Include="Resources\Home-50.png" />

@@ -6,14 +6,14 @@
     <Application.Resources>
         
         <!--Icons-->
+        <BitmapImage x:Key="MenuIcon" UriSource="Resources/menu-48.png"></BitmapImage>
         <BitmapImage x:Key="HomeIcon" UriSource="Resources/Home-50.png"></BitmapImage>
         <BitmapImage x:Key="FolderIcon" UriSource="Resources/folder-48.png"></BitmapImage>
         <BitmapImage x:Key="SocialNetworkIcon" UriSource="Resources/Share-50.png"></BitmapImage>
         <BitmapImage x:Key="SettingsIcon" UriSource="Resources/settings-48.png"></BitmapImage>
         <BitmapImage x:Key="PlayIcon" UriSource="Resources/play-48.png"></BitmapImage>        
         
-        <!--Colors-->
-        
+        <!--Colors-->        
         <Color x:Key="AmatsukazeBrown">#402D2F</Color>
         <Color x:Key="AmatsukazeRed">#B13136</Color>
         <Color x:Key="AmatsukazeWhite">#FFFFFF</Color>         
@@ -22,6 +22,6 @@
         <SolidColorBrush x:Key="MenuBarColor" 
                          Color="{StaticResource AmatsukazeRed}" />
         <SolidColorBrush x:Key="MenuBarMouseOverColor" 
-                         Color="{StaticResource AmatsukazeWhite}" />
+                         Color="{StaticResource AmatsukazeWhite}" />       
     </Application.Resources>
 </Application>
