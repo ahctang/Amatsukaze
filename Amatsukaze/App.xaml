@@ -6,6 +6,6 @@
     <Application.Resources>
         <Color x:Key="AmatsukazeBrown">#402D2F</Color>
         <Color x:Key="AmatsukazeRed">#B13136</Color>
-        <Color x:Key="AMatsukazeWhite">#FFFFFF</Color>         
+        <Color x:Key="AmatsukazeWhite">#FFFFFF</Color>         
     </Application.Resources>
 </Application>
