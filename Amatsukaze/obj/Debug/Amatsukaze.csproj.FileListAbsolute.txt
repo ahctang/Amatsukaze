@@ -1,14 +1,1 @@
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe.config
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.pdb
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csprojResolveAssemblyReference.cache
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\MainWindow.g.cs
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.g.cs
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.cache
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.lref
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\MainWindow.baml
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.g.resources
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.Properties.Resources.resources
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csproj.GenerateResource.Cache
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.exe
-c:\users\david\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.pdb
+c:\users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe.config

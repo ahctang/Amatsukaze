@@ -4,6 +4,9 @@
              xmlns:local="clr-namespace:Amatsukaze"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <Color x:Key="AmatsukazeBrown">#402D2F</Color>
+        <Color x:Key="AmatsukazeRed">#B13136</Color>
+        vhvfh
          
     </Application.Resources>
 </Application>
