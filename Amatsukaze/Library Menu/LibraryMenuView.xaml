@@ -6,7 +6,25 @@
              xmlns:local="clr-namespace:Amatsukaze.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Aquamarine">
+    <DockPanel LastChildFill="True">
+        <DockPanel.Resources>
+            <Style x:Key="HeaderText">
+                <Setter Property="TextBlock.FontFamily" Value="Segoe UI"></Setter>
+                <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+                <Setter Property="TextBlock.Margin" Value="10,0,0,0"></Setter>
+                <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>                
+             </Style>
+        </DockPanel.Resources>
+        <!-- Top Menu-->
+        <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{StaticResource TopMenuColor}" Height="40">
+            <TextBlock Text="Library" Style="{StaticResource HeaderText}">                
+            </TextBlock>
+        </DockPanel>
+        <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{StaticResource TopMenuColor}" Height="40"></DockPanel>        
+        <Grid>
+            <Rectangle></Rectangle>            
+        </Grid>
+        
             
-    </Grid>
+    </DockPanel>
 </UserControl>

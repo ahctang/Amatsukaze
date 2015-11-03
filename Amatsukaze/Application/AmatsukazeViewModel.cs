@@ -18,6 +18,7 @@ namespace Amatsukaze.ViewModel
         #region fields
         private ICommand _changeViewCommand;
 
+        private string currentview;
         private ViewModelBase _currentviewmodel;
         private List<ViewModelBase> _ApplicationViewModels;
 
@@ -28,11 +29,12 @@ namespace Amatsukaze.ViewModel
         {            
             ApplicationViewModels.Add(new LibraryMenuViewModel());
             ApplicationViewModels.Add(new FolderMenuViewModel());
-            ApplicationViewModels.Add(new OptionMenuViewModel());
+            ApplicationViewModels.Add(new SocialNetworkMenuViewModel());            
             ApplicationViewModels.Add(new PlaybackMenuViewModel());
-            ApplicationViewModels.Add(new SocialNetworkMenuViewModel());
+            ApplicationViewModels.Add(new OptionMenuViewModel());
 
             CurrentViewModel = ApplicationViewModels[0];
+            CurrentView = CurrentViewModel.GetType().ToString();
         }
 
         #region Properties/Commmands
@@ -49,8 +51,6 @@ namespace Amatsukaze.ViewModel
                 }
                 return _changeViewCommand;
             }
-
-
         }
 
         public List<ViewModelBase> ApplicationViewModels
@@ -79,6 +79,23 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public string CurrentView
+        {
+            get
+            {
+                return currentview;
+            }
+            set
+            {
+                if (currentview != value)
+                {
+                    currentview = value;
+                    OnPropertyChanged("CurrentView");
+                }
+            }
+
+        }
+
         #endregion
 
         #region Methods
@@ -89,9 +106,8 @@ namespace Amatsukaze.ViewModel
                 ApplicationViewModels.Add(viewModel);
 
             CurrentViewModel = ApplicationViewModels.FirstOrDefault(vm => vm == viewModel);
-        }
+            this.CurrentView = viewModel.GetType().ToString();
+        }        
         #endregion
-
-
     }
 }
