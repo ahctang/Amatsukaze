@@ -7,14 +7,15 @@ using Amatsukaze.HelperClasses;
 
 namespace Amatsukaze.ViewModel
 {
-    class FolderView : ObservableObjectClass, ViewModelBase
+    class SocialNetworkMenuViewModel : ObservableObjectClass, ViewModelBase
     {
         public string BaseName
         {
             get
             {
-                return "Folder View";
+                return "Social Network Menu";
             }
         }
     }
 }
+..

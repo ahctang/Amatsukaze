@@ -33,8 +33,7 @@
             <!-- All the code related to the left side bar menu-->
             <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="40"  Background="{StaticResource MenuBarColor}">
                 <Menu Background="Transparent" BorderThickness="0" Padding="0">
-                    <Menu.Resources>
-                        
+                    <Menu.Resources>                        
                         <Style TargetType="{x:Type MenuItem}">                            
                             <Setter Property="Height" Value="40"></Setter>
                             <Setter Property="Width" Value="40"></Setter>
