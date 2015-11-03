@@ -10,13 +10,13 @@ using System.Windows.Input;
 namespace Amatsukaze.ViewModel
 {
 
-    //This viewmodel serves as the datacontext for MainWindow and directly controls all of the view switching and perhaps view data sharing.
+    //This viewmodel serves as the datacontext for MainWindowView and directly controls all of the view switching and perhaps view data sharing.
     //Any new top level viewmodel probably needs to be linked up here
 
     class AmatsukazeViewModel: ObservableObjectClass
     {
         #region fields
-        private ICommand _changePageCommand;
+        private ICommand _changeViewCommand;
 
         private ViewModelBase _currentviewmodel;
         private List<ViewModelBase> _ApplicationViewModels;
@@ -36,6 +36,22 @@ namespace Amatsukaze.ViewModel
         }
 
         #region Properties/Commmands
+
+        public ICommand ChangeViewCommand
+        {
+            get
+            {
+                if (_changeViewCommand == null)
+                {
+                    _changeViewCommand = new RelayCommand(
+                        p => ChangeViewModel((ViewModelBase)p),
+                        p => p is ViewModelBase);
+                }
+                return _changeViewCommand;
+            }
+
+
+        }
 
         public List<ViewModelBase> ApplicationViewModels
         {
@@ -62,7 +78,18 @@ namespace Amatsukaze.ViewModel
                 }
             }
         }
-            
+
+        #endregion
+
+        #region Methods
+
+        private void ChangeViewModel(ViewModelBase viewModel)
+        {
+            if (!ApplicationViewModels.Contains(viewModel))
+                ApplicationViewModels.Add(viewModel);
+
+            CurrentViewModel = ApplicationViewModels.FirstOrDefault(vm => vm == viewModel);
+        }
         #endregion
 
 

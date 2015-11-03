@@ -55,9 +55,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Folder Menu\FolderMenuView.xaml.cs">
+      <DependentUpon>FolderMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="HelperClasses\RelayCommand.cs" />
+    <Compile Include="Library Menu\LibraryMenuView.xaml.cs">
+      <DependentUpon>LibraryMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Options Menu\OptionsMenuView.xaml.cs">
+      <DependentUpon>OptionsMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Playback Menu\PlaybackMenuView.xaml.cs">
+      <DependentUpon>PlaybackMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Social Network menu\SocialNetworkMenuView.xaml.cs">
+      <DependentUpon>SocialNetworkMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Social Network menu\SocialNetworkMenuViewModel.cs" />
-    <Page Include="Application\MainWindow.xaml">
+    <Page Include="Application\MainWindowView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -68,12 +83,32 @@
     <Compile Include="HelperClasses\ViewModelBase.cs" />
     <Compile Include="HelperClasses\ObservableObjectClass.cs" />
     <Compile Include="Application\AmatsukazeViewModel.cs" />
-    <Compile Include="Folder Menu\FolderView.cs" />
+    <Compile Include="Folder Menu\FolderMenuViewModel.cs" />
     <Compile Include="Library Menu\LibraryMenuViewModel.cs" />
-    <Compile Include="Application\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="Application\MainWindowView.xaml.cs">
+      <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Folder Menu\FolderMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Library Menu\LibraryMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Options Menu\OptionsMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Playback Menu\PlaybackMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Social Network menu\SocialNetworkMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Options Menu\OptionsViewModel.cs" />
