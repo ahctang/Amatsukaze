@@ -15,12 +15,19 @@
         <!--Colors-->        
         <Color x:Key="AmatsukazeBrown">#402D2F</Color>
         <Color x:Key="AmatsukazeRed">#B13136</Color>
-        <Color x:Key="AmatsukazeWhite">#FFFFFF</Color>         
+        <Color x:Key="AmatsukazeWhite">#FFFFFF</Color>
+        <Color x:Key="AmatsukazeGrey">#F6EFE9</Color>
+        <Color x:Key="AmatsukazeOrange">#FFCFA7</Color>
+        
         <SolidColorBrush x:Key="BaseColor" 
                          Color="{StaticResource AmatsukazeBrown}" />
         <SolidColorBrush x:Key="MenuBarColor" 
                          Color="{StaticResource AmatsukazeRed}" />
+        <SolidColorBrush x:Key="TopMenuColor" 
+                         Color="{StaticResource AmatsukazeWhite}" />
+        <SolidColorBrush x:Key="SelectedMenuColor" 
+                         Color="{StaticResource AmatsukazeGrey}" />
         <SolidColorBrush x:Key="MenuBarMouseOverColor" 
-                         Color="{StaticResource AmatsukazeWhite}" />       
+                         Color="{StaticResource AmatsukazeWhite}" />        
     </Application.Resources>
 </Application>
