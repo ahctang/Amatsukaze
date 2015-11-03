@@ -20,7 +20,7 @@
             <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted"
                      Value="true">
-              <Setter Property="Background" TargetName="Border" Value="White">        
+                    <Setter Property="Background" TargetName="Border" Value="#a85c60">        
               </Setter>
             </Trigger>           
           </ControlTemplate.Triggers>
@@ -29,12 +29,14 @@
     </Window.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
-            <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="50"  Background="{StaticResource MenuBarColor}">
+            
+            <!-- All the code related to the left side bar menu-->
+            <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="40"  Background="{StaticResource MenuBarColor}">
                 <Menu Background="Transparent" BorderThickness="0" Padding="0">
-                    <Menu.Resources>
+                    <Menu.Resources>                        
                         <Style TargetType="{x:Type MenuItem}">                            
-                            <Setter Property="Height" Value="50"></Setter>
-                            <Setter Property="Width" Value="50"></Setter>
+                            <Setter Property="Height" Value="40"></Setter>
+                            <Setter Property="Width" Value="40"></Setter>
                             <Setter Property="BorderThickness" Value="0"></Setter>
                             <Setter Property="Padding" Value="0"></Setter>
                             <Setter Property="DockPanel.Dock" Value="Top"></Setter>                                                 
@@ -45,6 +47,7 @@
                             <DockPanel VerticalAlignment="Stretch"/>
                         </ItemsPanelTemplate>
                     </Menu.ItemsPanel>
+                    
                     <MenuItem>
                         <MenuItem.Header>
                             <Label Height="50" Width="50" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Background="White">
@@ -52,6 +55,7 @@
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
+                    
                     <MenuItem>
                         <MenuItem.Header>
                             <Label>
@@ -66,6 +70,7 @@
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
+                    
                     <MenuItem>
                         <MenuItem.Header>
                             <Label>
@@ -73,6 +78,7 @@
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
+                    
                     <MenuItem>
                         <MenuItem.Header>
                             <Label>
@@ -80,6 +86,7 @@
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
+                    
                     <MenuItem VerticalAlignment="Bottom">
                         <MenuItem.Header>
                             <Label>
@@ -89,8 +96,10 @@
                     </MenuItem>
                 </Menu>
             </DockPanel>
+            
+            <!-- This is the important area-->
             <Grid x:Name="MainDisplaySpace" Background="{StaticResource BaseColor}">
-                <ContentPresenter Height="Auto" Width="Auto"></ContentPresenter>
+                <ContentPresenter Height="Auto" Width="Auto" Content="None"></ContentPresenter>
             </Grid>
         </DockPanel>
     </Grid>
