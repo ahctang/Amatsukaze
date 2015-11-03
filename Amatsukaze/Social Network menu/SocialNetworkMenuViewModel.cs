@@ -18,4 +18,3 @@ namespace Amatsukaze.ViewModel
         }
     }
 }
-..
