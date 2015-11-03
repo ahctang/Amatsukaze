@@ -3,14 +3,12 @@ C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\D
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.pdb
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csprojResolveAssemblyReference.cache
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Model\AmatsukazeModel.g.cs
-C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\ViewModel\AmatsukazeViewModel.g.cs
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\View\MainWindow.g.cs
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.g.cs
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.cache
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.lref
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.baml
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Model\AmatsukazeModel.baml
-C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\ViewModel\AmatsukazeViewModel.baml
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\View\MainWindow.baml
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.g.resources
 C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.Properties.Resources.resources

@@ -55,15 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Model\AmatsukazeModel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewModel\AmatsukazeViewModel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\MainWindow.xaml">
+    <Compile Include="HelperClasses\RelayCommand.cs" />
+    <Compile Include="Social Network menu\SocialNetworkMenuViewModel.cs" />
+    <Page Include="Application\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -71,18 +65,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\AmatsukazeModel.xaml.cs">
-      <DependentUpon>AmatsukazeModel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModel\AmatsukazeViewModel.xaml.cs">
-      <DependentUpon>AmatsukazeViewModel.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\MainWindow.xaml.cs">
+    <Compile Include="HelperClasses\ViewModelBase.cs" />
+    <Compile Include="HelperClasses\ObservableObjectClass.cs" />
+    <Compile Include="Application\AmatsukazeViewModel.cs" />
+    <Compile Include="Folder Menu\FolderView.cs" />
+    <Compile Include="Library Menu\LibraryMenuViewModel.cs" />
+    <Compile Include="Application\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Options Menu\OptionsViewModel.cs" />
+    <Compile Include="Playback Menu\PlaybackMenuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -119,6 +114,7 @@
     <Resource Include="Resources\settings-48.png" />
     <Resource Include="Resources\Share-50.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
