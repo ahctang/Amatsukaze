@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Pink">
-            
+        <TextBlock x:Name="mybox" Text="{Binding Test}" />
+        <Button Content="test" Height="20" Width="100" Click="lala"/>
+        
     </Grid>
 </UserControl>
