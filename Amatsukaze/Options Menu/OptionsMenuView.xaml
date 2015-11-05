@@ -6,7 +6,45 @@
              xmlns:local="clr-namespace:Amatsukaze.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid Background="Crimson"> 
-            
+    <Grid Background="Transparent">
+        <DockPanel LastChildFill="True">
+            <DockPanel.Resources>
+                <Style x:Key="HeaderText">
+                    <Setter Property="TextBlock.FontFamily" Value="Segoe UI"></Setter>
+                    <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+                    <Setter Property="TextBlock.Margin" Value="10,0,0,0"></Setter>
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                </Style>
+                
+                <Style x:Key="BodyHeaderText">
+                    <Setter Property="TextBlock.FontFamily" Value="Segoe UI"></Setter>
+                    <Setter Property="TextBlock.FontSize" Value="20"></Setter>
+                    <Setter Property="TextBlock.Margin" Value="10,0,0,0"></Setter>
+                    <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+                    <Setter Property="TextBlock.Foreground" Value="{DynamicResource BodyFontColor}"></Setter>
+                </Style>
+            </DockPanel.Resources>
+            <!-- Top Menu-->
+            <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40">
+                <TextBlock Text="Options" Style="{StaticResource HeaderText}">
+                </TextBlock>
+            </DockPanel>            
+            <Grid>
+                <DockPanel>
+                    <TextBlock Text="Color Theme" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top"></TextBlock>
+                    <ComboBox x:Name="ThemeSelector" DockPanel.Dock="Top" Width="200" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,10,0,0" SelectionChanged="ThemeSelectionChanged" 
+                              SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                              Text="{Binding DataContext.SelectedTheme, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
+                        <ComboBoxItem Content="Amatsukaze"></ComboBoxItem>
+                        <ComboBoxItem Content="Shimakaze"></ComboBoxItem>
+                    </ComboBox>
+                    <DockPanel />
+                </DockPanel>
+            </Grid>
+
+
+        </DockPanel>
+
+
     </Grid>
 </UserControl>

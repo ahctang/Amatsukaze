@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Amatsukaze.View">
+    
+    
+    <!--Shimakaze-->
+
+    <!--Colors-->
+    <Color x:Key="ShimakazeBlack">#322F36</Color>
+    <Color x:Key="ShimakazeRed">#B35651</Color>
+    <Color x:Key="ShimakazeWhite">#F0F0F2</Color>
+    <Color x:Key="ShimakazeGrey">#5C584C</Color>
+    <Color x:Key="ShimakazeBlue">#6C6B95</Color>
+    <Color x:Key="ShimakazeGold">#FFCF4F</Color>
+
+    <!-- Panel Colors -->
+    <SolidColorBrush x:Key="BaseColor" 
+                         Color="{StaticResource ShimakazeBlue}" />
+    <SolidColorBrush x:Key="MenuBarColor" 
+                         Color="{StaticResource ShimakazeWhite}" />
+    <SolidColorBrush x:Key="TopMenuColor" 
+                         Color="{StaticResource ShimakazeWhite}" />
+    <SolidColorBrush x:Key="SelectedMenuColor" 
+                         Color="{StaticResource ShimakazeGold}" />
+    <SolidColorBrush x:Key="MenuBarMouseOverColor" 
+                         Color="{StaticResource ShimakazeGold}" />
+
+    <!-- Font Colors -->
+    <SolidColorBrush x:Key="BodyFontColor" 
+                         Color="{StaticResource ShimakazeBlack}" />
+
+</ResourceDictionary>

@@ -16,11 +16,11 @@
              </Style>
         </DockPanel.Resources>
         <!-- Top Menu-->
-        <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{StaticResource TopMenuColor}" Height="40">
+        <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40">
             <TextBlock Text="Library" Style="{StaticResource HeaderText}">                
             </TextBlock>
         </DockPanel>
-        <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{StaticResource TopMenuColor}" Height="40"></DockPanel>        
+        <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40"></DockPanel>        
         <Grid>
             <Rectangle></Rectangle>            
         </Grid>

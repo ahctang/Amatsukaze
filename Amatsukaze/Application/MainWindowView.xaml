@@ -37,18 +37,17 @@
             <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted"
                      Value="true">
-                    <Setter Property="Background" TargetName="Border" Value="#a85c60">        
+                    <Setter Property="Background" TargetName="Border" Value="{DynamicResource MenuBarMouseOverColor}">        
               </Setter>
             </Trigger>           
           </ControlTemplate.Triggers>
-        </ControlTemplate>
-        
+        </ControlTemplate>        
     </Window.Resources>
     <Grid>
         <DockPanel LastChildFill="True">
             
             <!-- All the code related to the left side bar menu-->
-            <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="40"  Background="{StaticResource MenuBarColor}">
+            <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="40"  Background="{DynamicResource MenuBarColor}">
                 <Menu Background="Transparent" BorderThickness="0" Padding="0">             
                     <Menu.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -61,16 +60,16 @@
                             <Style>
                                 <Setter Property="MenuItem.Height" Value="40"></Setter>
                                 <Setter Property="MenuItem.Width" Value="40"></Setter>
-                                <Setter Property="MenuItem.Background" Value="{StaticResource TopMenuColor}"></Setter>
+                                <Setter Property="MenuItem.Background" Value="{DynamicResource TopMenuColor}"></Setter>
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>                                
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>                                
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label Height="40" Width="40" VerticalAlignment="Center" HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
-                                <Image Source="{StaticResource MenuIcon}" Height="25" Width="25"></Image>
+                                <Image Source="{DynamicResource MenuIcon}" Height="25" Width="25"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -83,17 +82,17 @@
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>                                
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding CurrentView}" Value="Amatsukaze.ViewModel.LibraryMenuViewModel">
-                                        <Setter Property="MenuItem.Background" Value="{StaticResource SelectedMenuColor}"></Setter>
+                                        <Setter Property="MenuItem.Background" Value="{DynamicResource SelectedMenuColor}"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label>
-                                <Image Source="{StaticResource HomeIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
+                                <Image Source="{DynamicResource HomeIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -105,17 +104,17 @@
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding CurrentView}" Value="Amatsukaze.ViewModel.FolderMenuViewModel">
-                                        <Setter Property="MenuItem.Background" Value="{StaticResource SelectedMenuColor}"></Setter>
+                                        <Setter Property="MenuItem.Background" Value="{DynamicResource SelectedMenuColor}"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label>
-                                <Image Source="{StaticResource FolderIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
+                                <Image Source="{DynamicResource FolderIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -128,17 +127,17 @@
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding CurrentView}" Value="Amatsukaze.ViewModel.SocialNetworkMenuViewModel">
-                                        <Setter Property="MenuItem.Background" Value="{StaticResource SelectedMenuColor}"></Setter>
+                                        <Setter Property="MenuItem.Background" Value="{DynamicResource SelectedMenuColor}"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label>
-                                <Image Source="{StaticResource SocialNetworkIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
+                                <Image Source="{DynamicResource SocialNetworkIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -151,17 +150,17 @@
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding CurrentView}" Value="Amatsukaze.ViewModel.PlaybackMenuViewModel">
-                                        <Setter Property="MenuItem.Background" Value="{StaticResource SelectedMenuColor}"></Setter>
+                                        <Setter Property="MenuItem.Background" Value="{DynamicResource SelectedMenuColor}"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label>
-                                <Image Source="{StaticResource PlayIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
+                                <Image Source="{DynamicResource PlayIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -174,17 +173,17 @@
                                 <Setter Property="MenuItem.BorderThickness" Value="0"></Setter>
                                 <Setter Property="MenuItem.Padding" Value="0"></Setter>
                                 <Setter Property="DockPanel.Dock" Value="Top"></Setter>
-                                <Setter Property="MenuItem.Template" Value="{StaticResource MenuButtonStyling}"></Setter>
+                                <Setter Property="MenuItem.Template" Value="{DynamicResource MenuButtonStyling}"></Setter>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding CurrentView}" Value="Amatsukaze.ViewModel.OptionMenuViewModel">
-                                        <Setter Property="MenuItem.Background" Value="{StaticResource SelectedMenuColor}"></Setter>
+                                        <Setter Property="MenuItem.Background" Value="{DynamicResource SelectedMenuColor}"></Setter>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
                         </MenuItem.Style>
                         <MenuItem.Header>
                             <Label>
-                                <Image Source="{StaticResource SettingsIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
+                                <Image Source="{DynamicResource SettingsIcon}" HorizontalAlignment="Center" Height="25" Width="25" VerticalAlignment="Center"></Image>
                             </Label>
                         </MenuItem.Header>
                     </MenuItem>
@@ -192,7 +191,7 @@
             </DockPanel>
             
             <!-- This is the important area-->
-            <Grid x:Name="MainDisplaySpace" Background="{StaticResource BaseColor}">
+            <Grid x:Name="MainDisplaySpace" Background="{DynamicResource BaseColor}">
                 <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
             </Grid>
         </DockPanel>
