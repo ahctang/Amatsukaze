@@ -24,3 +24,5 @@ C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\D
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.exe
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.pdb
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csprojResolveAssemblyReference.cache
+C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.dll
+C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.xml

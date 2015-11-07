@@ -31,14 +31,14 @@ namespace Amatsukaze.View
         {            
             if (e.AddedItems.Count != 0)
             {
-                Console.WriteLine((e.AddedItems[0] as ComboBoxItem).Content.ToString());
-                if ((e.AddedItems[0] as ComboBoxItem).Content.ToString() == "Amatsukaze")
+                Console.WriteLine(e.AddedItems[0]);
+                if (e.AddedItems[0] as string == "Amatsukaze")
                 {
                     var app = Application.Current as App;
                     app.ChangeTheme(new Uri(@"/Resources/Amatsukaze.xaml", UriKind.Relative));
                 }
 
-                if ((e.AddedItems[0] as ComboBoxItem).Content.ToString() == "Shimakaze")
+                if (e.AddedItems[0] as string == "Shimakaze")
                 {
                     var app = Application.Current as App;
                     app.ChangeTheme(new Uri(@"/Resources/Shimakaze.xaml", UriKind.Relative));
