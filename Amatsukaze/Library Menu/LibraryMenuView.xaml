@@ -21,8 +21,21 @@
             </TextBlock>
         </DockPanel>
         <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40"></DockPanel>        
-        <Grid>
-            <Rectangle></Rectangle>            
+        
+        <Grid x:Name="DisplayArea"> 
+            <ItemsControl ItemsSource="{Binding AnimeLibraryList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Rows="3" Columns="10"></UniformGrid>                        
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding ImagePath}"></Image>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>                
+            </ItemsControl>
+            
         </Grid>
         
             
