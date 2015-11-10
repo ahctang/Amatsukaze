@@ -118,18 +118,16 @@ namespace Amatsukaze.ViewModel
         }
 
         private void ApplyTheme()
-        {            
-            if (optionsobject.Themesetting == "Amatsukaze")
-            {
-                var app = Application.Current as App;
-                app.ChangeTheme(new Uri(@"/Resources/Amatsukaze.xaml", UriKind.Relative));
-            }
+        {
 
-            if (optionsobject.Themesetting == "Shimakaze")
+            string input = @"/Resources/" + optionsobject.Themesetting + ".xaml";
+            Uri uri1;
+
+            if (Uri.TryCreate(input, UriKind.Relative, out uri1))
             {
                 var app = Application.Current as App;
-                app.ChangeTheme(new Uri(@"/Resources/Shimakaze.xaml", UriKind.Relative));
-            }
+                app.ChangeTheme(uri1);
+            }            
         }
         #endregion
 
