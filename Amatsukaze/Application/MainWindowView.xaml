@@ -6,22 +6,23 @@
         xmlns:local="clr-namespace:Amatsukaze.View"
         xmlns:ViewModel="clr-namespace:Amatsukaze.ViewModel"
         mc:Ignorable="d"
-        Title="Amatsukaze" Height="720" Width="1280">
+        Title="Amatsukaze" Height="720" Width="1280"
+        MinWidth="640" MinHeight="480">
     <Window.Resources>
         <!-- Tying the XAML view to their respective ViewModels-->
-        <DataTemplate DataType="{x:Type ViewModel:FolderMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:FolderMenuViewModel}" x:Name="FolderMenu">
             <local:FolderMenuView></local:FolderMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:LibraryMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:LibraryMenuViewModel}" x:Name="LibraryMenu">
             <local:LibraryMenuView></local:LibraryMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:OptionMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:OptionMenuViewModel}" x:Name="OptionMenu">
             <local:OptionsMenuView></local:OptionsMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:PlaybackMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:PlaybackMenuViewModel}" x:Name="PlaybackMenu">
             <local:PlaybackMenuView></local:PlaybackMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:SocialNetworkMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:SocialNetworkMenuViewModel}" x:Name="SocialNetworkMenu">
             <local:SocialNetworkMenuView></local:SocialNetworkMenuView>
         </DataTemplate>
         
@@ -192,7 +193,7 @@
             
             <!-- This is the important area-->
             <Grid x:Name="MainDisplaySpace" Background="{DynamicResource BaseColor}">
-                <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
+                <ContentControl x:Name="MainContentControl" Content="{Binding CurrentViewModel}"></ContentControl>
             </Grid>
         </DockPanel>
     </Grid>

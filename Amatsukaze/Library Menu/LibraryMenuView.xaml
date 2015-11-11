@@ -4,8 +4,53 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Amatsukaze.View"
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+             xmlns:Helper="clr-namespace:Amatsukaze.HelperClasses"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             Loaded="OnWindowLoaded"
+             SizeChanged="Window_SizeChanged">
+
+    <UserControl.Resources>
+        
+        <DataTemplate x:Key="LibraryGridView" x:Name="LibraryGridView">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding AnimeLibraryList}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid   Helper:GridHelpers.RowCount="{Binding GridRowCount}" 
+                                    Helper:GridHelpers.ColumnCount="{Binding GridColumnCount}" />                            
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                            <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                                <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
+                            </DataTemplate.Resources>
+                            <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="250" Margin="10,10,10,10">
+                               <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161"></Image>
+                               <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap">
+                                    <TextBlock.Text>
+                                        <PriorityBinding>
+                                            <Binding Path="english" Converter="{StaticResource UnsetConverter}" />
+                                            <Binding Path="title" />
+                                        </PriorityBinding>
+                                    </TextBlock.Text>
+                                    </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    
     <DockPanel LastChildFill="True">
         <DockPanel.Resources>
             <Style x:Key="HeaderText">
@@ -15,27 +60,24 @@
                 <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>                
              </Style>
         </DockPanel.Resources>
+        
         <!-- Top Menu-->
         <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40">
             <TextBlock Text="Library" Style="{StaticResource HeaderText}">                
             </TextBlock>
+            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0">
+                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
+            </Button>            
+            <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="Search" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0"></TextBox>            
         </DockPanel>
         <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40"></DockPanel>        
         
-        <Grid x:Name="DisplayArea"> 
-            <ItemsControl ItemsSource="{Binding AnimeLibraryList}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Rows="3" Columns="10"></UniformGrid>                        
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding ImagePath}"></Image>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>                
-            </ItemsControl>
-            
+        <!-- Switching Display Area-->
+        
+        <Grid x:Name="DisplayArea">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ContentControl ContentTemplate="{StaticResource LibraryGridView}" Content="{Binding}"> </ContentControl>
+            </ScrollViewer>
         </Grid>
         
             

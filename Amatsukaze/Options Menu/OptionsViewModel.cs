@@ -25,7 +25,8 @@ namespace Amatsukaze.ViewModel
         public OptionMenuViewModel(OptionsObject optionsobject)
         {
             this.optionsobject = optionsobject;
-            SelectedTheme = this.optionsobject.Themesetting;
+            this.SelectedTheme = this.optionsobject.Themesetting;
+            this.CacheFolderPath = optionsobject.CacheFolderpath;
         }        
        
 
@@ -33,6 +34,7 @@ namespace Amatsukaze.ViewModel
         private List<string> availablethemes = new List<string>( new string[] { "Amatsukaze", "Shimakaze" });
 
         private string selectedtheme;
+        private string cachefolderpath;
         #endregion
 
         #region Properties
@@ -61,7 +63,26 @@ namespace Amatsukaze.ViewModel
                     OnPropertyChanged("SelectedTheme");                                        
                 }
             }
-        }     
+        }
+
+        public string CacheFolderPath
+        {
+            get
+            {
+                return cachefolderpath;
+            }
+            set
+            {
+                if (cachefolderpath != value)
+                {
+                    cachefolderpath = value;
+                    optionsobject.CacheFolderpath = value;
+
+                    optionsmodel.SaveOptionsFile(optionsobject);
+                    OnPropertyChanged("CacheFolderPath");
+                }
+            }
+        }
 
         #endregion
 

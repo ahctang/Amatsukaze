@@ -35,7 +35,7 @@ namespace Amatsukaze.ViewModel
             ApplyTheme();
 
             //Instantiate the viewmodels for the application
-            ApplicationViewModels.Add(new LibraryMenuViewModel());
+            ApplicationViewModels.Add(new LibraryMenuViewModel(optionsobject));
             ApplicationViewModels.Add(new FolderMenuViewModel());
             ApplicationViewModels.Add(new SocialNetworkMenuViewModel());
             ApplicationViewModels.Add(new PlaybackMenuViewModel());

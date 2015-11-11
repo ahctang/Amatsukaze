@@ -9,16 +9,22 @@ using Newtonsoft.Json;
 using Amatsukaze.ViewModel;
 using System.Diagnostics;
 using System.Windows;
-using System.Security;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Net;
 
 namespace Amatsukaze.Model
 {
     class LibraryMenuModel
-    {
+    {        
+        public LibraryMenuModel (OptionsObject optionsobject)
+        {
+            this.optionsobject = optionsobject;
+        }
+
         #region #objects
         public List<AnimeEntryObject> AnimeLibraryList = new List<AnimeEntryObject>();
+        OptionsObject optionsobject;
 
         #endregion
 
@@ -27,9 +33,8 @@ namespace Amatsukaze.Model
 
         //Reads the cache file, but returns nothing if the cache hasn't been created yet
         public void ReadCacheFile()
-        {
-            string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Cache\";
-            string filepath = folderpath + @"\CachedData.json";
+        {            
+            string filepath = optionsobject.CacheFolderpath + @"\CachedData.json";
             if (File.Exists(filepath))
             {
                 try
@@ -42,19 +47,24 @@ namespace Amatsukaze.Model
                     MessageBox.Show(ex.Message);
                 }
             }
-            else return;
+            else
+            {
+                FileInfo folderpath = new FileInfo(optionsobject.CacheFolderpath);
+                folderpath.Directory.Create();
+            }
         }
 
-        //Downloads the image file using the imageURL in the animeentryobject
+        //Downloads the image file using the image in the animeentryobject
         public void DownloadAnimeCover(AnimeEntryObject animeentry)
         {
             using (var client = new WebClient())
             {
                 try
                 {
-                    string path = Path.GetDirectoryName(
-                            Process.GetCurrentProcess().MainModule.FileName) + @"\Cache\" + animeentry.id.ToString() + ".jpg";
-                    client.DownloadFile(animeentry.imageURL, path);                    
+                    FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
+                    folder.Directory.Create();
+                    string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + ".jpg";
+                    client.DownloadFile(animeentry.image, path);                    
                     Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
                     animeentry.ImagePath = path;
                 }
@@ -65,16 +75,16 @@ namespace Amatsukaze.Model
             }
         }
 
-        //Updates the Cache file in the Directory
-        public void UpdateCacheFile(List<AnimeEntryObject> input)
+        //Updates the Cache file in the Directory (appends the input list to the existing json file). WILL RESULT IN DUPLICATES IF NOT CAREFUL
+        public void SaveCacheFile(List<AnimeEntryObject> input)
         {
+            
             string json = JsonConvert.SerializeObject(input, Newtonsoft.Json.Formatting.Indented);
             try
             {
-                string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Cache\";
-                string filepath = folderpath + @"CachedData.json";
+                string filepath = optionsobject.CacheFolderpath + @"\CachedData.json";
 
-                FileInfo folder = new FileInfo(folderpath);
+                FileInfo folder = new FileInfo(optionsobject.CacheFolderpath);
                 folder.Directory.Create();
                 File.WriteAllText(filepath, json);
                 Console.WriteLine("Cache file updated");
@@ -92,26 +102,34 @@ namespace Amatsukaze.Model
             List<AnimeEntryObject> FileList = new List<AnimeEntryObject>();
             try
             {
-                string[] files = Directory.GetFiles(@"C:\Users\littl\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\Test Input");                
-                foreach (string filename in files)
+                string[] files = Directory.GetFiles(optionsobject.CacheFolderpath, "*.xml");
+
+                //Check if there are any new xml files
+                if (files.Length != 0)
                 {
-                    string input = File.ReadAllText(filename);
-                    AnimeEntryObject animeentry = new AnimeEntryObject();
+                    //Parse the new ones and add them to the json file.
+                    foreach (string filename in files)
+                    {
+                        string input = File.ReadAllText(filename);
+                        AnimeEntryObject animeentry = new AnimeEntryObject();
 
-                    if (ParseXml(input, animeentry))
-                    {
-                        animeentry.ContentsDump();
-                        FileList.Add(animeentry);
-                        DownloadAnimeCover(animeentry);
+                        if (ParseXml(input, animeentry))
+                        {
+                            animeentry.ContentsDump();
+                            FileList.Add(animeentry);
+                            DownloadAnimeCover(animeentry);
+                            File.Delete(filename);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Directory Parse failed");
+                            return false;
+                        }
                     }
-                    else
-                    {
-                        Console.WriteLine("Directory Parse failed");
-                        return false;
-                    }
+
+                    AnimeLibraryList.AddRange(FileList);
+                    SaveCacheFile(AnimeLibraryList);
                 }
-
-                UpdateCacheFile(FileList);
                 return true;
             }
 
@@ -170,41 +188,38 @@ namespace Amatsukaze.Model
                     //Parsing Operation
                     reader.ReadToFollowing("anime");
                     reader.ReadToDescendant("entry");  //Navigate to entry
-                    reader.ReadToDescendant("id");  //Navigate to ID
-                    animeentry.id = reader.ReadElementContentAsInt();
 
-                    reader.ReadToFollowing("title"); //Navigate to Title
-                    animeentry.title = reader.ReadElementContentAsString();
+                    //Loops until it finds the /entry element
+                    while (reader.NodeType != XmlNodeType.EndElement)
+                    {
+                        reader.Read();
 
-                    reader.ReadToFollowing("english"); //Navigate to English
-                    animeentry.Englishtitle = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("synonyms"); //Navigate to Synonyms
-                    animeentry.synonyms = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("episodes"); //Navigate to Episodes
-                    animeentry.episodes = reader.ReadElementContentAsInt();
-
-                    reader.ReadToFollowing("score"); //Navigate to Score
-                    animeentry.score = reader.ReadElementContentAsDouble();
-
-                    reader.ReadToFollowing("type"); //Navigate to type
-                    animeentry.type = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("status"); //Navigate to status
-                    animeentry.status = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("start_date");//Navigate to start date
-                    animeentry.start_date = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("end_date"); //Navigate to end date
-                    animeentry.end_date = reader.ReadElementContentAsString();
-
-                    reader.ReadToFollowing("synopsis"); //Navigate to synopsis
-                    animeentry.synopsis = reader.ReadInnerXml();
-
-                    reader.ReadToFollowing("image"); //Navigate to imageURL
-                    animeentry.imageURL = reader.ReadElementContentAsString();
+                        //Note: Because of the reflection used, every single property in the animeentry object must have the same name as the property in the xml 
+                        PropertyInfo property = animeentry.GetType().GetProperty(reader.Name);
+                        if (property != null)
+                        {
+                            if (property.PropertyType == typeof(string))
+                            {
+                                //only synopsis needs ReadInnerXML because it contains illegal HTML stuff thanks to MAL
+                                if (property.Name == "synopsis")
+                                {
+                                    property.SetValue(animeentry, reader.ReadInnerXml(), null);
+                                }
+                                else
+                                {
+                                    property.SetValue(animeentry, reader.ReadElementContentAsString(), null);
+                                }
+                            }
+                            else if (property.PropertyType == typeof(int))
+                            {
+                                property.SetValue(animeentry, reader.ReadElementContentAsInt(), null);
+                            }
+                            else if (property.PropertyType == typeof(double))
+                            {
+                                property.SetValue(animeentry, reader.ReadElementContentAsDouble(), null);
+                            }
+                        }
+                    }
                 }
 
                 return true;

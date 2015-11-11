@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Reflection;
+using System.ComponentModel;
+using Amatsukaze.HelperClasses;
 
 namespace Amatsukaze.ViewModel
 {
-    class AnimeEntryObject
+    class AnimeEntryObject : ObservableObjectClass
     {
         //Object to hold the properties for one anime (based on the return from myanimelist
         #region Properties
@@ -16,7 +18,7 @@ namespace Amatsukaze.ViewModel
         //Properties from MyAnimeList
         public int id { get; set; }
         public string title { get; set; }
-        public string Englishtitle { get; set; }
+        public string english { get; set; }
         public string synonyms { get; set; }
         public int episodes { get; set; }
         public double score { get;set; }
@@ -25,12 +27,44 @@ namespace Amatsukaze.ViewModel
         public string start_date { get; set; }
         public string end_date { get; set; }
         public string synopsis { get; set; }
-        public string imageURL { get; set; }
+        public string image { get; set; }
 
         //Properties for Amatsukaze
         public string ImagePath { get; set; }
-        public int gridcolumn { get; set; }
-        public int gridrow { get; set; }
+
+        private int gridcolumn;
+        public int GridColumn
+        {
+            get
+            {
+                return gridcolumn;
+            }
+            set
+            {
+                if (gridcolumn != value)
+                {
+                    gridcolumn = value;
+                    OnPropertyChanged("GridColumn");
+                }
+            }
+        }      
+
+        private int gridrow { get; set; }
+        public int GridRow
+        {
+            get
+            {
+                return gridrow;
+            }
+            set
+            {
+                if (gridrow != value)
+                {
+                    gridrow = value;
+                    OnPropertyChanged("GridRow");
+                }
+            }
+        }
 
         [Conditional("DEBUG")]
         public void ContentsDump()
@@ -40,7 +74,7 @@ namespace Amatsukaze.ViewModel
 
             foreach (PropertyInfo property in properties)
             {
-                Console.WriteLine("{0}; {1}", property.Name, property.GetValue(this, null));
+                Console.WriteLine("{0}: {1}", property.Name, property.GetValue(this, null));
             }
         }
 
