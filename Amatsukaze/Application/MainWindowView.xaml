@@ -7,7 +7,8 @@
         xmlns:ViewModel="clr-namespace:Amatsukaze.ViewModel"
         mc:Ignorable="d"
         Title="Amatsukaze" Height="720" Width="1280"
-        MinWidth="640" MinHeight="480">
+        MinWidth="640" MinHeight="480"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!-- Tying the XAML view to their respective ViewModels-->
         <DataTemplate DataType="{x:Type ViewModel:FolderMenuViewModel}" x:Name="FolderMenu">

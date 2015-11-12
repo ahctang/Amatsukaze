@@ -119,7 +119,6 @@ namespace Amatsukaze.ViewModel
 
         private void ApplyTheme()
         {
-
             string input = @"/Resources/" + optionsobject.Themesetting + ".xaml";
             Uri uri1;
 

@@ -1,4 +1,5 @@
-﻿<UserControl x:Class="Amatsukaze.View.LibraryMenuView"
+﻿<UserControl x:Name="LibraryMenuUserControl"
+             x:Class="Amatsukaze.View.LibraryMenuView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,7 +8,7 @@
              xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              xmlns:Helper="clr-namespace:Amatsukaze.HelperClasses"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300"
+             d:DesignHeight="800" d:DesignWidth="1000"
              Loaded="OnWindowLoaded"
              SizeChanged="Window_SizeChanged">
 
@@ -35,7 +36,7 @@
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="250" Margin="10,10,10,10">
                                <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161"></Image>
-                               <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap">
+                               <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Center">
                                     <TextBlock.Text>
                                         <PriorityBinding>
                                             <Binding Path="english" Converter="{StaticResource UnsetConverter}" />
@@ -68,18 +69,99 @@
             <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0">
                 <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
             </Button>            
-            <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="Search" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0"></TextBox>            
+            <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="Search" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0"></TextBox>
+            <Button x:Name="Refresh" Height="35" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="Transparent" BorderThickness="0" Command="{Binding RefreshCommand}">
+                <Image Source="{StaticResource RefreshIcon}" Height="25" Width="25"></Image>
+            </Button>
+            <Button x:Name="ActivityLog" Height="35" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="Transparent" BorderThickness="0" Click="ActivityLog_Click">
+                <Image Source="{StaticResource ActivityIcon}" Height="25" Width="25"></Image>
+            </Button>
         </DockPanel>
         <DockPanel x:Name="SecondaryTopMenu"  DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40"></DockPanel>        
         
         <!-- Switching Display Area-->
-        
+
         <Grid x:Name="DisplayArea">
+            <Grid.Resources>
+                <local:MessageBoxWidthConverter x:Key="MessageBoxWidthConverter"></local:MessageBoxWidthConverter>
+            </Grid.Resources>
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <ContentControl ContentTemplate="{StaticResource LibraryGridView}" Content="{Binding}"> </ContentControl>
+                <ContentControl ContentTemplate="{StaticResource LibraryGridView}" Content="{Binding}"></ContentControl>
             </ScrollViewer>
+
+            <!-- Message Log Box-->
+            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
+                <Border.Background>
+                    <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
+                </Border.Background>
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleY="0"></ScaleTransform>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding MessageLogToggle}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.25"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.25"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>                
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="20">
+                        <StackPanel>
+                            <TextBlock Text="Message Log" FontSize="20"></TextBlock>
+                            <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
+                            <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">                                                        
+                            </ListView>
+                    </StackPanel>
+                </ScrollViewer>                
+            </Border>
+
+            <!-- Status Message Box-->
+            <Border CornerRadius="15,15,15,15" BorderThickness="0" Width="{Binding ElementName=LibraryMenuUserControl, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="35" Background="Black" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.RenderTransform">
+                            <Setter.Value>
+                                <TranslateTransform Y="40"></TranslateTransform>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding MessageTextToggle}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.5"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.5"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <TextBlock Text="{Binding StatusText}" FontSize="14" FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" Margin="20,0,0,0" VerticalAlignment="Center"></TextBlock>
+            </Border>
         </Grid>
-        
-            
     </DockPanel>
 </UserControl>

@@ -32,17 +32,14 @@ namespace Amatsukaze.View
             if (e.AddedItems.Count != 0)
             {
                 Console.WriteLine(e.AddedItems[0]);
-                if (e.AddedItems[0] as string == "Amatsukaze")
-                {
-                    var app = Application.Current as App;
-                    app.ChangeTheme(new Uri(@"/Resources/Amatsukaze.xaml", UriKind.Relative));
-                }
+                string input = @"/Resources/" + e.AddedItems[0] as string + ".xaml";
+                Uri uri1;
 
-                if (e.AddedItems[0] as string == "Shimakaze")
+                if (Uri.TryCreate(input, UriKind.Relative, out uri1))
                 {
                     var app = Application.Current as App;
-                    app.ChangeTheme(new Uri(@"/Resources/Shimakaze.xaml", UriKind.Relative));
-                }
+                    app.ChangeTheme(uri1);
+                }                            
             }
         }
 
