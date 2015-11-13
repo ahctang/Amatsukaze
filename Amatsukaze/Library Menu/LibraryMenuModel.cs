@@ -158,7 +158,7 @@ namespace Amatsukaze.Model
                 }
                 else
                 {
-                    this.SendMessagetoGUI(this, new MessageArgs("No new anime found."));
+                    this.SendMessagetoGUI(this, new MessageArgs("Search Ended: No new anime found."));
                 }
                 return true;
             }

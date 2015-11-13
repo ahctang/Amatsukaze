@@ -18,6 +18,7 @@
         <BitmapImage x:Key="SearchIcon" UriSource="Resources/Search-50.png"></BitmapImage>
         <BitmapImage x:Key="RefreshIcon" UriSource="Resources/Refresh-50.png"></BitmapImage>
         <BitmapImage x:Key="ActivityIcon" UriSource="Resources/Activity-50.png"></BitmapImage>
+        <BitmapImage x:Key="CloseIcon" UriSource="Resources/Close-50.png"></BitmapImage>
         </ResourceDictionary>
 
     </Application.Resources>

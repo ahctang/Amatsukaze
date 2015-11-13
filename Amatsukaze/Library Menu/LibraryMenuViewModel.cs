@@ -53,10 +53,24 @@ namespace Amatsukaze.ViewModel
                 if (_refreshCommand == null)
                 {
                     _refreshCommand = new RelayCommand(
-                        p => refresh(),
+                        p => Refresh(),
                         p => true);
                 }
                 return _refreshCommand;
+            }
+        }
+
+        public ICommand SelectAnime
+        {
+            get
+            {
+                if (_selectAnime == null)
+                {
+                    _selectAnime = new RelayCommand(
+                        p => Select((AnimeEntryObject)p),
+                        p => true);
+                }
+                return _selectAnime;
             }
         }
 
@@ -172,6 +186,39 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public bool AnimeInfoToggle
+        {
+            get
+            {
+                return animeInfoToggle;
+            }
+            set
+            {
+                if (animeInfoToggle != value)
+                {
+                    animeInfoToggle = value;
+                    OnPropertyChanged("AnimeInfoToggle");
+                }
+            }
+        }
+
+
+        public AnimeEntryObject SelectedAnime
+        {
+            get
+            {
+                return selectedAnime;
+            }
+            set
+            {
+                if (selectedAnime != value)
+                {
+                    selectedAnime = value;
+                    OnPropertyChanged("SelectedAnime");
+                }
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -194,10 +241,16 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-        private void refresh()
+        private void Refresh()
         {
             datasource.ReadXMLDirectory();
             DisplayAreaResized(this.GridColumnCount);
+        }
+
+        private void Select(AnimeEntryObject anime)
+        {
+            this.SelectedAnime = anime;
+            this.AnimeInfoToggle = true;
         }
 
         #endregion
@@ -255,13 +308,16 @@ namespace Amatsukaze.ViewModel
         private ObservableCollection<string> libraryMessageLog = new ObservableCollection<string>();
 
         private ICommand _refreshCommand;
+        private ICommand _selectAnime;
 
         private int gridcolumncount;
         private int gridrowcount;
+        private AnimeEntryObject selectedAnime;
 
         private string statustext;
         private bool messageTextToggle;
         private bool messageLogToggle;
+        private bool animeInfoToggle;
         #endregion       
 
     }

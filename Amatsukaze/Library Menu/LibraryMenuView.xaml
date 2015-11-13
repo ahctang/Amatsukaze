@@ -35,7 +35,13 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="250" Margin="10,10,10,10">
-                               <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161"></Image>
+                               <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161">
+                                    <Image.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" 
+                                                      Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                                      CommandParameter="{Binding}"></MouseBinding>
+                                    </Image.InputBindings>
+                               </Image>
                                <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Center">
                                     <TextBlock.Text>
                                         <PriorityBinding>
@@ -43,7 +49,7 @@
                                             <Binding Path="title" />
                                         </PriorityBinding>
                                     </TextBlock.Text>
-                                    </TextBlock>
+                                 </TextBlock>
                             </StackPanel>
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
@@ -88,6 +94,68 @@
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ContentControl ContentTemplate="{StaticResource LibraryGridView}" Content="{Binding}"></ContentControl>
             </ScrollViewer>
+            
+            <!-- Anime Info Box-->
+            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
+                <Border.Background>
+                    <SolidColorBrush Color="{DynamicResource AmatsukazeBrown}" Opacity="0.85"></SolidColorBrush>
+                </Border.Background>
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.RenderTransform">
+                            <Setter.Value>
+                                <ScaleTransform ScaleY="0"></ScaleTransform>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding AnimeInfoToggle}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.25"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.25"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="20">
+                    <StackPanel>
+                        <StackPanel.Resources>
+                            <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
+                        </StackPanel.Resources>
+                        <StackPanel HorizontalAlignment="Right">
+                            <Button Height="35" Width="35">
+                                <Image Source="{StaticResource CloseIcon}"></Image>
+                            </Button>
+                        </StackPanel>
+                        <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Center" DockPanel.Dock="Top">
+                            <TextBlock.Text>
+                                <PriorityBinding>
+                                    <Binding ElementName="SelectedAnime" Path="english" Converter="{StaticResource UnsetConverter}" />
+                                    <Binding ElementName="SelectedAnime" Path="title" Converter="{StaticResource UnsetConverter}" />
+                                </PriorityBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                        <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
+                        <DockPanel>
+                            <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath}"></Image>
+                            <TextBlock Text="{Binding SelectedAnime.score}"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.start_date}"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.end_date}"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.synopsis}"></TextBlock>                             
+                        </DockPanel>                        
+                    </StackPanel>
+                </ScrollViewer>
+            </Border>
 
             <!-- Message Log Box-->
             <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
@@ -120,15 +188,15 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Border.Style>                
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="20">
-                        <StackPanel>
-                            <TextBlock Text="Message Log" FontSize="20"></TextBlock>
-                            <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
-                            <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">                                                        
+                </Border.Style>
+                <StackPanel>
+                    <TextBlock Text="Message Log" FontSize="20" Margin="20,20,20,20"></TextBlock>
+                        <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">                        
                             </ListView>
-                    </StackPanel>
-                </ScrollViewer>                
+                    </ScrollViewer>
+                </StackPanel>                
             </Border>
 
             <!-- Status Message Box-->
