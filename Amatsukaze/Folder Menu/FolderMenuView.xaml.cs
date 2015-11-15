@@ -29,19 +29,13 @@ namespace Amatsukaze.View
 
         private void lala(object sender, RoutedEventArgs e)
         {
-            //var obj = this.DataContext as FolderMenuViewModel;
-            //obj.Test = "Haha";
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
+            dialog.ShowNewFolderButton = false;
             dialog.ShowDialog();
             
-            var obj = this.DataContext as FolderMenuViewModel;
-            obj.Test = dialog.SelectedPath;
+            //var obj = this.DataContext as FolderMenuViewModel;
+            //obj.Test = dialog.SelectedPath;
         }
 
-        //private void lala(object sender, RoutedEventArgs e)
-        //{
-        //var obj = this.DataContext as FolderMenuViewModel;
-        //obj.Test = "Haha";
-        //}
     }
 }
