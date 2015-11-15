@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +23,31 @@ namespace Amatsukaze.View
     {
         public OptionsMenuView()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
+
+        #region Events
+        private void ThemeSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {            
+            if (e.AddedItems.Count != 0)
+            {
+                Console.WriteLine(e.AddedItems[0]);
+                string input = @"/Resources/" + e.AddedItems[0] as string + ".xaml";
+                Uri uri1;
+
+                if (Uri.TryCreate(input, UriKind.Relative, out uri1))
+                {
+                    var app = Application.Current as App;
+                    app.ChangeTheme(uri1);
+                }                            
+            }
+        }
+
+        #endregion
+
+        #region Methods
+
+        
+        #endregion
     }
 }

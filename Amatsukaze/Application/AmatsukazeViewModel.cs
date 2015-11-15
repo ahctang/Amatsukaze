@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Amatsukaze.HelperClasses;
-using System.ComponentModel;
+using System.Windows;
 using System.Windows.Input;
+using Amatsukaze.Model;
 
 namespace Amatsukaze.ViewModel
 {
@@ -13,9 +14,9 @@ namespace Amatsukaze.ViewModel
     //This viewmodel serves as the datacontext for MainWindowView and directly controls all of the view switching and perhaps view data sharing.
     //Any new top level viewmodel probably needs to be linked up here
 
-    class AmatsukazeViewModel: ObservableObjectClass
+    class AmatsukazeViewModel : ObservableObjectClass
     {
-        #region fields
+        #region Fields
         private ICommand _changeViewCommand;
 
         private string currentview;
@@ -26,12 +27,19 @@ namespace Amatsukaze.ViewModel
 
 
         public AmatsukazeViewModel()
-        {            
-            ApplicationViewModels.Add(new LibraryMenuViewModel());
+        {
+
+            //Read the Options into the application memory before doing anything
+            OptionsModel optionsmodel = new OptionsModel();
+            optionsmodel.ReadOptionsFile(ref optionsobject);
+            ApplyTheme();
+
+            //Instantiate the viewmodels for the application
+            ApplicationViewModels.Add(new LibraryMenuViewModel(optionsobject));
             ApplicationViewModels.Add(new FolderMenuViewModel());
-            ApplicationViewModels.Add(new SocialNetworkMenuViewModel());            
+            ApplicationViewModels.Add(new SocialNetworkMenuViewModel());
             ApplicationViewModels.Add(new PlaybackMenuViewModel());
-            ApplicationViewModels.Add(new OptionMenuViewModel());
+            ApplicationViewModels.Add(new OptionMenuViewModel(optionsobject));
 
             CurrentViewModel = ApplicationViewModels[0];
             CurrentView = CurrentViewModel.GetType().ToString();
@@ -71,7 +79,7 @@ namespace Amatsukaze.ViewModel
             }
             set
             {
-                if(_currentviewmodel != value)
+                if (_currentviewmodel != value)
                 {
                     _currentviewmodel = value;
                     OnPropertyChanged("CurrentViewModel");
@@ -107,7 +115,23 @@ namespace Amatsukaze.ViewModel
 
             CurrentViewModel = ApplicationViewModels.FirstOrDefault(vm => vm == viewModel);
             this.CurrentView = viewModel.GetType().ToString();
-        }        
+        }
+
+        private void ApplyTheme()
+        {
+            string input = @"/Resources/" + optionsobject.Themesetting + ".xaml";
+            Uri uri1;
+
+            if (Uri.TryCreate(input, UriKind.Relative, out uri1))
+            {
+                var app = Application.Current as App;
+                app.ChangeTheme(uri1);
+            }            
+        }
+        #endregion
+
+        #region Objects
+        OptionsObject optionsobject = new OptionsObject();
         #endregion
     }
 }
