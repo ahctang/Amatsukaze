@@ -23,24 +23,49 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-        public LibraryMenuViewModel(OptionsObject optionsobject)
+        public LibraryMenuViewModel(OptionsObject optionsobject, IEventAggregator eventAggregator)
         {
+            this.EventAggregator = eventAggregator;
             this.optionsobject = optionsobject;
             datasource = new LibraryMenuModel(optionsobject);
 
             //Subscribe to events
             datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
 
+            //Read the cache file
             datasource.ReadCacheFile();            
 
             animeLibraryList = datasource.AnimeLibraryList;            
         }
+
+
+        #region Fields
+        
+        //Private copy of the message log displayed in the drop down menu. Added to in the SendMessagetoGUI event handler
+        private ObservableCollection<string> libraryMessageLog = new ObservableCollection<string>();
+
+        //Commands
+        private ICommand _refreshCommand;
+        private ICommand _selectAnime;
+
+        //Private fields to keep track of the current grid column and row count
+        private int gridcolumncount;
+        private int gridrowcount;
+
+        //Private field for the currently displayed anime
+        private AnimeEntryObject selectedAnime;
+
+        //GUI Toggles
+        private bool messageLogToggle;
+        private bool animeInfoToggle;
+        #endregion    
 
         #region Objects
 
         OptionsObject optionsobject;
         private ObservableCollection<AnimeEntryObject> animeLibraryList;
         LibraryMenuModel datasource;
+        public IEventAggregator EventAggregator { get; set; }
 
         #endregion
 
@@ -136,39 +161,7 @@ namespace Amatsukaze.ViewModel
                     OnPropertyChanged("GridRowCount");
                 }
             }
-        }
-
-        public string StatusText
-        {
-            get
-            {
-                return statustext;
-            }
-            set
-            {
-                if (statustext != value)
-                {
-                    statustext = value;
-                    OnPropertyChanged("StatusText");
-                }
-            }
-        }
-
-        public bool MessageTextToggle
-        {
-            get
-            {
-                return messageTextToggle;
-            }
-            set
-            {
-                if (messageTextToggle != value)
-                {
-                    messageTextToggle = value;
-                    OnPropertyChanged("MessageTextToggle");
-                }
-            }
-        }
+        }             
 
         public bool MessageLogToggle
         {
@@ -202,7 +195,6 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-
         public AnimeEntryObject SelectedAnime
         {
             get
@@ -223,6 +215,7 @@ namespace Amatsukaze.ViewModel
 
         #region Methods
 
+        //Updates 
         public void UpdateGridIndexes (int ColumnCount)
         {
             int columncounter = 0, rowcounter = 0;
@@ -241,12 +234,14 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        //Rescans the Cache folder for XML files
         private void Refresh()
         {
             datasource.ReadXMLDirectory();
             DisplayAreaResized(this.GridColumnCount);
         }
 
+        //Changes the currently selected anime
         private void Select(AnimeEntryObject anime)
         {
             this.SelectedAnime = anime;
@@ -256,26 +251,22 @@ namespace Amatsukaze.ViewModel
         #endregion
 
         #region Events/EventHandlers
+
+        //All SendtoGUI events from the model are handled here. and they send the message to the EventAggregator which calls up the black popup menu 
         void onSendMessagetoGUI (object sender, EventArgs e)
         {
-            Console.WriteLine("Event Fired!");
-            //Reset the message timer
-            t.Stop();
-            t.Start();
-
-            var args = e as MessageArgs;
-            string message = args.Message;
-            StatusText = message;
+            Console.WriteLine("Library Event Fired!");
+            var message = (e as MessageArgs).Message;
             LibraryMessageLog.Add(message);
 
-            //Show the message panel
-            MessageTextToggle = true;
-
-            //Go to event handler that closes the message panel
-            t.Elapsed += new ElapsedEventHandler(t_Elapsed);
-            t.Start();
+            if (this.EventAggregator != null)
+            {
+                this.EventAggregator.PublishEvent(new MessagetoGUI() { Message = message });
+            }
         }
 
+        //Every time the size of the display area is changed in the view, the view is hardcoded to call this function to 
+        //recalculate the number of columns/rows that fit and to reassign the grid index of every single picture.
         public void DisplayAreaResized(int columncount)
         {
             if (columncount != 0)
@@ -292,33 +283,10 @@ namespace Amatsukaze.ViewModel
                     GridRowCount = (AnimeLibraryList.Count / columncount) + 1;
                 }
             }                        
-        }
-
-        void t_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            t.Stop();
-            MessageTextToggle = false;
-        }
+        }      
 
         #endregion
-
-        #region Fields
-
-        private Timer t = new Timer(3000);
-        private ObservableCollection<string> libraryMessageLog = new ObservableCollection<string>();
-
-        private ICommand _refreshCommand;
-        private ICommand _selectAnime;
-
-        private int gridcolumncount;
-        private int gridrowcount;
-        private AnimeEntryObject selectedAnime;
-
-        private string statustext;
-        private bool messageTextToggle;
-        private bool messageLogToggle;
-        private bool animeInfoToggle;
-        #endregion       
+   
 
     }
 }
