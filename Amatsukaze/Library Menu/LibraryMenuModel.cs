@@ -43,7 +43,7 @@ namespace Amatsukaze.Model
                 {
                     string input = File.ReadAllText(filepath);
                     AnimeLibraryList = JsonConvert.DeserializeObject<ObservableCollection<AnimeEntryObject>>(input);
-                    this.SendMessagetoGUI(this, new MessageArgs("Cache file read successfully."));
+                    this.SendMessagetoGUI(this, new MessageArgs("Library: Cache file read successfully."));
                 }
                 catch (Exception ex)
                 {
@@ -52,7 +52,7 @@ namespace Amatsukaze.Model
             }
             else
             {
-                this.SendMessagetoGUI(this, new MessageArgs("Cache file not found."));
+                this.SendMessagetoGUI(this, new MessageArgs("Library: Cache file not found."));
                 FileInfo folderpath = new FileInfo(optionsobject.CacheFolderpath);
                 folderpath.Directory.Create();
             }
@@ -72,7 +72,7 @@ namespace Amatsukaze.Model
                     Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
                     animeentry.ImagePath = path;
 
-                    string message = "Updated artwork for: ";
+                    string message = "Library: Updated artwork for: ";
                     if (animeentry.english.Length == 0)
                         message += animeentry.title;
                     else
@@ -136,7 +136,7 @@ namespace Amatsukaze.Model
                             AnimeLibraryList.Add(animeentry);
                             
 
-                            string message = "Found new anime: ";
+                            string message = "Library: Found new anime: ";
                             if (animeentry.english.Length == 0)
                                 message += animeentry.title;
                             else
@@ -149,7 +149,7 @@ namespace Amatsukaze.Model
                         }
                         else
                         {
-                            Console.WriteLine("Directory Parse failed");
+                            this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse failed."));                            
                             return false;
                         }
                     }
@@ -158,7 +158,7 @@ namespace Amatsukaze.Model
                 }
                 else
                 {
-                    this.SendMessagetoGUI(this, new MessageArgs("Search Ended: No new anime found."));
+                    this.SendMessagetoGUI(this, new MessageArgs("Library: Search Ended. No new anime found."));
                 }
                 return true;
             }

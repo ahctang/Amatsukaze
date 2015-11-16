@@ -198,38 +198,7 @@
                     </ScrollViewer>
                 </StackPanel>                
             </Border>
-
-            <!-- Status Message Box-->
-            <Border CornerRadius="15,15,15,15" BorderThickness="0" Width="{Binding ElementName=LibraryMenuUserControl, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="35" Background="Black" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                <Border.Style>
-                    <Style>
-                        <Setter Property="Border.RenderTransform">
-                            <Setter.Value>
-                                <TranslateTransform Y="40"></TranslateTransform>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding MessageTextToggle}" Value="True">
-                                <DataTrigger.EnterActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.5"></DoubleAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.EnterActions>
-                                <DataTrigger.ExitActions>
-                                    <BeginStoryboard>
-                                        <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.5"></DoubleAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </DataTrigger.ExitActions>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <TextBlock Text="{Binding StatusText}" FontSize="14" FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" Margin="20,0,0,0" VerticalAlignment="Center"></TextBlock>
-            </Border>
+           
         </Grid>
     </DockPanel>
 </UserControl>

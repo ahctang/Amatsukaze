@@ -34,7 +34,7 @@
                 <DockPanel>
                     <TextBlock Text="Color Theme" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top"></TextBlock>
                     <ComboBox x:Name="ThemeSelector" DockPanel.Dock="Top" Width="200" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,10,0,0" ItemsSource="{Binding AvailableThemes}" 
-                        SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, diag:PresentationTraceSources.TraceLevel=High}" IsSynchronizedWithCurrentItem="True" SelectionChanged="ThemeSelectionChanged">
+                        SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, diag:PresentationTraceSources.TraceLevel=High}" IsSynchronizedWithCurrentItem="True">                                                                                                                                        
                     </ComboBox>
                     <TextBlock Text="Folder Options" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" Margin="10,20,0,0"></TextBlock>
                     <TextBlock Text="Cache Folder Path" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" FontSize="18"></TextBlock>

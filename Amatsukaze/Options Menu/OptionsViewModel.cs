@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Amatsukaze.HelperClasses;
 using Amatsukaze.Model;
+using System.Windows;
 
 
 namespace Amatsukaze.ViewModel
@@ -19,16 +20,20 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-        OptionsModel optionsmodel = new OptionsModel();
-        OptionsObject optionsobject;
 
-        public OptionMenuViewModel(OptionsObject optionsobject)
+        public OptionMenuViewModel(OptionsObject optionsobject, IEventAggregator eventAggregator)
         {
             this.optionsobject = optionsobject;
             this.SelectedTheme = this.optionsobject.Themesetting;
             this.CacheFolderPath = optionsobject.CacheFolderpath;
-        }        
-       
+            this.EventAggregator = eventAggregator;
+        }
+
+        #region Objects
+        OptionsModel optionsmodel = new OptionsModel();
+        OptionsObject optionsobject;
+        public IEventAggregator EventAggregator;
+        #endregion                
 
         #region Fields
         private List<string> availablethemes = new List<string>( new string[] { "Amatsukaze", "Shimakaze" });
@@ -58,6 +63,7 @@ namespace Amatsukaze.ViewModel
                 {
                     selectedtheme = value;
                     optionsobject.Themesetting = value;
+                    ApplyTheme(selectedtheme);
 
                     optionsmodel.SaveOptionsFile(optionsobject);
                     OnPropertyChanged("SelectedTheme");                                        
@@ -86,7 +92,41 @@ namespace Amatsukaze.ViewModel
 
         #endregion
 
+        #region Methods
 
+        private void ApplyTheme(string theme)
+        {
+            string input = @"/Resources/" + optionsobject.Themesetting + ".xaml";
+            Uri uri1;
+
+            if (Uri.TryCreate(input, UriKind.Relative, out uri1))
+            {
+                var app = Application.Current as App;
+                app.ChangeTheme(uri1);
+                SendMessagetoGUI("Options: " + theme + " theme applied.");
+                
+            }
+            else
+            {
+                SendMessagetoGUI("Options: " + theme + " theme not found.");
+                return;
+            }            
+        }
+
+        private void SendMessagetoGUI(string message)
+        {
+            if (this.EventAggregator != null)
+            {
+                this.EventAggregator.PublishEvent(new MessagetoGUI() { Message = message });
+            }
+        }
+
+        #endregion
+
+        #region Events/Handlers        
+
+        
+        #endregion
 
     }
 }
