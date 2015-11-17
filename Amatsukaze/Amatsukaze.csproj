@@ -62,7 +62,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Application\XMLDataSourceObject.cs" />
+    <Compile Include="Application\DatsourceObjects\AnimeEntryObjects.cs" />
+    <Compile Include="Application\DatsourceObjects\XMLDataSourceObject.cs" />
+    <Compile Include="Application\DatsourceObjects\XMLParsers.cs" />
     <Compile Include="Folder Menu\FolderMenuView.xaml.cs">
       <DependentUpon>FolderMenuView.xaml</DependentUpon>
     </Compile>

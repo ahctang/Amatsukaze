@@ -65,7 +65,7 @@ namespace Amatsukaze.ViewModel
                     optionsobject.Themesetting = value;
                     ApplyTheme(selectedtheme);
 
-                    optionsmodel.SaveOptionsFile(optionsobject);
+                    optionsobject.Save();
                     OnPropertyChanged("SelectedTheme");                                        
                 }
             }
@@ -84,7 +84,7 @@ namespace Amatsukaze.ViewModel
                     cachefolderpath = value;
                     optionsobject.CacheFolderpath = value;
 
-                    optionsmodel.SaveOptionsFile(optionsobject);
+                    optionsobject.Save();
                     OnPropertyChanged("CacheFolderPath");
                 }
             }

@@ -195,7 +195,7 @@
                         <ScrollViewer VerticalScrollBarVisibility="Auto">
                             <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">                        
                             </ListView>
-                    </ScrollViewer>
+                        </ScrollViewer>
                 </StackPanel>                
             </Border>
            
