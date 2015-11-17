@@ -5,14 +5,30 @@ using System.Text;
 using System.Threading.Tasks;
 using Amatsukaze.HelperClasses;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
 
 namespace Amatsukaze.ViewModel
 {
     class FolderMenuViewModel : ObservableObjectClass, ViewModelBase
     {
+
+        private ObservableCollection<string> folders;
+        public ObservableCollection<string> Folders
+        {
+            get
+            {
+                return folders;
+            }
+            set
+            {
+                folders = value;
+            }
+        }
+
         private string test;
 
-        public string Test {
+        public string Test
+        {
             get
             {
                 if (test == null)

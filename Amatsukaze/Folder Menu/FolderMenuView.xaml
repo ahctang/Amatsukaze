@@ -6,9 +6,17 @@
              xmlns:local="clr-namespace:Amatsukaze.View"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
     <Grid Background="Pink">
+        <ListBox ItemsSource="{Binding folders}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Label Content="{Binding Path=.}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <TextBlock x:Name="mybox" Text="{Binding Test}" />
-        <Button Content="test" Height="20" Width="100" Click="lala"/>
-        
+        <Button Content="test" Height="20" Width="100" Click="openAddFolderDialog"/>
+
     </Grid>
 </UserControl>

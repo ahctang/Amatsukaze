@@ -27,15 +27,21 @@ namespace Amatsukaze.View
             InitializeComponent();
         }
 
-        private void lala(object sender, RoutedEventArgs e)
+        private void openAddFolderDialog(object sender, RoutedEventArgs e)
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             dialog.ShowNewFolderButton = false;
             dialog.ShowDialog();
-            
-            //var obj = this.DataContext as FolderMenuViewModel;
-            //obj.Test = dialog.SelectedPath;
-        }
 
+            var obj = this.DataContext as FolderMenuViewModel;
+            FolderEntity newEntity = new FolderEntity();
+            newEntity.
+
+            obj.Folders.Add();
+       
+            obj.Test = dialog.SelectedPath;
+
+            
+        }
     }
 }
