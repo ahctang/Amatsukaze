@@ -1,0 +1,452 @@
+<anime id="11177" restricted="false">
+<type>TV Series</type>
+<episodecount>12</episodecount>
+<startdate>2015-10-03</startdate>
+<enddate>1970-01-01</enddate>
+<titles>
+<title xml:lang="x-jat" type="main">Gakusen Toshi Asterisk</title>
+<title xml:lang="ja" type="official">学戦都市アスタリスク</title>
+<title xml:lang="en" type="official">The Asterisk War</title>
+<title xml:lang="fr" type="official">Asterisk War</title>
+</titles>
+<relatedanime>
+<anime id="11673" type="Sequel">Gakusen Toshi Asterisk (2016)</anime>
+</relatedanime>
+<similaranime>
+<anime id="11126" approval="17" total="19">Rakudai Kishi no Cavalry</anime>
+<anime id="9999" approval="8" total="8">Seirei Tsukai no Blade Dance</anime>
+<anime id="7727" approval="6" total="7">IS: Infinite Stratos</anime>
+<anime id="9015" approval="3" total="5">Hagure Yuusha no Aesthetica</anime>
+<anime id="11148" approval="1" total="5">Valkyrie Drive: Mermaid</anime>
+<anime id="10182" approval="1" total="1">Mahouka Koukou no Rettousei</anime>
+</similaranime>
+<url>http://asterisk-war.com/</url>
+<creators>
+<name id="43967" type="Original Work">Miyazaki Yuu</name>
+<name id="30493" type="Music">Rasmus Faber</name>
+<name id="5371" type="Chief Direction">Ono Manabu</name>
+<name id="8138" type="Chief Animation Direction">Kawakami Tetsuya</name>
+<name id="16733" type="Direction">Setou Kenji</name>
+<name id="1303" type="Work">A-1 Pictures</name>
+<name id="8138" type="Character Design">Kawakami Tetsuya</name>
+</creators>
+<description>
+The Academy City on water Rikka, otherwise known as Asterisk, is famous for being the world`s largest stage for the integrated battle entertainment Star Wars Festival. The young boys and girls of the Starpulse Generation belonging to the six academies make their wishes with Shining Armaments in their hands, vying for supremacy, and http://anidb.net/ch76426 [Amagiri Ayato] is one of them. Ayato arrives in Rikka at the invitation of http://anidb.net/ch74304 [Claudia Enfield], the Student Council President of the Seidoukan Academy. Right after that, he incurs the wrath of the Petalblaze Witch http://anidb.net/ch74303 [Julis-Alexia von Riessfeld] and ends up having to duel her. Source: Baka-Tsuki
+</description>
+<ratings>
+<permanent count="91">3.36</permanent>
+<temporary count="92">5.83</temporary>
+</ratings>
+<picture>177040.jpg</picture>
+<resources>
+<resource type="1">
+<externalentity>
+<identifier>16943</identifier>
+</externalentity>
+</resource>
+<resource type="2">
+<externalentity>
+<identifier>30544</identifier>
+</externalentity>
+</resource>
+<resource type="4">
+<externalentity>
+<url>http://asterisk-war.com/</url>
+</externalentity>
+</resource>
+<resource type="6">
+<externalentity>
+<identifier>The_Asterisk_War</identifier>
+</externalentity>
+</resource>
+<resource type="7">
+<externalentity>
+<identifier>学戦都市アスタリスク</identifier>
+</externalentity>
+</resource>
+<resource type="8">
+<externalentity>
+<identifier>3900</identifier>
+</externalentity>
+</resource>
+<resource type="9">
+<externalentity>
+<identifier>352653</identifier>
+</externalentity>
+</resource>
+<resource type="10">
+<externalentity>
+<identifier>18414</identifier>
+</externalentity>
+</resource>
+<resource type="20">
+<externalentity>
+<identifier>學戰都市Asterisk</identifier>
+</externalentity>
+</resource>
+</resources>
+<tags>
+<tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>original work</name>
+<description>
+What the anime is based on! Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.
+</description>
+</tag>
+<tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+<name>elements</name>
+<description>
+Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?
+</description>
+</tag>
+<tag id="2622" parentid="2841" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-03">
+<name>swordplay</name>
+<description>
+The act or art of using a sword or similar weapon skillfully.
+</description>
+</tag>
+<tag id="2653" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
+<name>slapstick</name>
+<description>
+Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.
+</description>
+</tag>
+<tag id="2770" parentid="2653" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-25">
+<name>violent retribution for accidental infringement</name>
+<description>
+A comedy / slapstick element often found in Ecchi anime: The hilarity derives from spontaneous embarrassment, overreaction of the "victim" (girl), immediate retribution for a seemingly inappropriate act, and a sense of pity with the supposed "aggressor" (boy). Typically a boy will - through no fault of his own - stumble into a girl, thus invading her personal space. In the process the boy may e.g. pull down her skirt, grab the girl`s breasts, or accidentally kiss her. Any level-headed girl would see the accident just for what it is. Not so the girl with an overly developed sense of modesty, and a thing for violence. She - often a tsundere - will clobber the boy with excessive brutality.
+</description>
+</tag>
+<tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-05-14">
+<name>novel</name>
+<description>
+Note that novel means book with words in paper, so no comics and no "visual novels", which should go under manga and dating-sim - visual Novel/erotic game respectively. Note that it can be applied to novels as we know them but also the typical light novels for teens and young adults, which are common in Japan and aside from being short include a number of illustrations.
+</description>
+</tag>
+<tag id="2841" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2015-09-08">
+<name>action</name>
+<description>
+Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.
+</description>
+</tag>
+<tag id="2853" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2009-08-01">
+<name>comedy</name>
+<description>
+Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience. Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.
+</description>
+</tag>
+<tag id="2856" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+<name>ecchi</name>
+<description>
+Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi. The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai". The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi. Source: TV Tropes
+</description>
+<picurl>32416.jpg</picurl>
+</tag>
+<tag id="2858" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-10">
+<name>romance</name>
+<description>
+Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.
+</description>
+</tag>
+</tags>
+<characters>
+<character id="74303" type="main character in" update="2015-08-18">
+<rating votes="5">4.56</rating>
+<name>Julis-Alexia von Riessfeld</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>176487.jpg</picture>
+<seiyuu id="32939" picture="89641.jpg">Kakuma Ai</seiyuu>
+</character>
+<character id="74304" type="main character in" update="2015-08-18">
+<rating votes="5">8.09</rating>
+<name>Claudia Enfield</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>176488.jpg</picture>
+<seiyuu id="21312" picture="152762.jpg">Touyama Nao</seiyuu>
+</character>
+<character id="74305" type="main character in" update="2015-11-12">
+<rating votes="7">7.58</rating>
+<name>Toudou Kirin</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>176491.jpg</picture>
+<seiyuu id="39007" picture="148258.jpg">Ozawa Ari</seiyuu>
+</character>
+<character id="74306" type="main character in" update="2015-08-18">
+<rating votes="5">7.43</rating>
+<name>Sasamiya Saya</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>176489.jpg</picture>
+<seiyuu id="10410" picture="46169.jpg">Izawa Shiori</seiyuu>
+</character>
+<character id="76426" type="main character in" update="2015-08-18">
+<rating votes="1">1.27</rating>
+<name>Amagiri Ayato</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>176486.jpg</picture>
+<seiyuu id="24946" picture="127731.jpg">Tamaru Atsushi</seiyuu>
+</character>
+<character id="76981" type="secondary cast in" update="2015-08-24">
+<rating votes="1">6.10</rating>
+<name>Irene Urzaiz</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="23686" picture="85711.jpg">Uchiyama Yumi</seiyuu>
+</character>
+<character id="76982" type="secondary cast in" update="2015-09-23">
+<rating votes="3">7.62</rating>
+<name>Ernesta Kuhne</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>177757.jpg</picture>
+<seiyuu id="18198" picture="85893.jpg">Akasaki Chinatsu</seiyuu>
+</character>
+<character id="76983" type="secondary cast in" update="2015-09-23">
+<rating votes="1">6.10</rating>
+<name>Camilla Pareto</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>177758.jpg</picture>
+<seiyuu id="3712" picture="25072.jpg">Tamura Mutsumi</seiyuu>
+</character>
+<character id="76984" type="secondary cast in" update="2015-11-01">
+<name>Dirk Eberwein</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>179061.jpg</picture>
+<seiyuu id="45" picture="44970.jpg">Sugita Tomokazu</seiyuu>
+</character>
+<character id="76985" type="secondary cast in" update="2015-08-24">
+<rating votes="1">6.10</rating>
+<name>Priscilla Urzaiz</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="22625" picture="59506.jpg">Nagatsuma Juri</seiyuu>
+</character>
+<character id="76986" type="secondary cast in" update="2015-09-23">
+<name>Lester MacPhail</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>177756.jpg</picture>
+<seiyuu id="177" picture="170981.jpg">Hoshino Takanori</seiyuu>
+</character>
+<character id="76987" type="secondary cast in" update="2015-09-23">
+<name>Yabuki Eishirou</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>177755.jpg</picture>
+<seiyuu id="38579" picture="158188.jpg">Uchida Yuuma</seiyuu>
+</character>
+<character id="77516" type="secondary cast in" update="2015-09-23">
+<rating votes="2">6.09</rating>
+<name>Amagiri Haruka</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>177759.jpg</picture>
+<seiyuu id="6" picture="171987.jpg">Nakahara Mai</seiyuu>
+</character>
+<character id="77517" type="appears in" update="2015-09-23">
+<name>Seidoukan Gakuen</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177760.jpg</picture>
+</character>
+<character id="77518" type="appears in" update="2015-09-23">
+<name>Sei Gallardworth Gakuen</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177761.jpg</picture>
+</character>
+<character id="77519" type="appears in" update="2015-09-23">
+<name>Jie Long Dainana Gakuin</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177762.jpg</picture>
+</character>
+<character id="77520" type="appears in" update="2015-09-23">
+<name>Allekant Academy</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177763.jpg</picture>
+</character>
+<character id="77521" type="appears in" update="2015-09-23">
+<name>Le Wolfe Kuro Gakuin</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177764.jpg</picture>
+</character>
+<character id="77522" type="appears in" update="2015-09-23">
+<name>Queenvale Jogakuen</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>177765.jpg</picture>
+</character>
+<character id="77785" type="appears in" update="2015-10-11">
+<name>Silas Norman</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>178451.jpg</picture>
+<seiyuu id="12623" picture="151646.jpg">Iguchi Yuuichi</seiyuu>
+</character>
+<character id="77786" type="appears in" update="2015-10-11">
+<name>Randy Hooke</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>178452.jpg</picture>
+<seiyuu id="436" picture="90853.jpg">Kobushi Nobuyuki</seiyuu>
+</character>
+<character id="77787" type="appears in" update="2015-10-11">
+<rating votes="2">6.50</rating>
+<name>Yatsuzaki Kyouko</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>178453.jpg</picture>
+<seiyuu id="160" picture="30490.jpg">Kaida Yuuko</seiyuu>
+</character>
+<character id="78099" type="secondary cast in" update="2015-11-01">
+<name>Sakon Shuuma</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>179060.jpg</picture>
+<seiyuu id="190" picture="17004.jpg">Tobita Nobuo</seiyuu>
+</character>
+<character id="78100" type="secondary cast in" update="2015-11-02">
+<rating votes="1">6.10</rating>
+<name>Fan Xinglou</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>179062.jpg</picture>
+<seiyuu id="186" picture="16999.jpg">Minami Omi</seiyuu>
+</character>
+<character id="78101" type="secondary cast in" update="2015-11-02">
+<name>Ernest Fairclough</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>179063.jpg</picture>
+<seiyuu id="225" picture="17044.jpg">Sakurai Takahiro</seiyuu>
+</character>
+<character id="78102" type="appears in" update="2015-11-01">
+<name>Toudou Kouichirou</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>179064.jpg</picture>
+<seiyuu id="339" picture="79312.jpg">Ishizuka Unshou</seiyuu>
+</character>
+</characters>
+<episodes>
+<episode id="171713" update="2015-11-17">
+<epno type="1">4</epno>
+<length>25</length>
+<airdate>2015-10-24</airdate>
+<rating votes="6">6.60</rating>
+<title xml:lang="ja">解き放たれし者</title>
+<title xml:lang="en">Unshackled</title>
+<title xml:lang="fr">Libéré</title>
+<title xml:lang="x-jat">Tokihanatareshi Mono</title>
+</episode>
+<episode id="171714" update="2015-11-13">
+<epno type="1">3</epno>
+<length>25</length>
+<airdate>2015-10-17</airdate>
+<rating votes="9">5.25</rating>
+<title xml:lang="ja">二人の休日</title>
+<title xml:lang="en">A Holiday for Two</title>
+<title xml:lang="fr">Un jour de congé à deux</title>
+<title xml:lang="x-jat">Futari no Kyuujitsu</title>
+</episode>
+<episode id="171715" update="2015-10-16">
+<epno type="1">2</epno>
+<length>25</length>
+<airdate>2015-10-10</airdate>
+<rating votes="8">3.93</rating>
+<title xml:lang="ja">セル=ベレスタ</title>
+<title xml:lang="en">Ser Veresta</title>
+<title xml:lang="fr">Ser Veresta</title>
+<title xml:lang="x-jat">Ser Veresta</title>
+</episode>
+<episode id="171716" update="2015-10-09">
+<epno type="1">1</epno>
+<length>25</length>
+<airdate>2015-10-03</airdate>
+<rating votes="10">3.39</rating>
+<title xml:lang="ja">華焔の魔女</title>
+<title xml:lang="en">Witch of the Resplendent Flames</title>
+<title xml:lang="fr">La sorcière de feu</title>
+<title xml:lang="x-jat">Kaen no Majo</title>
+</episode>
+<episode id="172398" update="2015-10-05">
+<epno type="3">C1</epno>
+<length>2</length>
+<airdate>2015-10-03</airdate>
+<title xml:lang="en">Opening</title>
+</episode>
+<episode id="172479" update="2015-10-10">
+<epno type="3">C2</epno>
+<length>2</length>
+<airdate>2015-10-10</airdate>
+<title xml:lang="en">Ending</title>
+</episode>
+<episode id="172620" update="2015-10-17">
+<epno type="1">8</epno>
+<length>25</length>
+<airdate>2015-11-21</airdate>
+<title xml:lang="ja">二人の休日②</title>
+<title xml:lang="en">A Holiday for Two, Part 2</title>
+<title xml:lang="x-jat">Futari no Kyuujitsu 2</title>
+</episode>
+<episode id="172621" update="2015-10-17">
+<epno type="1">7</epno>
+<length>25</length>
+<airdate>2015-11-14</airdate>
+<rating votes="4">5.46</rating>
+<title xml:lang="ja">決意と決闘</title>
+<title xml:lang="en">Decisions and Duels</title>
+<title xml:lang="x-jat">Ketsui to Kettou</title>
+</episode>
+<episode id="172622" update="2015-10-17">
+<epno type="1">6</epno>
+<length>25</length>
+<airdate>2015-11-07</airdate>
+<rating votes="5">4.01</rating>
+<title xml:lang="ja">素顔の少女</title>
+<title xml:lang="en">The True Face of the Girl</title>
+<title xml:lang="x-jat">Sugao no Shoujo</title>
+</episode>
+<episode id="172623" update="2015-10-17">
+<epno type="1">5</epno>
+<length>25</length>
+<airdate>2015-10-31</airdate>
+<rating votes="6">4.07</rating>
+<title xml:lang="ja">疾風刃雷</title>
+<title xml:lang="en">Lightning Blade Speed</title>
+<title xml:lang="x-jat">Shippuu Jinrai</title>
+</episode>
+<episode id="173283" update="2015-11-14">
+<epno type="1">12</epno>
+<length>25</length>
+<airdate>2015-12-19</airdate>
+<title xml:lang="en">Episode 12</title>
+</episode>
+<episode id="173284" update="2015-11-14">
+<epno type="1">11</epno>
+<length>25</length>
+<airdate>2015-12-12</airdate>
+<title xml:lang="en">Episode 11</title>
+</episode>
+<episode id="173285" update="2015-11-14">
+<epno type="1">10</epno>
+<length>25</length>
+<airdate>2015-12-05</airdate>
+<title xml:lang="en">Episode 10</title>
+</episode>
+<episode id="173286" update="2015-11-14">
+<epno type="1">9</epno>
+<length>25</length>
+<airdate>2015-11-28</airdate>
+<title xml:lang="en">Episode 9</title>
+</episode>
+</episodes>
+</anime>
