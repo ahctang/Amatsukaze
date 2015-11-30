@@ -33,7 +33,7 @@ namespace Amatsukaze.ViewModel
 
             //Instantiate the viewmodels for the application
             ApplicationViewModels.Add(new LibraryMenuViewModel(optionsobject, eventAggregator));
-            ApplicationViewModels.Add(new FolderMenuViewModel());
+            ApplicationViewModels.Add(new FolderMenuViewModel(eventAggregator));
             ApplicationViewModels.Add(new SocialNetworkMenuViewModel());
             ApplicationViewModels.Add(new PlaybackMenuViewModel());
             ApplicationViewModels.Add(new OptionMenuViewModel(optionsobject, eventAggregator));
@@ -62,8 +62,6 @@ namespace Amatsukaze.ViewModel
         //Event aggregator for collecting messages from all viewmodels and forwarding them to the GUI.
         public IEventAggregator eventAggregator { get; set; }
         #endregion
-
-       
 
         #region Properties/Commmands
 
@@ -165,9 +163,9 @@ namespace Amatsukaze.ViewModel
             //Reset the message timer
             t.Stop();
             t.Start();
-            
+
             string message = sender.Message;
-            StatusText = message;            
+            StatusText = message;
 
             //Show the message panel
             MessageTextToggle = true;
@@ -201,11 +199,11 @@ namespace Amatsukaze.ViewModel
             {
                 var app = Application.Current as App;
                 app.ChangeTheme(uri1);
-            }            
-        }        
+            }
+        }
 
         #endregion
 
-      
+
     }
 }
