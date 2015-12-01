@@ -127,12 +127,12 @@ namespace Amatsukaze.Model
                         string input = File.ReadAllText(filename);
 
                         //Probably somekind of selector here need to choose which source is used
-                        MALDataSource datasource = new MALDataSource();
+                        MALDataSource MALdatasource = new MALDataSource();
 
-                        if (datasource.ParseXML(input))
+                        if (XMLParsers.MALParseXML(input, MALdatasource))
                         {
-                            datasource.ContentsDump();
-                            AnimeEntryObject animeentry = new AnimeEntryObject(datasource);
+                            MALdatasource.ContentsDump();
+                            AnimeEntryObject animeentry = new AnimeEntryObject(MALdatasource);
                             AnimeLibraryList.Add(animeentry);
                             
 

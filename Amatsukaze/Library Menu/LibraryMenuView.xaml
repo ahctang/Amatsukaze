@@ -34,7 +34,7 @@
                             <DataTemplate.Resources>
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
-                            <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="250" Margin="10,10,10,10">
+                            <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
                                <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
@@ -96,7 +96,7 @@
             </ScrollViewer>
             
             <!-- Anime Info Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
+            <Border x:Name="AnimeInfoPanel" CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeBrown}" Opacity="0.85"></SolidColorBrush>
                 </Border.Background>
@@ -126,35 +126,75 @@
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
-                </Border.Style>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Padding="20">
-                    <StackPanel>
-                        <StackPanel.Resources>
-                            <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
-                        </StackPanel.Resources>
-                        <StackPanel HorizontalAlignment="Right">
-                            <Button Height="35" Width="35">
-                                <Image Source="{StaticResource CloseIcon}"></Image>
-                            </Button>
-                        </StackPanel>
-                        <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Center" DockPanel.Dock="Top">
-                            <TextBlock.Text>
-                                <PriorityBinding>
-                                    <Binding ElementName="SelectedAnime" Path="english" Converter="{StaticResource UnsetConverter}" />
-                                    <Binding ElementName="SelectedAnime" Path="title" Converter="{StaticResource UnsetConverter}" />
-                                </PriorityBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
-                        <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
-                        <DockPanel>
-                            <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath}"></Image>
-                            <TextBlock Text="{Binding SelectedAnime.score}"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.start_date}"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.end_date}"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.synopsis}"></TextBlock>                             
-                        </DockPanel>                        
+                </Border.Style>                
+                <StackPanel>
+                    <StackPanel.Resources>
+                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
+                    </StackPanel.Resources>
+                    <StackPanel HorizontalAlignment="Right">
+                        <Button Height="35" Width="35" Background="Transparent" Click="Button_Click" BorderBrush="Transparent" Margin="0,10,10,0">
+                            <Image Source="{StaticResource CloseIcon}"></Image>
+                        </Button>
                     </StackPanel>
-                </ScrollViewer>
+                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="10,10,10,10" FontSize="32">
+                        <TextBlock.Text>
+                            <PriorityBinding>
+                                <Binding Path="SelectedAnime.english" Converter="{StaticResource UnsetConverter}" />
+                                <Binding Path="SelectedAnime.title" Converter="{StaticResource UnsetConverter}" />
+                            </PriorityBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
+                    <DockPanel MaxWidth="{Binding ElementName=AnimeInfoPanel, Path=ActualWidth}" Margin="10,10,10,10">
+                        <DockPanel.Resources>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}" />                                
+                             </Style>
+                        </DockPanel.Resources>                        
+                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath}" MaxWidth="250"></Image>
+                        <Grid DockPanel.Dock="Top" Margin="10,0,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1"></TextBlock>
+
+                            <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3"></TextBlock>
+
+                            <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                            <TextBlock Grid.Column="1" Grid.Row="3">
+                                <Run Text="{Binding SelectedAnime.episodes}"></Run>
+                                <Run Text="(" />
+                                <Run Text="{Binding SelectedAnime.status}"></Run>
+                                <Run Text=")" />
+                            </TextBlock>
+
+                            <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5"></TextBlock>
+
+                            <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7"></TextBlock>
+
+                            <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                            <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7"></TextBlock>
+                        </Grid>
+                        <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Margin="10,0,0,0"></TextBlock>
+                    </DockPanel>                        
+                </StackPanel>                
             </Border>
 
             <!-- Message Log Box-->
@@ -191,14 +231,13 @@
                 </Border.Style>
                 <StackPanel>
                     <TextBlock Text="Message Log" FontSize="20" Margin="20,20,20,20"></TextBlock>
-                        <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
-                        <ScrollViewer VerticalScrollBarVisibility="Auto">
-                            <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">                        
-                            </ListView>
+                    <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">
+                        </ListView>
                     </ScrollViewer>
-                </StackPanel>                
+                </StackPanel>
             </Border>
-           
         </Grid>
     </DockPanel>
 </UserControl>

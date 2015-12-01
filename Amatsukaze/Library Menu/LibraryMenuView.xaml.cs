@@ -66,6 +66,13 @@ namespace Amatsukaze.View
                     break;
             }
         }
+
+        //Placeholder event handler. Will be replaced with an Icommand later
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var datacontext = DataContext as LibraryMenuViewModel;
+            datacontext.AnimeInfoToggle = false;
+        }
     }
 
     public class UnsetConverter : IValueConverter
