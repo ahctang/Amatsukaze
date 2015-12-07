@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Amatsukaze.HelperClasses;
 using Amatsukaze.Model;
-using System.Collections;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Input;
-using System.Timers;
+using System.Collections.Specialized;
 
 namespace Amatsukaze.ViewModel
 {
@@ -30,17 +27,19 @@ namespace Amatsukaze.ViewModel
             datasource = new LibraryMenuModel(optionsobject);
 
             //Subscribe to events
-            datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
+            datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);            
 
             //Read the cache file
-            datasource.ReadCacheFile();            
+            datasource.ReadCacheFile();
 
-            animeLibraryList = datasource.AnimeLibraryList;            
+            //Initialize animeLibraryList and start watching it for changes
+            this.animeLibraryList = datasource.AnimeLibraryList;
+            this.animeLibraryList.CollectionChanged += OnCollectionChanged;
         }
 
 
         #region Fields
-        
+
         //Private copy of the message log displayed in the drop down menu. Added to in the SendMessagetoGUI event handler
         private ObservableCollection<string> libraryMessageLog = new ObservableCollection<string>();
 
@@ -63,7 +62,7 @@ namespace Amatsukaze.ViewModel
         #region Objects
 
         OptionsObject optionsobject;
-        private ObservableCollection<AnimeEntryObject> animeLibraryList;
+        private ObservableCollection<AnimeEntryObject> animeLibraryList = new ObservableCollection<AnimeEntryObject>();
         LibraryMenuModel datasource;
         public IEventAggregator EventAggregator { get; set; }
 
@@ -104,14 +103,6 @@ namespace Amatsukaze.ViewModel
             get
             {
                 return animeLibraryList;
-            }
-            set
-            {
-                if (animeLibraryList != value)
-                {
-                    animeLibraryList = value;
-                    OnPropertyChanged("AnimeLibraryList");                    
-                }
             }
         }
 
@@ -161,7 +152,7 @@ namespace Amatsukaze.ViewModel
                     OnPropertyChanged("GridRowCount");
                 }
             }
-        }             
+        }
 
         public bool MessageLogToggle
         {
@@ -216,7 +207,7 @@ namespace Amatsukaze.ViewModel
         #region Methods
 
         //Updates 
-        public void UpdateGridIndexes (int ColumnCount)
+        public void UpdateGridIndexes(int ColumnCount)
         {
             int columncounter = 0, rowcounter = 0;
             foreach (AnimeEntryObject anime in this.AnimeLibraryList)
@@ -224,7 +215,7 @@ namespace Amatsukaze.ViewModel
                 anime.GridColumn = columncounter;
                 anime.GridRow = rowcounter;
 
-                columncounter++;                
+                columncounter++;
 
                 if (columncounter > (ColumnCount - 1))
                 {
@@ -235,10 +226,9 @@ namespace Amatsukaze.ViewModel
         }
 
         //Rescans the Cache folder for XML files
-        private void Refresh()
+        private async void Refresh()
         {
-            datasource.ReadXMLDirectory();
-            DisplayAreaResized(this.GridColumnCount);
+            await datasource.ReadXMLDirectoryAsync();            
         }
 
         //Changes the currently selected anime
@@ -253,7 +243,7 @@ namespace Amatsukaze.ViewModel
         #region Events/EventHandlers
 
         //All SendtoGUI events from the model are handled here. and they send the message to the EventAggregator which calls up the black popup menu 
-        void onSendMessagetoGUI (object sender, EventArgs e)
+        private void onSendMessagetoGUI(object sender, EventArgs e)
         {
             Console.WriteLine("Library Event Fired!");
             var message = (e as MessageArgs).Message;
@@ -282,9 +272,15 @@ namespace Amatsukaze.ViewModel
                 {
                     GridRowCount = (AnimeLibraryList.Count / columncount) + 1;
                 }
-            }                        
-        }      
+            }
+        }
 
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            DisplayAreaResized(this.GridColumnCount);
+        }
+            
+        
         #endregion
    
 

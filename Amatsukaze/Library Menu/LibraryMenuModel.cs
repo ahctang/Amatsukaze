@@ -2,27 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.IO;
 using Newtonsoft.Json;
 using Amatsukaze.ViewModel;
-using System.Diagnostics;
 using System.Windows;
-using System.Reflection;
-using System.Text.RegularExpressions;
 using System.Net;
 using System.Collections.ObjectModel;
 using Amatsukaze.HelperClasses;
+using System.Threading.Tasks;
 
 namespace Amatsukaze.Model
 {
     class LibraryMenuModel : ObservableObjectClass
-    {        
-        public LibraryMenuModel (OptionsObject optionsobject)
+    {
+        public LibraryMenuModel(OptionsObject optionsobject)
         {
             this.optionsobject = optionsobject;
-        }        
+        }
 
         #region #objects
         public ObservableCollection<AnimeEntryObject> AnimeLibraryList = new ObservableCollection<AnimeEntryObject>();
@@ -35,7 +31,7 @@ namespace Amatsukaze.Model
 
         //Reads the cache file, but simply creates the cache folder if it doesn't exist
         public void ReadCacheFile()
-        {            
+        {
             string filepath = optionsobject.CacheFolderpath + @"\CachedData.json";
             if (File.Exists(filepath))
             {
@@ -59,7 +55,7 @@ namespace Amatsukaze.Model
         }
 
         //Downloads the image file using the image in the animeentryobject
-        private void DownloadAnimeCover(AnimeEntryObject animeentry)
+        private async Task<bool> DownloadAnimeCoverAsync(AnimeEntryObject animeentry)
         {
             using (var client = new WebClient())
             {
@@ -68,7 +64,7 @@ namespace Amatsukaze.Model
                     FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
                     folder.Directory.Create();
                     string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + ".jpg";
-                    client.DownloadFile(animeentry.image, path);                    
+                    client.DownloadFile(animeentry.image, path);
                     Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
                     animeentry.ImagePath = path;
 
@@ -81,11 +77,14 @@ namespace Amatsukaze.Model
                     this.SendMessagetoGUI(this, new MessageArgs(message));
 
                     //Wait 2 seconds to stop flooding the server with requests                            
-                    System.Threading.Thread.Sleep(2000);
+                    await Task.Delay(2000);
+
+                    return true;
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
+                    return false;
                 }
             }
         }
@@ -93,7 +92,7 @@ namespace Amatsukaze.Model
         //Updates the Cache file in the Directory. (Simply replaces the existing cache with a new updated file)
         public void SaveCacheFile(ObservableCollection<AnimeEntryObject> input)
         {
-            
+
             string json = JsonConvert.SerializeObject(input, Newtonsoft.Json.Formatting.Indented);
             try
             {
@@ -108,12 +107,12 @@ namespace Amatsukaze.Model
             {
                 //FileIO exception
                 MessageBox.Show(exception.Message);
-            }            
+            }
         }
 
         //Reads the contents of a directory containing XML files with metadata
-        public bool ReadXMLDirectory()
-        {            
+        public async Task<bool> ReadXMLDirectoryAsync()
+        {
             try
             {
                 string[] files = Directory.GetFiles(optionsobject.CacheFolderpath, "*.xml");
@@ -134,7 +133,6 @@ namespace Amatsukaze.Model
                             MALdatasource.ContentsDump();
                             AnimeEntryObject animeentry = new AnimeEntryObject(MALdatasource);
                             AnimeLibraryList.Add(animeentry);
-                            
 
                             string message = "Library: Found new anime: ";
                             if (animeentry.english.Length == 0)
@@ -144,16 +142,17 @@ namespace Amatsukaze.Model
 
                             this.SendMessagetoGUI(this, new MessageArgs(message));
 
-                            DownloadAnimeCover(animeentry);
-                            File.Delete(filename);                                                       
+                            bool result = await DownloadAnimeCoverAsync(animeentry);
+                            File.Delete(filename);
                         }
                         else
                         {
-                            this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse failed."));                            
+                            this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse failed."));
                             return false;
                         }
                     }
-                    
+
+                    this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse complete."));
                     SaveCacheFile(this.AnimeLibraryList);
                 }
                 else
