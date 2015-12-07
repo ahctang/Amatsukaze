@@ -27,14 +27,14 @@ namespace Amatsukaze.ViewModel
             datasource = new LibraryMenuModel(optionsobject);
 
             //Subscribe to events
-            datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);            
+            datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
+            this.animeLibraryList.CollectionChanged += OnCollectionChanged;
 
             //Read the cache file
             datasource.ReadCacheFile();
 
-            //Initialize animeLibraryList and start watching it for changes
+            //Initialize animeLibraryList
             this.animeLibraryList = datasource.AnimeLibraryList;
-            this.animeLibraryList.CollectionChanged += OnCollectionChanged;
         }
 
 
@@ -228,7 +228,7 @@ namespace Amatsukaze.ViewModel
         //Rescans the Cache folder for XML files
         private async void Refresh()
         {
-            await datasource.ReadXMLDirectoryAsync();            
+            await datasource.ReadXMLDirectoryAsync();
         }
 
         //Changes the currently selected anime
@@ -279,10 +279,10 @@ namespace Amatsukaze.ViewModel
         {
             DisplayAreaResized(this.GridColumnCount);
         }
-            
-        
+
+
         #endregion
-   
+
 
     }
 }
