@@ -102,5 +102,144 @@ namespace Amatsukaze.ViewModel
                 return false;
             }
         }
+
+        //Method to parse XML file into an datasourceobject. Throws an exception if some read operation fails.        
+        public static bool AniDBParseXML(string xmlinput, AniDBDataSource aniDBDataSource)
+        {
+            //Before beginning we need to strip out the illegal characters (sigh)
+            xmlinput = Regex.Replace(xmlinput, @"&(?!(?:lt|gt|amp|apos|quot|#\d+|#x[a-f\d]+);)", "&amp;", RegexOptions.IgnoreCase);
+
+            try
+            {
+                //Create an XML reader
+                using (XmlReader reader = XmlReader.Create(new StringReader(xmlinput)))
+                {
+                    //Doing this super manually because of the complexity of the aniDB xml. 
+                    reader.ReadToFollowing("anime");
+                    aniDBDataSource.Id = Convert.ToInt16(reader.GetAttribute("id"));
+
+                    reader.ReadToFollowing("type");
+                    aniDBDataSource.Type = reader.ReadElementContentAsString();
+
+                    reader.ReadToFollowing("startdate");
+                    aniDBDataSource.StartDate = reader.ReadElementContentAsString();
+
+                    reader.ReadToFollowing("enddate");
+                    aniDBDataSource.EndDate = reader.ReadElementContentAsString();
+
+                    reader.ReadToFollowing("titles");
+                    reader.ReadToDescendant("title");
+                    do
+                    {
+                        if (reader.GetAttribute("xml:lang") == "x-jat" && reader.GetAttribute("type") == "main")
+                        {
+                            aniDBDataSource.Title = reader.ReadElementContentAsString();
+                        }
+                        else if (reader.GetAttribute("xml:lang") == "x-jat" && reader.GetAttribute("type") == "synonym")
+                        {
+                            aniDBDataSource.Synonyms = reader.ReadElementContentAsString();
+                        }
+                        else if (reader.GetAttribute("xml:lang") == "en")
+                        {
+                            aniDBDataSource.EnglishTitle = reader.ReadElementContentAsString();
+                        }
+
+                    } while (reader.ReadToNextSibling("title"));
+
+
+                    reader.ReadToFollowing("creators");
+                    reader.ReadToDescendant("name");
+                    do
+                    {
+                        AnimeStaff staffmember = new AnimeStaff();
+
+                        staffmember.Position = reader.GetAttribute("type");
+                        staffmember.Name = reader.ReadElementContentAsString();
+
+                        if (aniDBDataSource.Staff == null) aniDBDataSource.Staff = new List<AnimeStaff>();
+                        aniDBDataSource.Staff.Add(staffmember);
+                    } while (reader.ReadToNextSibling("name"));
+
+                    reader.ReadToFollowing("description");
+                    aniDBDataSource.Synopsis = reader.ReadElementContentAsString();
+
+                    reader.ReadToFollowing("permanent");
+                    aniDBDataSource.WeightedRating = Convert.ToDouble(reader.ReadElementContentAsString());
+
+                    reader.ReadToFollowing("temporary");
+                    aniDBDataSource.StandardRating = Convert.ToDouble(reader.ReadElementContentAsString());
+
+                    reader.ReadToFollowing("picture");
+                    aniDBDataSource.Picture = reader.ReadElementContentAsString();
+
+                    reader.ReadToFollowing("characters");
+                    reader.ReadToDescendant("character");
+
+                    int charactercounter = 0;
+                    do
+                    {
+                        AnimeCharacter animecharacter = new AnimeCharacter();
+
+                        reader.ReadToDescendant("name");
+                        animecharacter.CharacterName = reader.ReadElementContentAsString();
+
+                        reader.ReadToNextSibling("picture");
+                        if (reader.NodeType != XmlNodeType.EndElement) animecharacter.CharacterPicture = reader.ReadElementContentAsString();
+                        else goto endofcycle; //Skip to the end if the entry is malformed (to stop the parsing process from exploding)
+
+                        reader.ReadToNextSibling("seiyuu");
+                        if (reader.NodeType != XmlNodeType.EndElement)
+                        {
+                            animecharacter.Picture = reader.GetAttribute("picture");
+                            animecharacter.Seiyuu = reader.ReadElementContentAsString();
+                        }
+                        else goto endofcycle;
+
+                        endofcycle:
+                        if (aniDBDataSource.Characters == null) aniDBDataSource.Characters = new List<AnimeCharacter>();
+                        aniDBDataSource.Characters.Add(animecharacter);
+
+                        //We're only going to take an arbitrary 8 characters
+                        charactercounter++;
+
+                        //Push the reader to the closing element (/character) so ReadtoNextsibling doens't fail
+                        if (reader.NodeType != XmlNodeType.EndElement) reader.ReadEndElement();
+                    } while (reader.ReadToNextSibling("character") && charactercounter < 8);
+
+                    reader.ReadToFollowing("episodes");
+                    reader.ReadToDescendant("episode");
+
+                    do
+                    {
+                        Episode episode = new Episode();
+
+                        reader.ReadToDescendant("epno");
+                        string type = reader.GetAttribute("type");
+                        string epbuffer = reader.ReadElementContentAsString();
+
+                        while (reader.ReadToNextSibling("title"))
+                        {
+                            if ((reader.GetAttribute("xml:lang") == "en") && (type == "1"))
+                            {
+                                episode.Epno = Convert.ToInt16(epbuffer);
+                                episode.Title = reader.ReadElementContentAsString();
+                                if (aniDBDataSource.Episodes == null) aniDBDataSource.Episodes = new List<Episode>();
+                                aniDBDataSource.Episodes.Add(episode);
+                            }
+                        }
+
+                    } while (reader.ReadToNextSibling("episode"));
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //Couldn't fill an animeentryobject correctly
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
     }
 }
+
