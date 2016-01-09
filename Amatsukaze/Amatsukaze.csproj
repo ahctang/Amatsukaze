@@ -73,6 +73,7 @@
     <Compile Include="HelperClasses\EventAggregator.cs" />
     <Compile Include="HelperClasses\GridHelpers.cs" />
     <Compile Include="HelperClasses\RelayCommand.cs" />
+    <Compile Include="Library Menu\LibraryClasses\DisplaySortClasses.cs" />
     <Compile Include="Library Menu\LibraryMenuModel.cs" />
     <Compile Include="Library Menu\LibraryMenuView.xaml.cs">
       <DependentUpon>LibraryMenuView.xaml</DependentUpon>

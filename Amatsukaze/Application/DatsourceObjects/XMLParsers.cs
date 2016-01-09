@@ -103,7 +103,7 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-        //Method to parse XML file into an datasourceobject. Throws an exception if some read operation fails.        
+        //Method to parse XML file from AniDB into an datasourceobject. Throws an exception if some read operation fails.        
         public static bool AniDBParseXML(string xmlinput, AniDBDataSource aniDBDataSource)
         {
             //Before beginning we need to strip out the illegal characters (sigh)

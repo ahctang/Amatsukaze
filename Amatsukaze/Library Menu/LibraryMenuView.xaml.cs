@@ -37,7 +37,8 @@ namespace Amatsukaze.View
             //For reassigning all of the indexes whenever the window is changed
             var datacontext = DataContext as LibraryMenuViewModel;
             int columncount = (int)DisplayArea.ActualWidth / 180;
-            datacontext.DisplayAreaResized(columncount);                        
+            datacontext.LibraryViewAreaResized(columncount);
+            datacontext.SeasonSortListAreaResized(columncount);
         }
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
@@ -45,7 +46,8 @@ namespace Amatsukaze.View
             //For Initializing the Grid based on the usercontrol width
             var datacontext = DataContext as LibraryMenuViewModel;
             int columncount = (int)DisplayArea.ActualWidth / 180;
-            datacontext.DisplayAreaResized(columncount);
+            datacontext.LibraryViewAreaResized(columncount);
+            datacontext.SeasonSortListAreaResized(columncount);
         }
         #endregion
 

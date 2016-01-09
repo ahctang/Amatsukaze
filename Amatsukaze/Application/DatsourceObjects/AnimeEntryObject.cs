@@ -87,6 +87,12 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        //Methods
+
+        public AnimeEntryObject Clone()
+        {
+            return (AnimeEntryObject)this.MemberwiseClone();
+        }
 
         [Conditional("DEBUG")]
         public void ContentsDump()
