@@ -24,33 +24,6 @@ namespace Amatsukaze.View
         public OptionsMenuView()
         {
             InitializeComponent();            
-        }
-
-        #region Events
-        private void ThemeSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {            
-            if (e.AddedItems.Count != 0)
-            {
-                Console.WriteLine((e.AddedItems[0] as ComboBoxItem).Content.ToString());
-                if ((e.AddedItems[0] as ComboBoxItem).Content.ToString() == "Amatsukaze")
-                {
-                    var app = Application.Current as App;
-                    app.ChangeTheme(new Uri(@"/Resources/Amatsukaze.xaml", UriKind.Relative));
-                }
-
-                if ((e.AddedItems[0] as ComboBoxItem).Content.ToString() == "Shimakaze")
-                {
-                    var app = Application.Current as App;
-                    app.ChangeTheme(new Uri(@"/Resources/Shimakaze.xaml", UriKind.Relative));
-                }
-            }
-        }
-
-        #endregion
-
-        #region Methods
-
-        
-        #endregion
+        }    
     }
 }

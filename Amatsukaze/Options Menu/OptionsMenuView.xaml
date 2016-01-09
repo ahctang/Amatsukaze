@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Amatsukaze.View"
+             xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Background="Transparent">
@@ -32,12 +33,12 @@
             <Grid>
                 <DockPanel>
                     <TextBlock Text="Color Theme" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top"></TextBlock>
-                    <ComboBox x:Name="ThemeSelector" DockPanel.Dock="Top" Width="200" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,10,0,0" SelectionChanged="ThemeSelectionChanged" 
-                              SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
-                              Text="{Binding DataContext.SelectedTheme, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}">
-                        <ComboBoxItem Content="Amatsukaze"></ComboBoxItem>
-                        <ComboBoxItem Content="Shimakaze"></ComboBoxItem>
+                    <ComboBox x:Name="ThemeSelector" DockPanel.Dock="Top" Width="200" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,10,0,0" ItemsSource="{Binding AvailableThemes}" 
+                        SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, diag:PresentationTraceSources.TraceLevel=High}" IsSynchronizedWithCurrentItem="True">                                                                                                                                        
                     </ComboBox>
+                    <TextBlock Text="Folder Options" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" Margin="10,20,0,0"></TextBlock>
+                    <TextBlock Text="Cache Folder Path" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" FontSize="18"></TextBlock>
+                    <TextBox Text="{Binding CacheFolderPath, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>                    
                     <DockPanel />
                 </DockPanel>
             </Grid>

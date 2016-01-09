@@ -1,0 +1,903 @@
+<anime id="8109" restricted="false">
+<type>TV Series</type>
+<episodecount>12</episodecount>
+<startdate>2011-04-15</startdate>
+<enddate>2011-07-01</enddate>
+<titles>
+<title xml:lang="x-jat" type="main">Hidan no Aria</title>
+<title xml:lang="zh-Hans" type="synonym">绯弹的亚莉亚</title>
+<title xml:lang="fa" type="synonym">آریا، مهمات سرخ</title>
+<title xml:lang="ja" type="official">緋弾のアリア</title>
+<title xml:lang="en" type="official">Aria the Scarlet Ammo</title>
+<title xml:lang="bg" type="official">Ария на Аления куршум</title>
+<title xml:lang="fa" type="official">هیدان نو آریا</title>
+</titles>
+<relatedanime>
+<anime id="10980" type="Same Setting">Hidan no Aria AA</anime>
+</relatedanime>
+<similaranime>
+<anime id="3408" approval="7" total="17">Shakugan no Shana</anime>
+<anime id="4146" approval="6" total="15">Zero no Tsukaima</anime>
+<anime id="10181" approval="6" total="13">Black Bullet</anime>
+</similaranime>
+<recommendations total="5">
+<recommendation type="For Fans" uid="432674">
+I agree with farce, the book was far more charming. And they left some vital information that would help understand our characters, and other materials in the book which i thought would look awesome if shown. Nevertheless, the show is average. Harem BANZAI!
+</recommendation>
+<recommendation type="For Fans" uid="81564">
+"Watchable" for fans but not "Enjoyable". I`m a fan of JC Staff and Rie, and this anime is just a cluster of failed attempts at story, plot and character development. Stereotypes are all it carries. Closet to Zero No Tsukaima with none of the charm of any anime Rie has done with this type of loli tsundere. I agree with others, plenty of good to decent action, series opens with good potential detective story (I was hooked) and action that builds to an airplane scene and after that episode it crumbles.
+</recommendation>
+<recommendation type="Recommended" uid="484892">
+Hidan no Aria took anime in a direction where it had not gone before. There are good fighting scenes in this anime and great plot continuity, but what makes this anime is the character interactions. There are a lot of hilarious ecchi, or dare I say borderline hentai moments between Kenji and the main girls, especially Riko. If you are a fan of Action or Risque animes, then this is for you.
+</recommendation>
+<recommendation type="Recommended" uid="443903">
+I don`t know why this show is low rated, it`s pretty good, animes with pro gunslingers aren`t that common anymore which is sad.. lolies with guns, what do you want more then that? Watch it!
+</recommendation>
+</recommendations>
+<url>http://www.mediafactory.co.jp/bunkoj/aria/</url>
+<creators>
+<name id="720" type="Animation Work">J.C.Staff</name>
+<name id="4637" type="Series Composition">Shirane Hideki</name>
+<name id="2120" type="Direction">Watanabe Takashi</name>
+<name id="24125" type="Original Work">Akamatsu Chuugaku</name>
+<name id="12305" type="Music">Ozawa Takumi</name>
+<name id="2175" type="Animation Character Design">Iwakura Kazunori</name>
+<name id="2187" type="Chief Animation Direction">Shimamura Hidekazu</name>
+<name id="11182" type="Chief Animation Direction">Imoto Yuki</name>
+<name id="5987" type="Chief Animation Direction">Numata Seiya</name>
+<name id="9387" type="Chief Animation Direction">Kamimoto Kanetoshi</name>
+</creators>
+<description>
+* Based on http://anidb.net/cr24125 [Akamatsu Chuugaku]`s light novel series. Tokyo Butei High School is a special school where armed detectives, also known as Butei, are trained and educated. http://anidb.net/ch25345 [Tooyama Kinji] is a sophomore student, who can go into Hysteria Mode when "stimulated" — affecting his mental state (ultra-fast reflexes, protection complex) and manner of speech. He tries to hide this genetically inherited ability from others in order to live a peaceful life. But when he becomes the victim of a bombing incident, by a Butei Killer copycat, his quiet days are over with the fateful encounter with http://anidb.net/ch25344 [Kanzaki H. Aria] — the Butei High "Assault" department elite.
+</description>
+<ratings>
+<permanent count="2187">3.75</permanent>
+<temporary count="2202">6.42</temporary>
+<review count="5">5.16</review>
+</ratings>
+<picture>69241.jpg</picture>
+<resources>
+<resource type="1">
+<externalentity>
+<identifier>11451</identifier>
+</externalentity>
+</resource>
+<resource type="2">
+<externalentity>
+<identifier>8630</identifier>
+</externalentity>
+<externalentity>
+<identifier>10604</identifier>
+</externalentity>
+</resource>
+<resource type="3">
+<externalentity>
+<identifier>4869</identifier>
+<identifier>ujkauj</identifier>
+</externalentity>
+</resource>
+<resource type="4">
+<externalentity>
+<url>http://www.tbs.co.jp/anime/aria/</url>
+</externalentity>
+<externalentity>
+<url>http://ch.nicovideo.jp/channel/hidannoaria</url>
+</externalentity>
+<externalentity>
+<url>http://www.mediafactory.co.jp/bunkoj/aria/</url>
+</externalentity>
+</resource>
+<resource type="6">
+<externalentity>
+<identifier>Aria_the_Scarlet_Ammo</identifier>
+</externalentity>
+</resource>
+<resource type="7">
+<externalentity>
+<identifier>緋弾のアリア</identifier>
+</externalentity>
+</resource>
+<resource type="8">
+<externalentity>
+<identifier>2125</identifier>
+</externalentity>
+</resource>
+<resource type="9">
+<externalentity>
+<identifier>338970</identifier>
+</externalentity>
+</resource>
+<resource type="10">
+<externalentity>
+<identifier>13363</identifier>
+</externalentity>
+</resource>
+</resources>
+<tags>
+<tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>meta tags</name>
+<description>These tags are used for maintenance.</description>
+</tag>
+<tag id="627" parentid="2856" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-08-03">
+<name>lingerie</name>
+<description>
+Lingerie is a term for fashionable and alluring women`s undergarments.
+</description>
+</tag>
+<tag id="1802" parentid="2606" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-11">
+<name>seinen</name>
+<description>
+Seinen, literally "young man", is one of the main demographic classifications applied to manga, and, by extension, to anime, especially manga-based ones. As the name implies, seinen works are marketed primarily to an audience of young men; the age range commonly understood to be the target of such works goes roughly from 17 to somewhere in the 40s.
+</description>
+</tag>
+<tag id="2008" parentid="2891" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-05">
+<name>small breasts</name>
+<description>
+This character has a bust size that is considered small. The small size is usually a bust that would use a bra which is A or B. In anime, C may rarely enter this category.
+</description>
+<picurl>162720.jpg</picurl>
+</tag>
+<tag id="2043" parentid="2869" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2009-11-08">
+<name>high school</name>
+<description>
+a secondary school that usually contains grades 10 through 12 in Japan, or 9 through 12 in America.
+</description>
+</tag>
+<tag id="2488" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-05-22">
+<name>multiple personality disorder</name>
+<description>
+Multiple personality disorder is a psychiatric diagnosis that describes a condition in which a single person displays multiple distinct identities or personalities (known as alter egos or alters), each with its own pattern of perceiving and interacting with the environment.
+</description>
+</tag>
+<tag id="2566" parentid="2608" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2015-07-31">
+<name>loli</name>
+<description>
+Lolita (often also just abbreviated to loli) refers originally to a novel by Vladimir Nabokov. The book is internationally famous for its controversial subject: the narrator and protagonist, middle aged Humbert Humbert, becomes obsessed and sexually involved with a 12-year-old girl named Dolores Haze. Nowadays the name "Lolita" describes a sexually precocious young girl. Related to this is http://anidb.net/t2415 [lolicon], the Japanese abbreviation of the English phrase "Lolita Complex". Sometimes written as "roricon" or "rorikon" due to the inexact mapping between Japanese and English phonemes. This is the term used to describe the fetish/fascination some mature people have for underage girls. There is an entire industry in Japan devoted to providing legal but schoolgirl-themed pornography, taking advantage of the cute childlike appearance some Japanese women maintain well into their twenties. Because the characters in anime are often young by convention, many fans think that a character can only be Lolicon if she is twelve or younger. Exceptions are granted if the other character in the relationship is a lot older. One particular device used to skirt the boundaries of taste and legality is the exotic being (alien, creature of magic, robot or the like) which takes the form of an underage human girl, but is in fact for all other practical purposes an adult. Another reason why lolicon is fetishized by people may be because some of them just view it as a substitute for their fetish for flat-chested, but otherwise well-developed, women. Source: Wikipedia / TV Tropes
+</description>
+<picurl>32760.jpg</picurl>
+</tag>
+<tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-04-02">
+<name>content indicators</name>
+<description>
+The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+</description>
+</tag>
+<tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+<name>dynamic</name>
+<description>
+Some of the central structural elements in anime are: Plot Continuity How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters? Stereotype Characters Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists. Plot Twists Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.
+</description>
+</tag>
+<tag id="2606" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-18">
+<name>target audience</name>
+<description>
+Anime, like everything else in the modern world, is targeted towards specific audiences, both implicitly by the creators and overtly by the marketing. While categories are associated with specific sex and age groups, this is not a bar on the anime being enjoyed by people who don`t fit into that band; not only do crossover titles exist, but the categories also have a considerable following outside their main demographic, and a person might as well enjoy anime from all categories. Still, does not invalidate the usefulness of marking a title as one of the categories; the same themes will likely be treated differently in anime geared for different audiences. Only one should not jump the gun and assume that a title will be more or less serious or present content in this or that way due to its target audience, or conversely assume the target audience on the content and its presentation alone. As such, the audience categories help form a broad impression of how a title might work with the announced themes, but offer little to no in-depth information about specific content or its treatment. The audience categories originate from manga magazines, which group titles of a same intended audience into a magazine that is advertised as belonging to that category, and so manga-based anime will have the category from their parent work. As for anime based on other works, the audience is often debatable, but comparing information such as time slot to the manga-based anime generally helps figure out the most likely possibility.
+</description>
+</tag>
+<tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+<name>themes</name>
+<description>
+Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.
+</description>
+</tag>
+<tag id="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-12-04">
+<name>fetishes</name>
+<description>
+Everything under fetishes (except for Bishounen and Juujin) is strictly only meant for hentai (18 Restricted) and ecchi anime. In case of ecchi, it must be the main element of the show and not when there`s only some of it, for example, there`s some ecchi in Shinseiki Evangelion, but the fact you get to see Asuka`s pantsu doesn`t warrant it the schoolgirl fetish category. So be careful to which ecchi show you add fetishes; it`s fairly straightforward with hentai, though. Overall, this category tree is to satisfy the needs of people with different fetishes, so they can search for what tingles their tangle; hence why this is restricted to hentai and full ecchi shows.
+</description>
+</tag>
+<tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>original work</name>
+<description>
+What the anime is based on! Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.
+</description>
+</tag>
+<tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>setting</name>
+<description>
+The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.
+</description>
+</tag>
+<tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+<name>elements</name>
+<description>
+Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?
+</description>
+</tag>
+<tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>time</name>
+<description>
+This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.
+</description>
+</tag>
+<tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>place</name>
+<description>
+The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.
+</description>
+</tag>
+<tag id="2619" parentid="2841" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-03">
+<name>gunfights</name>
+<description>
+Fights where two or more parties are firing guns at one another.
+</description>
+</tag>
+<tag id="2621" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-21">
+<name>bullet time</name>
+<description>
+Bullet time refers to a simulation of variable speed (i.e. slow motion, time-lapse, …) and is characterized both by its extreme transformation of time and space to show normally imperceptible and un-filmable events, such as flying bullets. Most infamous scene using this technique, Neo dodging bullets in The Matrix film.
+</description>
+</tag>
+<tag id="2623" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2011-01-06">
+<name>super power</name>
+<description>
+Be it an ancient Greek Heracles, a cybernetic muscle-man, or a fourteen year-old girl in a mini-skirted sailor suit. As long as they have super powers, they`re in the show.
+</description>
+</tag>
+<tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-30">
+<name>present</name>
+<description>Somewhere between past and future</description>
+</tag>
+<tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+<name>Earth</name>
+<description>
+The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.
+</description>
+<picurl>126792.jpg</picurl>
+</tag>
+<tag id="2652" parentid="2853" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-02">
+<name>super deformed</name>
+<description>
+A caricature style often seen in anime when the character shows extreme emotions, like fear, anger, happiness, surprise, or shame. Seen as cute, as part of humorous comedy. The character`s http://anidb.net/t4055 [face suddenly turns into a simplified version], the body will usually also deform into that of a small child (oversized head, short limbs, extra-large tears).
+</description>
+</tag>
+<tag id="2653" parentid="2853" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
+<name>slapstick</name>
+<description>
+Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.
+</description>
+</tag>
+<tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2015-05-31">
+<name>Japan</name>
+<description>
+Last stronghold for humanity. If Tokyo falls, it`s all over. Tokyo Tower will undoubtedly fall anyway.
+</description>
+</tag>
+<tag id="2741" parentid="2891" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2015-06-05">
+<name>large breasts</name>
+<description>
+Large breasts are larger than average breasts, usually found in adolescent girls or fully grown women; in anime, this includes breasts that are bigger than real life natural ones, sometimes as big as the character`s head or possibly a bit bigger. However, breasts that take at least as much space as the rest of the chest or the abdomen, or that are almost as big but have an absurdly unnatural shape, are the less common http://anidb.net/t1774 [gigantic breasts] instead.
+</description>
+<picurl>161014.jpg</picurl>
+</tag>
+<tag id="2750" parentid="2604" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2009-07-28">
+<name>violence</name>
+<description>
+Physical force against self or other, compelling action against one`s will on pain of being hurt.
+</description>
+</tag>
+<tag id="2770" parentid="2653" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-25">
+<name>violent retribution for accidental infringement</name>
+<description>
+A comedy / slapstick element often found in Ecchi anime: The hilarity derives from spontaneous embarrassment, overreaction of the "victim" (girl), immediate retribution for a seemingly inappropriate act, and a sense of pity with the supposed "aggressor" (boy). Typically a boy will - through no fault of his own - stumble into a girl, thus invading her personal space. In the process the boy may e.g. pull down her skirt, grab the girl`s breasts, or accidentally kiss her. Any level-headed girl would see the accident just for what it is. Not so the girl with an overly developed sense of modesty, and a thing for violence. She - often a tsundere - will clobber the boy with excessive brutality.
+</description>
+</tag>
+<tag id="2780" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-06">
+<name>indirect kiss</name>
+<description>
+Comedy element: Especially in a school setting the character who has fallen for a fellow student, but has not yet confessed his/her love, will be desperate for any sign of "closeness". The indirect kiss: Anything the adored person touches with his/her lips — e.g. a used glass of lemonade, some half-eaten food, a half-emptied can of soda — the love struck will want to touch with her/his own lips.
+</description>
+</tag>
+<tag id="2781" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-10-07">
+<name>first kiss</name>
+<description>
+The first kiss plays a role in this anime. Especially for the female cast this can be quite an important moment, so that stealing ones first kiss is serious for them.
+</description>
+</tag>
+<tag id="2784" parentid="2858" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2011-10-15">
+<name>sudden girlfriend appearance</name>
+<description>
+Sudden Girlfriend Appearance anime involve a sudden change in the main character`s life where (s)he suddenly gets confronted with an individual (s)he`s sexually attracted to, the two of them inevitably becoming a couple.
+</description>
+</tag>
+<tag id="2790" parentid="2605" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+<name>plot continuity</name>
+<description>
+Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer. A single linear focused plot is highly continuous. A truly random plot is highly discontinuous.
+</description>
+</tag>
+<tag id="2791" parentid="6230" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2011-12-25">
+<name>stereotypes</name>
+<description>
+This show presents stereotypes, which are generalizations about a group of people. Examples would be saying that people from a certain country or with a certain hair color are stupid. If the show deals with comedy, the stereotypes are likely to be played on for laughs; if the show is a parody, the stereotypes will be exaggerated to have their flaws exposed and may be used as a form of social commentary.
+</description>
+</tag>
+<tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-05-14">
+<name>novel</name>
+<description>
+Note that novel means book with words in paper, so no comics and no "visual novels", which should go under manga and dating-sim - visual Novel/erotic game respectively. Note that it can be applied to novels as we know them but also the typical light novels for teens and young adults, which are common in Japan and aside from being short include a number of illustrations.
+</description>
+</tag>
+<tag id="2815" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-09-10">
+<name>boobs in your face</name>
+<description>
+The character`s face is pressed into a female`s cleavage. This may be accidental or actually intended by the female character, or even a result of a device by the other character. This action is generally seen as sexually charged by the viewers and often also by the cast, so it will usually happen in an ecchi context; as such, something such as a mother hugging her child won`t generally count.
+</description>
+</tag>
+<tag id="2822" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-06">
+<name>skirt flipping</name>
+<description>
+Naughty characters — usually boys — flip the skirts of female protagonists to ascertain what panties they are wearing (also see Pantsu category).
+</description>
+</tag>
+<tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
+<name>Asia</name>
+<description>
+Asia is the world`s largest and most populous continent.
+</description>
+</tag>
+<tag id="2841" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2015-09-08">
+<name>action</name>
+<description>
+Action anime usually involve a fairly straightforward story of good guys versus bad guys, where most disputes are resolved by using physical force. It often contains a lot of shooting, explosions and fighting.
+</description>
+</tag>
+<tag id="2853" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2009-08-01">
+<name>comedy</name>
+<description>
+Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience. Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.
+</description>
+</tag>
+<tag id="2855" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-03">
+<name>under one roof</name>
+<description>
+For some reason or another, the main protagonist (e.g. male in harem / female in reverse-harem) is living together with many other characters of the opposite-gender, all under the same roof (in the same dwelling unit).
+</description>
+</tag>
+<tag id="2856" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+<name>ecchi</name>
+<description>
+Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi. The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai". The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi. Source: TV Tropes
+</description>
+<picurl>32416.jpg</picurl>
+</tag>
+<tag id="2858" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-10">
+<name>romance</name>
+<description>
+Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.
+</description>
+</tag>
+<tag id="2859" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2012-09-22">
+<name>harem</name>
+<description>
+Harem is an entertainment-related trope which is characterized by three or more characters, normally female, who for some reason are in the presence and under the influence of one character, generally male, according to a few genre-defining guidelines; here it will be assumed, for simplicity of language, that the harem lead is a male character and the members are female characters. Though that is the rule, there are exceptions; a story in which there is one female character and several male characters is normally called a "http://anidb.net/l511 [reverse harem]", or sometimes also "male harem". Aside from the swapping of the characters` genders, the trope`s details are mostly the same, with the majority of the changes relating to the differences in behavior between men and women of the characters` age range. It is also possible to create harems with homosexual relationships, again with very few changes to the main antics themselves. The harem may not have more than only one lead, as that would be a love polygon, or less than three members, as one would form a couple and two would make a love triangle. As a defining rule of harem, the interactions between the lead and each of the individual members are filled with romantically or sexually loaded content, either implicitly, through innuendo or subtext, or explicitly, through text or actions, and those actions are a key plot element. Generally, the female characters` looks and personalities will vary a lot among the ones present in one single series, but quite rarely will they actually differ from the common stock archetypes, which are known, well-defined, and easy to copy; for this reason, the genre as a whole is often considered repetitive. Usually, the characters involved directly in this trope are in the late teenager to young adult age range, but that is not mandatory. Sexually charged behavior on the lead`s part pretty much can`t be avoided, and it`s typical to see him stamped as a pervert by some or all of the members, regardless of whether he is one; the sexual tones also applies to the depiction of the harem members, often leading the genre to labeled sexist. The lead will often suffer very violent retribution for his behavior, which has attracted criticism of gratuitous violence as well. Most of the harem members will be romantically or sometimes sexually interested in the one male character, and in him alone; that, however, is not an absolute rule, and indeed sometimes none of the female characters are really interested at first, so the protagonist has to build relationships with them from scratch. That idea comes in large part from visual novels; it is quite common for visual novels to revolve around controlling the male lead and have him build relationships with either as many female characters as possible or with one of them, the latter being more common for visual novels with branched story paths; a large portion of those visual novels also feature erotic content, which may be hard to adapt to TV series. It may be also possible that the harem is only a support to the existing or predictable relationship between the lead and the most important member; additionally, the lead may end up in relationships with most or all of the harem members, with the agreement of all, in a setting normally called "harem ending".
+</description>
+<picurl>94602.jpg</picurl>
+</tag>
+<tag id="2869" parentid="2607" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-23">
+<name>school life</name>
+<description>
+Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.
+</description>
+</tag>
+<tag id="2885" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+<name>law and order</name>
+<description>
+Where there is "wealth", there are criminals. It is up to the civil law enforcement, i.e. detectives, Police or Special Squads, to keep the lawless activities in the real world or in cyberspace under control. Note: Do not confuse this with Military presence.
+</description>
+</tag>
+<tag id="2891" parentid="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-12-31">
+<name>breasts</name>
+<description>
+The female bust size matters! Or does it? The three subcategories spell out the sizes that relate to fetishes, be they gigantic, large or small. Normal sized breasts are not a fetish, it seems. The tag is not only used for ecchi anime, but also for hentai shows as well.
+</description>
+<picurl>161015.jpg</picurl>
+</tag>
+<tag id="2894" parentid="2608" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2013-03-15">
+<name>female student</name>
+<description>
+Pretty much exclusive to hentai shows only unless an ecchi show has implied sex and/or a strong indicator of nudity. A character is considered a student if she goes to school, doesn`t matter if it`s high school, college or homeschooling, but she should be of appropriate age for a student; a housewife going to college should not get this category.
+</description>
+</tag>
+<tag id="2898" parentid="2885" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-16">
+<name>special squads</name>
+<description>
+The Special Squads are called in when the police is completely outclassed, e.g. fighting criminal syndicates. These special forces are trained to combat specific forms of crime, e.g. the anti-cyber-crime division. There are several such squads: Whereas Section 9 of Ghost in the Shell is an official government organisation, there are also "benevolent" vigilante groups like the Knight Sabers (Bubblegum Crisis). Criminal syndicates also have their special forces e.g. "death squads".
+</description>
+</tag>
+<tag id="2910" parentid="6249" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+<name>parental abandonment</name>
+<description>
+In Japan it is a common custom for parents to leave their children alone at home and embark on a lifelong trip around the world once they hit the tender age of 14, sometimes even earlier. Of course this is done because the parents believe their children are independent enough to get their act together. But little do they know about the small secrets their offspring has, such as a childhood fiancé(e) or even a forbidden incestuous love between their (often not-blood-related) children. Of course aside from having a huge house, financial support is provided as well. Usually through the means of MAGICAL MONEY. In rare cases the parents actually die (shortly) before embarking on their world-trip, which is self-evidently used as an important plot device in the development of the child.
+</description>
+<picurl>38239.jpg</picurl>
+</tag>
+<tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+<name>old animetags</name>
+</tag>
+<tag id="3444" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-15">
+<name>hot springs visit</name>
+<description>
+An onsen is a term for hot springs in the Japanese language, though the term is often used to describe the bathing facilities and inns around the hot springs. Often the cast of a show somehow ends up going to an onsen because of various reasons, such as winning a lottery ticket. Usually used for fanservice purpose as it gives the staff the opportunity to draw the characters nude and raise the DVD sales. Another cheap variant is the http://anidb.net/t4290 [sentou episode]. See also http://anidb.net/t2830 [furo scene], http://anidb.net/t5846 [beach episode], and http://anidb.net/t6046 [pool episode].
+</description>
+<picurl>160784.jpg</picurl>
+</tag>
+<tag id="3489" parentid="2841" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-23">
+<name>car chases</name>
+<description>
+Car chases occur as part of the action setting in this anime.
+</description>
+</tag>
+<tag id="3745" parentid="6247" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2008-06-30">
+<name>inconclusive</name>
+<description>
+The anime series or movie ends as it begins, nothing significant changed. Or the outcome is so vague and open-ended that a continuation would be possible. At times this is a sign for a continuation in the next season, or that the series was dropped and never continued. In any case there is always a sense of dissatisfaction for the viewer.
+</description>
+</tag>
+<tag id="3842" parentid="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-10-31">
+<name>TV censoring</name>
+<description>
+The TV version is censored and later DVD/BD releases are uncensored, so the money-grubbing capitalists can make a couple more bucks at our expense.
+</description>
+</tag>
+<tag id="3970" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-04-12">
+<name>girl falls from sky</name>
+<description>
+Usually a plot device that introduces the male and female lead to each other in way that makes an impact — literally.
+</description>
+</tag>
+<tag id="4055" parentid="2853" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-02">
+<name>facial distortion</name>
+<description>
+The characters face are exaggerated into a misshape, deformed, and almost warped. Used as comedy element to express extreme mood swings. Differing from "http://anidb.net/t2652 [Super Deformed]", here only the face changes to an extreme degree, not the whole body of the protagonist.
+</description>
+</tag>
+<tag id="4440" parentid="2858" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-02-01">
+<name>boy meets girl</name>
+<description>
+A classical type of plot in story writing, where the story begins with a boy meeting a girl leading to romantic development between the two. More often than not the boy loses the girl later on and has to find her again.
+</description>
+</tag>
+<tag id="4481" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-04-06">
+<name>protection complex</name>
+<description>
+A character has a protection complex if the character is overly protective of other characters, beyond what would be considered a "normal" or "expected" duty of care. The magnitude of overprotection can vary. It can be as low as constantly nagging someone to "stay safe". It can be as extreme as the protector making it their mission in life to protect the other character.
+</description>
+</tag>
+<tag id="4919" parentid="6397" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-23">
+<name>Sherlock Holmes</name>
+<description>
+Fictional London-based detective created by Sir Arthur Conan Doyle.
+</description>
+</tag>
+<tag id="5700" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-07-01">
+<name>paramilitary</name>
+<description>
+This anime features a group of personnel with military structure, functioning either as a civil force or in support of military forces, either for or against a ruling or occupying power.
+</description>
+</tag>
+<tag id="5835" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-12-18">
+<name>Gainax bounce</name>
+<description>
+A term that has come to describe often exaggerated, very jiggly, fluid, and painstakingly detailed animation of female characters` bouncing breasts. The term has its roots in http://anidb.net/a185 [Top wo Nerae!] — Gunbuster, Gainax`s first OVA (1988), in which the Gainax bounce is found unabated in the three female characters of Noriko, Kazumi, and Jung.
+</description>
+<picurl>166074.jpg</picurl>
+</tag>
+<tag id="5935" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-07-06">
+<name>ass-kicking girls</name>
+<description>
+The female characters in the anime are very proficient in some form of martial arts, swordplay, or gunfights. They may also have super powers.
+</description>
+<picurl>71307.jpg</picurl>
+</tag>
+<tag id="5948" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-18">
+<name>visible aura</name>
+<description>
+Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.
+</description>
+</tag>
+<tag id="5984" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-09-10">
+<name>girly tears</name>
+<description>
+Usually girly tears are the ones not shed by men (duh). Like when a (stereotypical) girl watches something and cries her makeup out, a (stereotypical) dude just says, proclaiming his masculinity: "Meh, yet another soap opera bulls..t, I`ll be in my garage fixing my ride while playing heavy metal on a burning guitar ...with my teeth! And where`s my beer, woman?". So that`s how it goes: girly tears are for girls and sissies! Chuck Norris forbid a guy would weep watching something that has this tag! Now 20 push-ups! P.S. The opposite of "manly tears". Or is it? Let`s face it - it`s all subjective (and relative, and context-dependent).
+</description>
+</tag>
+<tag id="6039" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-06-18">
+<name>piggyback ride</name>
+<description>
+One of the protagonists (usually male) gives another character (usually female) a ride on the back. Can be interpreted as a sign of closeness or endearment in a romance setting. Reasons: The female character is exhausted from previous running, or has a fit of anaemia, or hurt herself and no longer can walk.
+</description>
+</tag>
+<tag id="6077" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-08-04">
+<name>girls with guns - TO BE SPLIT AND DELETED</name>
+<description>
+Girls With Guns describes a sub-genre of action media that focuses on strong female leads being awesome with firearms. May or may not involve Heroic Bloodshed. It was developed somewhere in the Hong Kong film industry and has since made itself a genre that is often used in anime. Usually involves gun fights, stunts and martial arts. Source: TVTropes
+</description>
+<picurl>163900.jpg</picurl>
+</tag>
+<tag id="6115" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-07">
+<name>omimai</name>
+<description>
+Visiting a sick person (like in a hospital or at home).
+ 
+ The protagonist or any other character caught a cold so his friends go visit him. In a school setting this is used as a plot device to show the anguish of fellow students, and it is also a pertinent excuse to get out of school.
+</description>
+<picurl>160896.jpg</picurl>
+</tag>
+<tag id="6148" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>TO BE MOVED TO EPISODE</name>
+<description>
+Tags under this parent tag are going to be moved to episode tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what episodes they should be assigned to.
+</description>
+</tag>
+<tag id="6149" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>TO BE MOVED TO CHARACTER</name>
+<description>
+Tags under this parent tag are going to be moved to character tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what characters they should be assigned to.
+</description>
+</tag>
+<tag id="6151" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>technical aspects</name>
+<description>
+It may sometimes be useful to know about technical aspects of a show, such as information about its broadcasting or censorship. Such information can be found here.
+</description>
+</tag>
+<tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+<name>cast</name>
+</tag>
+<tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+<name>tropes</name>
+<description>
+A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech. Source: Wikipedia
+</description>
+</tag>
+<tag id="6247" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-10-31">
+<name>ending tags that need merging</name>
+</tag>
+<tag id="6249" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-31">
+<name>family life</name>
+</tag>
+<tag id="6397" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-05-02">
+<name>tales</name>
+<description>
+Tales are stories told time and again and passed down from generation to generation, and some of those show up in anime not just once or twice, but several times.
+</description>
+</tag>
+</tags>
+<characters>
+<character id="25344" type="main character in" update="2015-08-14">
+<rating votes="88">4.90</rating>
+<name>Kanzaki H Aria</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+The titular character and the main female protagonist of the series is a transfer student of Butei High School. An "Assault" department elite rank S (The highest rank), she wishes to recruit Kinji after their encounter. She can wield two guns and two swords at the same time, earning the title of a "Quadra". Her weapons of choice are two Colt Government Model semi-automatic pistols, and two undersized Japanese swords known as Kodachi. The H in the middle name stands for "Holmes" as she is a descendant of Sherlock Holmes himself, and her full name is Aria Holmes Kanzaki IV. She is very short for her age and what is causing her stunted growth is a special HihiIrokane bullet embedded in her back. Irokane is a special element that can turn a normal human into a super power user. HihiIrokane is red Irokane that requires a childish nature and prideful personality to be able to use. Although Kinji learned about the special properties of the bullet and potential powers it gives from Holmes, Aria seems largely unaware of anything unusual about the bullet or herself. Just that some stranger shot her for an unknown reason and the bullet can`t be removed safely. As a side effect of the bullet lodged within her eye color and hair color, which were originally flaxen with sapphire blue eyes changed to a pinkish strawberry blonde and ruby colored eyes. Her mother is Japanese and her father is half English half Japanese. Her grandmother is a member of the British Royal Family, having received the title of a "dame". She also starts to have feelings for Kinji after they kissed on episode 5, and gets jealous when other girls approach Kinji. Source: Wiki
+</description>
+<picture>67904.jpg</picture>
+<seiyuu id="3" picture="44969.jpg">Kugimiya Rie</seiyuu>
+</character>
+<character id="25345" type="main character in" update="2013-07-08">
+<rating votes="44">5.02</rating>
+<name>Tooyama Kinji</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+The main male protagonist of the series and a student at Butei High School. He was ranked Level E (lowest combat rank) due to missing the third term`s final examination. However, when he is sexually aroused, he enters a state known as "Hysteria Mode" in which his cognitive and physical abilities increase to around thirty times his normal state, which allows him to perform feats of near-superhuman strength and skill, such as accurately shooting up the muzzle of an enemy gun, swinging his knife at supersonic speeds, and accurately shooting enemy bullets out of the air. Hysteria Mode is a genetic trait that all members of the Tooyama family possess, and is stated to be an extremely highly evolved version of the natural male instinct to protect women. As such, when in Hysteria Mode, Kinji`s major weakness is the fact that he cannot directly harm women, though he is still able to fight and restrain them without directly hurting them. In addition to this, Hysteria Mode also causes Kinji to develop a suave and seductive attitude towards women, which makes him very attractive to them while in Hysteria Mode. He is currently enrolled in the Inquesta department, though in the past, he was a prodigy (being ranked Level S) of the Assault department, the most dangerous department in Butei High. He starts to respect and have romantic feelings for Aria. He proves his feelings for Aria by kissing her on the lips on episode 5, though this is done to calm her down. Currently, his feelings for Aria are so strong that even the slightest bit of sexual/romantic involvement with Aria will activate his Hysteria Mode. His gun of choice is a Beretta 92F (which was illegally modified to fire a three-round burst; he refers to it as the Beretta Kinji Model). He also wields a butterfly knife. Source: Wiki
+</description>
+<picture>67905.jpg</picture>
+<seiyuu id="400" picture="171989.jpg">Majima Junji</seiyuu>
+</character>
+<character id="25346" type="secondary cast in" update="2013-07-07">
+<rating votes="62">6.43</rating>
+<name>Hotogi Shirayuki</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+A female student of Butei High School, childhood friend of Kinji. Enrolled in Butei`s special department known as SSR. Butei rank A. She`s the current student council chairman, and president of various clubs like the gardening club, handicraft club, and girl`s volleyball club. A perfect Japanese beauty according to Kinji, except for one flaw - jealousy, which turns her into a berserker who assaults any girl approaching Kinji. When she finds out that Aria is living with Kinji she goes as far as trying to murder her. She is shown to love Kinji to the point that she will do anything for him. Kinji and Shirayuki kissed on episode 8, and since then, Shirayuki`s feelings for Kinji has increased to the point that she is willing to show her nudity to Kinji in order for him to notice her. She uses a Japanese sword named Irokane Ayame as a weapon of choice. It is revealed that her name, Shirayuki, was an alias to hide her real name, Himiko. Source: Wiki
+</description>
+<picture>67906.jpg</picture>
+<seiyuu id="216" picture="171983.jpg">Takahashi Mikako</seiyuu>
+</character>
+<character id="25347" type="secondary cast in" update="2013-07-07">
+<rating votes="55">6.48</rating>
+<name>Mine Riko</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Female student of Butei High School, friend of Kinji. She`s enrolled in the Inquesta department; although often considered the biggest idiot in Kinji`s class, this is a deliberate facade which breaks down when she is forced into dangerous circumstances. She has a talent for intelligence assessment and, at Butei High, gossip. She enjoys customizing her uniform in an Elegant Gothic Lolita style. She wields two Walther P99s and two knives. Like Aria, she earned the title of a "Quadra". Riko is revealed as a descendant of Arsène Lupin. Her real name is Riko Mine Lupin IV. Riko also reveals that she was the Butei Killer. She appears to have an inferiority complex towards the first Lupin and wanted to overcome him. Her plan was to make Aria and Kinji become a partner so it would create the same battle situation where Sherlock has Watson as a partner before. Defeating both of them would mean she would overcome her ancestor since Sherlock Holmes and Arsene Lupin fought 100 years ago and neither side came out on top. Due to being locked in a cell at very young age after both of her parents died, and was constantly used as an experimental tool by Toru; and on top of that, due to Toru`s saying that she is worthless and does not inherit any of the past Lupins` abilities and that her only existence is that she could produce Lupin the V, she despises being referred to by her generation`s number. At that time, she was also given very little food and muddy water. It was also revealed that there is in fact a reason for Riko`s complex of wanting to surpass the original Lupin, Riko was held captive by Vlad the Bad and was recently `let go`, under certain circumstances, these were that Riko would have to prove to surpass the original Lupin causing her to have an obsession in the defeat of Sherlock Holmes the 4th. She has feelings for Kinji, but these feelings are considered unhealthy because she constantly attempts to seduce Kinji. Even so, she proves them by sharing a kiss with him on episode 11. After defeating Vlad with the assist of Kinji and Aria, she helps Aria justify that Kanae Kanzaki (Aria`s mother) is not the Butei Killer, and that Vlad is the one who is truly behind all of the murders. Riko and Aria share several traits: small height, Quadra status, twin-tailed hair and representation of the fourth generation of their ancestral family, and lastly, both are romantically interested in Kinji.
+</description>
+<picture>67907.jpg</picture>
+<seiyuu id="101" picture="16709.jpg">Ise Mariya</seiyuu>
+</character>
+<character id="25348" type="secondary cast in" update="2013-07-07">
+<rating votes="56">7.48</rating>
+<name>Reki</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+The Snipe department`s ace, Butei rank S. No family name. She`s habitually taciturn, impassive and indifferent in fashion. Kinji later finds out that this, along with her hair color, was to due to the influence of large quantities of RiriIrokane in her birthplace. RiriIrokane is Azure Irokane and can nullify other powers in a state of calm. However, according to a Hotogi Historical Record it `hates` human hearts and the princesses of Ulus (of which Reki is part of) revere and offer their `hearts` to it. She`s always seen wearing headphones. Her signature quote is "I am a single bullet. It has no heart. Therefore, it does not think. It just flies straight towards its target", which she always say before she shoots her target. She can shoot anything without missing her target within a 2km radius. Her personal weapon is a Dragunov sniper rifle with an attachable bayonet. She apparently listens to the sound of wind from her homeland (somewhere between Northern Mongolia and Siberia) with her headphones, which are Sennheiser PMX990. She plays a minor role in the series, usually providing covering fire to Aria and Kinji when they are fighting at close range or saving them during times of trouble. Apparently before coming to Butei High, Reki was also doing "unrecorded" jobs in Russia and China due to her Butei license. In other words, she worked as a "Sweeper", killing her targets. Source: Wiki
+</description>
+<picture>67908.jpg</picture>
+<seiyuu id="16763" picture="45795.jpg">Ishihara Kaori</seiyuu>
+</character>
+<character id="29571" type="secondary cast in" update="2013-07-07">
+<rating votes="6">3.00</rating>
+<name>Shiranui Ryou</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+A bright, handsome and popular guy. Enrolled in Assault, and in the same class as Kinji. His Butei level is A. Even though there are different aspects involved in an A ranking, his integration capacity is high. Barehanded, dagger handling or shooting aspects can all be relied on. The reliability of his gun is very high, a Mk. 23 MODO with an installed laser aiming lens. He is also a rare polite person in Butei High. Even though he is very popular with girls, he never had a girlfriend before. He is Kinji and Mutou`s close friend. In past, back in Kinji`s Assault days, he was often his teammate. Kinji considers him a good friend and someone to rely on, an example of a polite and elegant student. Source: Wiki
+</description>
+<picture>69117.jpg</picture>
+<seiyuu id="2575" picture="139952.jpg">Eguchi Takuya</seiyuu>
+</character>
+<character id="29572" type="secondary cast in" update="2011-04-15">
+<rating votes="15">2.61</rating>
+<name>Sayonaki Tooru</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>69848.jpg</picture>
+<seiyuu id="196" picture="17010.jpg">Nojima Kenji</seiyuu>
+</character>
+<character id="29573" type="secondary cast in" update="2013-07-07">
+<rating votes="10">3.80</rating>
+<name>Mutou Gouki</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+The Logi`s ace with a 190cm height and pointy hair. Kinji considers him as a transportation geek. This is all due to his knowledge about all kinds of vehicles may it be on land, sea or air. He is a skilled driver that can operate anything from a car to a nuclear submarine. His personal weapon is a Colt Python Revolver that uses .357 magnum bullet and only chose it for the sake of easy maintenance. Despite the astounding firepower, the gun`s loading capacity is small, the accuracy is horrible and it cannot equip a suppressor, so normally, no Butei would use it. Goki has feelings for Shirayuki; this is evidenced that he feels guilty for her when he tries to peek at the other girls in the hot springs of the OVA. Despite that, he is also a shameless pervert. He peeks at the girls in the girls` changing room locker, and tries to peek at the girls in the hot springs by climbing over the wall, claiming that `It`s a man`s world!` Source: Wiki
+</description>
+<picture>67909.jpg</picture>
+<seiyuu id="465" picture="56019.jpg">Kondou Takayuki</seiyuu>
+</character>
+<character id="29574" type="appears in" update="2011-04-15">
+<rating votes="6">5.12</rating>
+<name>Yutori</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>69866.jpg</picture>
+<seiyuu id="6" picture="171987.jpg">Nakahara Mai</seiyuu>
+</character>
+<character id="31985" type="appears in" update="2011-05-07">
+<rating votes="5">4.55</rating>
+<name>Kanzaki Kanae</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>71122.jpg</picture>
+<seiyuu id="74" picture="84835.jpg">Oohara Sayaka</seiyuu>
+</character>
+<character id="32293" type="secondary cast in" update="2013-07-07">
+<rating votes="30">5.32</rating>
+<name>Jeanne d`Arc</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Jeanne d`Arc XXX (also known as Durandal or Diamond Dust Witch) is an ice ability user from I.U. (a criminal organization). She targets Shirayuki in an attempt to kidnap her and force her to join I.U. She is successfully captured via the combined efforts of Aria, Kinji and Shirayuki during the season of Adseard. As one of the conditions of her plea bargain, she was forced to stay in Butei High as a 2nd year international student from Paris enrolled in the Informa department. As a reliable Informa student, Kinji requests her aid whenever he needs a supply of knowledge about a particular case he is involved at. Jeanne and Riko get along with each other very well. She is one of the few people that knows Kinji`s secret. Her personality is serious and cool. Her first comment about Butei High`s skirt is: "Unmarried girls shouldn`t openly reveal their legs like this!". However, that notion was pretty much shattered because of Riko`s strong influence on her, and she has grown a habit of secretly collecting maid dresses, Lolita fashion and other cute dresses. Due to astigmatism she usually wears contacts to see clearly, but carries a pair of glasses as backup or for reading. Although Jeanne is quite extraordinary in terms of fighting skills, planning, investigating, beauty and ability, her drawing skills are unimpressive, in fact an elementary school student can draw much better than her. Despite her strength, she alleges that she is the weakest out of all the members of I.U. Preferred weapon is the Durandal. However, after Shirayuki broke part of it off she had to adjust to the shorter blade. Melting down the whole blade and reforging it as a single piece again is inadvisable as that would severely weaken the integrity of the metal making it much easier to break. Or in simple terms, the weakness of the break would be spread to the entire sword. Source: Wiki
+</description>
+<picture>73899.jpg</picture>
+<seiyuu id="12" picture="16580.jpg">Kawasumi Ayako</seiyuu>
+</character>
+<character id="32294" type="appears in" update="2011-06-16">
+<rating votes="6">4.07</rating>
+<name>Nakasorachi Misaki</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>73568.jpg</picture>
+<seiyuu id="12266" picture="56026.jpg">Kanemoto Hisako</seiyuu>
+</character>
+<character id="32585" type="appears in" update="2011-05-21">
+<rating votes="7">7.35</rating>
+<name>Tsuzuri Umeko</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>71995.jpg</picture>
+<seiyuu id="193" picture="17007.jpg">Asano Masumi</seiyuu>
+</character>
+<character id="32828" type="appears in" update="2011-06-04">
+<rating votes="2">2.40</rating>
+<name>Durandal</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<picture>72800.jpg</picture>
+<seiyuu id="12" picture="16580.jpg">Kawasumi Ayako</seiyuu>
+</character>
+<character id="34239" type="appears in" update="2011-07-06">
+<rating votes="4">1.45</rating>
+<name>Vlad</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>74817.jpg</picture>
+<seiyuu id="178" picture="16985.jpg">Miyake Kenta</seiyuu>
+</character>
+<character id="40020" type="appears in" update="2011-12-29">
+<rating votes="5">7.09</rating>
+<name>Okami</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>Landlady of the hot springs inn.</description>
+<picture>79102.jpg</picture>
+<seiyuu id="61" picture="58663.jpg">Horie Yui</seiyuu>
+</character>
+</characters>
+<episodes>
+<episode id="126981" update="2011-01-15">
+<epno type="4">T1</epno>
+<length>1</length>
+<title xml:lang="en">Promo 30s</title>
+</episode>
+<episode id="128245" update="2011-04-05">
+<epno type="4">T2</epno>
+<length>1</length>
+<title xml:lang="en">PV2 15s</title>
+</episode>
+<episode id="128551" update="2015-07-07">
+<epno type="1">4</epno>
+<length>25</length>
+<airdate>2011-05-06</airdate>
+<rating votes="9">5.67</rating>
+<title xml:lang="ja">武偵殺し</title>
+<title xml:lang="en">Butei Killer</title>
+<title xml:lang="pt-BR">4ª Bala - Matador De Buteis!</title>
+<title xml:lang="x-jat">Butei Goroshi</title>
+</episode>
+<episode id="128552" update="2015-07-05">
+<epno type="1">3</epno>
+<length>25</length>
+<airdate>2011-04-29</airdate>
+<rating votes="11">6.71</rating>
+<title xml:lang="ja">ファースト・ミッション</title>
+<title xml:lang="en">First Mission</title>
+<title xml:lang="pt-BR">3ª Bala - Primeira Missão!</title>
+<title xml:lang="x-jat">First Mission</title>
+</episode>
+<episode id="128553" update="2015-07-02">
+<epno type="1">2</epno>
+<length>25</length>
+<airdate>2011-04-22</airdate>
+<rating votes="13">4.01</rating>
+<title xml:lang="ja">双剣双銃(カドラ)のアリア</title>
+<title xml:lang="en">Aria the Quadra</title>
+<title xml:lang="pt-BR">2ª Bala - Aria A Quadra!</title>
+<title xml:lang="x-jat">Quadra no Aria</title>
+</episode>
+<episode id="128554" update="2015-07-02">
+<epno type="1">1</epno>
+<length>25</length>
+<airdate>2011-04-15</airdate>
+<rating votes="20">3.79</rating>
+<title xml:lang="ja">La Bambina</title>
+<title xml:lang="en">La Bambina</title>
+<title xml:lang="pt-BR">1ª Bala - A Garota!</title>
+<title xml:lang="x-jat">La Bambina</title>
+</episode>
+<episode id="129122" update="2011-12-26">
+<epno type="3">C5</epno>
+<length>2</length>
+<airdate>2011-04-15</airdate>
+<title xml:lang="en">Ending</title>
+</episode>
+<episode id="129123" update="2012-02-03">
+<epno type="3">C1</epno>
+<length>2</length>
+<airdate>2011-04-15</airdate>
+<title xml:lang="en">Opening 1</title>
+</episode>
+<episode id="129428" update="2015-07-09">
+<epno type="1">5</epno>
+<length>25</length>
+<airdate>2011-05-13</airdate>
+<rating votes="9">5.40</rating>
+<title xml:lang="ja">武偵憲章1条</title>
+<title xml:lang="en">Butei Charter Article 1</title>
+<title xml:lang="pt-BR">5ª Bala - Lei Dos Butei, Artigo 1º!</title>
+<title xml:lang="x-jat">Butei Kenshou 1 Jou</title>
+</episode>
+<episode id="129986" update="2015-08-04">
+<epno type="1">12</epno>
+<length>25</length>
+<airdate>2011-07-01</airdate>
+<rating votes="9">3.22</rating>
+<title xml:lang="ja">ブラド</title>
+<title xml:lang="en">Vlad</title>
+<title xml:lang="pt-BR">12ª Bala - Vlad!</title>
+<title xml:lang="x-jat">Vlad</title>
+</episode>
+<episode id="129987" update="2015-07-30">
+<epno type="1">11</epno>
+<length>25</length>
+<airdate>2011-07-01</airdate>
+<rating votes="8">4.34</rating>
+<title xml:lang="ja">潜入</title>
+<title xml:lang="en">Infiltration</title>
+<title xml:lang="pt-BR">11ª Bala - Invasão!</title>
+<title xml:lang="x-jat">Sennyuu</title>
+</episode>
+<episode id="129988" update="2015-07-23">
+<epno type="1">10</epno>
+<length>25</length>
+<airdate>2011-06-17</airdate>
+<rating votes="8">3.76</rating>
+<title xml:lang="ja">特訓</title>
+<title xml:lang="en">Special Training</title>
+<title xml:lang="pt-BR">10ª Bala - Treino!</title>
+<title xml:lang="x-jat">Tokkun</title>
+</episode>
+<episode id="129989" update="2015-07-20">
+<epno type="1">9</epno>
+<length>25</length>
+<airdate>2011-06-10</airdate>
+<rating votes="9">3.37</rating>
+<title xml:lang="ja">蜂蜜色の罠</title>
+<title xml:lang="en">Honey Trap</title>
+<title xml:lang="pt-BR">9ª Bala - Doce Armadilha!</title>
+<title xml:lang="x-jat">Hachimitsu Iro no Wana</title>
+</episode>
+<episode id="129990" update="2015-07-17">
+<epno type="1">8</epno>
+<length>25</length>
+<airdate>2011-06-03</airdate>
+<rating votes="8">6.95</rating>
+<title xml:lang="ja">魔剣(デュランダル)</title>
+<title xml:lang="en">Durandal</title>
+<title xml:lang="pt-BR">8ª Bala - Durandal!</title>
+<title xml:lang="x-jat">Durandal</title>
+</episode>
+<episode id="129991" update="2015-07-17">
+<epno type="1">7</epno>
+<length>25</length>
+<airdate>2011-05-27</airdate>
+<rating votes="7">4.36</rating>
+<title xml:lang="ja">かごのとり</title>
+<title xml:lang="en">Caged Bird</title>
+<title xml:lang="pt-BR">7ª Bala - Pássaro Engaiolado!</title>
+<title xml:lang="x-jat">Kago no Tori</title>
+</episode>
+<episode id="129992" update="2015-07-15">
+<epno type="1">6</epno>
+<length>25</length>
+<airdate>2011-05-20</airdate>
+<rating votes="8">4.60</rating>
+<title xml:lang="ja">星伽(ほとぎ)の巫女(みこ)</title>
+<title xml:lang="en">Maiden of Hotogi Shrine</title>
+<title xml:lang="pt-BR">6ª Bala - Sacerdotisa Dos Hotogi!</title>
+<title xml:lang="x-jat">Hotogi no Miko</title>
+</episode>
+<episode id="131137" update="2011-06-24">
+<epno type="4">T4</epno>
+<length>2</length>
+<title xml:lang="en">PV</title>
+</episode>
+<episode id="131138" update="2011-06-24">
+<epno type="4">T3</epno>
+<length>2</length>
+<title xml:lang="en">CM</title>
+</episode>
+<episode id="132619" update="2011-08-24">
+<epno type="2">S1</epno>
+<length>25</length>
+<airdate>2011-12-21</airdate>
+<rating votes="5">4.02</rating>
+<title xml:lang="ja">武偵が来たりて温泉研修</title>
+<title xml:lang="en">Butei`s Going on a Hot Spring Training Camp</title>
+<title xml:lang="x-jat">Butei ga Kitarite Onsen Kenshuu</title>
+</episode>
+<episode id="134551" update="2012-02-03">
+<epno type="3">C2</epno>
+<length>2</length>
+<airdate>2011-06-03</airdate>
+<title xml:lang="en">Opening 2</title>
+</episode>
+<episode id="135112" update="2012-02-03">
+<epno type="3">C3</epno>
+<length>2</length>
+<airdate>2011-06-17</airdate>
+<title xml:lang="en">Opening 3</title>
+</episode>
+<episode id="135541" update="2012-02-03">
+<epno type="3">C4</epno>
+<length>2</length>
+<airdate>2011-07-01</airdate>
+<title xml:lang="en">Opening 1d</title>
+</episode>
+</episodes>
+</anime>

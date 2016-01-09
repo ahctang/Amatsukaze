@@ -1,0 +1,893 @@
+<anime id="9307" restricted="false">
+<type>TV Series</type>
+<episodecount>13</episodecount>
+<startdate>2013-01-05</startdate>
+<enddate>2013-03-30</enddate>
+<titles>
+<title xml:lang="x-jat" type="main">D.C.III: Da Capo III</title>
+<title xml:lang="ko" type="synonym">D.C 다 카포 3</title>
+<title xml:lang="x-jat" type="synonym">Da Capo 3</title>
+<title xml:lang="en" type="short">dc3</title>
+<title xml:lang="ja" type="official">D.C.III ~ダ・カーポIII~</title>
+</titles>
+<relatedanime>
+<anime id="5652" type="Prequel">D.C.II S.S.: Da Capo II Second Season</anime>
+</relatedanime>
+<url>http://www.hatsunejima.com/</url>
+<creators>
+<name id="9448" type="Music">Nakanishi Ryousuke</name>
+<name id="12330" type="Direction">Ishigura Ken`ichi</name>
+<name id="1005" type="Original Work">Circus</name>
+<name id="12330" type="Series Composition">Ishigura Ken`ichi</name>
+<name id="6241" type="Character Design">Nishio Kimitake</name>
+</creators>
+<description>
+"Hatsunejima. On this island that is perpetually in spring, stands a lone, towering cherry tree. It is a mysterious cherry tree that grants any wish no matter what it may be. The witherless cherry blossom tree. That is what this tree, an icon of Hatsunejima, has always been called." — from intro http://anidb.net/ch50981 [Yoshino Kiyotaka] dreams of a girl standing next to a cherry tree, calling his name, but is awoken by http://anidb.net/ch50978 [Katsuragi Himeno] in the Official Newspaper Club, surrounded by the other club members http://anidb.net/ch50976 [Morizono Rikka], http://anidb.net/ch50977 [Yoshino Charles], http://anidb.net/ch50979 [Rukawa Sara], and http://anidb.net/ch50980 [Hinomoto Aoi]. The current topic of discussion: How to beat the more successful Unofficial Newspaper Club. Desperately trying to find a topic of note, the club visits the seemingly dead witherless cherry blossom tree, and wish for something. Should any one of those wishes come true, these would be a great topic for their next newspaper edition. As they cast their wishes, the cherry blossoms suddenly bloom again after over 20 years, and everyone standing under the magnificent tree receives the very same mysterious text message, that was sent over a hundred years ago: "When the cherry blossoms bloom, at that promised place..." And so this magical moment becomes the main theme for the club`s next newspaper issue... and the club members try to unravel this mystery. — written by foo2
+</description>
+<ratings>
+<permanent count="311">3.46</permanent>
+<temporary count="316">6.09</temporary>
+<review count="1">3.83</review>
+</ratings>
+<picture>128442.jpg</picture>
+<resources>
+<resource type="1">
+<externalentity>
+<identifier>14921</identifier>
+</externalentity>
+</resource>
+<resource type="2">
+<externalentity>
+<identifier>14827</identifier>
+</externalentity>
+</resource>
+<resource type="3">
+<externalentity>
+<identifier>5201</identifier>
+<identifier>umzpbc</identifier>
+</externalentity>
+</resource>
+<resource type="4">
+<externalentity>
+<url>http://www.hatsunejima.com/</url>
+</externalentity>
+<externalentity>
+<url>http://www.youtube.com/watch?v=Fh4dkLepCtw</url>
+</externalentity>
+</resource>
+<resource type="6">
+<externalentity>
+<identifier>Da_Capo_III</identifier>
+</externalentity>
+</resource>
+<resource type="7">
+<externalentity>
+<identifier>
+D.C.III_〜ダ・カーポIII〜#.E3.83.86.E3.83.AC.E3.83.93.E3.82.A2.E3.83.8B.E3.83.A1
+</identifier>
+</externalentity>
+</resource>
+<resource type="8">
+<externalentity>
+<identifier>2837</identifier>
+</externalentity>
+</resource>
+<resource type="9">
+<externalentity>
+<identifier>344498</identifier>
+</externalentity>
+</resource>
+<resource type="10">
+<externalentity>
+<identifier>15667</identifier>
+</externalentity>
+</resource>
+<resource type="14">
+<externalentity>
+<identifier>6438</identifier>
+</externalentity>
+</resource>
+</resources>
+<tags>
+<tag id="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>meta tags</name>
+<description>These tags are used for maintenance.</description>
+</tag>
+<tag id="308" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2008-12-16">
+<name>detective</name>
+</tag>
+<tag id="627" parentid="2856" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-08-03">
+<name>lingerie</name>
+<description>
+Lingerie is a term for fashionable and alluring women`s undergarments.
+</description>
+</tag>
+<tag id="1363" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-01-14">
+<name>breast fondling</name>
+</tag>
+<tag id="1835" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-12-31">
+<name>animal sidekick</name>
+<description>
+Every mahou shoujo anime needs them, the cute little critters that are supposed to help the protagonists but in reality are nothing but useless bystanders most often abused for gags. Kids love them but they can also often turn into an annoyance.
+</description>
+</tag>
+<tag id="2043" parentid="2869" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-11-08">
+<name>high school</name>
+<description>
+a secondary school that usually contains grades 10 through 12 in Japan, or 9 through 12 in America.
+</description>
+</tag>
+<tag id="2056" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2013-09-13">
+<name>cosplaying</name>
+<description>This character likes to cosplay.</description>
+</tag>
+<tag id="2094" parentid="2849" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
+<name>magic</name>
+<description>
+Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.
+</description>
+<picurl>178878.jpg</picurl>
+</tag>
+<tag id="2259" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-30">
+<name>naked apron</name>
+<description>
+A character wearing nothing but an apron appears in the show.
+</description>
+<picurl>162045.jpg</picurl>
+</tag>
+<tag id="2396" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-02-08">
+<name>swimsuit</name>
+<description>
+A swimsuit is one of several kinds of garments designed to be worn by people engaging in water-based activities or sports or during certain activities under sunlight. Most kinds of swimsuit reveal a large portion of the body surface area, but exceptions exist. The more revealing kinds may also be worn as undergarment in sports that require wetsuits, or when there is a need to display the body, as in the case of beauty pageants or bodybuilding contests. There is a very wide range of styles of modern swimsuits, which vary in relation to body coverage and materials. The choice of style of swimsuit is dependent on current fashions, community standards of modesty, and plain personal preference. Swimsuits for men usually expose the chest, while those for women do not usually do so; however, many women prefer to engage in water or sun activities with their torso uncovered, in a practice commonly described as toplessness or topfreedom. Since the early twentieth century a naturist movement has developed in western countries that seeks a return to non-sexual nakedness when swimming and during other appropriate activities; in some places around the world, nude beaches have been set aside for people who choose to engage in normal beach activities in the nude, and such beaches may or may not enforce nudity onto their goers. In anime, it is common for at least one episode to feature the characters in swimsuits, usually as an excuse for gratuitous fanservice; when that happens, the episode is usually labeled a pool or beach episode, after the place the characters went to. Swimsuits, and in particular one-piece swimsuits, are a very common fetish in Japan; while the reason for that is uncertain, a common folk explanation is the fact that boys throughout their entire adolescence are commonly exposed to their female classmates wearing them, in what might be called an experiment in sexual discovery waiting to happen.
+</description>
+<picurl>149786.jpg</picurl>
+</tag>
+<tag id="2461" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-10-07">
+<name>domestic cat</name>
+<description>
+The cat (Felis catus or Felis silvestris catus), also known as the domestic cat to distinguish it from other felines and felids, is a small, usually furry, domesticated, and carnivorous mammal. Cats are valued by humans for companionship and their ability to hunt vermin and household pests, and are often kept as indoor pets, in which case they are also called housecats; they have been associated with humans for at least 9,500 years and are currently the most popular pet in the world, being found almost everywhere on Earth. Cats are similar in anatomy to the other felids, with light, strong and flexible bodies, excellent hearing, sense of smell, and near darkness eyesight, quick reflexes, sharp retractable claws, and teeth adapted to killing small prey. They are skilled predators and hunt over 1,000 species for food. Despite being solitary hunters, cats are a social species, with communication means that include pheromones, body language and a variety of vocalizations, such as meowing, purring, trilling, hissing, growling and grunting. Source: Wikipedia
+</description>
+<picurl>41283.jpg</picurl>
+</tag>
+<tag id="2520" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-02-08">
+<name>school swimsuit</name>
+<description>
+A school swimsuit (also known as sukumizu, shorthand for school mizugi) is a standardised navy blue one-piece swimsuit worn by schoolgirls. Typically they also have a name tag on the front. Sukumizu can also be black or white. Normally worn at schools though sometimes also worn at beaches when the character feels this to be easier, forgot to buy a normal swimsuit of their own or wants to give some fan service to those that like school swimsuits better than regular swimsuits. In http://anidb.net/l2 [ecchi] anime, a swimsuit of this type sometimes serves censoring purposes when characters take a bath. If there is a group of female characters donning swimsuits, you can expect the youngest or youngest-looking girl to wear one of these.
+</description>
+<picurl>52174.jpg</picurl>
+</tag>
+<tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-04-02">
+<name>content indicators</name>
+<description>
+The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
+</description>
+</tag>
+<tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
+<name>dynamic</name>
+<description>
+Some of the central structural elements in anime are: Plot Continuity How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters? Stereotype Characters Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists. Plot Twists Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.
+</description>
+</tag>
+<tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
+<name>themes</name>
+<description>
+Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.
+</description>
+</tag>
+<tag id="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2012-12-04">
+<name>fetishes</name>
+<description>
+Everything under fetishes (except for Bishounen and Juujin) is strictly only meant for hentai (18 Restricted) and ecchi anime. In case of ecchi, it must be the main element of the show and not when there`s only some of it, for example, there`s some ecchi in Shinseiki Evangelion, but the fact you get to see Asuka`s pantsu doesn`t warrant it the schoolgirl fetish category. So be careful to which ecchi show you add fetishes; it`s fairly straightforward with hentai, though. Overall, this category tree is to satisfy the needs of people with different fetishes, so they can search for what tingles their tangle; hence why this is restricted to hentai and full ecchi shows.
+</description>
+</tag>
+<tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>original work</name>
+<description>
+What the anime is based on! Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.
+</description>
+</tag>
+<tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>setting</name>
+<description>
+The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.
+</description>
+</tag>
+<tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
+<name>elements</name>
+<description>
+Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?
+</description>
+</tag>
+<tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
+<name>place</name>
+<description>
+The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.
+</description>
+</tag>
+<tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
+<name>Earth</name>
+<description>
+The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.
+</description>
+<picurl>126792.jpg</picurl>
+</tag>
+<tag id="2669" parentid="2869" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-23">
+<name>clubs</name>
+<description>
+Even though school clubs in Japan are not mandatory, there is some pressure from the social grid (e.g. fellow students, teachers) to participate in some kind of after-school activity, be it in sports or arts. Colleges also have clubs. As a comedy element in anime, some students have joined too many clubs, and are thus constantly stressed out. There is also the element of social commentary, making it clear that you have to join a club, if you want to be part of the class. Since self-founded clubs need at least 3 members, the desperate search and advertising for new members can be cause for hilarity in anime.
+</description>
+</tag>
+<tag id="2741" parentid="2891" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2015-06-05">
+<name>large breasts</name>
+<description>
+Large breasts are larger than average breasts, usually found in adolescent girls or fully grown women; in anime, this includes breasts that are bigger than real life natural ones, sometimes as big as the character`s head or possibly a bit bigger. However, breasts that take at least as much space as the rest of the chest or the abdomen, or that are almost as big but have an absurdly unnatural shape, are the less common http://anidb.net/t1774 [gigantic breasts] instead.
+</description>
+<picurl>161014.jpg</picurl>
+</tag>
+<tag id="2749" parentid="2604" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+<name>nudity</name>
+<description>
+Nudity is the state of wearing no clothing. The wearing of clothing is exclusively a human characteristic. The amount of clothing worn depends on functional considerations (such as a need for warmth or protection from the elements) and social considerations. In some situations the minimum amount of clothing (i.e. covering of a person`s genitals) may be socially acceptable, while in others much more clothing is expected. People, as individuals and in groups, have varying attitudes towards their own nudity. Some people are relaxed about appearing less than fully clothed in front of others, while others are uncomfortable or inhibited in that regard. People are nude in a variety of situations, and whether they are prepared to disrobe in front of others depends on the social context in which the issue arises. For example, people need to bathe without clothing, some people also sleep in the nude, some prefer to sunbathe in the nude or at least topless, while others are nude in other situations. Some people adopt naturism as a lifestyle. Though the wearing of clothes is the social norm in most cultures, some cultures, groups and individuals are more relaxed about nudity, though attitudes often depend on context. On the other hand, some people feel uncomfortable in the presence of any nudity, and the presence of a nude person in a public place can give rise to controversy, irrespective of the attitude of the person who is nude. Besides meeting social disapproval, in some places public nudity may constitute a crime of indecent exposure. Many people have strong views on nudity, which to them can involve issues and standards of modesty, decency and morality. Some people have an psychological aversion to nudity, called gymnophobia. Many people regard nudity to be inherently sexual and erotic. Nudity is to be found in a multitude of media, including art, photography, film and on the Internet. It is a factor in adult entertainment of various types. Especially gratuitous fanservice anime shows tend to show their (usually female) characters frequently without any clothes, though often hiding genitals through the means of additions like steam. Source: wiki
+</description>
+<picurl>60576.jpg</picurl>
+</tag>
+<tag id="2778" parentid="2858" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2012-11-09">
+<name>slow when it comes to love</name>
+<description>
+The main protagonists in this anime have a very hard time trying to express their feelings to each other. They simply will not finally confess their love. In some cases this romance element is based on unrequited love, or an absurd amount of shyness.
+</description>
+</tag>
+<tag id="2781" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-10-07">
+<name>first kiss</name>
+<description>
+The first kiss plays a role in this anime. Especially for the female cast this can be quite an important moment, so that stealing ones first kiss is serious for them.
+</description>
+</tag>
+<tag id="2790" parentid="2605" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-17">
+<name>plot continuity</name>
+<description>
+Consistency of the characteristics of persons, plot, objects, places and events seen by the viewer. A single linear focused plot is highly continuous. A truly random plot is highly discontinuous.
+</description>
+</tag>
+<tag id="2800" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-20">
+<name>game</name>
+<description>
+Based on an interactive (even if minimally so) form of entertainment software, generally available for PCs, consoles or arcade machines.
+</description>
+</tag>
+<tag id="2804" parentid="2800" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+<name>visual novel</name>
+<description>
+The two terms are similar yet different, however, the fact that they look and `feel` the same outweighs the technical differences. For clarification, visual novels are considered a sub-genre of adventure games and the term does not cover simulations. While the two genres often share a common visual presentation, dating sims are sometimes considered to be more statistically based than the "choose your own adventure" style of visual novels; basically, the choices you make might change something else than just the story arc (or your next porn pic). Dating sims can involve several technical elements such as a time limit, several statistics such as looks and charm which can be boosted through exercise, or an "attraction meter" which can increase or decrease depending on one`s decisions.
+</description>
+</tag>
+<tag id="2815" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-09-10">
+<name>boobs in your face</name>
+<description>
+The character`s face is pressed into a female`s cleavage. This may be accidental or actually intended by the female character, or even a result of a device by the other character. This action is generally seen as sexually charged by the viewers and often also by the cast, so it will usually happen in an ecchi context; as such, something such as a mother hugging her child won`t generally count.
+</description>
+</tag>
+<tag id="2826" parentid="2856" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2010-01-27">
+<name>pantsu</name>
+<description>
+"Panties" in Japanese. Upskirt views in various positions are typical, however all forms of partial or fully exposed panties are accepted. Exposure is usually accidental, but may also be deliberate. Pantsu views may be exclusive to the viewer without impacting any characters. Bikinis are not pantsu.
+</description>
+<picurl>5721.jpg</picurl>
+</tag>
+<tag id="2829" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-10-11">
+<name>shower scene</name>
+<description>
+The anime contains a shower scene, obligatory for ecchi anime. The person under the shower will most likely be female — providing "fanservice".
+</description>
+</tag>
+<tag id="2830" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-15">
+<name>furo scene</name>
+<description>
+Furo (polite: Ofuro) is Japanese for bath, specifically a type of bath which originated as a short, steep-sided wooden bathtub. Baths of this type are found all over Japan in houses, apartments and traditional Japanese inns (Ryokans). Furo are part of the Japanese ritual of bathing, not used for washing but for relaxing and warming oneself. Washing is carried out separately outside the furo, and only when completely clean does the bather enter the water. Generally Japanese bathrooms are small, so the bathroom is set up much like a walk-in shower area but containing the ofuro. The cheapest and shortest way to show naked skin on TV, at least as much as allowed. It usually only takes up few minutes at most and as such it gives the staff the opportunity to draw the characters in the nude and raise the DVD sales while still maintaining a "non-filler" episode. Compare to the big brothers http://anidb.net/t4290 [sentou episode] and http://anidb.net/t3444 [onsen episode]. See also http://anidb.net/t5846 [beach episode], and http://anidb.net/t6046 [pool episode].
+</description>
+<picurl>160785.jpg</picurl>
+</tag>
+<tag id="2849" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
+<name>fantasy</name>
+<description>
+Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction). In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today. Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture Source: Wiki
+</description>
+<picurl>68768.jpg</picurl>
+</tag>
+<tag id="2855" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-03">
+<name>under one roof</name>
+<description>
+For some reason or another, the main protagonist (e.g. male in harem / female in reverse-harem) is living together with many other characters of the opposite-gender, all under the same roof (in the same dwelling unit).
+</description>
+</tag>
+<tag id="2856" parentid="2611" weight="300" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
+<name>ecchi</name>
+<description>
+Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi. The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai". The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi. Source: TV Tropes
+</description>
+<picurl>32416.jpg</picurl>
+</tag>
+<tag id="2858" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-10">
+<name>romance</name>
+<description>
+Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.
+</description>
+</tag>
+<tag id="2859" parentid="2611" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-09-22">
+<name>harem</name>
+<description>
+Harem is an entertainment-related trope which is characterized by three or more characters, normally female, who for some reason are in the presence and under the influence of one character, generally male, according to a few genre-defining guidelines; here it will be assumed, for simplicity of language, that the harem lead is a male character and the members are female characters. Though that is the rule, there are exceptions; a story in which there is one female character and several male characters is normally called a "http://anidb.net/l511 [reverse harem]", or sometimes also "male harem". Aside from the swapping of the characters` genders, the trope`s details are mostly the same, with the majority of the changes relating to the differences in behavior between men and women of the characters` age range. It is also possible to create harems with homosexual relationships, again with very few changes to the main antics themselves. The harem may not have more than only one lead, as that would be a love polygon, or less than three members, as one would form a couple and two would make a love triangle. As a defining rule of harem, the interactions between the lead and each of the individual members are filled with romantically or sexually loaded content, either implicitly, through innuendo or subtext, or explicitly, through text or actions, and those actions are a key plot element. Generally, the female characters` looks and personalities will vary a lot among the ones present in one single series, but quite rarely will they actually differ from the common stock archetypes, which are known, well-defined, and easy to copy; for this reason, the genre as a whole is often considered repetitive. Usually, the characters involved directly in this trope are in the late teenager to young adult age range, but that is not mandatory. Sexually charged behavior on the lead`s part pretty much can`t be avoided, and it`s typical to see him stamped as a pervert by some or all of the members, regardless of whether he is one; the sexual tones also applies to the depiction of the harem members, often leading the genre to labeled sexist. The lead will often suffer very violent retribution for his behavior, which has attracted criticism of gratuitous violence as well. Most of the harem members will be romantically or sometimes sexually interested in the one male character, and in him alone; that, however, is not an absolute rule, and indeed sometimes none of the female characters are really interested at first, so the protagonist has to build relationships with them from scratch. That idea comes in large part from visual novels; it is quite common for visual novels to revolve around controlling the male lead and have him build relationships with either as many female characters as possible or with one of them, the latter being more common for visual novels with branched story paths; a large portion of those visual novels also feature erotic content, which may be hard to adapt to TV series. It may be also possible that the harem is only a support to the existing or predictable relationship between the lead and the most important member; additionally, the lead may end up in relationships with most or all of the harem members, with the agreement of all, in a setting normally called "harem ending".
+</description>
+<picurl>94602.jpg</picurl>
+</tag>
+<tag id="2864" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-12-29">
+<name>daily life</name>
+<description>
+The antics of the protagonists do not take place in some exotic setting or time, but in everyday life. When not "at the job" this means getting up in the morning, making meals, house cleaning, going shopping or out to eat, visiting the bath house or spa, leisure activities in the spare time, etc. The time "on the job" for students is School Life, for others working in their profession. Daily Life is basically a synonym for everything normal, repetitive, and trivial happening to your average person.
+</description>
+</tag>
+<tag id="2869" parentid="2607" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-23">
+<name>school life</name>
+<description>
+Since a large part of the anime audience still takes part in school life or is visiting college, it is only natural to choose a setting the audience can identify with, be it elementary, middle, or high school. For the older viewers a college setting with more mature real-life problems is appropriate. And since clubs take up so much time in the lives of students, these are obviously also important.
+</description>
+</tag>
+<tag id="2891" parentid="2608" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-12-31">
+<name>breasts</name>
+<description>
+The female bust size matters! Or does it? The three subcategories spell out the sizes that relate to fetishes, be they gigantic, large or small. Normal sized breasts are not a fetish, it seems. The tag is not only used for ecchi anime, but also for hentai shows as well.
+</description>
+<picurl>161015.jpg</picurl>
+</tag>
+<tag id="2894" parentid="2608" infobox="true" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2013-03-15">
+<name>female student</name>
+<description>
+Pretty much exclusive to hentai shows only unless an ecchi show has implied sex and/or a strong indicator of nudity. A character is considered a student if she goes to school, doesn`t matter if it`s high school, college or homeschooling, but she should be of appropriate age for a student; a housewife going to college should not get this category.
+</description>
+</tag>
+<tag id="2910" parentid="6249" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-08">
+<name>parental abandonment</name>
+<description>
+In Japan it is a common custom for parents to leave their children alone at home and embark on a lifelong trip around the world once they hit the tender age of 14, sometimes even earlier. Of course this is done because the parents believe their children are independent enough to get their act together. But little do they know about the small secrets their offspring has, such as a childhood fiancé(e) or even a forbidden incestuous love between their (often not-blood-related) children. Of course aside from having a huge house, financial support is provided as well. Usually through the means of MAGICAL MONEY. In rare cases the parents actually die (shortly) before embarking on their world-trip, which is self-evidently used as an important plot device in the development of the child.
+</description>
+<picurl>38239.jpg</picurl>
+</tag>
+<tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
+<name>old animetags</name>
+</tag>
+<tag id="3094" parentid="6149" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-05-28">
+<name>befriend attack</name>
+<description>
+One character practically "pounces a hug" on another character. Used as comedy element (slapstick) to demonstrate the exuberant affection of the (usually female) "pouncing" protagonist.
+</description>
+</tag>
+<tag id="3101" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-03-22">
+<name>lottery wheel</name>
+<description>
+One of the protagonists plays the lottery wheel in some shopping mall and — as fate will have it — wins a prize, e.g. a visit to the local hot springs or water park. Thus adding an unexpected plot twist to the story (and some ecchi potential).
+</description>
+</tag>
+<tag id="3638" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-04-03">
+<name>special tree</name>
+<description>
+As part of the anime`s setting a tree is somewhat special. Example: The sakura trees in Da Capo are always blooming. Or at the birth of someone a tree as planted.
+</description>
+</tag>
+<tag id="3745" parentid="6247" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2008-06-30">
+<name>inconclusive</name>
+<description>
+The anime series or movie ends as it begins, nothing significant changed. Or the outcome is so vague and open-ended that a continuation would be possible. At times this is a sign for a continuation in the next season, or that the series was dropped and never continued. In any case there is always a sense of dissatisfaction for the viewer.
+</description>
+</tag>
+<tag id="4149" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-05-22">
+<name>non-blood-related siblings</name>
+<description>
+The siblings, usually living under the same roof, are not blood related.
+</description>
+</tag>
+<tag id="4227" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2010-03-03">
+<name>breathtaking vistas</name>
+<description>
+An amazing view of nature, of artificially sculpted landscapes (i.e. gardens), or of a cityscape.
+</description>
+</tag>
+<tag id="4327" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-03-01">
+<name>be careful what you wish for</name>
+<description>
+... your wish may actually come true. This is an age-old philosophical problem of what human beings think they want and what is actually good for them. The power to wish for anything can be very dangerous and usually — as a moral lesson — yields unexpected / unwanted results.
+</description>
+</tag>
+<tag id="4333" parentid="6230" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-07-06">
+<name>predominantly female cast</name>
+<description>
+A show with a predominantly female cast has mostly females as main and secondary cast members while few if any male characters have major roles. This also applies when a male lead is surrounded by females of lesser individual plot relevance, such as in a harem setting.
+</description>
+<picurl>70752.jpg</picurl>
+</tag>
+<tag id="4389" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-14">
+<name>amusement park visit</name>
+<description>
+Plot device: All or part of the cast visit an amusement park. Added to show the characters in a more leisurely environment (i.e. other than school or at home). Often used in school settings to "develop" and "further" the relations between the male and female leads in this anime. Can also set the stage for comedic misunderstandings, or private moments with possibly ecchi undertones. Furthermore, it gives the anime creators a chance to show off their characters in non-uniforms (e.g. school uniforms). Also see "pool episode".
+</description>
+<picurl>160897.jpg</picurl>
+</tag>
+<tag id="4402" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2013-11-23">
+<name>beautiful people club</name>
+<description>
+Most, if not all, characters in this show are good-looking. After all, who needs ugly people? We don`t need them here, that`s for certain; as Brazilian poet Vinícius de Moraes once put, "may the ugly women forgive me, but beauty is essential".
+</description>
+</tag>
+<tag id="4479" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-02-03">
+<name>sense of foreboding</name>
+<description>
+The anime starts off quietly, everything seems to be fine, but from episode to episode the signs that something ominous is about to happen increase. E.g. a typical mystery setting.
+</description>
+</tag>
+<tag id="4498" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-20">
+<name>heart-warming</name>
+<description>
+The story and its characters give off good vibes — includes elevated feelings of affection such as tenderness, sympathy and love, all in one package. The kind of anime which leaves you with a warm feeling inside and you can not stop smiling while watching it.
+</description>
+</tag>
+<tag id="4682" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-01-31">
+<name>sakura</name>
+<description>
+Sakura is the Japanese name for cherry trees, and their blossoms. Sakura is an omen of good fortune and is also an emblem of love, affection and represents spring. Cherry blossoms are richly symbolic, they are an enduring metaphor for the fleeting nature of life, and as such are frequently depicted Japanese art, manga, anime, and film. Sakura are object of the Japanese traditional custom of Hanami or Flower viewing.
+</description>
+</tag>
+<tag id="5725" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2012-02-15">
+<name>purikura</name>
+<description>
+A standard on a date in a school setting, to remember the moment with the "loved one". In Japan, purikura (プリクラ) refers to a photo sticker booth or the product of such a photo booth. The name is a shortened form of the registered trademark Purinto Kurabu (プリント倶楽部). The term derives from the English print club. (Source: Wikipedia)
+</description>
+</tag>
+<tag id="5805" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-02-18">
+<name>post-credits scene</name>
+<description>
+A little bit of the story is found after the credit titles. A little bonus for those patient enough! A sequence at the end of an episode, showing what will happen in the next episode, is NOT a post-credits scene; that is a preview.
+</description>
+</tag>
+<tag id="5835" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-12-18">
+<name>Gainax bounce</name>
+<description>
+A term that has come to describe often exaggerated, very jiggly, fluid, and painstakingly detailed animation of female characters` bouncing breasts. The term has its roots in http://anidb.net/a185 [Top wo Nerae!] — Gunbuster, Gainax`s first OVA (1988), in which the Gainax bounce is found unabated in the three female characters of Noriko, Kazumi, and Jung.
+</description>
+<picurl>166074.jpg</picurl>
+</tag>
+<tag id="5883" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2011-05-10">
+<name>dreams</name>
+<description>
+Waking or sleeping, the mind can go to some strange places, usually beyond the control of the dreamer. New worlds, strange creatures, unfulfilled fantasies, they are all there. Sometimes a person`s dreams can be taken over, with catastrophic consequences for the character and sometimes the real world.
+</description>
+</tag>
+<tag id="6039" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2009-06-18">
+<name>piggyback ride</name>
+<description>
+One of the protagonists (usually male) gives another character (usually female) a ride on the back. Can be interpreted as a sign of closeness or endearment in a romance setting. Reasons: The female character is exhausted from previous running, or has a fit of anaemia, or hurt herself and no longer can walk.
+</description>
+</tag>
+<tag id="6046" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-15">
+<name>pool episode</name>
+<description>
+An episode playing at the pool, mostly in school, sometimes outside of it when the cast does not have a chance for a beach episode. Usually used for fanservice purpose as it gives the staff the opportunity to draw the characters in swimsuits and raise the DVD sales. The cheap version of the http://anidb.net/t5846 [beach episode]. Other variants are the http://anidb.net/t3444 [onsen episode] and the http://anidb.net/t2830 [furo scene], used when it is too cold for a beach/pool episode. See also http://anidb.net/t2830 [furo scene].
+</description>
+<picurl>160904.jpg</picurl>
+</tag>
+<tag id="6115" parentid="6148" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-09-07">
+<name>omimai</name>
+<description>
+Visiting a sick person (like in a hospital or at home).
+ 
+ The protagonist or any other character caught a cold so his friends go visit him. In a school setting this is used as a plot device to show the anguish of fellow students, and it is also a pertinent excuse to get out of school.
+</description>
+<picurl>160896.jpg</picurl>
+</tag>
+<tag id="6148" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>TO BE MOVED TO EPISODE</name>
+<description>
+Tags under this parent tag are going to be moved to episode tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what episodes they should be assigned to.
+</description>
+</tag>
+<tag id="6149" parentid="30" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-10">
+<name>TO BE MOVED TO CHARACTER</name>
+<description>
+Tags under this parent tag are going to be moved to character tags and removed from the anime they`re currently assigned to. They will be blocked from the anime system once that move is complete. Please help with that job if you know what characters they should be assigned to.
+</description>
+</tag>
+<tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
+<name>cast</name>
+</tag>
+<tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
+<name>tropes</name>
+<description>
+A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech. Source: Wikipedia
+</description>
+</tag>
+<tag id="6247" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-10-31">
+<name>ending tags that need merging</name>
+</tag>
+<tag id="6249" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-31">
+<name>family life</name>
+</tag>
+</tags>
+<characters>
+<character id="705" type="secondary cast in" update="2008-12-11">
+<rating votes="83">6.33</rating>
+<name>Yoshino Sakura</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Sakura is the student of Kazemi affiliated junior high class 3-3. She is Jun`ichi`s elder cousin and first love. She is a very lively girl who, much to Nemu`s dismay, shows great affection towards Jun`ichi. She is sometimes seen with Utamaru and understands what it says. While older than than Jun`ichi, she addresses him as onii-chan (meaning "older-brother"), hoping that Jun`ichi would act like an elder brother to protect her. While sporting a great love for Japanese culture, she appears to be more of the mistaken foreigner. She has an IQ of 180, but she`s inept with kanji due to growing up in America. She inherited her grandmother`s magical ability. Despite the passing of several years, her appearance remains unchanged from what Jun`ichi and Nemu remember when she first left for America, which was explained to be so that she will always be as Jun`ichi remembers. She is one of the two returning characters in Da Capo II.
+</description>
+<picture>14996.jpg</picture>
+<seiyuu id="461" picture="76718.jpg">Hitomi</seiyuu>
+</character>
+<character id="2412" type="appears in" update="2009-01-14">
+<rating votes="11">6.20</rating>
+<name>Amakase Minatsu</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Minatsu is the student of Kazemi affiliated junior high class 1-1, a robot who runs on bananas, but claims to hate them. She is upset over the fact that she is a robot but does not have a rocket punch. Like the android Miharu from `Da Capo`, one of her power sources is a spring motor that needs to be wound periodically (also with a key inserted into a hole on her back), though doing so causes Minatsu to experience a sensation similar to Sexual arousal. In the first season of the anime, Minatsu is friends with Yume. She also claims to hate humans in the beginning stages of the anime but starts to fully understand that not all humans are like that.
+</description>
+<picture>17668.jpg</picture>
+<seiyuu id="410" picture="19063.jpg">Aoki Sayaka</seiyuu>
+</character>
+<character id="20952" type="appears in" update="2012-02-24">
+<rating votes="3">4.87</rating>
+<name>Suginami</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Suginami is the student of Kazemi affiliated junior high class 3-3 and one of Yoshiyuki`s male friends. He happens to look and act almost exactly like Suginami from Da Capo.
+</description>
+<picture>3994.png</picture>
+<seiyuu id="63" picture="29213.jpg">Kishio Daisuke</seiyuu>
+</character>
+<character id="35272" type="appears in" update="2011-08-06">
+<name>Utamaru</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<picture>76590.jpg</picture>
+<seiyuu id="327" picture="17472.jpg">Momoi Haruko</seiyuu>
+</character>
+<character id="50976" type="main character in" update="2012-11-30">
+<rating votes="8">7.21</rating>
+<name>Morizono Rikka</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Rikka is a student of Kazami affiliated junior high class 3-2. She is the president of the newspaper club and is the school idol. Source: Wiki
+</description>
+<picture>128795.jpg</picture>
+<seiyuu id="22170" picture="130559.jpg">Nitta Emi</seiyuu>
+</character>
+<character id="50977" type="main character in" update="2012-11-30">
+<rating votes="14">7.65</rating>
+<name>Yoshino Charles</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Charles is a student in the same class as Rikka. She is Kiyotaka`s cousin and is half Japanese. She is a member of the newspaper club. Source: Wiki
+</description>
+<picture>128796.jpg</picture>
+<seiyuu id="184" picture="23381.jpg">Miyazaki Ui</seiyuu>
+</character>
+<character id="50978" type="main character in" update="2012-11-30">
+<rating votes="8">5.60</rating>
+<name>Katsuragi Himeno</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Himeno is a student of Kazami affiliated junior high class 2-1. She is Kiyotaka`s childhood friend, whom he views like a sister, and she is a member of the newspaper club. Source: Wiki
+</description>
+<picture>128797.jpg</picture>
+<seiyuu id="21806" picture="56233.jpg">Sasaki Mikoi</seiyuu>
+</character>
+<character id="50979" type="main character in" update="2012-11-30">
+<rating votes="8">5.98</rating>
+<name>Rukawa Sara</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Sara is student in the same class as Kiyotaka. She is a hard-working student who skipped one grade and is one year younger than Kiyotaka. She is a member of the newspaper club. Source: Wiki
+</description>
+<picture>128798.jpg</picture>
+<seiyuu id="34651" picture="156871.jpg">Ousaki Chiyo</seiyuu>
+</character>
+<character id="50980" type="main character in" update="2012-11-30">
+<rating votes="8">6.96</rating>
+<name>Hinomoto Aoi</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<description>
+Aoi is a student of Kazami affiliated junior high class 1-3. She is an energetic girl, but has a weak constitution. She is a member of the newspaper club. Source: Wiki
+</description>
+<picture>128799.jpg</picture>
+<seiyuu id="34632" picture="128903.jpg">Kaiho Erika</seiyuu>
+</character>
+<character id="50981" type="main character in" update="2013-02-23">
+<rating votes="4">3.00</rating>
+<name>Yoshino Kiyotaka</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132604.jpg</picture>
+<seiyuu id="3155" picture="24137.jpg">Ono Yuuki</seiyuu>
+</character>
+<character id="52361" type="appears in" update="2013-02-26">
+<rating votes="5">5.92</rating>
+<name>Mikoto</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132848.jpg</picture>
+<seiyuu id="452" picture="41417.jpg">Satou Arise</seiyuu>
+</character>
+<character id="52362" type="appears in" update="2013-02-26">
+<rating votes="5">5.67</rating>
+<name>Edogawa Shiki</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132847.jpg</picture>
+<seiyuu id="410" picture="19063.jpg">Aoki Sayaka</seiyuu>
+</character>
+<character id="52363" type="appears in" update="2013-02-23">
+<name>Edogawa Kousuke</name>
+<gender>male</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132596.jpg</picture>
+<seiyuu id="175" picture="167565.jpg">Shimono Hiro</seiyuu>
+</character>
+<character id="52364" type="appears in" update="2013-03-05">
+<rating votes="1">6.11</rating>
+<name>Eri Angela Arthur</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>133195.jpg</picture>
+<seiyuu id="24586" picture="69078.jpg">Kase Aina</seiyuu>
+</character>
+<character id="52458" type="appears in" update="2013-02-23">
+<rating votes="2">6.18</rating>
+<name>Nakayama</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132597.jpg</picture>
+<seiyuu id="34426" picture="128153.jpg">Suzaki Aya</seiyuu>
+</character>
+<character id="52459" type="appears in" update="2013-01-29">
+<name>Miyamoto</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="33633" picture="151771.jpg">Takahashi Minami</seiyuu>
+</character>
+<character id="52644" type="appears in" update="2013-02-04">
+<rating votes="1">6.08</rating>
+<name>Takamatsu-sensei</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>131799.jpg</picture>
+<seiyuu id="4710" picture="27532.jpg">Nasu Megumi</seiyuu>
+</character>
+<character id="53241" type="appears in" update="2013-02-25">
+<rating votes="3">4.56</rating>
+<name>Rurika Ordet</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>132782.jpg</picture>
+<seiyuu id="248" picture="45126.jpg">Gotou Yuuko</seiyuu>
+</character>
+<character id="53453" type="appears in" update="2013-03-04">
+<name>Edward Watson</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="617" picture="65451.jpg">Nanjou Yoshino</seiyuu>
+</character>
+<character id="53454" type="appears in" update="2013-03-04">
+<name>Mary Holmes</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="1932" picture="65403.jpg">Sendai Eri</seiyuu>
+</character>
+<character id="53455" type="appears in" update="2013-03-04">
+<name>Tomoe</name>
+<gender>unknown</gender>
+<charactertype id="1">Character</charactertype>
+<seiyuu id="10080" picture="62568.jpg">Aranami Kazusa</seiyuu>
+</character>
+<character id="53754" type="appears in" update="2013-03-11">
+<name>Amakase Detective Agency</name>
+<gender>unknown</gender>
+<charactertype id="3">Organization</charactertype>
+<picture>133517.jpg</picture>
+</character>
+<character id="53809" type="appears in" update="2013-03-13">
+<rating votes="1">2.16</rating>
+<name>Kohinata Yuzu</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>133604.jpg</picture>
+<seiyuu id="4710" picture="27532.jpg">Nasu Megumi</seiyuu>
+</character>
+<character id="53810" type="appears in" update="2013-03-13">
+<rating votes="1">6.08</rating>
+<name>Takanashi Yuuhi</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>133603.jpg</picture>
+<seiyuu id="23948" picture="150919.jpg">Ogura Yui</seiyuu>
+</character>
+<character id="54148" type="appears in" update="2013-03-22">
+<name>Jill Hathaway</name>
+<gender>female</gender>
+<charactertype id="1">Character</charactertype>
+<picture>134056.jpg</picture>
+<seiyuu id="32751" picture="157891.jpg">Tanezaki Atsumi</seiyuu>
+</character>
+</characters>
+<episodes>
+<episode id="146351" update="2013-07-27">
+<epno type="1">1</epno>
+<length>25</length>
+<airdate>2013-01-05</airdate>
+<rating votes="1">1.59</rating>
+<title xml:lang="ja">サクラサク</title>
+<title xml:lang="en">Cherry Blossoms Bloom</title>
+<title xml:lang="x-jat">Sakura Saku</title>
+</episode>
+<episode id="146610" update="2013-01-07">
+<epno type="4">T1</epno>
+<length>25</length>
+<airdate>2012-12-31</airdate>
+<title xml:lang="en">Pre-Air Special</title>
+</episode>
+<episode id="146628" update="2013-01-08">
+<epno type="1">2</epno>
+<length>25</length>
+<airdate>2013-01-12</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">あたたかなところ</title>
+<title xml:lang="en">A Warm Place</title>
+<title xml:lang="x-jat">Atataka na Tokoro</title>
+</episode>
+<episode id="146769" update="2013-01-14">
+<epno type="1">3</epno>
+<length>25</length>
+<airdate>2013-01-19</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">さくら舞うところ</title>
+<title xml:lang="en">The Place Where Cherry Blossoms Dance</title>
+<title xml:lang="x-jat">Sakura Mau Tokoro</title>
+</episode>
+<episode id="146945" update="2013-01-23">
+<epno type="1">4</epno>
+<length>25</length>
+<airdate>2013-01-26</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">いつまでもいたいところ</title>
+<title xml:lang="en">A Place One Wants to Be Forever</title>
+<title xml:lang="x-jat">Itsumademo Itai Tokoro</title>
+</episode>
+<episode id="146956" update="2013-12-14">
+<epno type="3">C3</epno>
+<length>2</length>
+<airdate>2013-01-12</airdate>
+<title xml:lang="en">Ending 2</title>
+</episode>
+<episode id="146957" update="2013-12-14">
+<epno type="3">C2</epno>
+<length>2</length>
+<airdate>2013-01-05</airdate>
+<title xml:lang="en">Ending 1</title>
+</episode>
+<episode id="146958" update="2013-01-23">
+<epno type="3">C1</epno>
+<length>2</length>
+<airdate>2013-01-12</airdate>
+<title xml:lang="en">Opening</title>
+</episode>
+<episode id="146959" update="2013-01-23">
+<epno type="1">8</epno>
+<length>25</length>
+<airdate>2013-02-23</airdate>
+<rating votes="1">6.09</rating>
+<title xml:lang="ja">愛と夢と希望が溢れる場所</title>
+<title xml:lang="en">The Place Overflowing with Love, Dreams, and Hope</title>
+<title xml:lang="x-jat">Ai to Yume to Kibou ga Afureru Tokoro</title>
+</episode>
+<episode id="146960" update="2013-01-23">
+<epno type="1">7</epno>
+<length>25</length>
+<airdate>2013-02-16</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">あまえられるところ</title>
+<title xml:lang="en">A Place Where I Can Rely on You</title>
+<title xml:lang="x-jat">Amaerareru Tokoro</title>
+</episode>
+<episode id="146961" update="2013-01-23">
+<epno type="1">6</epno>
+<length>25</length>
+<airdate>2013-02-09</airdate>
+<rating votes="1">6.09</rating>
+<title xml:lang="ja">ふたりでいれるところ</title>
+<title xml:lang="en">A Place Where We Can Be Together</title>
+<title xml:lang="x-jat">Futari de Ireru Tokoro</title>
+</episode>
+<episode id="146962" update="2013-01-23">
+<epno type="1">5</epno>
+<length>25</length>
+<airdate>2013-02-02</airdate>
+<rating votes="1">1.59</rating>
+<title xml:lang="ja">ひとりじゃないところ</title>
+<title xml:lang="en">A Place Where One Is Not Alone</title>
+<title xml:lang="x-jat">Hitori Janai Tokoro</title>
+</episode>
+<episode id="147481" update="2013-02-25">
+<epno type="1">10</epno>
+<length>25</length>
+<airdate>2013-03-09</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">ふたりがたどりついたところ</title>
+<title xml:lang="en">A Place We Both Reached</title>
+<title xml:lang="x-jat">Futari ga Tadoritsuita Tokoro</title>
+</episode>
+<episode id="147482" update="2013-02-15">
+<epno type="1">9</epno>
+<length>25</length>
+<airdate>2013-03-02</airdate>
+<rating votes="1">3.21</rating>
+<title xml:lang="ja">美少女祭りと夕日が綺麗な場所</title>
+<title xml:lang="en">
+A Festival of Beautiful Women and a Place with a Beautiful Sunset
+</title>
+<title xml:lang="x-jat">Bishoujo Matsuri to Yuuhi ga Kirei na Tokoro</title>
+</episode>
+<episode id="147483" update="2013-02-15">
+<epno type="3">C4</epno>
+<length>2</length>
+<airdate>2013-02-09</airdate>
+<title xml:lang="en">Ending 3</title>
+</episode>
+<episode id="147703" update="2013-02-25">
+<epno type="1">12</epno>
+<length>25</length>
+<airdate>2013-03-23</airdate>
+<rating votes="1">1.59</rating>
+<title xml:lang="ja">枯れない桜がある島</title>
+<title xml:lang="en">The Island of the Everlasting Cherry Blossom</title>
+<title xml:lang="x-jat">Karenai Sakura ga Aru Tokoro</title>
+</episode>
+<episode id="147704" update="2013-02-25">
+<epno type="1">11</epno>
+<length>25</length>
+<airdate>2013-03-16</airdate>
+<rating votes="1">1.59</rating>
+<title xml:lang="ja">思い出と始まりの場所</title>
+<title xml:lang="en">The Place of Memories and Beginnings</title>
+<title xml:lang="x-jat">Omoide to Hajimari no Tokoro</title>
+</episode>
+<episode id="148612" update="2013-03-25">
+<epno type="1">13</epno>
+<length>25</length>
+<airdate>2013-03-30</airdate>
+<rating votes="1">1.09</rating>
+<title xml:lang="ja">ダ・カーポ</title>
+<title xml:lang="en">Da Capo</title>
+<title xml:lang="x-jat">Da Capo</title>
+</episode>
+<episode id="149966" update="2013-04-23">
+<epno type="4">T2</epno>
+<length>1</length>
+<airdate>2012-12-24</airdate>
+<title xml:lang="en">PV</title>
+</episode>
+<episode id="152456" update="2013-08-10">
+<epno type="4">T4</epno>
+<length>1</length>
+<title xml:lang="en">Blu-ray & DVD CM</title>
+</episode>
+<episode id="152457" update="2013-08-10">
+<epno type="4">T3</epno>
+<length>1</length>
+<title xml:lang="en">CM</title>
+</episode>
+</episodes>
+</anime>

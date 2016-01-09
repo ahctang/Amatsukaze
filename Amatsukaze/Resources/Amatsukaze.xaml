@@ -27,6 +27,8 @@
     <!-- Font Colors -->
     <SolidColorBrush x:Key="BodyFontColor" 
                          Color="{StaticResource AmatsukazeWhite}" />
+    <SolidColorBrush x:Key="HeaderFontMouseOverColor" 
+                         Color="{StaticResource AmatsukazeGrey}" />
 
 
 </ResourceDictionary>

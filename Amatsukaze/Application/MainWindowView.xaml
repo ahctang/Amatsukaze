@@ -6,22 +6,24 @@
         xmlns:local="clr-namespace:Amatsukaze.View"
         xmlns:ViewModel="clr-namespace:Amatsukaze.ViewModel"
         mc:Ignorable="d"
-        Title="Amatsukaze" Height="720" Width="1280">
+        Title="Amatsukaze" Height="720" Width="1280"
+        MinWidth="640" MinHeight="480"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!-- Tying the XAML view to their respective ViewModels-->
-        <DataTemplate DataType="{x:Type ViewModel:FolderMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:FolderMenuViewModel}" x:Name="FolderMenu">
             <local:FolderMenuView></local:FolderMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:LibraryMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:LibraryMenuViewModel}" x:Name="LibraryMenu">
             <local:LibraryMenuView></local:LibraryMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:OptionMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:OptionMenuViewModel}" x:Name="OptionMenu">
             <local:OptionsMenuView></local:OptionsMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:PlaybackMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:PlaybackMenuViewModel}" x:Name="PlaybackMenu">
             <local:PlaybackMenuView></local:PlaybackMenuView>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type ViewModel:SocialNetworkMenuViewModel}">
+        <DataTemplate DataType="{x:Type ViewModel:SocialNetworkMenuViewModel}" x:Name="SocialNetworkMenu">
             <local:SocialNetworkMenuView></local:SocialNetworkMenuView>
         </DataTemplate>
         
@@ -44,8 +46,12 @@
         </ControlTemplate>        
     </Window.Resources>
     <Grid>
+        <Grid.Resources>
+            <local:MessageBoxWidthConverter x:Key="MessageBoxWidthConverter"></local:MessageBoxWidthConverter>
+        </Grid.Resources>
+
         <DockPanel LastChildFill="True">
-            
+
             <!-- All the code related to the left side bar menu-->
             <DockPanel x:Name="MenuBar" DockPanel.Dock="Left" Width="40"  Background="{DynamicResource MenuBarColor}">
                 <Menu Background="Transparent" BorderThickness="0" Padding="0">             
@@ -192,8 +198,41 @@
             
             <!-- This is the important area-->
             <Grid x:Name="MainDisplaySpace" Background="{DynamicResource BaseColor}">
-                <ContentControl Content="{Binding CurrentViewModel}"></ContentControl>
-            </Grid>
+                <ContentControl x:Name="MainContentControl" Content="{Binding CurrentViewModel}"></ContentControl>
+            </Grid>     
+
         </DockPanel>
+        <!-- Status Message Box-->
+        
+        <Border CornerRadius="15,15,15,15" BorderThickness="0" Width="{Binding ElementName=MainDisplaySpace, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="35" Background="Black" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Border.Style>
+                <Style>
+                    <Setter Property="Border.RenderTransform">
+                        <Setter.Value>
+                            <TranslateTransform Y="40"></TranslateTransform>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding MessageTextToggle}" Value="True">
+                            <DataTrigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.5"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.EnterActions>
+                            <DataTrigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.5"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </DataTrigger.ExitActions>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <TextBlock Text="{Binding StatusText}" FontSize="14" FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" Margin="20,0,0,0" VerticalAlignment="Center"></TextBlock>
+        </Border>
     </Grid>
 </Window>
