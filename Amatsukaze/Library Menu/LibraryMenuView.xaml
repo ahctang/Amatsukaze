@@ -36,7 +36,7 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                <Image x:Name="CoverImage" Source="{Binding ImagePath}" Height="225" Width="161">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
                                                       Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -87,7 +87,7 @@
                                                     <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                                                 </DataTemplate.Resources>
                                                 <StackPanel Width="{Binding ElementName=CoverImage2, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath}" Height="225" Width="161">
+                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
                                                         <Image.InputBindings>
                                                             <MouseBinding MouseAction="LeftClick" 
                                                                   Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -118,6 +118,71 @@
             <Grid></Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="SearchResultSort">
+            <Grid>
+                <ItemsControl ItemsSource="{Binding SearchResultList}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Grid   Helper:GridHelpers.RowCount="{Binding GridRowCount}" 
+                                    Helper:GridHelpers.ColumnCount="{Binding GridColumnCount}" />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemContainerStyle>
+                        <Style>
+                            <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                            <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <DataTemplate.Resources>
+                                <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
+                            </DataTemplate.Resources>
+                            <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
+                                    <Image.InputBindings>
+                                        <MouseBinding MouseAction="LeftClick" 
+                                                      Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
+                                                      CommandParameter="{Binding}"></MouseBinding>
+                                    </Image.InputBindings>
+                                </Image>
+                                <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Center">
+                                    <TextBlock.Text>
+                                        <PriorityBinding>
+                                            <Binding Path="english" Converter="{StaticResource UnsetConverter}" />
+                                            <Binding Path="title" />
+                                        </PriorityBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Grid>
+                            <Border x:Name="Border" BorderThickness="0">
+                                <ContentPresenter x:Name="ContentSite" VerticalAlignment="Center" HorizontalAlignment="Center" ContentSource="Header" Margin="12,2,12,2"/>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="Background" Value="#CCCDCDCD" />
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="False">
+                                <Setter TargetName="Border" Property="Background" Value="#7FCDCDCD" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
     </UserControl.Resources>
 
     <DockPanel LastChildFill="True">
@@ -132,15 +197,29 @@
 
         <!-- Top Menu-->
         <DockPanel x:Name="TopMenu" DockPanel.Dock="Top" Background="{DynamicResource TopMenuColor}" Height="40">
+
+            <!-- Title -->
             <TextBlock Text="Library" Style="{StaticResource HeaderText}">
             </TextBlock>
-            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0">
+
+            <!-- Search -->
+            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" 
+                    Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}">
                 <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
             </Button>
-            <TextBox DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="Search" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0"></TextBox>
+            <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=Default}" 
+                     Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" >
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Return" Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}"></KeyBinding>
+                </TextBox.InputBindings>
+            </TextBox>
+
+            <!-- Refresh -->
             <Button x:Name="Refresh" Height="35" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="Transparent" BorderThickness="0" Command="{Binding RefreshCommand}">
                 <Image Source="{StaticResource RefreshIcon}" Height="25" Width="25"></Image>
             </Button>
+
+            <!-- Show Activity Log -->
             <Button x:Name="ActivityLog" Height="35" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="Transparent" BorderThickness="0" Click="ActivityLog_Click">
                 <Image Source="{StaticResource ActivityIcon}" Height="25" Width="25"></Image>
             </Button>
@@ -210,20 +289,74 @@
             </Grid.Resources>
             <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <ContentControl>
+                    <ContentControl.RenderTransform>
+                        <TranslateTransform></TranslateTransform>
+                    </ContentControl.RenderTransform>
                     <ContentControl.Style>
                         <Style>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding CurrentView}" Value="All">
                                     <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource LibraryGridView}"></Setter>
                                     <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard x:Name="ViewTransitionStoryboard">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="40" To="0" Duration="0:0:0.5"></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"></DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard"></StopStoryboard>
+                                    </DataTrigger.ExitActions>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding CurrentView}" Value="Season">
                                     <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource LibrarySeasonSort}"></Setter>
                                     <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
+                                    <DataTrigger.EnterActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard"></StopStoryboard>
+                                        <BeginStoryboard x:Name="ViewTransitionStoryboard1">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="40" To="0" Duration="0:0:0.5"></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"></DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard1"></StopStoryboard>
+                                    </DataTrigger.ExitActions>
                                 </DataTrigger>
                                 <DataTrigger Binding="{Binding CurrentView}" Value="Genre">
                                     <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource LibraryGenreSort}"></Setter>
                                     <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
+                                    <DataTrigger.EnterActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard"></StopStoryboard>
+                                        <BeginStoryboard x:Name="ViewTransitionStoryboard2">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="40" To="0" Duration="0:0:0.5"></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"></DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard2"></StopStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding CurrentView}" Value="Search">
+                                    <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource SearchResultSort}"></Setter>
+                                    <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
+                                    <DataTrigger.EnterActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard"></StopStoryboard>
+                                        <BeginStoryboard x:Name="ViewTransitionStoryboard3">
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)" From="40" To="0" Duration="0:0:0.5"></DoubleAnimation>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"></DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard3"></StopStoryboard>
+                                    </DataTrigger.ExitActions>
                                 </DataTrigger>
                             </Style.Triggers>
                         </Style>
@@ -266,7 +399,7 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
-                <StackPanel>                   
+                <StackPanel>
                     <StackPanel.Resources>
                         <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                     </StackPanel.Resources>
@@ -283,55 +416,142 @@
                             </PriorityBinding>
                         </TextBlock.Text>
                     </TextBlock>
-                    <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
                     <DockPanel MaxWidth="{Binding ElementName=AnimeInfoPanel, Path=ActualWidth}" Margin="10,10,10,10">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type TextBlock}">
                                 <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}" />
                             </Style>
                         </DockPanel.Resources>
-                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath}" MaxWidth="250"></Image>
-                        <Grid DockPanel.Dock="Top" Margin="10,0,0,0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                            </Grid.RowDefinitions>
+                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}}" MaxWidth="250" VerticalAlignment="Top"></Image>
+                        <ScrollViewer MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                            <Grid DockPanel.Dock="Top" Margin="10,0,0,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                            <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1"></TextBlock>
+                                <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
+                                <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5"></TextBlock>
 
-                            <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3"></TextBlock>
+                                <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3" Padding="0,0,0,5"></TextBlock>
 
-                            <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Grid.Column="1" Grid.Row="3">
-                                <Run Text="{Binding SelectedAnime.episodes}"></Run>
-                                <Run Text="(" />
-                                <Run Text="{Binding SelectedAnime.status}"></Run>
-                                <Run Text=")" />
-                            </TextBlock>
+                                <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Grid.Column="1" Grid.Row="3" Padding="0,0,0,5">
+                                    <Run Text="{Binding SelectedAnime.episodes}"></Run><Run Text="(" /><Run Text="{Binding SelectedAnime.status}"></Run><Run Text=")" />
+                                </TextBlock>
 
-                            <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5"></TextBlock>
+                                <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5" Padding="0,0,0,5"></TextBlock>
 
-                            <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7"></TextBlock>
+                                <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
 
-                            <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                            <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7"></TextBlock>
-                        </Grid>
-                        <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Margin="10,0,0,0"></TextBlock>
+                                <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                                <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
+
+                                <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Padding="0,0,0,5"></TextBlock>
+
+                                <TabControl Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0">
+                                    <TabControl.Resources>
+                                        <Style TargetType="TabPanel">
+                                            <Setter Property="HorizontalAlignment" Value="Right"/>
+                                        </Style>
+                                    </TabControl.Resources>                                    
+                                    <TabItem Header="Staff" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right">
+                                        <Grid>
+                                            <ItemsControl ItemsSource="{Binding SelectedAnime.Staff}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <Grid>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            </Grid.ColumnDefinitions>
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="*"></RowDefinition>
+                                                                <RowDefinition Height="*"></RowDefinition>
+                                                                <RowDefinition Height="*"></RowDefinition>
+                                                            </Grid.RowDefinitions>
+                                                        </Grid>
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemContainerStyle>
+                                                    <Style>
+                                                        <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                                                        <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                                                    </Style>
+                                                </ItemsControl.ItemContainerStyle>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackPanel Width="Auto" Height="Auto" Margin="10,10,10,0">
+                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Name}">
+                                                            </TextBlock>
+                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Position}">
+                                                            </TextBlock>
+                                                        </StackPanel>
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </Grid>
+                                    </TabItem>
+                                    <TabItem Header="Characters" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right">
+                                        <ItemsControl ItemsSource="{Binding SelectedAnime.Characters}">
+                                            <ItemsControl.ItemsPanel>
+                                                <ItemsPanelTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                            <RowDefinition Height="*"></RowDefinition>
+                                                        </Grid.RowDefinitions>
+                                                    </Grid>
+                                                </ItemsPanelTemplate>
+                                            </ItemsControl.ItemsPanel>
+                                            <ItemsControl.ItemContainerStyle>
+                                                <Style>
+                                                    <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                                                    <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                                                </Style>
+                                            </ItemsControl.ItemContainerStyle>
+                                            <ItemsControl.ItemTemplate>
+                                                <DataTemplate>
+                                                    <DockPanel Width="Auto" Height="Auto" Margin="10,10,10,0">
+                                                        <Image DockPanel.Dock="Left" Source="{Binding PicturePath}" Height="255"></Image>
+                                                        <StackPanel>
+                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding CharacterName}">
+                                                            </TextBlock>
+                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Seiyuu}">
+                                                            </TextBlock>
+                                                        </StackPanel>                                                        
+                                                    </DockPanel>
+                                                </DataTemplate>
+                                            </ItemsControl.ItemTemplate>
+                                        </ItemsControl>
+                                    </TabItem>
+                                </TabControl>
+                            </Grid>
+                        </ScrollViewer>
                     </DockPanel>
                 </StackPanel>
             </Border>
@@ -342,7 +562,7 @@
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>
                 <Border.Style>
-                    <Style>                        
+                    <Style>
                         <Setter Property="Border.RenderTransform">
                             <Setter.Value>
                                 <ScaleTransform ScaleY="0"></ScaleTransform>
@@ -368,10 +588,9 @@
                         </Style.Triggers>
                     </Style>
                 </Border.Style>
-                <StackPanel>
-                    <TextBlock Text="Message Log" FontSize="20" Margin="20,20,20,20"></TextBlock>
-                    <Line StrokeThickness="3" Stroke="{DynamicResource TopMenuColor}"></Line>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel Height="{Binding ElementName=DisplayArea, Path=ActualHeight}">
+                    <TextBlock Text="Message Log" FontSize="20" Margin="10,20,0,0"></TextBlock>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50">
                         <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">
                         </ListView>
                     </ScrollViewer>

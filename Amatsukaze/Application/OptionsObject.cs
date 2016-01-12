@@ -13,16 +13,24 @@ namespace Amatsukaze.ViewModel
 {
 
     //Static object for holding all of the user preferences if they are to be used by other parts of the application
-    class OptionsObject
+    public class OptionsObject
     {
         public string Themesetting {get; set;}
         public string CacheFolderpath { get; set; }
+        
+        public bool UseMALDataSource { get; set; }
+        public bool UseAniDBDataSource { get; set; }
+
+        public string AniDBImageURL { get; set; }
 
         //Sets the options object to default values.
         public void SetDefaults()
         {
             this.Themesetting = "Amatsukaze";
             this.CacheFolderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Cache\";
+            this.UseMALDataSource = true;
+            this.UseAniDBDataSource = false;
+            this.AniDBImageURL = "https://img7.anidb.net/pics/anime/";
         }
 
         //The Model class primarily deals with the IO related to saving the user preferences to a JSON file on disk

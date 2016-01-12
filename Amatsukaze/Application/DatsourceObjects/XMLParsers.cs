@@ -78,7 +78,7 @@ namespace Amatsukaze.ViewModel
                                 }
                                 else
                                 {
-                                    property.SetValue(_MALDataSource, reader.ReadElementContentAsString(), null);
+                                    property.SetValue(_MALDataSource, reader.ReadElementContentAsString().Trim(), null);
                                 }
                             }
                             else if (property.PropertyType == typeof(int))
@@ -146,6 +146,9 @@ namespace Amatsukaze.ViewModel
 
                     } while (reader.ReadToNextSibling("title"));
 
+                    //Workaround so EnglishTitle and synonyms don't end up as null
+                    if (aniDBDataSource.Synonyms == null) aniDBDataSource.Synonyms = "";
+                    if (aniDBDataSource.EnglishTitle == null) aniDBDataSource.EnglishTitle = "";
 
                     reader.ReadToFollowing("creators");
                     reader.ReadToDescendant("name");
@@ -228,7 +231,7 @@ namespace Amatsukaze.ViewModel
                             }
                         }
 
-                    } while (reader.ReadToNextSibling("episode"));
+                    } while (reader.ReadToNextSibling("episode"));                    
                 }
 
                 return true;

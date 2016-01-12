@@ -24,8 +24,10 @@ namespace Amatsukaze.ViewModel
         public OptionMenuViewModel(OptionsObject optionsobject, IEventAggregator eventAggregator)
         {
             this.optionsobject = optionsobject;
-            this.SelectedTheme = this.optionsobject.Themesetting;
+            this.SelectedTheme = optionsobject.Themesetting;
             this.CacheFolderPath = optionsobject.CacheFolderpath;
+            this.UseMALDataSource = optionsobject.UseMALDataSource;
+            this.UseAniDBDataSource = optionsobject.UseAniDBDataSource;
             this.EventAggregator = eventAggregator;
         }
 
@@ -40,6 +42,8 @@ namespace Amatsukaze.ViewModel
 
         private string selectedtheme;
         private string cachefolderpath;
+        private bool useMALDataSource;
+        private bool useAniDBDataSource;
         #endregion
 
         #region Properties
@@ -86,6 +90,44 @@ namespace Amatsukaze.ViewModel
 
                     optionsobject.Save();
                     OnPropertyChanged("CacheFolderPath");
+                }
+            }
+        }
+
+        public bool UseMALDataSource
+        {
+            get
+            {
+                return useMALDataSource;
+            }
+            set
+            {
+                if (useMALDataSource != value)
+                {
+                    useMALDataSource = value;
+                    optionsobject.UseMALDataSource = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("UseMALDataSource");
+                }
+            }
+        }
+
+        public bool UseAniDBDataSource
+        {
+            get
+            {
+                return useAniDBDataSource;
+            }
+            set
+            {
+                if (useAniDBDataSource != value)
+                {
+                    useAniDBDataSource = value;
+                    optionsobject.UseAniDBDataSource = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("UseAniDBDataSource");
                 }
             }
         }

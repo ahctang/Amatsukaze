@@ -31,14 +31,20 @@
                 </TextBlock>
             </DockPanel>            
             <Grid>
-                <DockPanel>
+                <DockPanel>                    
                     <TextBlock Text="Color Theme" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top"></TextBlock>
                     <ComboBox x:Name="ThemeSelector" DockPanel.Dock="Top" Width="200" FontFamily="Segoe UI" HorizontalAlignment="Left" Margin="10,10,0,0" ItemsSource="{Binding AvailableThemes}" 
                         SelectedItem="{Binding DataContext.SelectedTheme, Mode=TwoWay, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}, diag:PresentationTraceSources.TraceLevel=High}" IsSynchronizedWithCurrentItem="True">                                                                                                                                        
                     </ComboBox>
+                    
                     <TextBlock Text="Folder Options" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" Margin="10,20,0,0"></TextBlock>
-                    <TextBlock Text="Cache Folder Path" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" FontSize="18"></TextBlock>
-                    <TextBox Text="{Binding CacheFolderPath, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>                    
+                    <TextBlock Text="Cache Folder Path" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" FontSize="14"></TextBlock>
+                    <TextBox Text="{Binding CacheFolderPath, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>
+                    
+                    <TextBlock Text="Data Source Options" Style="{StaticResource BodyHeaderText}" DockPanel.Dock="Top" Margin="10,20,0,0"></TextBlock>
+                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding UseMALDataSource, Mode=TwoWay, UpdateSourceTrigger=Default}" Style="{StaticResource BodyHeaderText}" FontSize="14" DockPanel.Dock="Top">My Anime List</CheckBox>
+                    <CheckBox Margin="10,0,0,0" IsChecked="{Binding UseAniDBDataSource, Mode=TwoWay, UpdateSourceTrigger=Default}" Style="{StaticResource BodyHeaderText}" FontSize="14" DockPanel.Dock="Top">AniDB</CheckBox>
+                    
                     <DockPanel />
                 </DockPanel>
             </Grid>
