@@ -119,7 +119,9 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SearchResultSort">
-            <Grid>
+            <StackPanel>
+                <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="20" Margin="10,10,0,0"><Run Text="Searching for: "></Run><Run Text="{Binding ElementName=SearchBox, Path=Text}"></Run>
+                </TextBlock>
                 <ItemsControl ItemsSource="{Binding SearchResultList}">
                     <ItemsControl.ItemsPanel>
                         <ItemsPanelTemplate>
@@ -158,7 +160,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
-            </Grid>
+            </StackPanel>
         </DataTemplate>
 
         <Style TargetType="{x:Type TabItem}">
@@ -368,7 +370,7 @@
             <Border x:Name="AnimeInfoPanel" CornerRadius="25" BorderThickness="2" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1"
                     BorderBrush="White">
                 <Border.Background>
-                    <SolidColorBrush Color="{DynamicResource AmatsukazeBrown}" Opacity="0.85"></SolidColorBrush>
+                    <SolidColorBrush Color="{DynamicResource AnimeInfoPanelColor}" Opacity="0.85"></SolidColorBrush>
                 </Border.Background>
                 <Border.Style>
                     <Style>
@@ -408,7 +410,7 @@
                             <Image Source="{StaticResource CloseIcon}"></Image>
                         </Button>
                     </StackPanel>
-                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="10,10,10,10" FontSize="32">
+                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="10,-20,10,10" FontSize="32">
                         <TextBlock.Text>
                             <PriorityBinding>
                                 <Binding Path="SelectedAnime.english" Converter="{StaticResource UnsetConverter}" />
@@ -422,136 +424,164 @@
                                 <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}" />
                             </Style>
                         </DockPanel.Resources>
-                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}}" MaxWidth="250" VerticalAlignment="Top"></Image>
-                        <ScrollViewer MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                            <Grid DockPanel.Dock="Top" Margin="10,0,0,0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="Auto"></RowDefinition>
-                                    <RowDefinition Height="*"></RowDefinition>
-                                </Grid.RowDefinitions>
+                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}}" MaxWidth="250" VerticalAlignment="Top" Margin="0,28,0,0"></Image>
+                        <TabControl Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0" Margin="5,0,0,0">
+                            <TabItem Header="Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
+                                <ScrollViewer MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,100" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                                    <Grid DockPanel.Dock="Top" Margin="10,0,0,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="*"></RowDefinition>
+                                        </Grid.RowDefinitions>
 
-                                <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
-                                <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5"></TextBlock>
 
-                                <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
-                                <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3" Padding="0,0,0,5"></TextBlock>
 
-                                <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
-                                <TextBlock Grid.Column="1" Grid.Row="3" Padding="0,0,0,5">
+                                        <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Grid.Column="1" Grid.Row="3" Padding="0,0,0,5">
                                     <Run Text="{Binding SelectedAnime.episodes}"></Run><Run Text="(" /><Run Text="{Binding SelectedAnime.status}"></Run><Run Text=")" />
-                                </TextBlock>
+                                        </TextBlock>
 
-                                <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
-                                <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5" Padding="0,0,0,5"></TextBlock>
 
-                                <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                                <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
 
-                                <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                                <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
 
-                                <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Padding="0,0,0,5"></TextBlock>
+                                        <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Padding="0,0,0,5"></TextBlock>
 
-                                <TabControl Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0">
-                                    <TabControl.Resources>
-                                        <Style TargetType="TabPanel">
-                                            <Setter Property="HorizontalAlignment" Value="Right"/>
-                                        </Style>
-                                    </TabControl.Resources>                                    
-                                    <TabItem Header="Staff" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right">
-                                        <Grid>
-                                            <ItemsControl ItemsSource="{Binding SelectedAnime.Staff}">
-                                                <ItemsControl.ItemsPanel>
-                                                    <ItemsPanelTemplate>
-                                                        <Grid>
-                                                            <Grid.ColumnDefinitions>
-                                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            </Grid.ColumnDefinitions>
-                                                            <Grid.RowDefinitions>
-                                                                <RowDefinition Height="*"></RowDefinition>
-                                                                <RowDefinition Height="*"></RowDefinition>
-                                                                <RowDefinition Height="*"></RowDefinition>
-                                                            </Grid.RowDefinitions>
-                                                        </Grid>
-                                                    </ItemsPanelTemplate>
-                                                </ItemsControl.ItemsPanel>
-                                                <ItemsControl.ItemContainerStyle>
-                                                    <Style>
-                                                        <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
-                                                        <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
-                                                    </Style>
-                                                </ItemsControl.ItemContainerStyle>
-                                                <ItemsControl.ItemTemplate>
-                                                    <DataTemplate>
-                                                        <StackPanel Width="Auto" Height="Auto" Margin="10,10,10,0">
-                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Name}">
-                                                            </TextBlock>
-                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Position}">
-                                                            </TextBlock>
-                                                        </StackPanel>
-                                                    </DataTemplate>
-                                                </ItemsControl.ItemTemplate>
-                                            </ItemsControl>
-                                        </Grid>
-                                    </TabItem>
-                                    <TabItem Header="Characters" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right">
-                                        <ItemsControl ItemsSource="{Binding SelectedAnime.Characters}">
-                                            <ItemsControl.ItemsPanel>
-                                                <ItemsPanelTemplate>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                            <ColumnDefinition Width="*"></ColumnDefinition>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Grid.RowDefinitions>
-                                                            <RowDefinition Height="*"></RowDefinition>
-                                                            <RowDefinition Height="*"></RowDefinition>
-                                                        </Grid.RowDefinitions>
-                                                    </Grid>
-                                                </ItemsPanelTemplate>
-                                            </ItemsControl.ItemsPanel>
-                                            <ItemsControl.ItemContainerStyle>
-                                                <Style>
-                                                    <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
-                                                    <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                                        <TabControl Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0" >
+                                            <TabControl.Resources>
+                                                <Style TargetType="TabPanel">
+                                                    <Setter Property="HorizontalAlignment" Value="Right"/>
                                                 </Style>
-                                            </ItemsControl.ItemContainerStyle>
-                                            <ItemsControl.ItemTemplate>
-                                                <DataTemplate>
-                                                    <DockPanel Width="Auto" Height="Auto" Margin="10,10,10,0">
-                                                        <Image DockPanel.Dock="Left" Source="{Binding PicturePath}" Height="255"></Image>
-                                                        <StackPanel>
-                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding CharacterName}">
-                                                            </TextBlock>
-                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Seiyuu}">
-                                                            </TextBlock>
-                                                        </StackPanel>                                                        
-                                                    </DockPanel>
-                                                </DataTemplate>
-                                            </ItemsControl.ItemTemplate>
-                                        </ItemsControl>
-                                    </TabItem>
-                                </TabControl>
-                            </Grid>
-                        </ScrollViewer>
+                                            </TabControl.Resources>
+                                            <TabItem Header="Staff" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch">
+                                                <Grid HorizontalAlignment="Stretch">
+                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Staff}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450"></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*" MaxHeight="250"></RowDefinition>
+                                                                        <RowDefinition Height="*" MaxHeight="250"></RowDefinition>
+                                                                        <RowDefinition Height="*" MaxHeight="250"></RowDefinition>
+                                                                    </Grid.RowDefinitions>
+                                                                </Grid>
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemContainerStyle>
+                                                            <Style>
+                                                                <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                                                                <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                                                            </Style>
+                                                        </ItemsControl.ItemContainerStyle>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <StackPanel Width="Auto" Height="Auto" Margin="10,10,10,10">
+                                                                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Name}" FontSize="16">
+                                                                    </TextBlock>
+                                                                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Position}">
+                                                                    </TextBlock>
+                                                                </StackPanel>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem Header="Characters" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch">
+                                                <Grid HorizontalAlignment="Stretch">
+                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Characters}">
+                                                        <ItemsControl.ItemsPanel>
+                                                            <ItemsPanelTemplate>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450" MinWidth="200"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450" MinWidth="200"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450" MinWidth="200"></ColumnDefinition>
+                                                                        <ColumnDefinition Width="*" MaxWidth="450" MinWidth="200"></ColumnDefinition>
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid.RowDefinitions>
+                                                                        <RowDefinition Height="*" MaxHeight="250"></RowDefinition>
+                                                                        <RowDefinition Height="*" MaxHeight="250"></RowDefinition>
+                                                                    </Grid.RowDefinitions>
+                                                                </Grid>
+                                                            </ItemsPanelTemplate>
+                                                        </ItemsControl.ItemsPanel>
+                                                        <ItemsControl.ItemContainerStyle>
+                                                            <Style>
+                                                                <Setter Property="Grid.Row" Value="{Binding GridRow}"></Setter>
+                                                                <Setter Property="Grid.Column" Value="{Binding GridColumn}"></Setter>
+                                                            </Style>
+                                                        </ItemsControl.ItemContainerStyle>
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <DockPanel x:Name="CharacterPanel" Width="Auto" Height="Auto" Background="#7F999999" MaxWidth="300" MaxHeight="150" Margin="10,10,10,10">
+                                                                    <Image DockPanel.Dock="Left" Source="{Binding PicturePath, FallbackValue={StaticResource NoImgIcon}, TargetNullValue={StaticResource NoImgIcon}}" MaxHeight="150" MaxWidth="80">
+                                                                    </Image>
+                                                                    <StackPanel Margin="10,10,10,10">
+                                                                        <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BaseColor}">
+                                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding CharacterName}" FontSize="16">
+                                                                            </TextBlock>
+                                                                        </Border>
+                                                                        <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12"><Run>Voiced by:</Run> <Run Text="{Binding Seiyuu}"></Run>
+                                                                        </TextBlock>
+                                                                    </StackPanel>
+                                                                </DockPanel>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </Grid>
+                                            </TabItem>                                           
+                                        </TabControl>
+                                    </Grid>
+                                </ScrollViewer>
+                            </TabItem>
+                            <TabItem Header="Episode Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
+                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent">                                    
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="2">
+                                                <Grid.InputBindings>
+                                                    <MouseBinding Gesture="LeftDoubleClick" Command="{Binding DataContext.PlayAnime, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type UserControl}}}"/>
+                                                </Grid.InputBindings>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition/>
+                                                    <RowDefinition/>
+                                                </Grid.RowDefinitions>
+                                                <Image Source="{StaticResource PlayIcon}" Width="25" Height="25"/>
+                                                <TextBlock Grid.Row="1" Text="{Binding Title}" Foreground="{DynamicResource BodyFontColor}"/>
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>                                   
+                                </ListView>
+                            </TabItem>
+                        </TabControl>                      
                     </DockPanel>
                 </StackPanel>
             </Border>

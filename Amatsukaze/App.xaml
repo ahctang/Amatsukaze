@@ -8,18 +8,18 @@
                 <ResourceDictionary Source="Resources/Amatsukaze.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>        
 
-        <!--Icons-->
-        <BitmapImage x:Key="MenuIcon" UriSource="Resources/menu-48.png"></BitmapImage>
-        <BitmapImage x:Key="HomeIcon" UriSource="Resources/Home-50.png"></BitmapImage>
-        <BitmapImage x:Key="FolderIcon" UriSource="Resources/folder-48.png"></BitmapImage>
-        <BitmapImage x:Key="SocialNetworkIcon" UriSource="Resources/Share-50.png"></BitmapImage>
-        <BitmapImage x:Key="SettingsIcon" UriSource="Resources/settings-48.png"></BitmapImage>
-        <BitmapImage x:Key="PlayIcon" UriSource="Resources/play-48.png"></BitmapImage>
-        <BitmapImage x:Key="SearchIcon" UriSource="Resources/Search-50.png"></BitmapImage>
-        <BitmapImage x:Key="RefreshIcon" UriSource="Resources/Refresh-50.png"></BitmapImage>
-        <BitmapImage x:Key="ActivityIcon" UriSource="Resources/Activity-50.png"></BitmapImage>
-        <BitmapImage x:Key="CloseIcon" UriSource="Resources/Close-50.png"></BitmapImage>
-        <BitmapImage x:Key="NoImgIcon" UriSource="Resources/NoImage.jpg"></BitmapImage>
+            <!--Icons-->
+            <BitmapImage x:Key="MenuIcon" UriSource="Resources/menu-48.png"></BitmapImage>
+            <BitmapImage x:Key="HomeIcon" UriSource="Resources/Home-50.png"></BitmapImage>
+            <BitmapImage x:Key="FolderIcon" UriSource="Resources/folder-48.png"></BitmapImage>
+            <BitmapImage x:Key="SocialNetworkIcon" UriSource="Resources/Share-50.png"></BitmapImage>
+            <BitmapImage x:Key="SettingsIcon" UriSource="Resources/settings-48.png"></BitmapImage>
+            <BitmapImage x:Key="PlayIcon" UriSource="Resources/play-48.png"></BitmapImage>
+            <BitmapImage x:Key="SearchIcon" UriSource="Resources/Search-50.png"></BitmapImage>
+            <BitmapImage x:Key="RefreshIcon" UriSource="Resources/Refresh-50.png"></BitmapImage>
+            <BitmapImage x:Key="ActivityIcon" UriSource="Resources/Activity-50.png"></BitmapImage>
+            <BitmapImage x:Key="CloseIcon" UriSource="Resources/Close-50.png"></BitmapImage>
+            <BitmapImage x:Key="NoImgIcon" UriSource="Resources/NoImage.jpg"></BitmapImage>
         </ResourceDictionary>
 
     </Application.Resources>

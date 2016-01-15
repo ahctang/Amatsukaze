@@ -10,6 +10,8 @@
     <Color x:Key="AmatsukazeWhite">#FFFFFF</Color>
     <Color x:Key="AmatsukazeGrey">#F6EFE9</Color>
     <Color x:Key="AmatsukazeOrange">#FFCFA7</Color>
+    <Color x:Key="AmatsukazeBlack">#23181C</Color>
+    <Color x:Key="AnimeInfoPanelColor">#23181C</Color>
 
     <!-- Panel Colors -->
     <SolidColorBrush x:Key="BaseColor" 
@@ -22,6 +24,9 @@
                          Color="{StaticResource AmatsukazeGrey}" />
     <SolidColorBrush x:Key="MenuBarMouseOverColor" 
                          Color="{StaticResource AmatsukazeWhite}" />
+    <SolidColorBrush x:Key="AnimeInfoPanelColorBrush" 
+                         Color="{StaticResource AmatsukazeBlack}" />
+    
 
 
     <!-- Font Colors -->

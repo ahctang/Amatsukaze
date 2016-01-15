@@ -24,10 +24,16 @@ namespace Amatsukaze.Model
         public ObservableCollection<AnimeEntryObject> AnimeLibraryList = new ObservableCollection<AnimeEntryObject>();
         public List<MALDataSource> MALDataCache;
         public List<AniDBDataSource> AniDBDataCache;
-        OptionsObject optionsobject;        
+        OptionsObject optionsobject;
 
         #endregion
 
+        #region Properties
+
+        //Bool to block off refresh so it can only be executed in one thread at a time
+        public bool IsRefreshInProgess { get; set; }
+
+        #endregion
 
         #region Methods
 
@@ -135,11 +141,11 @@ namespace Amatsukaze.Model
                 try
                 {
                     if (animeentry.Characters.Count == 0) return false;
-                    FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\" + animeentry.title + @"\");
+                    FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + @"\");
                     folder.Directory.Create();
                     foreach (AnimeCharacter character in animeentry.Characters)
                     {
-                        string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.title + @"\" + character.CharacterName + ".jpg";
+                        string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + @"\" + character.CharacterName + ".jpg";
                         client.DownloadFile(optionsobject.AniDBImageURL + character.CharacterPicture, path);
 
                         character.PicturePath = path;
@@ -238,8 +244,10 @@ namespace Amatsukaze.Model
         //Reads the contents of a directory containing XML files with metadata
         public async Task<bool> ReadXMLDirectoryAsync()
         {
+            if (IsRefreshInProgess == true) return false;
             try
             {
+                IsRefreshInProgess = true;
                 string[] files = Directory.GetFiles(optionsobject.CacheFolderpath, "*.xml");
 
                 //Buffer lists to make it easier to only add new objects to AnimeLibraryList
@@ -357,12 +365,21 @@ namespace Amatsukaze.Model
                             if (AniDBQuery != null)
                             {
                                 AnimeEntryObject animeentry = new AnimeEntryObject(MAL, AniDBQuery);
+
                                 bool result = await DownloadAnimeCoverAsync(animeentry, "MAL");
 
-                                bool result2 = await DownloadAnimeCharacterArt(animeentry);
-
                                 //There needs to be some sort of check for duplicates before adding
-                                AnimeLibraryList.Add(animeentry);
+                                AnimeLibraryList.Add(animeentry);                              
+
+                                string message = "Library: Added new anime(MAL & AniDB): ";
+                                if (animeentry.english.Length == 0)
+                                    message += animeentry.title;
+                                else
+                                    message += animeentry.english;
+
+                                this.SendMessagetoGUI(this, new MessageArgs(message));
+
+                               bool result2 = await DownloadAnimeCharacterArt(animeentry);                                
                             }
                             else
                             {
@@ -371,6 +388,14 @@ namespace Amatsukaze.Model
 
                                 //There needs to be some sort of check for duplicates before adding
                                 AnimeLibraryList.Add(animeentry);
+
+                                string message = "Library: Added new anime(MAL): ";
+                                if (animeentry.english.Length == 0)
+                                    message += animeentry.title;
+                                else
+                                    message += animeentry.english;
+
+                                this.SendMessagetoGUI(this, new MessageArgs(message));
                             }                                                   
                         }                                                                    
                     }
@@ -383,6 +408,14 @@ namespace Amatsukaze.Model
 
                             //There needs to be some sort of check for duplicates before adding
                             AnimeLibraryList.Add(animeentry);
+
+                            string message = "Library: Added new anime(MAL): ";
+                            if (animeentry.english.Length == 0)
+                                message += animeentry.title;
+                            else
+                                message += animeentry.english;
+
+                            this.SendMessagetoGUI(this, new MessageArgs(message));
                         }                                                
                     }
                     else if (optionsobject.UseAniDBDataSource == true)
@@ -390,11 +423,20 @@ namespace Amatsukaze.Model
                         foreach (AniDBDataSource AniDB in AniDBDataCache)
                         {
                             AnimeEntryObject animeentry = new AnimeEntryObject(AniDB);
-                            bool result = await DownloadAnimeCoverAsync(animeentry, "AniDB");
-                            bool result2 = await DownloadAnimeCharacterArt(animeentry);
+                            bool result = await DownloadAnimeCoverAsync(animeentry, "AniDB");                            
 
                             //There needs to be some sort of check for duplicates before adding
                             AnimeLibraryList.Add(animeentry);
+
+                            string message = "Library: Added new anime(AniDB): ";
+                            if (animeentry.english.Length == 0)
+                                message += animeentry.title;
+                            else
+                                message += animeentry.english;
+
+                            this.SendMessagetoGUI(this, new MessageArgs(message));
+
+                            bool result2 = await DownloadAnimeCharacterArt(animeentry);
                         }                       
                     }
                     this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse complete."));
@@ -404,6 +446,7 @@ namespace Amatsukaze.Model
                 {
                     this.SendMessagetoGUI(this, new MessageArgs("Library: Search Ended. No new anime found."));
                 }
+                IsRefreshInProgess = false;
                 return true;
             }
 

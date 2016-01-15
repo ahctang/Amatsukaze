@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Amatsukaze.ViewModel
 {
@@ -53,6 +54,7 @@ namespace Amatsukaze.ViewModel
         private ICommand _selectAnime;
         private ICommand _switchSort;
         private ICommand _searchAnime;
+        private ICommand _playAnime;
 
         //Private fields to keep track of the current grid column and row count
         private int gridcolumncount;
@@ -97,7 +99,7 @@ namespace Amatsukaze.ViewModel
                 {
                     _refreshCommand = new RelayCommand(
                         p => Refresh(),
-                        p => true);
+                        p => datasource.IsRefreshInProgess != true);
                 }
                 return _refreshCommand;
             }
@@ -142,6 +144,20 @@ namespace Amatsukaze.ViewModel
                         p => AnimeLibraryList.Count > 0);
                 }
                 return _searchAnime;
+            }
+        }
+
+        public ICommand PlayAnime
+        {
+            get
+            {
+                if (_playAnime == null)
+                {
+                    _playAnime = new RelayCommand(
+                        p => playAnime(),
+                        p => true); 
+                }
+                return _playAnime;
             }
         }
 
@@ -415,10 +431,12 @@ namespace Amatsukaze.ViewModel
             }
 
             //Search anime list for results based on the search term (linq?) and return a cloned collection
-            var search = (from anime in AnimeLibraryList
+            var search = (from anime in AnimeLibraryList                          
 
-                          where anime.english.ToLower().Contains(SearchTerm.ToLower()) || 
-                                anime.title.ToLower().Contains(SearchTerm.ToLower())
+                          where anime.english.ToLower().Contains(SearchTerm.ToLower()) ||
+                                anime.title.ToLower().Contains(SearchTerm.ToLower()) ||
+                                (anime.Characters != null && anime.Characters.Any(x => x.Seiyuu != null && x.Seiyuu.ToLower().Contains(SearchTerm.ToLower())) )||
+                                (anime.Staff != null && anime.Staff.Any(y => y.Name != null && y.Name.ToLower().Contains(SearchTerm.ToLower())))
 
                           orderby anime.title ascending
 
@@ -433,6 +451,25 @@ namespace Amatsukaze.ViewModel
             //Switch view to Search Results
             Switch("Search");
         }
+
+        //Plays the anime at the incoming path. 
+        private bool playAnime()
+        {
+            string MPCpath = @"mpc-hc.exe";
+
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = MPCpath;
+                startInfo.Arguments = @" ""A:\output test\Hibike! Euphonium\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
+                Process.Start(startInfo);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }                       
+        }           
 
         //Turns a date string into a season i.e. (Summer 2014)
         private string SeasonConverter(string startDate)

@@ -152,6 +152,9 @@ namespace Amatsukaze.ViewModel
 
                     reader.ReadToFollowing("creators");
                     reader.ReadToDescendant("name");
+
+                    //Take an arbitrary 12 creators max
+                    int staffcounter = 0;
                     do
                     {
                         AnimeStaff staffmember = new AnimeStaff();
@@ -161,7 +164,8 @@ namespace Amatsukaze.ViewModel
 
                         if (aniDBDataSource.Staff == null) aniDBDataSource.Staff = new List<AnimeStaff>();
                         aniDBDataSource.Staff.Add(staffmember);
-                    } while (reader.ReadToNextSibling("name"));
+                        staffcounter++;
+                    } while (reader.ReadToNextSibling("name") && staffcounter < 12);
 
                     reader.ReadToFollowing("description");
                     aniDBDataSource.Synopsis = reader.ReadElementContentAsString();
@@ -227,13 +231,16 @@ namespace Amatsukaze.ViewModel
                                 episode.Epno = Convert.ToInt16(epbuffer);
                                 episode.Title = reader.ReadElementContentAsString();
                                 if (aniDBDataSource.Episodes == null) aniDBDataSource.Episodes = new List<Episode>();
-                                aniDBDataSource.Episodes.Add(episode);
+                                aniDBDataSource.Episodes.Add(episode);                                
                             }
                         }
 
-                    } while (reader.ReadToNextSibling("episode"));                    
-                }
+                    } while (reader.ReadToNextSibling("episode"));
 
+                    //Put the episodes in the right order
+                    aniDBDataSource.Episodes.Sort((x,y) => x.Epno.CompareTo(y.Epno));
+                }
+                
                 return true;
             }
             catch (Exception ex)

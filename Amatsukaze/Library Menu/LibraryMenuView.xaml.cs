@@ -115,7 +115,7 @@ namespace Amatsukaze.View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {            
             var input = value as double?;
-            input = input * 75 / 100;
+            input = input * 90 / 100;
             return input;
         }
 

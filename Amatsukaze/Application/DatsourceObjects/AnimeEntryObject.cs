@@ -33,13 +33,13 @@ namespace Amatsukaze.ViewModel
         public string image { get; set; }
 
         //Staff
-        public List<AnimeStaff> Staff { get; set;}
+        public List<AnimeStaff> Staff { get; set; }
 
         //Character List    
-        public List<AnimeCharacter> Characters { get; set; }        
+        public List<AnimeCharacter> Characters { get; set; } 
 
         //Episode list
-        public List<Episode> Episodes { get; set; }
+        public List<Episode> Episodes { get; set; } 
 
         //Properties for Amatsukaze GUI
         public string ImagePath { get; set; }
@@ -144,6 +144,7 @@ namespace Amatsukaze.ViewModel
                 targetproperty.SetValue(this, property.GetValue(MALdatasource, null), null);
             }
 
+            this.synopsis = AniDBdatasource.Synopsis;
             this.Staff = AniDBdatasource.Staff;
             this.Characters = AniDBdatasource.Characters;
             this.Episodes = AniDBdatasource.Episodes;

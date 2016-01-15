@@ -161,6 +161,7 @@ namespace Amatsukaze.ViewModel
 
         public int GridColumn { get; set; }
         public int GridRow { get; set; }
+        public string FilePath { get; set; }
     }
 }
 

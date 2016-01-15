@@ -217,14 +217,14 @@
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.5"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.25"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.5"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.25"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>
