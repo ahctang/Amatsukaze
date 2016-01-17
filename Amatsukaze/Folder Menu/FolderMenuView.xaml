@@ -9,28 +9,42 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid Background="Pink">
-        <StackPanel>
-            <TextBlock Text="test"></TextBlock>
-            <Grid Margin="10">
-                <ItemsControl Name="icTodoList" ItemsSource="{Binding Folders}">
-                    <ItemsControl.ItemTemplate>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Visible">
+            <StackPanel Background="Blue" Width="Auto" HorizontalAlignment="Stretch">
+                <TextBlock Text="My Folders"/>
+                <ListBox ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" Height="Auto" VerticalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="0,0,0,5">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="100" />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel>
+                                <StackPanel Margin="5" Background="LightCyan">
                                     <TextBlock Text="{Binding name}"/>
-                                    <TextBlock FontStyle="Italic" Text="{Binding path}"/>
+                                    <TextBlock Text="{Binding path}" Width="Auto" FontStyle="Italic" TextWrapping="Wrap" />
                                 </StackPanel>
-                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />
                             </Grid>
                         </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-            <Button Content="test" Height="20" Width="100" Command="{Binding DisplaySelectFolderDialog}"/>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="0" Background="Black" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
+            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="delete" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
+            <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="30" Margin="10"/>
         </StackPanel>
+
+        <StackPanel Grid.Column="1">
+
+        </StackPanel>
+
+
     </Grid>
 </UserControl>
