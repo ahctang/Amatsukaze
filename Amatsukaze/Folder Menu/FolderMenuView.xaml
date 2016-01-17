@@ -16,12 +16,12 @@
 
         <Grid Width="Auto" HorizontalAlignment="Stretch">
             <Grid.RowDefinitions>
-                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <TextBlock Text="My Folders" Grid.Row="0"/>
-            <ListBox ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" Grid.Row="1" VerticalAlignment="Stretch">
+            <TextBlock Text="My Folders" Grid.Row="0" Margin="5"/>
+            <ListBox Name="folderListBox" ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" VerticalAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,0,0,5">
@@ -29,7 +29,7 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="100" />
                             </Grid.ColumnDefinitions>
-                            <StackPanel Margin="5" Background="LightCyan">
+                            <StackPanel Margin="5">
                                 <TextBlock Text="{Binding name}"/>
                                 <TextBlock Text="{Binding path}" Width="Auto" FontStyle="Italic" TextWrapping="Wrap" />
                             </StackPanel>
@@ -44,9 +44,27 @@
             <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="30" Margin="10"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1">
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-        </StackPanel>
+
+            <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" />
+
+            <TextBlock Text="Thinking on how to get selected folder contents" Grid.Row="1" />
+
+            <ItemsControl ItemsSource="{Binding Path=SelectedFolder}" Grid.Row="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <TextBlock Text="Blop"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
 
 
     </Grid>

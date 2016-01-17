@@ -27,10 +27,20 @@ namespace Amatsukaze.View
     /// </summary>
     public partial class FolderMenuView : System.Windows.Controls.UserControl
     {
+
+
         public FolderMenuView()
         {
             InitializeComponent();
         }
 
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FolderEntity selectedFolder = (FolderEntity) folderListBox.SelectedItem;
+            if (selectedFolder != null)
+            {
+                selectedFolderNameTextBlock.Text = selectedFolder.name;
+            }
+        }
     }
 }
