@@ -11,30 +11,33 @@
     <Grid Background="Pink">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
-        <ScrollViewer VerticalScrollBarVisibility="Visible">
-            <StackPanel Background="Blue" Width="Auto" HorizontalAlignment="Stretch">
-                <TextBlock Text="My Folders"/>
-                <ListBox ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" Height="Auto" VerticalAlignment="Stretch">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,0,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="100" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Margin="5" Background="LightCyan">
-                                    <TextBlock Text="{Binding name}"/>
-                                    <TextBlock Text="{Binding path}" Width="Auto" FontStyle="Italic" TextWrapping="Wrap" />
-                                </StackPanel>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </StackPanel>
-        </ScrollViewer>
+        <Grid Width="Auto" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="My Folders" Grid.Row="0"/>
+            <ListBox ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" Grid.Row="1" VerticalAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5" Background="LightCyan">
+                                <TextBlock Text="{Binding name}"/>
+                                <TextBlock Text="{Binding path}" Width="Auto" FontStyle="Italic" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
 
         <StackPanel Grid.Column="0" Background="Black" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
             <Button Command="{Binding DeleteSelectedFolderDialog}" Content="delete" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
