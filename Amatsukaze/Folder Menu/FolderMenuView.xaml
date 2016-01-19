@@ -53,13 +53,12 @@
 
             <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" />
 
-            <TextBlock Text="Thinking on how to get selected folder contents" Grid.Row="1" />
-
-            <ItemsControl ItemsSource="{Binding Path=SelectedFolder}" Grid.Row="1">
+            <ItemsControl Name="SelectedFolderContentsControl" Grid.Row="1">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="5">
-                            <TextBlock Text="Blop"/>
+                        <StackPanel Margin="5" Orientation="Horizontal">
+                            <TextBlock Text="{Binding type}" Margin="10"/>
+                            <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
