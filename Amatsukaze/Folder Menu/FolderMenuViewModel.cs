@@ -55,8 +55,8 @@ namespace Amatsukaze.ViewModel
 
         private void openDeleteDialog()
         {
-            var confirmResult = System.Windows.Forms.MessageBox.Show("Are you sure you want to delete the [" + selectedFolder.name + "] folder?",
-                                     "Confirm Delete!",
+            var confirmResult = System.Windows.Forms.MessageBox.Show("Are you sure you want to remove the [" + selectedFolder.name + "] folder?\nThis will not delete the folder from your hard drive.",
+                                     "Delete",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {

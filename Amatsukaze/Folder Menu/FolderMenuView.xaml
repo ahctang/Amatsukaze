@@ -39,8 +39,8 @@
             </ListBox>
         </Grid>
 
-        <StackPanel Grid.Column="0" Background="Black" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
-            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="delete" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
+        <StackPanel Grid.Column="0" Background="Yellow" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
+            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="remove" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
             <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="30" Margin="10"/>
         </StackPanel>
 
@@ -50,19 +50,33 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <StackPanel Margin="5" Width="Auto">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" Width="Auto"/>
+                    <Button Command="{Binding None}" Content="Organize" Grid.Column="1"/>
+                </Grid>
+            </StackPanel>
 
-            <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" />
-
-            <ItemsControl Name="SelectedFolderContentsControl" Grid.Row="1">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="5" Orientation="Horizontal">
-                            <TextBlock Text="{Binding type}" Margin="10"/>
-                            <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <ScrollViewer Grid.Row="1">
+                <ItemsControl Name="SelectedFolderContentsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="5" Orientation="Horizontal">
+                                <TextBlock Text="{Binding type}" Margin="10"/>
+                                <StackPanel VerticalAlignment="Center">
+                                    <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding contents}" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
         </Grid>
 
 

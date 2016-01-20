@@ -27,7 +27,7 @@ namespace Amatsukaze.View
     /// </summary>
     public partial class FolderMenuView : System.Windows.Controls.UserControl
     {
-
+        //TODO : Be clean and remove code from code-behind
 
         public FolderMenuView()
         {
@@ -48,6 +48,8 @@ namespace Amatsukaze.View
                     FolderItem item = new FolderItem();
                     item.name = directoryInfo.Name;
                     item.type = "D";
+                    item.contents = "contains " + directoryInfo.EnumerateFiles().Count() + " files and " 
+                        + directoryInfo.EnumerateDirectories().Count() + " sub-directories";
                     results.Add(item);
                 }
 
@@ -67,5 +69,6 @@ namespace Amatsukaze.View
     {
         public string name { get; set; }
         public string type { get; set; }
+        public string contents { get; set; }
     }
 }
