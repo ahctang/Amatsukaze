@@ -20,6 +20,7 @@
             <BitmapImage x:Key="ActivityIcon" UriSource="Resources/Activity-50.png"></BitmapImage>
             <BitmapImage x:Key="CloseIcon" UriSource="Resources/Close-50.png"></BitmapImage>
             <BitmapImage x:Key="NoImgIcon" UriSource="Resources/NoImage.jpg"></BitmapImage>
+            <BitmapImage x:Key="EditIcon" UriSource="Resources/edit-48.png"></BitmapImage>
         </ResourceDictionary>
 
     </Application.Resources>

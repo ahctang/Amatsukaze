@@ -183,7 +183,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>
+        </Style>       
 
     </UserControl.Resources>
 
@@ -194,6 +194,24 @@
                 <Setter Property="TextBlock.FontSize" Value="20"></Setter>
                 <Setter Property="TextBlock.Margin" Value="10,0,0,0"></Setter>
                 <Setter Property="TextBlock.VerticalAlignment" Value="Center"></Setter>
+            </Style>
+
+            <Style x:Key="AnimeInfoTextBox" TargetType="TextBox">
+                <Setter Property="FontFamily" Value="Segoe"></Setter>
+                <Setter Property="FontSize" Value="12"></Setter>
+                <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}"></Setter>
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+                <Setter Property="IsReadOnly" Value="True"></Setter>
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding DataContext.IsEditMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UserControl}}" Value="True">
+                        <Setter Property="IsReadOnly" Value="True"></Setter>
+                        <Setter Property="Background" Value="White"></Setter>
+                        <Setter Property="Foreground" Value="Black"></Setter>
+                        <Setter Property="BorderThickness" Value="1"></Setter>
+                        <Setter Property="IsReadOnly" Value="False"></Setter>
+                     </DataTrigger>
+                </Style.Triggers>
             </Style>
         </DockPanel.Resources>
 
@@ -403,21 +421,29 @@
                 </Border.Style>
                 <StackPanel>
                     <StackPanel.Resources>
-                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
+                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>                       
                     </StackPanel.Resources>
                     <StackPanel HorizontalAlignment="Right">
-                        <Button Height="35" Width="35" Background="Transparent" Click="Button_Click" BorderBrush="Transparent" Margin="0,10,10,0">
-                            <Image Source="{StaticResource CloseIcon}"></Image>
-                        </Button>
+                        <DockPanel HorizontalAlignment="Right">
+                            <Button Height="35" Width="35" Background="Transparent" Click="Button_Click" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right">
+                                <Image Source="{StaticResource CloseIcon}"></Image>
+                            </Button>
+                            <Button Height="35" Width="35" Background="Transparent" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right" Command="{Binding EditModeSwitch}">
+                                <Image Source="{StaticResource EditIcon}"></Image>
+                            </Button>
+                            <Button Height="35" Width="35" Background="Transparent" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right" Command="{Binding EditModeSwitch}">
+                                <Image Source="{StaticResource RefreshIcon}"></Image>
+                            </Button>
+                        </DockPanel>
                     </StackPanel>
-                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="10,-20,10,10" FontSize="32">
-                        <TextBlock.Text>
+                    <TextBox FontFamily="SegoeUI" TextWrapping="Wrap" HorizontalAlignment="Left" DockPanel.Dock="Top" Margin="10,-20,10,10" FontSize="32" Style="{StaticResource AnimeInfoTextBox}">
+                        <TextBox.Text>
                             <PriorityBinding>
-                                <Binding Path="SelectedAnime.english" Converter="{StaticResource UnsetConverter}" />
-                                <Binding Path="SelectedAnime.title" Converter="{StaticResource UnsetConverter}" />
+                                <Binding Path="SelectedAnime.english" Converter="{StaticResource UnsetConverter}" Mode="TwoWay"/>
+                                <Binding Path="SelectedAnime.title" Converter="{StaticResource UnsetConverter}" Mode="TwoWay"/>
                             </PriorityBinding>
-                        </TextBlock.Text>
-                    </TextBlock>
+                        </TextBox.Text>
+                    </TextBox>
                     <DockPanel MaxWidth="{Binding ElementName=AnimeInfoPanel, Path=ActualWidth}" Margin="10,10,10,10">
                         <DockPanel.Resources>
                             <Style TargetType="{x:Type TextBlock}">
@@ -446,12 +472,12 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-
+                                        
                                         <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
-                                        <TextBlock Text="{Binding SelectedAnime.synonyms}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.synonyms, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
                                         <TextBlock Text="Type:" Grid.Column="0" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding SelectedAnime.type}" Grid.Column="0" Grid.Row="3" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.type, Mode=TwoWay}" Grid.Column="0" Grid.Row="3" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
                                         <TextBlock Text="Number of Episodes:" Grid.Column="1" Grid.Row="2" FontSize="14" FontWeight="Bold"></TextBlock>
                                         <TextBlock Grid.Column="1" Grid.Row="3" Padding="0,0,0,5">
@@ -459,15 +485,15 @@
                                         </TextBlock>
 
                                         <TextBlock Text="MyAnimeList Score:" Grid.Column="0" Grid.Row="4" FontSize="14" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding SelectedAnime.score}" Grid.Column="0" Grid.Row="5" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.score, Mode=TwoWay}" Grid.Column="0" Grid.Row="5" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
                                         <TextBlock Text="Start Date:" Grid.Column="0" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding SelectedAnime.start_date}" Grid.Column="0" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.start_date, Mode=TwoWay}" Grid.Column="0" Grid.Row="7" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
                                         <TextBlock Text="End Date:" Grid.Column="1" Grid.Row="6" FontSize="14" FontWeight="Bold"></TextBlock>
-                                        <TextBlock Text="{Binding SelectedAnime.end_date}" Grid.Column="1" Grid.Row="7" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.end_date, Mode=TwoWay}" Grid.Column="1" Grid.Row="7" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
-                                        <TextBlock Text="{Binding SelectedAnime.synopsis}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Padding="0,0,0,5"></TextBlock>
+                                        <TextBox Text="{Binding SelectedAnime.synopsis, Mode=TwoWay}" TextWrapping="Wrap" Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
                                         <TabControl Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0" >
                                             <TabControl.Resources>
@@ -504,10 +530,10 @@
                                                         <ItemsControl.ItemTemplate>
                                                             <DataTemplate>
                                                                 <StackPanel Width="Auto" Height="Auto" Margin="10,10,10,10">
-                                                                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Name}" FontSize="16">
-                                                                    </TextBlock>
-                                                                    <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Position}">
-                                                                    </TextBlock>
+                                                                    <TextBox FontFamily="SegoeUI" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Name, Mode=TwoWay}" FontSize="16" Style="{StaticResource AnimeInfoTextBox}">
+                                                                    </TextBox>
+                                                                    <TextBox FontFamily="SegoeUI" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding Position, Mode=TwoWay}" Style="{StaticResource AnimeInfoTextBox}">
+                                                                    </TextBox>
                                                                 </StackPanel>
                                                             </DataTemplate>
                                                         </ItemsControl.ItemTemplate>
@@ -546,11 +572,12 @@
                                                                     </Image>
                                                                     <StackPanel Margin="10,10,10,10">
                                                                         <Border BorderThickness="0,0,0,1" BorderBrush="{StaticResource BaseColor}">
-                                                                            <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding CharacterName}" FontSize="16">
-                                                                            </TextBlock>
+                                                                            <TextBox FontFamily="SegoeUI" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding CharacterName, Mode=TwoWay}" FontSize="16" Style="{StaticResource AnimeInfoTextBox}">
+                                                                            </TextBox>
                                                                         </Border>
-                                                                        <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12"><Run>Voiced by:</Run> <Run Text="{Binding Seiyuu}"></Run>
+                                                                        <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="12"><Run>Voiced by:</Run>
                                                                         </TextBlock>
+                                                                        <TextBox Text="{Binding Seiyuu, Mode=TwoWay}" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
                                                                     </StackPanel>
                                                                 </DockPanel>
                                                             </DataTemplate>
@@ -587,7 +614,7 @@
             </Border>
 
             <!-- Message Log Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
+            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Margin="1,-740,99,740">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>

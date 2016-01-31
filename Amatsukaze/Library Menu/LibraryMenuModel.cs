@@ -10,6 +10,7 @@ using System.Net;
 using System.Collections.ObjectModel;
 using Amatsukaze.HelperClasses;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace Amatsukaze.Model
 {
@@ -24,6 +25,7 @@ namespace Amatsukaze.Model
         public ObservableCollection<AnimeEntryObject> AnimeLibraryList = new ObservableCollection<AnimeEntryObject>();
         public List<MALDataSource> MALDataCache;
         public List<AniDBDataSource> AniDBDataCache;
+        //public BlockingCollection<> AniDBQueryList = new BlockingCollection<>();
         OptionsObject optionsobject;
 
         #endregion
@@ -462,6 +464,8 @@ namespace Amatsukaze.Model
         #region Events/EventHandlers
 
         public event EventHandler SendMessagetoGUI = delegate { };
+        public event EventHandler AnimeCoverResourceReady;
+        public event EventHandler AnimeCharacterResourceReady;
 
         #endregion
     }
