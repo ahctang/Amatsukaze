@@ -56,7 +56,7 @@ namespace Amatsukaze.ViewModel
                 if (imagePath != value)
                 {
                     imagePath = value;
-                    OnPropertyChanged("ImagePat");
+                    OnPropertyChanged("ImagePath");
                 }
             }
         }
