@@ -8,6 +8,8 @@ using System.Windows;
 using System.Windows.Input;
 using Amatsukaze.Model;
 using System.Timers;
+using System.Collections.Concurrent;
+using System.Threading;
 
 namespace Amatsukaze.ViewModel
 {
@@ -25,6 +27,8 @@ namespace Amatsukaze.ViewModel
             //Subscrible to all events in the eventaggregator
             eventAggregator.SubscribeEvent(this);
 
+            //Start listening for incoming MessagetoGUI events
+            Task.Run(() => ProcessMessageQueue());
 
             //Read the Options into the application memory before doing anything
             OptionsModel optionsmodel = new OptionsModel();
@@ -45,7 +49,7 @@ namespace Amatsukaze.ViewModel
         #region Fields
         private string statustext;
         private bool messageTextToggle;
-        private Timer t = new Timer(3000);
+        private System.Timers.Timer t = new System.Timers.Timer(3000);
 
         private ICommand _changeViewCommand;
 
@@ -61,6 +65,7 @@ namespace Amatsukaze.ViewModel
 
         //Event aggregator for collecting messages from all viewmodels and forwarding them to the GUI.
         public IEventAggregator eventAggregator { get; set; }
+        private BlockingCollection<MessagetoGUI> MessageQueue = new BlockingCollection<MessagetoGUI>();
         #endregion
 
         #region Properties/Commmands
@@ -159,23 +164,45 @@ namespace Amatsukaze.ViewModel
 
         public void OnEventHandler(MessagetoGUI sender)
         {
-            Console.WriteLine("Amatsukaze Event Fired!");
+            Console.WriteLine("GUI Message Event Queued!");
+
+            if (sender != null)
+            {
+                MessageQueue.Add(sender);
+            }            
+        }
+
+        private async void ProcessMessageQueue()
+        {            
+            foreach (var item in MessageQueue.GetConsumingEnumerable())
+            {
+                Console.WriteLine("GUI Message Event Processed!");
+                var Message = (item as MessagetoGUI).Message;
+                bool result = await ShowGUIMessageAsync(Message);
+            }
+        }
+
+        private async Task<bool> ShowGUIMessageAsync(string message)
+        {            
             //Reset the message timer
             t.Stop();
             t.Start();
-
-            string message = sender.Message;
+                        
             StatusText = message;
 
             //Show the message panel
             MessageTextToggle = true;
 
+            await Task.Delay(500);
+
             //Go to event handler that closes the message panel
             t.Elapsed += new ElapsedEventHandler(t_Elapsed);
             t.Start();
+
+            return true;
         }
 
-        void t_Elapsed(object sender, ElapsedEventArgs e)
+        private void t_Elapsed(object sender, ElapsedEventArgs e)
         {
             t.Stop();
             MessageTextToggle = false;

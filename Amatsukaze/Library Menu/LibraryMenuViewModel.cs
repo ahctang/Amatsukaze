@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Amatsukaze.ViewModel
 {
@@ -27,28 +28,33 @@ namespace Amatsukaze.ViewModel
             this.optionsobject = optionsobject;
             datasource = new LibraryMenuModel(optionsobject);
 
-            //Subscribe to events
+            //Subscribe to message events first thing (so messages can be picked up immediately);
             datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
-            this.animeLibraryList.CollectionChanged += OnAnimeLibraryListCollectionChanged;
-            this.SeasonSortList.CollectionChanged += OnSeasonSortListCollectionChanged;            
 
             //Read the cache file
             datasource.ReadCacheFile();
 
+            //Subscribe to collection changed events. Subscribing to collection changed events has to happen after the cache file is read because ReadCacheFile (deserialize JSON) 
+            //will replace the instance of the collection and make the events stop working
+            datasource.AnimeLibraryList.CollectionChanged += OnAnimeLibraryListCollectionChanged;
+            this.SeasonSortList.CollectionChanged += OnSeasonSortListCollectionChanged;            
+
             //Initialize animeLibraryList (for view all)
-            this.animeLibraryList = datasource.AnimeLibraryList;
+            this.AnimeLibraryList = datasource.AnimeLibraryList;            
 
             //Season sort           
-            this.InitializeSeasonLists();            
+            this.RefreshSeasonLists();
         }
 
 
         #region Fields
-        
+
         //Commands
         private ICommand _refreshCommand;
         private ICommand _selectAnime;
         private ICommand _switchSort;
+        private ICommand _searchAnime;
+        private ICommand _playAnime;
 
         //Private fields to keep track of the current grid column and row count
         private int gridcolumncount;
@@ -59,6 +65,9 @@ namespace Amatsukaze.ViewModel
 
         //Private field for the current sort view
         private string currentView = "All";
+
+        //Private field for the search term on the top rigiht
+        private string searchTerm = "Search";
 
         //GUI Toggles
         private bool messageLogToggle;
@@ -74,8 +83,9 @@ namespace Amatsukaze.ViewModel
         private ObservableCollection<string> libraryMessageLog = new ObservableCollection<string>();
         private ObservableCollection<AnimeEntryObject> animeLibraryList = new ObservableCollection<AnimeEntryObject>();
         private ObservableCollection<SortedDisplayInfoHolder> seasonSortList = new ObservableCollection<SortedDisplayInfoHolder>();
+        private ObservableCollection<AnimeEntryObject> searchResultList = new ObservableCollection<AnimeEntryObject>();
 
-        public IEventAggregator EventAggregator { get; set; }        
+        public IEventAggregator EventAggregator { get; set; }
 
         #endregion
 
@@ -89,7 +99,7 @@ namespace Amatsukaze.ViewModel
                 {
                     _refreshCommand = new RelayCommand(
                         p => Refresh(),
-                        p => true);
+                        p => datasource.IsRefreshInProgess != true);
                 }
                 return _refreshCommand;
             }
@@ -123,11 +133,63 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public ICommand SearchAnime
+        {
+            get
+            {
+                if (_searchAnime == null)
+                {
+                    _searchAnime = new RelayCommand(
+                        p => SearchAnimeLibraryList((string)p),
+                        p => AnimeLibraryList.Count > 0);
+                }
+                return _searchAnime;
+            }
+        }
+
+        public ICommand PlayAnime
+        {
+            get
+            {
+                if (_playAnime == null)
+                {
+                    _playAnime = new RelayCommand(
+                        p => playAnime(),
+                        p => true); 
+                }
+                return _playAnime;
+            }
+        }
+
         public ObservableCollection<AnimeEntryObject> AnimeLibraryList
         {
             get
             {
                 return animeLibraryList;
+            }
+            set
+            {
+                if (animeLibraryList != value)
+                {
+                    animeLibraryList = value;
+                    OnPropertyChanged("AnimeLibraryList");
+                }
+            }
+        }
+
+        public ObservableCollection<AnimeEntryObject> SearchResultList
+        {
+            get
+            {
+                return searchResultList;
+            }
+            set
+            {
+                if (searchResultList != value)
+                {
+                    searchResultList = value;
+                    OnPropertyChanged("SearchResultList");
+                }
             }
         }
 
@@ -137,8 +199,16 @@ namespace Amatsukaze.ViewModel
             {
                 return seasonSortList;
             }
+            set
+            {
+                if (seasonSortList != value)
+                {
+                    seasonSortList = value;
+                    OnPropertyChanged("SeasonSortList");
+                }
+            }
         }
-        
+
         public ObservableCollection<string> LibraryMessageLog
         {
             get
@@ -236,7 +306,7 @@ namespace Amatsukaze.ViewModel
                 }
             }
         }
-    
+
 
         public AnimeEntryObject SelectedAnime
         {
@@ -250,6 +320,22 @@ namespace Amatsukaze.ViewModel
                 {
                     selectedAnime = value;
                     OnPropertyChanged("SelectedAnime");
+                }
+            }
+        }
+
+        public string SearchTerm
+        {
+            get
+            {
+                return searchTerm;
+            }
+            set
+            {
+                if (searchTerm != value)
+                {
+                    searchTerm = value;
+                    OnPropertyChanged("SearchTerm");
                 }
             }
         }
@@ -299,13 +385,14 @@ namespace Amatsukaze.ViewModel
             return;
         }
 
-        private void InitializeSeasonLists()
+        //Fills the Season lists for the season view        
+        private void RefreshSeasonLists()
         {
             List<SortedDisplayInfoHolder> temporarylist = new List<SortedDisplayInfoHolder>();
             //Go through all of the anime to dig out which dates are present and add them to their respective collections
             foreach (AnimeEntryObject anime in this.AnimeLibraryList)
             {
-                
+
                 int SeasonSortCollectionIndex = temporarylist.FindIndex(season => season.SortCriteria == SeasonConverter(anime.start_date));
 
                 //If the index is found it won't be -1
@@ -317,22 +404,74 @@ namespace Amatsukaze.ViewModel
                 {
                     //Make a new one if the season isn't found
                     SortedDisplayInfoHolder buffer = new SortedDisplayInfoHolder();
-                    buffer.SortCriteria = SeasonConverter(anime.start_date);                    
+                    buffer.SortCriteria = SeasonConverter(anime.start_date);
                     buffer.AnimeEntries.Add(anime.Clone());
 
                     temporarylist.Add(buffer);
                 }
             }
 
-            //Sort the List
-           temporarylist.Sort(CompareAnimeSeasons);
+            //Sort the list into seasons
+            temporarylist.Sort(CompareAnimeSeasons);
 
-            //Turn the list into the observable collection for binding
-            seasonSortList = new ObservableCollection<SortedDisplayInfoHolder>(temporarylist);
+            //Turn the list into the observable collection for binding            
+            SeasonSortList.Clear();
+            temporarylist.ForEach(x => SeasonSortList.Add(x));
 
             return;
         }
 
+        //Searches the AnimeLibraryList and fills the searchResults list with results
+        private void SearchAnimeLibraryList(string SearchTerm)
+        {
+            if (SearchTerm == null)
+            {
+                Switch("Search");
+                return;
+            }
+
+            //Search anime list for results based on the search term (linq?) and return a cloned collection
+            var search = (from anime in AnimeLibraryList                          
+
+                          where anime.english.ToLower().Contains(SearchTerm.ToLower()) ||
+                                anime.title.ToLower().Contains(SearchTerm.ToLower()) ||
+                                (anime.Characters != null && anime.Characters.Any(x => x.Seiyuu != null && x.Seiyuu.ToLower().Contains(SearchTerm.ToLower())) )||
+                                (anime.Staff != null && anime.Staff.Any(y => y.Name != null && y.Name.ToLower().Contains(SearchTerm.ToLower())))
+
+                          orderby anime.title ascending
+
+                          select anime.Clone());
+
+            //Populate search results list
+            SearchResultList = new ObservableCollection<AnimeEntryObject>(search.ToList());
+
+            //Update the grid indexes for the cloned collection
+            UpdateGridIndexes(this.GridColumnCount, SearchResultList);
+
+            //Switch view to Search Results
+            Switch("Search");
+        }
+
+        //Plays the anime at the incoming path. 
+        private bool playAnime()
+        {
+            string MPCpath = @"mpc-hc.exe";
+
+            try
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = MPCpath;
+                startInfo.Arguments = @" ""A:\output test\Hibike! Euphonium\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
+                Process.Start(startInfo);
+                return true;
+            }
+            catch 
+            {
+                return false;
+            }                       
+        }           
+
+        //Turns a date string into a season i.e. (Summer 2014)
         private string SeasonConverter(string startDate)
         {
             string ret;
@@ -366,7 +505,7 @@ namespace Amatsukaze.ViewModel
 
         //Delegate for comparing shit.
         private static int CompareAnimeSeasons(SortedDisplayInfoHolder x, SortedDisplayInfoHolder y)
-        {            
+        {
             int xYear = Convert.ToInt16(x.SortCriteria.Substring(x.SortCriteria.IndexOf(" ") + 1));
             int yYear = Convert.ToInt16(y.SortCriteria.Substring(y.SortCriteria.IndexOf(" ") + 1));
             string xMonth = x.SortCriteria.Substring(0, x.SortCriteria.IndexOf(" "));
@@ -427,7 +566,7 @@ namespace Amatsukaze.ViewModel
                         return 0;
                 }
             }
-            return 0;                                
+            return 0;
         }
 
         #endregion
@@ -468,6 +607,26 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        //Function to be called for search view resizing
+        public void SearchResultListAreaResized(int columncount)
+        {
+            if (columncount != 0)
+            {
+                UpdateGridIndexes(columncount, this.SearchResultList);
+                GridColumnCount = columncount;
+                if (AnimeLibraryList.Count % columncount == 0)
+                {
+                    GridRowCount = AnimeLibraryList.Count / columncount;
+                }
+
+                else
+                {
+                    GridRowCount = (AnimeLibraryList.Count / columncount) + 1;
+                }
+            }
+        }
+
+        //Function to be called for SeasonSortResizing
         public void SeasonSortListAreaResized(int columncount)
         {
             if (columncount != 0)
@@ -485,22 +644,23 @@ namespace Amatsukaze.ViewModel
                     {
                         SeasonSortList[i].GridRowCount = (SeasonSortList[i].AnimeEntries.Count / columncount) + 1;
                     }
-                }                
+                }
             }
         }
 
         private void OnAnimeLibraryListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             LibraryViewAreaResized(this.GridColumnCount);
+
+            //When the AnimeLibraryList is changed, all of the season lists need to be updated again
+            RefreshSeasonLists();
         }
 
         private void OnSeasonSortListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             SeasonSortListAreaResized(this.GridColumnCount);
-        }
+        }       
 
         #endregion
-
-
     }
 }

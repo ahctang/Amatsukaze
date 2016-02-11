@@ -12,7 +12,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace Amatsukaze.ViewModel
-{                      
+{
     public class AnimeEntryObject : ObservableObjectClass
     {
         //Object to hold the properties for one anime (based on the return from myanimelist
@@ -24,7 +24,7 @@ namespace Amatsukaze.ViewModel
         public string english { get; set; }
         public string synonyms { get; set; }
         public int episodes { get; set; }
-        public double score { get;set; }
+        public double score { get; set; }
         public string type { get; set; }
         public string status { get; set; }
         public string start_date { get; set; }
@@ -32,9 +32,19 @@ namespace Amatsukaze.ViewModel
         public string synopsis { get; set; }
         public string image { get; set; }
 
+        //Staff
+        public List<AnimeStaff> Staff { get; set; }
+
+        //Character List    
+        public List<AnimeCharacter> Characters { get; set; } 
+
+        //Episode list
+        public List<Episode> Episodes { get; set; } 
+
         //Properties for Amatsukaze GUI
         public string ImagePath { get; set; }
 
+        //For the image grid layout
         private int gridcolumn;
         public int GridColumn
         {
@@ -67,9 +77,14 @@ namespace Amatsukaze.ViewModel
                     OnPropertyChanged("GridRow");
                 }
             }
-        }
+        }        
+
 
         //Constructors
+
+        public AnimeEntryObject()
+        {
+        }
 
         public AnimeEntryObject(MALDataSource datasource)
         {
@@ -87,12 +102,99 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public AnimeEntryObject(AniDBDataSource datasource)
+        {
+            if (datasource == null)
+            {
+                return;
+            }
+
+            //Can't use reflection because the names are all different, so have to use a lamo copy constructor
+
+            this.id = datasource.Id;
+            this.type = datasource.Type;
+            this.start_date = datasource.StartDate;
+            this.end_date = datasource.EndDate;
+            this.title = datasource.Title;
+            this.score = datasource.StandardRating;
+            this.english = datasource.EnglishTitle;
+            this.synonyms = datasource.Synonyms;
+            this.image = datasource.Picture;
+
+            this.Staff = datasource.Staff;
+            this.Characters = datasource.Characters;
+            this.Episodes = datasource.Episodes;
+
+            AssignGridRowColumn(this.Staff);
+            AssignGridRowColumn(this.Characters);
+        }
+
+        public AnimeEntryObject(MALDataSource MALdatasource, AniDBDataSource AniDBdatasource)
+        {
+            if (MALdatasource == null || AniDBdatasource == null)
+            {
+                return;
+            }
+
+            PropertyInfo[] properties = MALdatasource.GetType().GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+                PropertyInfo targetproperty = this.GetType().GetProperty(property.Name);
+                targetproperty.SetValue(this, property.GetValue(MALdatasource, null), null);
+            }
+
+            this.synopsis = AniDBdatasource.Synopsis;
+            this.Staff = AniDBdatasource.Staff;
+            this.Characters = AniDBdatasource.Characters;
+            this.Episodes = AniDBdatasource.Episodes;
+
+            AssignGridRowColumn(this.Staff);
+            AssignGridRowColumn(this.Characters);
+        }
+
         //Methods
 
         public AnimeEntryObject Clone()
         {
             return (AnimeEntryObject)this.MemberwiseClone();
         }
+
+        private void AssignGridRowColumn(List<AnimeCharacter> CharacterList)
+        {
+            int columncounter = 0, rowcounter = 0;
+            foreach (AnimeCharacter Character in CharacterList)
+            {
+                Character.GridColumn = columncounter;
+                Character.GridRow = rowcounter;
+
+                columncounter++;
+
+                if (columncounter > (4 - 1))
+                {
+                    rowcounter++;
+                    columncounter = 0;
+                }
+            }
+        }
+
+        private void AssignGridRowColumn(List<AnimeStaff> StaffList)
+        {
+            int columncounter = 0, rowcounter = 0;
+            foreach (AnimeStaff Staff in StaffList)
+            {
+                Staff.GridColumn = columncounter;
+                Staff.GridRow = rowcounter;
+
+                columncounter++;
+
+                if (columncounter > (4 - 1))
+                {
+                    rowcounter++;
+                    columncounter = 0;
+                }
+            }
+        }        
 
         [Conditional("DEBUG")]
         public void ContentsDump()

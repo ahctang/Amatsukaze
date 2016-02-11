@@ -7,6 +7,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
+using Newtonsoft.Json;
+using System.Diagnostics;
+using System.Windows;
 
 namespace Amatsukaze.ViewModel
 {
@@ -14,23 +17,42 @@ namespace Amatsukaze.ViewModel
     {
         //Dumps the object to the console
         void ContentsDump();
+
+        //Save
+        void Save(string path);
     }
 
     public class MALDataSource : XMLDataSource
     {
-            //Properties from MyAnimeList
-            public int id { get; set; }
-            public string title { get; set; }
-            public string english { get; set; }
-            public string synonyms { get; set; }
-            public int episodes { get; set; }
-            public double score { get; set; }
-            public string type { get; set; }
-            public string status { get; set; }
-            public string start_date { get; set; }
-            public string end_date { get; set; }
-            public string synopsis { get; set; }
-            public string image { get; set; }
+        //Properties from MyAnimeList
+        public int id { get; set; }
+        public string title { get; set; }
+        public string english { get; set; }
+        public string synonyms { get; set; }
+        public int episodes { get; set; }
+        public double score { get; set; }
+        public string type { get; set; }
+        public string status { get; set; }
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+        public string synopsis { get; set; }
+        public string image { get; set; }
+
+        public void Save(string path)
+        {
+            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            try
+            {
+                FileInfo folder = new FileInfo(path);
+                folder.Directory.Create();
+                File.WriteAllText(path, json);
+            }
+            catch (Exception exception)
+            {
+                //FileIO exception
+                MessageBox.Show(exception.Message);
+            }
+        }
 
         public void ContentsDump()
         {
@@ -80,6 +102,23 @@ namespace Amatsukaze.ViewModel
         //Episode list
         public List<Episode> Episodes;
 
+        //Save Function
+        public void Save(string path)
+        {
+            string json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
+            try
+            {
+                FileInfo folder = new FileInfo(path);
+                folder.Directory.Create();
+                File.WriteAllText(path, json);
+            }
+            catch (Exception exception)
+            {
+                //FileIO exception
+                MessageBox.Show(exception.Message);
+            }
+        }
+
         //Debug dump
         public void ContentsDump()
         {
@@ -97,6 +136,9 @@ namespace Amatsukaze.ViewModel
     {
         public string Position { get; set; }
         public string Name { get; set; }
+
+        public int GridColumn { get; set; }
+        public int GridRow { get; set; }
     }
 
     public class AnimeCharacter
@@ -105,12 +147,21 @@ namespace Amatsukaze.ViewModel
         public string CharacterPicture { get; set; }
         public string Seiyuu { get; set; }
         public string Picture { get; set; }
+
+        public int GridColumn { get; set; }
+        public int GridRow { get; set; }
+
+        public string PicturePath { get; set; }
     }
 
     public class Episode
     {
         public int Epno { get; set; }
         public string Title { get; set; }
+
+        public int GridColumn { get; set; }
+        public int GridRow { get; set; }
+        public string FilePath { get; set; }
     }
 }
 

@@ -202,8 +202,8 @@
             </Grid>     
 
         </DockPanel>
-        <!-- Status Message Box-->
         
+        <!-- Status Message Box-->        
         <Border CornerRadius="15,15,15,15" BorderThickness="0" Width="{Binding ElementName=MainDisplaySpace, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="35" Background="Black" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Border.Style>
                 <Style>
@@ -217,14 +217,14 @@
                             <DataTrigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.5"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="40" To="-20" Duration="0:0:0.25"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.EnterActions>
                             <DataTrigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.5"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(TranslateTransform.Y)" From="-20" To="40" Duration="0:0:0.25"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </DataTrigger.ExitActions>

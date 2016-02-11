@@ -37,8 +37,20 @@ namespace Amatsukaze.View
             //For reassigning all of the indexes whenever the window is changed
             var datacontext = DataContext as LibraryMenuViewModel;
             int columncount = (int)DisplayArea.ActualWidth / 180;
-            datacontext.LibraryViewAreaResized(columncount);
-            datacontext.SeasonSortListAreaResized(columncount);
+            if(datacontext.CurrentView == "All")
+            {
+                datacontext.LibraryViewAreaResized(columncount);
+            }
+            else if (datacontext.CurrentView == "Season")
+            {
+                datacontext.SeasonSortListAreaResized(columncount);
+            }
+            else if (datacontext.CurrentView == "Search")
+            {
+                datacontext.SearchResultListAreaResized(columncount);
+            }
+            
+            
         }
 
         private void OnWindowLoaded(object sender, RoutedEventArgs e)
@@ -75,6 +87,12 @@ namespace Amatsukaze.View
             var datacontext = DataContext as LibraryMenuViewModel;
             datacontext.AnimeInfoToggle = false;
         }
+
+        private void SearchBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            textbox.Text = string.Empty;
+        }
     }
 
     public class UnsetConverter : IValueConverter
@@ -97,7 +115,7 @@ namespace Amatsukaze.View
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {            
             var input = value as double?;
-            input = input * 75 / 100;
+            input = input * 90 / 100;
             return input;
         }
 
