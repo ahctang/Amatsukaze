@@ -21,7 +21,7 @@
             </Grid.RowDefinitions>
 
             <TextBlock Text="My Folders" Grid.Row="0" Margin="5"/>
-            <ListBox Name="folderListBox" ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" VerticalAlignment="Stretch">
+            <ListBox Name="folderListBox" ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}"  Grid.Row="1" VerticalAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,0,0,5">
@@ -40,8 +40,8 @@
         </Grid>
 
         <StackPanel Grid.Column="0" Background="Yellow" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
-            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="remove" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
-            <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="30" Margin="10"/>
+            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="remove" HorizontalAlignment="Right" Height="20" Width="Auto" Margin="10"/>
+            <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="Auto" Margin="10"/>
         </StackPanel>
 
         <Grid Grid.Column="1">
@@ -58,12 +58,12 @@
                     </Grid.ColumnDefinitions>
                     
                     <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" Width="Auto"/>
-                    <Button Command="{Binding None}" Content="Organize" Grid.Column="1"/>
+                    <Button Command="{Binding ChangeViewCommand}" CommandParameter="{Binding ApplicationViewModels[0]}" Content="Organize" Grid.Column="1"/>
                 </Grid>
             </StackPanel>
 
             <ScrollViewer Grid.Row="1">
-                <ItemsControl Name="SelectedFolderContentsControl">
+                <ItemsControl Name="SelectedFolderContentsControl" ItemsSource="{Binding FolderContents}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Margin="5" Orientation="Horizontal">

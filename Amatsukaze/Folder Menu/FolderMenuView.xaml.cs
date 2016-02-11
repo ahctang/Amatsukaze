@@ -34,41 +34,6 @@ namespace Amatsukaze.View
             InitializeComponent();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            FolderEntity selectedFolder = (FolderEntity) folderListBox.SelectedItem;
-            if (selectedFolder != null)
-            {
-                selectedFolderNameTextBlock.Text = selectedFolder.name;
-                DirectoryInfo info = new DirectoryInfo(selectedFolder.path);
-                List<FolderItem> results = new List<FolderItem>();
-
-                foreach (DirectoryInfo directoryInfo in info.GetDirectories())
-                {
-                    FolderItem item = new FolderItem();
-                    item.name = directoryInfo.Name;
-                    item.type = "D";
-                    item.contents = "contains " + directoryInfo.EnumerateFiles().Count() + " files and " 
-                        + directoryInfo.EnumerateDirectories().Count() + " sub-directories";
-                    results.Add(item);
-                }
-
-                foreach (FileInfo fileInfo in info.GetFiles())
-                {
-                    FolderItem item = new FolderItem();
-                    item.name = fileInfo.Name;
-                    item.type = "F";
-                    results.Add(item);
-                }
-                SelectedFolderContentsControl.ItemsSource = results;
-            }
-        }
     }
 
-    public class FolderItem
-    {
-        public string name { get; set; }
-        public string type { get; set; }
-        public string contents { get; set; }
-    }
 }

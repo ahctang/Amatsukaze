@@ -11,12 +11,14 @@ using System.Windows;
 using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Amatsukaze.ViewModel
 {
-    class FolderMenuViewModel : ObservableObjectClass, ViewModelBase
+    class FolderMenuViewModel : ObservableObjectClass, ViewModelBase, INotifyPropertyChanged
     {
         private ObservableCollection<FolderEntity> folders = new ObservableCollection<FolderEntity>();
+        private ObservableCollection<FolderItem> folderContents = new ObservableCollection<FolderItem>();
         private FolderEntity selectedFolder;
 
         private ICommand displaySelectFolderDialog;
@@ -44,6 +46,7 @@ namespace Amatsukaze.ViewModel
                 newFolder.name = selected.Substring(selected.LastIndexOf("\\") + 1);
                 newFolder.path = selected;
                 folders.Add(newFolder);
+                Console.WriteLine("Added folder " + newFolder.name);
 
                 saveFolders(folders);
             }
@@ -56,10 +59,11 @@ namespace Amatsukaze.ViewModel
         private void openDeleteDialog()
         {
             var confirmResult = System.Windows.Forms.MessageBox.Show("Are you sure you want to remove the [" + selectedFolder.name + "] folder?\nThis will not delete the folder from your hard drive.",
-                                     "Delete",
+                                     "Remove",
                                      MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
+                Console.WriteLine("Removed folder " + selectedFolder.name);
                 folders.Remove(selectedFolder);
                 saveFolders(folders);
             }
@@ -68,6 +72,12 @@ namespace Amatsukaze.ViewModel
                 // Close dialog and do nothing
             }
         }
+
+        private void openOrganizeDialog()
+        {
+
+        }
+
 
         private Boolean folderListContainsByPath(string path)
         {
@@ -114,6 +124,35 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        private void onFolderSelection()
+        {
+            if (selectedFolder != null)
+            {
+                //selectedFolderNameTextBlock.Text = selectedFolder.name;
+                DirectoryInfo info = new DirectoryInfo(selectedFolder.path);
+                ObservableCollection<FolderItem> results = new ObservableCollection<FolderItem>();
+
+                foreach (DirectoryInfo directoryInfo in info.GetDirectories())
+                {
+                    FolderItem item = new FolderItem();
+                    item.name = directoryInfo.Name;
+                    item.type = "D";
+                    item.contents = "contains " + directoryInfo.EnumerateFiles().Count() + " files and "
+                        + directoryInfo.EnumerateDirectories().Count() + " sub-directories";
+                    results.Add(item);
+                }
+
+                foreach (FileInfo fileInfo in info.GetFiles())
+                {
+                    FolderItem item = new FolderItem();
+                    item.name = fileInfo.Name;
+                    item.type = "F";
+                    results.Add(item);
+                }
+                FolderContents = results;
+            }
+        }
+
         public IEventAggregator EventAggregator { get; set; }
 
         public ObservableCollection<FolderEntity> Folders
@@ -125,6 +164,8 @@ namespace Amatsukaze.ViewModel
             set
             {
                 folders = value;
+                Console.WriteLine("blop");
+                OnPropertyChanged("Folders");
             }
         }
 
@@ -137,6 +178,21 @@ namespace Amatsukaze.ViewModel
             set
             {
                 selectedFolder = value;
+                Console.WriteLine("nya");
+                OnPropertyChanged("SelectedFolder");
+                onFolderSelection();
+            }
+        }
+
+        public ObservableCollection<FolderItem> FolderContents
+        {
+            get
+            {
+                return folderContents;
+            } set
+            {
+                folderContents = value;
+                OnPropertyChanged("FolderContents");
             }
         }
 
@@ -148,8 +204,8 @@ namespace Amatsukaze.ViewModel
                 {
                     displaySelectFolderDialog = new RelayCommand
                         (
-                            p => openAddFolderDialog()
-                            //p => isSelectDialogOpen
+                            p => openAddFolderDialog(),
+                            p => true
                         );
                 }
                 return displaySelectFolderDialog;
@@ -164,7 +220,8 @@ namespace Amatsukaze.ViewModel
                 {
                     displayDeleteDialog = new RelayCommand
                         (
-                            p => openDeleteDialog()
+                            p => openDeleteDialog(),
+                            p => true
                         );
                 }
                 return displayDeleteDialog;
@@ -178,5 +235,13 @@ namespace Amatsukaze.ViewModel
                 return "Folder Menu";
             }
         }
+
+        public class FolderItem
+        {
+            public string name { get; set; }
+            public string type { get; set; }
+            public string contents { get; set; }
+        }
+
     }
 }
