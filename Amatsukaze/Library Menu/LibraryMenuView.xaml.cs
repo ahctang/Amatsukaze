@@ -65,7 +65,7 @@ namespace Amatsukaze.View
 
         #region objects
 
-        #endregion
+        #endregion        
 
         private void ActivityLog_Click(object sender, RoutedEventArgs e)
         {

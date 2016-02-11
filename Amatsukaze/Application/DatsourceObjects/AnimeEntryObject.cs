@@ -39,10 +39,27 @@ namespace Amatsukaze.ViewModel
         public List<AnimeCharacter> Characters { get; set; } 
 
         //Episode list
-        public List<Episode> Episodes { get; set; } 
+        public List<Episode> Episodes { get; set; }
 
         //Properties for Amatsukaze GUI
-        public string ImagePath { get; set; }
+
+        //Anime Cover Image
+        private string imagePath;
+        public string ImagePath
+        {
+            get
+            {
+                return imagePath;
+            }
+            set
+            {
+                if (imagePath != value)
+                {
+                    imagePath = value;
+                    OnPropertyChanged("ImagePath");
+                }
+            }
+        }
 
         //For the image grid layout
         private int gridcolumn;
@@ -177,6 +194,23 @@ namespace Amatsukaze.ViewModel
                 }
             }
         }
+
+        public void MergeAnimeCover(string ImagePath)
+        {
+            lock(this)
+            {
+                this.ImagePath = ImagePath;
+            }
+            
+        }
+
+        public void MergeCharacters(List<AnimeCharacter> Characters)
+        {
+            lock(this)
+            {
+                this.Characters = Characters;
+            }
+        }            
 
         private void AssignGridRowColumn(List<AnimeStaff> StaffList)
         {

@@ -55,6 +55,7 @@ namespace Amatsukaze.ViewModel
         private ICommand _switchSort;
         private ICommand _searchAnime;
         private ICommand _playAnime;
+        private ICommand _editModeSwitch;
 
         //Private fields to keep track of the current grid column and row count
         private int gridcolumncount;
@@ -72,6 +73,7 @@ namespace Amatsukaze.ViewModel
         //GUI Toggles
         private bool messageLogToggle;
         private bool animeInfoToggle;
+        private bool isEditMode = false;
         #endregion    
 
         #region Objects
@@ -90,6 +92,20 @@ namespace Amatsukaze.ViewModel
         #endregion
 
         #region Properties/Commands
+
+        public ICommand EditModeSwitch
+        {
+            get
+            {
+                if (_editModeSwitch == null)
+                {
+                    _editModeSwitch = new RelayCommand(
+                        p => ToggleEditMode(),
+                        p => true);
+                }
+                return _editModeSwitch;
+            }
+        }
 
         public ICommand RefreshCommand
         {
@@ -340,6 +356,22 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public bool IsEditMode
+        {
+            get
+            {
+                return isEditMode;
+            }
+            set
+            {
+                if (isEditMode != value)
+                {
+                    isEditMode = value;
+                    OnPropertyChanged("IsEditMode");
+                }
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -568,6 +600,22 @@ namespace Amatsukaze.ViewModel
             }
             return 0;
         }
+
+        //For toggling edit mode on and off
+        private void ToggleEditMode()
+        {
+            switch (IsEditMode)
+            {
+                case true:
+                    IsEditMode = false;
+                    break;
+                case false:
+                    IsEditMode = true;
+                    datasource.SaveCacheFile(AnimeLibraryList);
+                    break;
+            }            
+        }
+
 
         #endregion
 

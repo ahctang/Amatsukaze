@@ -10,6 +10,7 @@ using System.Net;
 using System.Collections.ObjectModel;
 using Amatsukaze.HelperClasses;
 using System.Threading.Tasks;
+using System.Collections.Concurrent;
 
 namespace Amatsukaze.Model
 {
@@ -23,7 +24,7 @@ namespace Amatsukaze.Model
         #region #objects
         public ObservableCollection<AnimeEntryObject> AnimeLibraryList = new ObservableCollection<AnimeEntryObject>();
         public List<MALDataSource> MALDataCache;
-        public List<AniDBDataSource> AniDBDataCache;
+        public List<AniDBDataSource> AniDBDataCache;       
         OptionsObject optionsobject;
 
         #endregion
@@ -355,6 +356,14 @@ namespace Amatsukaze.Model
                     SaveCacheFile(MALDataCache);
                     SaveCacheFile(AniDBDataCache);
 
+                    //Check for duplicates
+                    //Decide merge rules
+                    //Merge objects and add to animelibrarylist
+
+                    //Send list of added objects to functions that collect resources
+                    //Raise event/event args when a particular resource is ready
+                    //Resources should be updated async
+
                     //Now to construct the correct animeentry object
                     if (optionsobject.UseMALDataSource == true && optionsobject.UseAniDBDataSource == true)
                     {
@@ -462,6 +471,8 @@ namespace Amatsukaze.Model
         #region Events/EventHandlers
 
         public event EventHandler SendMessagetoGUI = delegate { };
+        public event EventHandler AnimeCoverResourceReady;
+        public event EventHandler AnimeCharacterResourceReady;
 
         #endregion
     }
