@@ -17,9 +17,12 @@ namespace Amatsukaze.ViewModel
     class FolderMenuViewModel : ObservableObjectClass, ViewModelBase
     {
         private ObservableCollection<FolderEntity> folders = new ObservableCollection<FolderEntity>();
+        private FolderEntity selectedFolder;
 
         private ICommand displaySelectFolderDialog;
+        private ICommand displayDeleteDialog;
         //private Boolean isSelectDialogOpen;
+        
 
         public FolderMenuViewModel(IEventAggregator eventAggregator)
         {
@@ -27,7 +30,6 @@ namespace Amatsukaze.ViewModel
             readFolders();
         }
 
-        // TODO: Put these methods in view model
         private void openAddFolderDialog()
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -48,6 +50,22 @@ namespace Amatsukaze.ViewModel
             else
             {
                 // TODO: print error message on displayed console
+            }
+        }
+
+        private void openDeleteDialog()
+        {
+            var confirmResult = System.Windows.Forms.MessageBox.Show("Are you sure you want to delete the [" + selectedFolder.name + "] folder?",
+                                     "Confirm Delete!",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                folders.Remove(selectedFolder);
+                saveFolders(folders);
+            }
+            else
+            {
+                // Close dialog and do nothing
             }
         }
 
@@ -110,6 +128,18 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public FolderEntity SelectedFolder
+        {
+            get
+            {
+                return selectedFolder;
+            }
+            set
+            {
+                selectedFolder = value;
+            }
+        }
+
         public ICommand DisplaySelectFolderDialog
         {
             get
@@ -123,6 +153,21 @@ namespace Amatsukaze.ViewModel
                         );
                 }
                 return displaySelectFolderDialog;
+            }
+        }
+
+        public ICommand DeleteSelectedFolderDialog
+        {
+            get
+            {
+                if (displayDeleteDialog == null)
+                {
+                    displayDeleteDialog = new RelayCommand
+                        (
+                            p => openDeleteDialog()
+                        );
+                }
+                return displayDeleteDialog;
             }
         }
 

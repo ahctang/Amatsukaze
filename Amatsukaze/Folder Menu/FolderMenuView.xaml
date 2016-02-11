@@ -9,28 +9,62 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Grid Background="Pink">
-        <StackPanel>
-            <TextBlock Text="test"></TextBlock>
-            <Grid Margin="10">
-                <ItemsControl Name="icTodoList" ItemsSource="{Binding Folders}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Grid Margin="0,0,0,5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="100" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding name}"/>
-                                    <TextBlock FontStyle="Italic" Text="{Binding path}"/>
-                                </StackPanel>
-                                <ProgressBar Grid.Column="1" Minimum="0" Maximum="100" Value="{Binding Completion}" />
-                            </Grid>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </Grid>
-            <Button Content="test" Height="20" Width="100" Command="{Binding DisplaySelectFolderDialog}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Width="Auto" HorizontalAlignment="Stretch">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="My Folders" Grid.Row="0" Margin="5"/>
+            <ListBox Name="folderListBox" ItemsSource="{Binding Folders}" SelectedItem="{Binding Path=SelectedFolder, Mode=TwoWay}" SelectionChanged="ListBox_SelectionChanged" Grid.Row="1" VerticalAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding name}"/>
+                                <TextBlock Text="{Binding path}" Width="Auto" FontStyle="Italic" TextWrapping="Wrap" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+
+        <StackPanel Grid.Column="0" Background="Black" Orientation="Horizontal" HorizontalAlignment="Right"  VerticalAlignment="Bottom">
+            <Button Command="{Binding DeleteSelectedFolderDialog}" Content="delete" HorizontalAlignment="Right" Height="20" Width="40" Margin="10"/>
+            <Button Command="{Binding DisplaySelectFolderDialog}" Content="add" HorizontalAlignment="Right" Height="20" Width="30" Margin="10"/>
         </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Name="selectedFolderNameTextBlock" Text="Code in code-behind should somehow be moved to viewmodel" />
+
+            <ItemsControl Name="SelectedFolderContentsControl" Grid.Row="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5" Orientation="Horizontal">
+                            <TextBlock Text="{Binding type}" Margin="10"/>
+                            <TextBlock Text="{Binding name}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+
+
     </Grid>
 </UserControl>
