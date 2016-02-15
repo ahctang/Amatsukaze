@@ -290,6 +290,9 @@ namespace Amatsukaze.Model
                                     }
                                 }
 
+                                //Check for a duplicate here
+
+
                                 //Add to the new collection
                                 MALDataCache.Add(MALdatasource);
 

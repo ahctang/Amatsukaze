@@ -183,7 +183,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>       
+        </Style>
 
     </UserControl.Resources>
 
@@ -210,7 +210,7 @@
                         <Setter Property="Foreground" Value="Black"></Setter>
                         <Setter Property="BorderThickness" Value="1"></Setter>
                         <Setter Property="IsReadOnly" Value="False"></Setter>
-                     </DataTrigger>
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
         </DockPanel.Resources>
@@ -421,7 +421,7 @@
                 </Border.Style>
                 <StackPanel>
                     <StackPanel.Resources>
-                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>                       
+                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                     </StackPanel.Resources>
                     <StackPanel HorizontalAlignment="Right">
                         <DockPanel HorizontalAlignment="Right">
@@ -472,7 +472,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        
+
                                         <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
                                         <TextBox Text="{Binding SelectedAnime.synonyms, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
@@ -584,13 +584,13 @@
                                                         </ItemsControl.ItemTemplate>
                                                     </ItemsControl>
                                                 </Grid>
-                                            </TabItem>                                           
+                                            </TabItem>
                                         </TabControl>
                                     </Grid>
                                 </ScrollViewer>
                             </TabItem>
                             <TabItem Header="Episode Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
-                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent">                                    
+                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Margin="2">
@@ -605,16 +605,16 @@
                                                 <TextBlock Grid.Row="1" Text="{Binding Title}" Foreground="{DynamicResource BodyFontColor}"/>
                                             </Grid>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>                                   
+                                    </ListView.ItemTemplate>
                                 </ListView>
                             </TabItem>
-                        </TabControl>                      
+                        </TabControl>
                     </DockPanel>
                 </StackPanel>
             </Border>
 
             <!-- Message Log Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Margin="1,-740,99,740">
+            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>
