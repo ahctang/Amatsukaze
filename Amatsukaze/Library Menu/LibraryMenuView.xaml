@@ -36,7 +36,7 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
                                                       Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -87,7 +87,7 @@
                                                     <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                                                 </DataTemplate.Resources>
                                                 <StackPanel Width="{Binding ElementName=CoverImage2, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
+                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAync}" Height="225" Width="161">
                                                         <Image.InputBindings>
                                                             <MouseBinding MouseAction="LeftClick" 
                                                                   Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -281,7 +281,7 @@
                     <MouseBinding MouseAction="LeftClick" Command="{Binding SwitchSort}" CommandParameter="Season"></MouseBinding>
                 </TextBlock.InputBindings>
             </TextBlock>
-            <TextBlock Text="View by Genre " DockPanel.Dock="Left" Padding="10,0,10,0" VerticalAlignment="Center">
+            <!--<TextBlock Text="View by Genre " DockPanel.Dock="Left" Padding="10,0,10,0" VerticalAlignment="Center">
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource HeaderText}" TargetType="TextBlock">
                         <Setter Property="FontSize" Value="14"></Setter>
@@ -298,7 +298,7 @@
                 <TextBlock.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding SwitchSort}" CommandParameter="Genre"></MouseBinding>
                 </TextBlock.InputBindings>
-            </TextBlock>
+            </TextBlock>-->
         </DockPanel>
 
         <!-- Switching Display Area-->
@@ -450,7 +450,7 @@
                                 <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}" />
                             </Style>
                         </DockPanel.Resources>
-                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}}" MaxWidth="250" VerticalAlignment="Top" Margin="0,28,0,0"></Image>
+                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" MaxWidth="250" VerticalAlignment="Top" Margin="0,28,0,0"></Image>
                         <TabControl Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0" Margin="5,0,0,0">
                             <TabItem Header="Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
                                 <ScrollViewer MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,100" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
@@ -542,7 +542,7 @@
                                             </TabItem>
                                             <TabItem Header="Characters" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch">
                                                 <Grid HorizontalAlignment="Stretch">
-                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Characters}">
+                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Characters, AsyncState=IsAsync}">
                                                         <ItemsControl.ItemsPanel>
                                                             <ItemsPanelTemplate>
                                                                 <Grid>
@@ -590,7 +590,7 @@
                                 </ScrollViewer>
                             </TabItem>
                             <TabItem Header="Episode Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
-                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent">
+                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Margin="2">

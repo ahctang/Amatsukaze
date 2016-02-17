@@ -493,7 +493,7 @@ namespace Amatsukaze.ViewModel
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = MPCpath;
-                startInfo.Arguments = @" ""A:\output test\Hibike! Euphonium\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
+                startInfo.Arguments = @" ""A:\output test\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
                 Process.Start(startInfo);
                 return true;
             }
@@ -608,6 +608,7 @@ namespace Amatsukaze.ViewModel
             {
                 case true:
                     IsEditMode = false;
+                    datasource.SaveCacheFile(AnimeLibraryList);
                     break;
                 case false:
                     IsEditMode = true;
@@ -626,7 +627,12 @@ namespace Amatsukaze.ViewModel
         {
             Console.WriteLine("Library Event Fired!");
             var message = (e as MessageArgs).Message;
-            LibraryMessageLog.Add(message);
+
+            //Try and invoke the actual adding action on the main UI thread to avoid the stupid object not suppoted exception
+            Application.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                LibraryMessageLog.Add(message);
+            }));            
 
             if (this.EventAggregator != null)
             {
