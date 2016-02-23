@@ -120,7 +120,7 @@ namespace Amatsukaze.Model
                             this.SendMessagetoGUI(this, new MessageArgs(message));*/
 
                             //Wait 2 seconds to stop flooding the server with requests                            
-                            Task.Delay(2000);
+                            Thread.Sleep(2000);
                             //Raise the event to indicate the stuff is ready
                             AnimeCoverResourceReady(this, new AnimeCoverArgs(animeentry));
                         }
@@ -170,7 +170,7 @@ namespace Amatsukaze.Model
 
                             Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
                             Thread.Sleep(2000);
-                        }                       
+                        }
 
                         AnimeCharacterResourceReady(this, new AnimeCharacterArgs(animeentry, animeentry.Characters));
 
@@ -204,7 +204,7 @@ namespace Amatsukaze.Model
         //Updates the Cache file in the Directory. (Simply replaces the existing cache with a new updated file)
         public void SaveCacheFile(ObservableCollection<AnimeEntryObject> input)
         {
-            lock(AnimeLibraryList)
+            lock (AnimeLibraryList)
             {
                 string json = JsonConvert.SerializeObject(input, Newtonsoft.Json.Formatting.Indented);
                 try
@@ -221,7 +221,7 @@ namespace Amatsukaze.Model
                     //FileIO exception
                     MessageBox.Show(exception.Message);
                 }
-            }            
+            }
         }
 
         public void SaveCacheFile(List<MALDataSource> input)
@@ -300,7 +300,7 @@ namespace Amatsukaze.Model
                                 if (MALDataCache == null)
                                 {
                                     string filepath = optionsobject.CacheFolderpath + @"\MalDataCache.json";
-                                    if (File.Exists(filepath))
+                                    if (File.Exists(filepath) && File.ReadAllText(filepath) != "null")
                                     {
                                         string MalCacheJson = File.ReadAllText(filepath);
                                         MALDataCache = JsonConvert.DeserializeObject<List<MALDataSource>>(MalCacheJson);
@@ -321,15 +321,15 @@ namespace Amatsukaze.Model
                                 }
 
                                 //Check if the info already exists in AnimeLibraryList
-                                var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == MALdatasource.title.ToLower());
+                                var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == MALdatasource.title.ToLower()
+                                                                                            || (i.english != "" && i.english.ToLower() == MALdatasource.english.ToLower()));
 
                                 if (AnimeLibraryListQuery != null)
                                 {
                                     if (AnimeLibraryListQuery.Sources.Contains("MAL") == true)
                                     {
                                         //The entry is a duplicate, so the file should be deleted and skipped.
-                                        File.Delete(filename);
-                                        continue;
+                                        File.Delete(filename);                                        
                                     }
                                     else
                                     {
@@ -343,14 +343,14 @@ namespace Amatsukaze.Model
                                             messagebuffer += MALdatasource.english;
 
                                         this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                        File.Delete(filename);
-                                        continue;
+                                        File.Delete(filename);                                                                                
                                     }
                                 }
                                 //So the entry is not in the AnimeLibraryList. Check if the entry exists in the existing buffer
                                 else if (AnimeLibraryListQuery == null)
                                 {
-                                    var NewAnimeBufferQuery = NewAnimeBuffer.FirstOrDefault(i => i.title.ToLower() == MALdatasource.title.ToLower());
+                                    var NewAnimeBufferQuery = NewAnimeBuffer.FirstOrDefault(i => i.title.ToLower() == MALdatasource.title.ToLower()
+                                                                                                || (i.english != "" &&i.english.ToLower() == MALdatasource.english.ToLower()));
 
                                     //It already exists!
                                     if (NewAnimeBufferQuery != null)
@@ -358,8 +358,7 @@ namespace Amatsukaze.Model
                                         if (NewAnimeBufferQuery.Sources.Contains("MAL") == true)
                                         {
                                             //The entry is a duplicate, so the file should be deleted and skipped.
-                                            File.Delete(filename);
-                                            continue;
+                                            File.Delete(filename);                                            
                                         }
                                         else
                                         {
@@ -373,8 +372,7 @@ namespace Amatsukaze.Model
                                                 messagebuffer += MALdatasource.english;
 
                                             this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                            File.Delete(filename);
-                                            continue;
+                                            File.Delete(filename);                                            
                                         }
                                     }
                                     else //Doesn't exist!
@@ -410,7 +408,7 @@ namespace Amatsukaze.Model
                                 if (AniDBDataCache == null)
                                 {
                                     string filepath = optionsobject.CacheFolderpath + @"\AniDBDataCache.json";
-                                    if (File.Exists(filepath))
+                                    if (File.Exists(filepath) && File.ReadAllText(filepath) != "null")
                                     {
                                         string AniDBCacheJson = File.ReadAllText(filepath);
                                         AniDBDataCache = JsonConvert.DeserializeObject<List<AniDBDataSource>>(AniDBCacheJson);
@@ -422,7 +420,7 @@ namespace Amatsukaze.Model
                                 }
 
                                 //Check the AniDBDataCache for a duplicate
-                                var AniDBQuery = AniDBDataCache.FirstOrDefault(i => i.Title.ToLower() == AniDBdatasource.Title.ToLower());
+                                var AniDBQuery = AniDBDataCache.FirstOrDefault(i => i.title.ToLower() == AniDBdatasource.title.ToLower());
 
                                 //Add to the datacache if the info doesn't already exist
                                 if (AniDBQuery == null)
@@ -431,15 +429,15 @@ namespace Amatsukaze.Model
                                 }
 
                                 //Check if the info already exists in AnimeLibraryList
-                                var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == AniDBdatasource.Title.ToLower());
+                                var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == AniDBdatasource.title.ToLower()
+                                                                                            || (i.english != "" && i.english.ToLower() == AniDBdatasource.english.ToLower()));
 
                                 if (AnimeLibraryListQuery != null)
                                 {
                                     if (AnimeLibraryListQuery.Sources.Contains("AniDB") == true)
                                     {
                                         //The entry is a duplicate, so the file should be deleted and skipped.
-                                        File.Delete(filename);
-                                        continue;
+                                        File.Delete(filename);                                        
                                     }
                                     else
                                     {
@@ -447,20 +445,20 @@ namespace Amatsukaze.Model
                                         AnimeLibraryListQuery.MergeInfo(AniDBdatasource, this.optionsobject);
 
                                         string messagebuffer = "Library: Updated info (AniDB): ";
-                                        if (AniDBdatasource.EnglishTitle.Length == 0)
-                                            messagebuffer += AniDBdatasource.Title;
+                                        if (AniDBdatasource.english.Length == 0)
+                                            messagebuffer += AniDBdatasource.title;
                                         else
-                                            messagebuffer += AniDBdatasource.EnglishTitle;
+                                            messagebuffer += AniDBdatasource.english;
 
                                         this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                        File.Delete(filename);
-                                        continue;
+                                        File.Delete(filename);                                                                              
                                     }
                                 }
                                 //So the entry is not in the AnimeLibraryList. Check if the entry exists in the existing buffer
                                 else if (AnimeLibraryListQuery == null)
                                 {
-                                    var NewAnimeBufferQuery = NewAnimeBuffer.FirstOrDefault(i => i.title.ToLower() == AniDBdatasource.Title.ToLower());
+                                    var NewAnimeBufferQuery = NewAnimeBuffer.FirstOrDefault(i => i.title.ToLower() == AniDBdatasource.title.ToLower()
+                                                                                            || i.english.ToLower() == AniDBdatasource.english.ToLower());
 
                                     //It already exists!
                                     if (NewAnimeBufferQuery != null)
@@ -468,8 +466,7 @@ namespace Amatsukaze.Model
                                         if (NewAnimeBufferQuery.Sources.Contains("AniDB") == true)
                                         {
                                             //The entry is a duplicate, so the file should be deleted and skipped.
-                                            File.Delete(filename);
-                                            continue;
+                                            File.Delete(filename);                                            
                                         }
                                         else
                                         {
@@ -477,14 +474,13 @@ namespace Amatsukaze.Model
                                             NewAnimeBufferQuery.MergeInfo(AniDBdatasource, this.optionsobject);
 
                                             string messagebuffer = "Library: Updated info (AniDB): ";
-                                            if (AniDBdatasource.EnglishTitle.Length == 0)
-                                                messagebuffer += AniDBdatasource.Title;
+                                            if (AniDBdatasource.english.Length == 0)
+                                                messagebuffer += AniDBdatasource.title;
                                             else
-                                                messagebuffer += AniDBdatasource.EnglishTitle;
+                                                messagebuffer += AniDBdatasource.english;
 
                                             this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                            File.Delete(filename);
-                                            continue;
+                                            File.Delete(filename);                                            
                                         }
                                     }
                                     else //Doesn't exist!
@@ -492,10 +488,10 @@ namespace Amatsukaze.Model
                                         //Add the info as a new object for the new anime buffer
                                         NewAnimeBuffer.Add(new AnimeEntryObject(AniDBdatasource));
                                         string message = "Library: Found new anime(AniDB): ";
-                                        if (AniDBdatasource.EnglishTitle.Length == 0)
-                                            message += AniDBdatasource.Title;
+                                        if (AniDBdatasource.english.Length == 0)
+                                            message += AniDBdatasource.title;
                                         else
-                                            message += AniDBdatasource.EnglishTitle;
+                                            message += AniDBdatasource.english;
 
                                         this.SendMessagetoGUI(this, new MessageArgs(message));
                                         File.Delete(filename);
@@ -535,26 +531,19 @@ namespace Amatsukaze.Model
                             message += anime.english;
 
                         this.SendMessagetoGUI(this, new MessageArgs(message));
-                        
+
                         //Save the AnimeLibraryList cache file
                         SaveCacheFile(AnimeLibraryList);
                     }
 
                     //Start the tasks to retrieve the resources from the internet
-                    List <Task> TaskList = new List<Task>();                    
-                    
+                    List<Task> TaskList = new List<Task>();
+
                     TaskList.Add(Task.Run(() => DownloadAnimeCoverArt(NewAnimeBuffer)));
-                    TaskList.Add(Task.Run(() => DownloadAnimeCharacterArt(NewAnimeBuffer)));                    
+                    TaskList.Add(Task.Run(() => DownloadAnimeCharacterArt(NewAnimeBuffer)));
 
                     await Task.WhenAll(TaskList);
                 }
-
-                //Send buffer list to download anime covers and characters
-
-                
-                //Send list of added objects to functions that collect resources
-                //Raise event/event args when a particular resource is ready
-                //Resources should be updated async                
                 else
                 {
                     this.SendMessagetoGUI(this, new MessageArgs("Library: Search Ended. No new anime found."));
@@ -576,6 +565,32 @@ namespace Amatsukaze.Model
                 return false;
             }
         }
+
+
+        //Searches for the animeentryobject on the internets and checks against existing objects again.
+        //Returns true if object was updated and false if object was not updated or exception thrown.
+        public bool RetrySearch(AnimeEntryObject input)
+        {
+            //This part should feed it back into a method that queries the web apis
+            //NOT YET IMPLEMENTED
+
+            //This part checks it against existing entries.
+            var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == input.title.ToLower()
+                                                                        || i.english.ToLower() == input.english.ToLower());
+
+            //A match has been found!
+            if(AnimeLibraryList != null)
+            {
+                AnimeLibraryListQuery.MergeInfo(input, optionsobject); //How do I merge this??
+
+                //Delete the input entry
+                AnimeLibraryList.RemoveAt(AnimeLibraryList.IndexOf(input));
+
+                return true;                
+            }
+
+            return false;
+        }
         #endregion
 
         #region Events/EventHandlers
@@ -585,8 +600,8 @@ namespace Amatsukaze.Model
         public event EventHandler AnimeCharacterResourceReady;
 
         public void OnAnimeCoverResourceReady(object sender, EventArgs e)
-        {                       
-            if(e != null)
+        {
+            if (e != null)
             {
                 var input = e as AnimeCoverArgs;
 
@@ -605,7 +620,7 @@ namespace Amatsukaze.Model
                             message += input.EnglishTitle;
 
                         this.SendMessagetoGUI(this, new MessageArgs(message));
-                        
+
                         //Save the AnimeLibraryList cache file
                         SaveCacheFile(AnimeLibraryList);
                     }
@@ -613,23 +628,23 @@ namespace Amatsukaze.Model
                 else
                 {
                     string message = "Library: Could not retrieve artwork for: ";
-                       if (input.EnglishTitle.Length == 0)
-                           message += input.Title;
-                       else
-                           message += input.EnglishTitle;
+                    if (input.EnglishTitle.Length == 0)
+                        message += input.Title;
+                    else
+                        message += input.EnglishTitle;
 
-                       this.SendMessagetoGUI(this, new MessageArgs(message));
+                    this.SendMessagetoGUI(this, new MessageArgs(message));
                 }
-            }            
+            }
         }
 
         public void OnAnimeCharacterResourceReady(object sender, EventArgs e)
         {
-            if(e != null)
+            if (e != null)
             {
                 var input = e as AnimeCharacterArgs;
 
-                if(input.AnimeCharacterList.Count > 0)
+                if (input.AnimeCharacterList.Count > 0)
                 {
                     var AnimeLibraryListQuery = AnimeLibraryList.FirstOrDefault(i => i.title.ToLower() == input.Title.ToLower());
 
@@ -638,27 +653,27 @@ namespace Amatsukaze.Model
                         AnimeLibraryListQuery.MergeCharacters(input.AnimeCharacterList);
 
                         string message = "Library: Updated character artwork (AniDB) for: ";
-                          if (input.EnglishTitle.Length == 0)
-                              message += input.Title;
-                          else
-                              message += input.EnglishTitle;
-
-                          this.SendMessagetoGUI(this, new MessageArgs(message));
-
-                        //Save the AnimeLibraryList cache file
-                        SaveCacheFile(AnimeLibraryList);
-                    }                    
-                }
-                else
-                {
-                    string message = "Library: Could not retrieve character artwork for: ";
                         if (input.EnglishTitle.Length == 0)
                             message += input.Title;
                         else
                             message += input.EnglishTitle;
 
                         this.SendMessagetoGUI(this, new MessageArgs(message));
-                }                
+
+                        //Save the AnimeLibraryList cache file
+                        SaveCacheFile(AnimeLibraryList);
+                    }
+                }
+                else
+                {
+                    string message = "Library: Could not retrieve character artwork for: ";
+                    if (input.EnglishTitle.Length == 0)
+                        message += input.Title;
+                    else
+                        message += input.EnglishTitle;
+
+                    this.SendMessagetoGUI(this, new MessageArgs(message));
+                }
             }
 
         }
@@ -681,7 +696,7 @@ namespace Amatsukaze.Model
         public string Title { get; set; }
         public string EnglishTitle { get; set; }
         public string ImagePath { get; set; }
-        
+
         public AnimeCoverArgs(AnimeEntryObject input)
         {
             this.Title = input.title;

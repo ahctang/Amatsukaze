@@ -413,7 +413,10 @@ namespace Amatsukaze.ViewModel
         {
             if (CurrentView != targetView)
                 CurrentView = targetView;
-            Console.WriteLine("Current View: {0}", CurrentView);
+
+            //Lists should be updated when switching to season view (due to timing of when the cloned list is made)
+            if (CurrentView == "Season") RefreshSeasonLists();
+
             return;
         }
 
