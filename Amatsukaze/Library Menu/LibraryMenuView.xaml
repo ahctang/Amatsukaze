@@ -119,7 +119,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SearchResultSort">
-            <StackPanel>
+            <StackPanel>                
                 <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="20" Margin="10,10,0,0"><Run Text="Searching for: "></Run><Run Text="{Binding ElementName=SearchBox, Path=Text}"></Run>
                 </TextBlock>
                 <ItemsControl ItemsSource="{Binding SearchResultList}">
@@ -187,6 +187,10 @@
 
     </UserControl.Resources>
 
+    <UserControl.InputBindings>        
+            <KeyBinding Key="Esc"  Command="{Binding ClearSearchAnime}"></KeyBinding>
+    </UserControl.InputBindings>
+
     <DockPanel LastChildFill="True">
         <DockPanel.Resources>
             <Style x:Key="HeaderText">
@@ -223,12 +227,32 @@
             </TextBlock>
 
             <!-- Search -->
-            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" 
-                    Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}">
-                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
+            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Button.Command" Value="{Binding SearchAnime}"></Setter>
+                        <Setter Property="Button.CommandParameter" Value="{Binding ElementName=SearchBox, Path=Text}"></Setter>
+                        <Setter Property="Button.Content">
+                            <Setter.Value>
+                                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>                                
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentView}" Value="Search">
+                                <Setter Property="Button.Command" Value="{Binding ClearSearchAnime}"></Setter>                                
+                                <Setter Property="Button.Content">
+                                    <Setter.Value>
+                                        <Image Source="{StaticResource CloseIcon}" Height="15" Width="15"></Image>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>                        
+                    </Style>
+                </Button.Style>
+                
             </Button>
-            <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=Default}" 
-                     Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" >
+            <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}"></KeyBinding>
                 </TextBox.InputBindings>

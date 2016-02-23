@@ -101,7 +101,7 @@ namespace Amatsukaze.Model
                             AnimeCoverResourceReady(this, new AnimeCoverArgs(animeentry));
                         }
 
-                        else if (animeentry.Sources.Contains("AniDB"))
+                        if (animeentry.Sources.Contains("AniDB"))
                         {
                             FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
                             folder.Directory.Create();
@@ -480,7 +480,7 @@ namespace Amatsukaze.Model
                                                 messagebuffer += AniDBdatasource.english;
 
                                             this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                            File.Delete(filename);                                            
+                                            File.Delete(filename);                                                                                                                               
                                         }
                                     }
                                     else //Doesn't exist!
@@ -501,9 +501,9 @@ namespace Amatsukaze.Model
                         }
                     }
 
-                    //Save both updated caches
-                    SaveCacheFile(MALDataCache);
-                    SaveCacheFile(AniDBDataCache);
+                    //Save both updated caches (only if they were initialized)
+                    if(MALDataCache != null) SaveCacheFile(MALDataCache);
+                    if(AniDBDataCache != null) SaveCacheFile(AniDBDataCache);
 
                     //Add the buffer list to AnimeLibraryList
                     foreach (AnimeEntryObject anime in NewAnimeBuffer)
@@ -581,7 +581,7 @@ namespace Amatsukaze.Model
             //A match has been found!
             if(AnimeLibraryList != null)
             {
-                AnimeLibraryListQuery.MergeInfo(input, optionsobject); //How do I merge this??
+                //AnimeLibraryListQuery.MergeInfo(input, optionsobject); //How do I merge this??
 
                 //Delete the input entry
                 AnimeLibraryList.RemoveAt(AnimeLibraryList.IndexOf(input));

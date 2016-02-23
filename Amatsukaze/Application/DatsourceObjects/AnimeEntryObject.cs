@@ -275,7 +275,7 @@ namespace Amatsukaze.ViewModel
             if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");            
         }
 
-        public void MergeInfo(AnimeEntryObject Input, OptionsObject OptionsObject)
+        /*public void MergeInfo(AnimeEntryObject Input, OptionsObject OptionsObject)
         {
             //Return if OptionsObject doesn't have AniDB enabled. 
             if (OptionsObject.UseAniDBDataSource == false) return;
@@ -294,7 +294,7 @@ namespace Amatsukaze.ViewModel
             }
 
             if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");
-        }
+        }*/
 
         private void AssignGridRowColumn(List<AnimeStaff> StaffList)
         {
