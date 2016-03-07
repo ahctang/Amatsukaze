@@ -81,6 +81,10 @@ namespace Amatsukaze.Model
                             FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
                             folder.Directory.Create();
                             string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + ".jpg";
+
+                            //Can't overwrite the file because the file will be locked by the application.
+                            if (File.Exists(path)) continue;
+
                             client.DownloadFile(animeentry.image, path);
 
                             Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
@@ -106,6 +110,10 @@ namespace Amatsukaze.Model
                             FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
                             folder.Directory.Create();
                             string path = optionsobject.CacheFolderpath + @"Images\AniDB-" + animeentry.id.ToString() + ".jpg";
+
+                            //Can't overwrite the file because the file will be locked by the application.
+                            if (File.Exists(path)) continue;
+
                             client.DownloadFile(optionsobject.AniDBImageURL + animeentry.image, path);
 
                             Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
@@ -152,18 +160,22 @@ namespace Amatsukaze.Model
             AnimeCharacterResourceReady += new EventHandler(OnAnimeCharacterResourceReady);
 
             using (var client = new WebClient())
-            {
+            {                
                 foreach (AnimeEntryObject animeentry in NewAnimeBuffer)
                 {
                     try
                     {
-                        if (animeentry.Characters.Count == 0) continue;
+                        if (animeentry.Characters == null || animeentry.Characters.Count == 0) continue;
 
                         FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + @"\");
                         folder.Directory.Create();
                         foreach (AnimeCharacter character in animeentry.Characters)
                         {
                             string path = optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + @"\" + character.CharacterName + ".jpg";
+
+                            //Can't overwrite the file because the file will be locked by the application.
+                            if (File.Exists(path)) continue;
+
                             client.DownloadFile(optionsobject.AniDBImageURL + character.CharacterPicture, path);
 
                             character.PicturePath = path;
@@ -269,12 +281,13 @@ namespace Amatsukaze.Model
         {
             if (IsRefreshInProgess == true) return false;
             try
-            {
+            {                
                 IsRefreshInProgess = true;
                 string[] files = Directory.GetFiles(optionsobject.CacheFolderpath, "*.xml");
 
                 //Buffer lists to make it easier to only add new objects to AnimeLibraryList                
                 List<AnimeEntryObject> NewAnimeBuffer = new List<AnimeEntryObject>();
+                List<AnimeEntryObject> UpdatedAnimeBuffer = new List<AnimeEntryObject>();
 
                 //Check if there are any new xml files
                 if (files.Length != 0)
@@ -329,7 +342,7 @@ namespace Amatsukaze.Model
                                     if (AnimeLibraryListQuery.Sources.Contains("MAL") == true)
                                     {
                                         //The entry is a duplicate, so the file should be deleted and skipped.
-                                        File.Delete(filename);                                        
+                                        File.Delete(filename);
                                     }
                                     else
                                     {
@@ -343,14 +356,20 @@ namespace Amatsukaze.Model
                                             messagebuffer += MALdatasource.english;
 
                                         this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                        File.Delete(filename);                                                                                
+                                        File.Delete(filename);
+
+                                        //Add to the buffer
+                                        UpdatedAnimeBuffer.Add(AnimeLibraryListQuery);
+
+                                        //Save the update
+                                        SaveCacheFile(AnimeLibraryList);
                                     }
                                 }
                                 //So the entry is not in the AnimeLibraryList. Check if the entry exists in the existing buffer
                                 else if (AnimeLibraryListQuery == null)
                                 {
                                     var NewAnimeBufferQuery = NewAnimeBuffer.FirstOrDefault(i => i.title.ToLower() == MALdatasource.title.ToLower()
-                                                                                                || (i.english != "" &&i.english.ToLower() == MALdatasource.english.ToLower()));
+                                                                                                || (i.english != "" && i.english.ToLower() == MALdatasource.english.ToLower()));
 
                                     //It already exists!
                                     if (NewAnimeBufferQuery != null)
@@ -358,7 +377,7 @@ namespace Amatsukaze.Model
                                         if (NewAnimeBufferQuery.Sources.Contains("MAL") == true)
                                         {
                                             //The entry is a duplicate, so the file should be deleted and skipped.
-                                            File.Delete(filename);                                            
+                                            File.Delete(filename);
                                         }
                                         else
                                         {
@@ -372,7 +391,7 @@ namespace Amatsukaze.Model
                                                 messagebuffer += MALdatasource.english;
 
                                             this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                            File.Delete(filename);                                            
+                                            File.Delete(filename);                                           
                                         }
                                     }
                                     else //Doesn't exist!
@@ -437,7 +456,7 @@ namespace Amatsukaze.Model
                                     if (AnimeLibraryListQuery.Sources.Contains("AniDB") == true)
                                     {
                                         //The entry is a duplicate, so the file should be deleted and skipped.
-                                        File.Delete(filename);                                        
+                                        File.Delete(filename);
                                     }
                                     else
                                     {
@@ -451,7 +470,13 @@ namespace Amatsukaze.Model
                                             messagebuffer += AniDBdatasource.english;
 
                                         this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                        File.Delete(filename);                                                                              
+                                        File.Delete(filename);
+
+                                        //Add to the buffer
+                                        UpdatedAnimeBuffer.Add(AnimeLibraryListQuery);
+
+                                        //Save the update
+                                        SaveCacheFile(AnimeLibraryList);
                                     }
                                 }
                                 //So the entry is not in the AnimeLibraryList. Check if the entry exists in the existing buffer
@@ -466,7 +491,7 @@ namespace Amatsukaze.Model
                                         if (NewAnimeBufferQuery.Sources.Contains("AniDB") == true)
                                         {
                                             //The entry is a duplicate, so the file should be deleted and skipped.
-                                            File.Delete(filename);                                            
+                                            File.Delete(filename);
                                         }
                                         else
                                         {
@@ -480,7 +505,7 @@ namespace Amatsukaze.Model
                                                 messagebuffer += AniDBdatasource.english;
 
                                             this.SendMessagetoGUI(this, new MessageArgs(messagebuffer));
-                                            File.Delete(filename);                                                                                                                               
+                                            File.Delete(filename);
                                         }
                                     }
                                     else //Doesn't exist!
@@ -502,8 +527,8 @@ namespace Amatsukaze.Model
                     }
 
                     //Save both updated caches (only if they were initialized)
-                    if(MALDataCache != null) SaveCacheFile(MALDataCache);
-                    if(AniDBDataCache != null) SaveCacheFile(AniDBDataCache);
+                    if (MALDataCache != null) SaveCacheFile(MALDataCache);
+                    if (AniDBDataCache != null) SaveCacheFile(AniDBDataCache);
 
                     //Add the buffer list to AnimeLibraryList
                     foreach (AnimeEntryObject anime in NewAnimeBuffer)
@@ -543,6 +568,15 @@ namespace Amatsukaze.Model
                     TaskList.Add(Task.Run(() => DownloadAnimeCharacterArt(NewAnimeBuffer)));
 
                     await Task.WhenAll(TaskList);
+
+
+                    if (UpdatedAnimeBuffer.Count != 0)
+                    {
+                        List<Task> TaskList2 = new List<Task>();
+                        TaskList2.Add(Task.Run(() => DownloadAnimeCoverArt(UpdatedAnimeBuffer)));
+                        TaskList2.Add(Task.Run(() => DownloadAnimeCharacterArt(UpdatedAnimeBuffer)));
+                        await Task.WhenAll(TaskList2);
+                    }
                 }
                 else
                 {
@@ -550,7 +584,16 @@ namespace Amatsukaze.Model
                 }
                 IsRefreshInProgess = false;
 
-                string message2 = "Library: Directory scan finished. " + NewAnimeBuffer.Count.ToString() + " new anime added.";
+                string message2;
+
+                if (UpdatedAnimeBuffer.Count == 0)
+                {
+                    message2 = "Library: Directory scan finished. " + NewAnimeBuffer.Count.ToString() + " new anime added. ";
+                }
+                else
+                {
+                    message2 = "Library: Directory scan finished. " + NewAnimeBuffer.Count.ToString() + " new anime added. " + UpdatedAnimeBuffer.Count.ToString() + " anime updated.";
+                }                
 
                 this.SendMessagetoGUI(this, new MessageArgs(message2));
                 return true;
@@ -579,14 +622,14 @@ namespace Amatsukaze.Model
                                                                         || i.english.ToLower() == input.english.ToLower());
 
             //A match has been found!
-            if(AnimeLibraryList != null)
+            if (AnimeLibraryList != null)
             {
                 //AnimeLibraryListQuery.MergeInfo(input, optionsobject); //How do I merge this??
 
                 //Delete the input entry
                 AnimeLibraryList.RemoveAt(AnimeLibraryList.IndexOf(input));
 
-                return true;                
+                return true;
             }
 
             return false;

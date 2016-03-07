@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Application\HTTPAccessors.cs" />
     <Compile Include="Folder Menu\FileOrganizerLogic.cs" />
     <Compile Include="Folder Menu\FolderEntity.cs" />
     <Compile Include="Application\DatsourceObjects\XMLDataSourceObjects.cs" />

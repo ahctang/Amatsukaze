@@ -21,7 +21,13 @@ namespace Amatsukaze.ViewModel
         public bool UseMALDataSource { get; set; }
         public bool UseAniDBDataSource { get; set; }
 
-        public string AniDBImageURL { get; set; }
+        //For AniDB Api
+        public string AniDBImageURL { get; set; } 
+        public string AniDBXMLQueryURL { get; set; }
+        public string AniDBIDRetrieverURL { get; set; }
+        
+        //For MAL Api
+        public string MALXMLQueryURL { get; set; }      
 
         //Sets the options object to default values.
         public void SetDefaults()
@@ -31,6 +37,9 @@ namespace Amatsukaze.ViewModel
             this.UseMALDataSource = true;
             this.UseAniDBDataSource = false;
             this.AniDBImageURL = "https://img7.anidb.net/pics/anime/";
+            this.AniDBXMLQueryURL = "http://api.anidb.net:9001/httpapi?request=anime&client=Amatsukaze&clientver=1&protover=1&aid=";
+            this.AniDBIDRetrieverURL = "http://anisearch.outrance.pl/?task=search&query=";
+            this.MALXMLQueryURL = "http://myanimelist.net/api/anime/search.xml?q=";
         }
 
         //The Model class primarily deals with the IO related to saving the user preferences to a JSON file on disk
