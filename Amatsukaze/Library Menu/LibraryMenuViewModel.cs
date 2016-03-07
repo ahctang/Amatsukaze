@@ -54,6 +54,7 @@ namespace Amatsukaze.ViewModel
         private ICommand _selectAnime;
         private ICommand _switchSort;
         private ICommand _searchAnime;
+        private ICommand _clearSearchAnime;
         private ICommand _playAnime;
         private ICommand _editModeSwitch;
 
@@ -74,6 +75,9 @@ namespace Amatsukaze.ViewModel
         private bool messageLogToggle;
         private bool animeInfoToggle;
         private bool isEditMode = false;
+
+        //Last View in use before search
+        private string lastView;
         #endregion    
 
         #region Objects
@@ -162,6 +166,21 @@ namespace Amatsukaze.ViewModel
                 return _searchAnime;
             }
         }
+
+        public ICommand ClearSearchAnime
+        {
+            get
+            {
+                if (_clearSearchAnime == null)
+                {
+                    _clearSearchAnime = new RelayCommand(
+                        p => ClearSearchAnimeLibraryList(),
+                        p => AnimeLibraryList.Count > 0);
+                }
+                return _clearSearchAnime;
+            }
+        }
+
 
         public ICommand PlayAnime
         {
@@ -413,7 +432,10 @@ namespace Amatsukaze.ViewModel
         {
             if (CurrentView != targetView)
                 CurrentView = targetView;
-            Console.WriteLine("Current View: {0}", CurrentView);
+
+            //Lists should be updated when switching to season view (due to timing of when the cloned list is made)
+            if (CurrentView == "Season") RefreshSeasonLists();
+
             return;
         }
 
@@ -455,7 +477,10 @@ namespace Amatsukaze.ViewModel
 
         //Searches the AnimeLibraryList and fills the searchResults list with results
         private void SearchAnimeLibraryList(string SearchTerm)
-        {
+        {                                    
+            //Save the last view before showing the search window (unless it is another search)
+            if (CurrentView != "Search") lastView = CurrentView;
+
             if (SearchTerm == null)
             {
                 Switch("Search");
@@ -484,6 +509,20 @@ namespace Amatsukaze.ViewModel
             Switch("Search");
         }
 
+        //Clears the current search and sets it back to view before searching
+        private void ClearSearchAnimeLibraryList()
+        {
+            if (SearchResultList != null)
+            {
+                Keyboard.ClearFocus();
+                SearchResultList.Clear();
+                //Reset the text bound to the textbox
+                SearchTerm = "Search";
+
+                if (lastView != null) Switch(lastView);
+            }            
+        }
+
         //Plays the anime at the incoming path. 
         private bool playAnime()
         {
@@ -493,7 +532,7 @@ namespace Amatsukaze.ViewModel
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = MPCpath;
-                startInfo.Arguments = @" ""A:\output test\Hibike! Euphonium\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
+                startInfo.Arguments = @" ""A:\output test\[HorribleSubs] Hibike! Euphonium - 08 [1080p].mkv"" /startpos 00:18:40";
                 Process.Start(startInfo);
                 return true;
             }
@@ -608,6 +647,7 @@ namespace Amatsukaze.ViewModel
             {
                 case true:
                     IsEditMode = false;
+                    datasource.SaveCacheFile(AnimeLibraryList);
                     break;
                 case false:
                     IsEditMode = true;
@@ -626,7 +666,12 @@ namespace Amatsukaze.ViewModel
         {
             Console.WriteLine("Library Event Fired!");
             var message = (e as MessageArgs).Message;
-            LibraryMessageLog.Add(message);
+
+            //Try and invoke the actual adding action on the main UI thread to avoid the stupid object not suppoted exception
+            Application.Current.Dispatcher.Invoke((Action)(() =>
+            {
+                LibraryMessageLog.Add(message);
+            }));            
 
             if (this.EventAggregator != null)
             {
@@ -656,6 +701,7 @@ namespace Amatsukaze.ViewModel
         }
 
         //Function to be called for search view resizing
+        //THIS IS FOR THE SEARCH RESULT VIEW ONLY
         public void SearchResultListAreaResized(int columncount)
         {
             if (columncount != 0)
@@ -675,6 +721,7 @@ namespace Amatsukaze.ViewModel
         }
 
         //Function to be called for SeasonSortResizing
+        //THIS IS FOR THE SEASON SORT VIEW ONLY
         public void SeasonSortListAreaResized(int columncount)
         {
             if (columncount != 0)

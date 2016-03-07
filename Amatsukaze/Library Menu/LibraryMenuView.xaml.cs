@@ -93,6 +93,12 @@ namespace Amatsukaze.View
             var textbox = sender as TextBox;
             textbox.Text = string.Empty;
         }
+
+        private void SearchBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            textbox.Text = "Search";
+        }
     }
 
     public class UnsetConverter : IValueConverter

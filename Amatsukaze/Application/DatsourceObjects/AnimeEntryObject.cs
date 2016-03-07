@@ -30,7 +30,7 @@ namespace Amatsukaze.ViewModel
         public string start_date { get; set; }
         public string end_date { get; set; }
         public string synopsis { get; set; }
-        public string image { get; set; }
+        public string image { get; set; }        
 
         //Staff
         public List<AnimeStaff> Staff { get; set; }
@@ -40,6 +40,9 @@ namespace Amatsukaze.ViewModel
 
         //Episode list
         public List<Episode> Episodes { get; set; }
+
+        //Sources used
+        public List<string> Sources { get; set; }
 
         //Properties for Amatsukaze GUI
 
@@ -110,6 +113,9 @@ namespace Amatsukaze.ViewModel
                 return;
             }
 
+            this.Sources = new List<string>();
+            this.Sources.Add("MAL");
+
             PropertyInfo[] properties = datasource.GetType().GetProperties();
 
             foreach (PropertyInfo property in properties)
@@ -127,16 +133,17 @@ namespace Amatsukaze.ViewModel
             }
 
             //Can't use reflection because the names are all different, so have to use a lamo copy constructor
-
             this.id = datasource.Id;
-            this.type = datasource.Type;
-            this.start_date = datasource.StartDate;
-            this.end_date = datasource.EndDate;
-            this.title = datasource.Title;
+            this.type = datasource.type;
+            this.start_date = datasource.start_date;
+            this.end_date = datasource.end_date;
+            this.title = datasource.title;
             this.score = datasource.StandardRating;
-            this.english = datasource.EnglishTitle;
-            this.synonyms = datasource.Synonyms;
+            this.english = datasource.english;
+            this.synonyms = datasource.synonyms;
             this.image = datasource.Picture;
+            this.synopsis = datasource.synopsis;
+            this.episodes = datasource.Episodes.Count;
 
             this.Staff = datasource.Staff;
             this.Characters = datasource.Characters;
@@ -144,6 +151,9 @@ namespace Amatsukaze.ViewModel
 
             AssignGridRowColumn(this.Staff);
             AssignGridRowColumn(this.Characters);
+
+            this.Sources = new List<string>();
+            this.Sources.Add("AniDB");
         }
 
         public AnimeEntryObject(MALDataSource MALdatasource, AniDBDataSource AniDBdatasource)
@@ -161,7 +171,7 @@ namespace Amatsukaze.ViewModel
                 targetproperty.SetValue(this, property.GetValue(MALdatasource, null), null);
             }
 
-            this.synopsis = AniDBdatasource.Synopsis;
+            this.synopsis = AniDBdatasource.synopsis;
             this.Staff = AniDBdatasource.Staff;
             this.Characters = AniDBdatasource.Characters;
             this.Episodes = AniDBdatasource.Episodes;
@@ -200,8 +210,7 @@ namespace Amatsukaze.ViewModel
             lock(this)
             {
                 this.ImagePath = ImagePath;
-            }
-            
+            }            
         }
 
         public void MergeCharacters(List<AnimeCharacter> Characters)
@@ -210,7 +219,82 @@ namespace Amatsukaze.ViewModel
             {
                 this.Characters = Characters;
             }
-        }            
+
+            //Add AniDB just in case because characters can only be added from AniDB
+            if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");
+        }
+
+        public void MergeInfo(MALDataSource Input, OptionsObject OptionsObject)
+        {
+            //Return if OptionsObject doesn't have MALDataSource enabled. 
+            if (OptionsObject.UseMALDataSource == false) return;
+            
+            //Try to merge the property if the property is not defined on AnimeEntryObject
+            PropertyInfo[] InputProperties = Input.GetType().GetProperties();
+
+            foreach (PropertyInfo property in InputProperties)
+            {
+                PropertyInfo AnimeEntryObjectProperty = this.GetType().GetProperty(property.Name);
+                if (AnimeEntryObjectProperty != null)
+                {
+                    if (AnimeEntryObjectProperty.GetValue(this, null) == null && property.GetValue(Input, null) != null)
+                    {
+                        AnimeEntryObjectProperty.SetValue(this, property.GetValue(Input, null), null);
+                    }
+                }               
+            }
+
+            if (this.Sources.Contains("MAL") == false) this.Sources.Add("MAL");
+
+            //Temporary Workaround
+            this.image = Input.image;
+            this.synopsis = Input.synopsis;
+        }
+
+        public void MergeInfo(AniDBDataSource Input, OptionsObject OptionsObject)
+        {
+            //Return if OptionsObject doesn't have AniDB enabled. 
+            if (OptionsObject.UseAniDBDataSource == false) return;
+
+            //Try to merge the property if the property is not defined on AnimeEntryObject
+            PropertyInfo[] InputProperties = Input.GetType().GetProperties();
+
+            foreach (PropertyInfo property in InputProperties)
+            {
+                PropertyInfo AnimeEntryObjectProperty = this.GetType().GetProperty(property.Name);
+
+                if (AnimeEntryObjectProperty != null)
+                {
+                    if (AnimeEntryObjectProperty.GetValue(this, null) == null && property.GetValue(Input, null) != null)
+                    {
+                        AnimeEntryObjectProperty.SetValue(this, property.GetValue(Input, null), null);
+                    }
+                }                
+            }
+
+            if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");            
+        }
+
+        /*public void MergeInfo(AnimeEntryObject Input, OptionsObject OptionsObject)
+        {
+            //Return if OptionsObject doesn't have AniDB enabled. 
+            if (OptionsObject.UseAniDBDataSource == false) return;
+
+            //Try to merge the property if the property is not defined on AnimeEntryObject
+            PropertyInfo[] InputProperties = Input.GetType().GetProperties();
+
+            foreach (PropertyInfo property in InputProperties)
+            {
+                PropertyInfo AnimeEntryObjectProperty = this.GetType().GetProperty(property.Name);
+
+                if (AnimeEntryObjectProperty.GetValue(this, null) == null && property.GetValue(Input, null) != null)
+                {
+                    AnimeEntryObjectProperty.SetValue(this, property.GetValue(Input, null), null);
+                }
+            }
+
+            if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");
+        }*/
 
         private void AssignGridRowColumn(List<AnimeStaff> StaffList)
         {

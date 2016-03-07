@@ -36,7 +36,7 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
                                                       Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -87,7 +87,7 @@
                                                     <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                                                 </DataTemplate.Resources>
                                                 <StackPanel Width="{Binding ElementName=CoverImage2, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}}" Height="225" Width="161">
+                                                    <Image x:Name="CoverImage2" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAync}" Height="225" Width="161">
                                                         <Image.InputBindings>
                                                             <MouseBinding MouseAction="LeftClick" 
                                                                   Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -119,7 +119,7 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SearchResultSort">
-            <StackPanel>
+            <StackPanel>                
                 <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="20" Margin="10,10,0,0"><Run Text="Searching for: "></Run><Run Text="{Binding ElementName=SearchBox, Path=Text}"></Run>
                 </TextBlock>
                 <ItemsControl ItemsSource="{Binding SearchResultList}">
@@ -183,9 +183,13 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-        </Style>       
+        </Style>
 
     </UserControl.Resources>
+
+    <UserControl.InputBindings>        
+            <KeyBinding Key="Esc"  Command="{Binding ClearSearchAnime}"></KeyBinding>
+    </UserControl.InputBindings>
 
     <DockPanel LastChildFill="True">
         <DockPanel.Resources>
@@ -210,7 +214,7 @@
                         <Setter Property="Foreground" Value="Black"></Setter>
                         <Setter Property="BorderThickness" Value="1"></Setter>
                         <Setter Property="IsReadOnly" Value="False"></Setter>
-                     </DataTrigger>
+                    </DataTrigger>
                 </Style.Triggers>
             </Style>
         </DockPanel.Resources>
@@ -223,12 +227,32 @@
             </TextBlock>
 
             <!-- Search -->
-            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" 
-                    Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}">
-                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
+            <Button Height="35" Width="35" HorizontalAlignment="Right" VerticalAlignment="Center" DockPanel.Dock="Right" Background="{DynamicResource SelectedMenuColor}" BorderThickness="0">
+                <Button.Style>
+                    <Style>
+                        <Setter Property="Button.Command" Value="{Binding SearchAnime}"></Setter>
+                        <Setter Property="Button.CommandParameter" Value="{Binding ElementName=SearchBox, Path=Text}"></Setter>
+                        <Setter Property="Button.Content">
+                            <Setter.Value>
+                                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>                                
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding CurrentView}" Value="Search">
+                                <Setter Property="Button.Command" Value="{Binding ClearSearchAnime}"></Setter>                                
+                                <Setter Property="Button.Content">
+                                    <Setter.Value>
+                                        <Image Source="{StaticResource CloseIcon}" Height="15" Width="15"></Image>
+                                    </Setter.Value>
+                                </Setter>
+                            </DataTrigger>
+                        </Style.Triggers>                        
+                    </Style>
+                </Button.Style>
+                
             </Button>
-            <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=Default}" 
-                     Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" >
+            <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Return" Command="{Binding SearchAnime}" CommandParameter="{Binding ElementName=SearchBox, Path=Text}"></KeyBinding>
                 </TextBox.InputBindings>
@@ -281,7 +305,7 @@
                     <MouseBinding MouseAction="LeftClick" Command="{Binding SwitchSort}" CommandParameter="Season"></MouseBinding>
                 </TextBlock.InputBindings>
             </TextBlock>
-            <TextBlock Text="View by Genre " DockPanel.Dock="Left" Padding="10,0,10,0" VerticalAlignment="Center">
+            <!--<TextBlock Text="View by Genre " DockPanel.Dock="Left" Padding="10,0,10,0" VerticalAlignment="Center">
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource HeaderText}" TargetType="TextBlock">
                         <Setter Property="FontSize" Value="14"></Setter>
@@ -298,7 +322,7 @@
                 <TextBlock.InputBindings>
                     <MouseBinding MouseAction="LeftClick" Command="{Binding SwitchSort}" CommandParameter="Genre"></MouseBinding>
                 </TextBlock.InputBindings>
-            </TextBlock>
+            </TextBlock>-->
         </DockPanel>
 
         <!-- Switching Display Area-->
@@ -346,7 +370,7 @@
                                         <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard1"></StopStoryboard>
                                     </DataTrigger.ExitActions>
                                 </DataTrigger>
-                                <DataTrigger Binding="{Binding CurrentView}" Value="Genre">
+                                <!--<DataTrigger Binding="{Binding CurrentView}" Value="Genre">
                                     <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource LibraryGenreSort}"></Setter>
                                     <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
                                     <DataTrigger.EnterActions>
@@ -361,7 +385,7 @@
                                     <DataTrigger.ExitActions>
                                         <StopStoryboard BeginStoryboardName="ViewTransitionStoryboard2"></StopStoryboard>
                                     </DataTrigger.ExitActions>
-                                </DataTrigger>
+                                </DataTrigger>-->
                                 <DataTrigger Binding="{Binding CurrentView}" Value="Search">
                                     <Setter Property="ContentControl.ContentTemplate" Value="{StaticResource SearchResultSort}"></Setter>
                                     <Setter Property="ContentControl.Content" Value="{Binding}"></Setter>
@@ -402,7 +426,11 @@
                                 <DataTrigger.EnterActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.25"></DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="0" To="1" Duration="0:0:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <ExponentialEase EasingMode="EaseOut"></ExponentialEase>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
                                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.5"></DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -410,8 +438,13 @@
                                 <DataTrigger.ExitActions>
                                     <BeginStoryboard>
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.25"></DoubleAnimation>
-                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.5"></DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetProperty="(Border.RenderTransform).(ScaleTransform.ScaleY)" From="1" To="0" Duration="0:0:0.25">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <CubicEase EasingMode="EaseIn"></CubicEase>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.25">                                             
+                                            </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
                                 </DataTrigger.ExitActions>
@@ -421,7 +454,7 @@
                 </Border.Style>
                 <StackPanel>
                     <StackPanel.Resources>
-                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>                       
+                        <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                     </StackPanel.Resources>
                     <StackPanel HorizontalAlignment="Right">
                         <DockPanel HorizontalAlignment="Right">
@@ -450,7 +483,7 @@
                                 <Setter Property="Foreground" Value="{DynamicResource BodyFontColor}" />
                             </Style>
                         </DockPanel.Resources>
-                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}}" MaxWidth="250" VerticalAlignment="Top" Margin="0,28,0,0"></Image>
+                        <Image DockPanel.Dock="Left" Source="{Binding SelectedAnime.ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" MaxWidth="250" VerticalAlignment="Top" Margin="0,28,0,0"></Image>
                         <TabControl Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{DynamicResource BodyFontColor}" BorderThickness="0" Margin="5,0,0,0">
                             <TabItem Header="Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
                                 <ScrollViewer MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,100" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
@@ -472,7 +505,7 @@
                                             <RowDefinition Height="Auto"></RowDefinition>
                                             <RowDefinition Height="*"></RowDefinition>
                                         </Grid.RowDefinitions>
-                                        
+
                                         <TextBlock Text="Also Known as:" Grid.Column="0" Grid.Row="0" FontSize="14" FontWeight="Bold" ></TextBlock>
                                         <TextBox Text="{Binding SelectedAnime.synonyms, Mode=TwoWay}" Grid.Column="0" Grid.Row="1" Padding="0,0,0,5" Style="{StaticResource AnimeInfoTextBox}"></TextBox>
 
@@ -542,7 +575,7 @@
                                             </TabItem>
                                             <TabItem Header="Characters" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch">
                                                 <Grid HorizontalAlignment="Stretch">
-                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Characters}">
+                                                    <ItemsControl ItemsSource="{Binding SelectedAnime.Characters, AsyncState=IsAsync}">
                                                         <ItemsControl.ItemsPanel>
                                                             <ItemsPanelTemplate>
                                                                 <Grid>
@@ -584,13 +617,13 @@
                                                         </ItemsControl.ItemTemplate>
                                                     </ItemsControl>
                                                 </Grid>
-                                            </TabItem>                                           
+                                            </TabItem>
                                         </TabControl>
                                     </Grid>
                                 </ScrollViewer>
                             </TabItem>
                             <TabItem Header="Episode Info" Foreground="{DynamicResource BodyFontColor}" Background="#99E4E4E4" HorizontalAlignment="Right" HorizontalContentAlignment="Stretch" Height="25">
-                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent">                                    
+                                <ListView ItemsSource="{Binding SelectedAnime.Episodes}" Background="Transparent" ScrollViewer.VerticalScrollBarVisibility="Auto" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <Grid Margin="2">
@@ -605,16 +638,16 @@
                                                 <TextBlock Grid.Row="1" Text="{Binding Title}" Foreground="{DynamicResource BodyFontColor}"/>
                                             </Grid>
                                         </DataTemplate>
-                                    </ListView.ItemTemplate>                                   
+                                    </ListView.ItemTemplate>
                                 </ListView>
                             </TabItem>
-                        </TabControl>                      
+                        </TabControl>
                     </DockPanel>
                 </StackPanel>
             </Border>
 
             <!-- Message Log Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Margin="1,-740,99,740">
+            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>

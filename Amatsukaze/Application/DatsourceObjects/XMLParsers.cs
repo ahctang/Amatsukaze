@@ -119,13 +119,13 @@ namespace Amatsukaze.ViewModel
                     aniDBDataSource.Id = Convert.ToInt16(reader.GetAttribute("id"));
 
                     reader.ReadToFollowing("type");
-                    aniDBDataSource.Type = reader.ReadElementContentAsString();
+                    aniDBDataSource.type = reader.ReadElementContentAsString();
 
                     reader.ReadToFollowing("startdate");
-                    aniDBDataSource.StartDate = reader.ReadElementContentAsString();
+                    aniDBDataSource.start_date = reader.ReadElementContentAsString();
 
                     reader.ReadToFollowing("enddate");
-                    aniDBDataSource.EndDate = reader.ReadElementContentAsString();
+                    aniDBDataSource.end_date = reader.ReadElementContentAsString();
 
                     reader.ReadToFollowing("titles");
                     reader.ReadToDescendant("title");
@@ -133,22 +133,22 @@ namespace Amatsukaze.ViewModel
                     {
                         if (reader.GetAttribute("xml:lang") == "x-jat" && reader.GetAttribute("type") == "main")
                         {
-                            aniDBDataSource.Title = reader.ReadElementContentAsString();
+                            aniDBDataSource.title = reader.ReadElementContentAsString();
                         }
                         else if (reader.GetAttribute("xml:lang") == "x-jat" && reader.GetAttribute("type") == "synonym")
                         {
-                            aniDBDataSource.Synonyms = reader.ReadElementContentAsString();
+                            aniDBDataSource.synonyms = reader.ReadElementContentAsString();
                         }
                         else if (reader.GetAttribute("xml:lang") == "en")
                         {
-                            aniDBDataSource.EnglishTitle = reader.ReadElementContentAsString();
+                            aniDBDataSource.english = reader.ReadElementContentAsString();
                         }
 
                     } while (reader.ReadToNextSibling("title"));
 
-                    //Workaround so EnglishTitle and synonyms don't end up as null
-                    if (aniDBDataSource.Synonyms == null) aniDBDataSource.Synonyms = "";
-                    if (aniDBDataSource.EnglishTitle == null) aniDBDataSource.EnglishTitle = "";
+                    //Workaround so english and synonyms don't end up as null
+                    if (aniDBDataSource.synonyms == null) aniDBDataSource.synonyms = "";
+                    if (aniDBDataSource.english == null) aniDBDataSource.english = "";
 
                     reader.ReadToFollowing("creators");
                     reader.ReadToDescendant("name");
@@ -168,7 +168,7 @@ namespace Amatsukaze.ViewModel
                     } while (reader.ReadToNextSibling("name") && staffcounter < 12);
 
                     reader.ReadToFollowing("description");
-                    aniDBDataSource.Synopsis = reader.ReadElementContentAsString();
+                    aniDBDataSource.synopsis = reader.ReadElementContentAsString();
 
                     reader.ReadToFollowing("permanent");
                     aniDBDataSource.WeightedRating = Convert.ToDouble(reader.ReadElementContentAsString());

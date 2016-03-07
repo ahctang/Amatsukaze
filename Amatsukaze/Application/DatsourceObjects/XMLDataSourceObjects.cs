@@ -71,12 +71,12 @@ namespace Amatsukaze.ViewModel
         //This function will parse the fields I'm planning to take from an AniDB XML entry. It doesn't take everything, so it maybe worth redoing in the future.
         //Standard fields
         public int Id { get; set; }
-        public string Type { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
-        public string Title { get; set; }
-        public string EnglishTitle { get; set; }
-        public string Synonyms { get; set; }
+        public string type { get; set; }
+        public string start_date { get; set; }
+        public string end_date { get; set; }
+        public string title { get; set; }
+        public string english { get; set; }
+        public string synonyms { get; set; }
 
         //Skipping related anime/similar anime nodes/recommendations
 
@@ -84,7 +84,7 @@ namespace Amatsukaze.ViewModel
         public List<AnimeStaff> Staff;
 
         //Synoposis
-        public string Synopsis { get; set; }
+        public string synopsis { get; set; }
 
 
         //Ratings
