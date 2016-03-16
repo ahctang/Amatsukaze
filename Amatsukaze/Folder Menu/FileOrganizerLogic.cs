@@ -7,26 +7,40 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Amatsukaze.Folder_Menu
+namespace Amatsukaze.ViewModel
 {
     class FileOrganizerLogic
     {
-        public static List<Series> parseAsSeries()
+
+        private static string[] videoFormats = { ".mkv", ".avi", ".mp4,", ".mov", ".flv", ".ogg", ".wmv", ".rm", ".rmvb", ".m4p ", ".m4v", ".mpg", ".mpeg", ".vob", ".ogv", ".qt", ".mp2", ".mpe", ".mpv", ".f4v"};
+
+        /**
+        * From a root directory. Parses all sub-directories and files to make a list of series
+        **/ 
+        public static List<Series> parseAsSeries(string rootFolderAbsolutePath)
         {
             List<Series> seriesList = new List<Series>();
 
             // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader(
-                Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\fileNames.txt");
+            //System.IO.StreamReader file = new System.IO.StreamReader(
+            //    Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\fileNames.txt");
 
             string line;
-            while ((line = file.ReadLine()) != null)
+            //while ((line = file.ReadLine()) != null)
+            foreach (string file in getFileNamesOfAllSubdirectories(rootFolderAbsolutePath))
             {
+                line = file;
                 List<string> surroundedStrings = getSurroundedParts(line);
 
-                Episode episode = new Episode();
+                SeriesEpisode episode = new SeriesEpisode();
 
-                // Extract file format
+                // If file extension not video file format, skip to next file
+                if (!videoFormats.Contains(line.Substring(line.LastIndexOf("."))))
+                {
+                    continue;
+                }
+
+                // Extract file extension
                 episode.extension = line.Substring(line.LastIndexOf("."));
                 line = line.Replace(episode.extension, "");
 
@@ -69,7 +83,7 @@ namespace Amatsukaze.Folder_Menu
 
                 // Extract episode number
                 line = line.Replace("_", " ").Trim();
-                episode.episodeNumber = Regex.Match(line, "[ ]([eE][pP][iI][sS][oO][dD][eE][ ])?(Vol[. ][ ]?)?[#]?\\d\\d?([ ]?v\\d([.]?\\d)?)?([ ]?v\\d([.]?\\d)?)?([ ]?[&][&]?[ ]?(\\d\\d?))?([.]\\d\\d)?",
+                episode.episodeNumber = Regex.Match(line, "[ ]([eE][pP][iI][sS][oO][dD][eE][. ]?)?([eE][pP][. ]?)?(Vol[. ][ ]?)?[#]?\\d\\d?([ ]?v\\d([.]?\\d)?)?([ ]?v\\d([.]?\\d)?)?([ ]?[&][&]?[ ]?(\\d\\d?))?([.]\\d\\d)?",
                     RegexOptions.RightToLeft).Value.Trim();
                 if (episode.episodeNumber.Length > 0)
                 {
@@ -101,12 +115,12 @@ namespace Amatsukaze.Folder_Menu
                     seriesList.Add(newSeries);
                 }
             }
-            file.Close();
+            //file.Close();
 
             foreach (Series series in seriesList)
             {
                 Console.WriteLine("SeriesName = " + series.name);
-                foreach (Episode episode in series.episodes)
+                foreach (SeriesEpisode episode in series.episodes)
                 {
                     Console.WriteLine("    SeriesName = " + episode.seriesName);
                     Console.WriteLine("        Subgroup = " + episode.subGroup);
@@ -120,7 +134,34 @@ namespace Amatsukaze.Folder_Menu
             return seriesList;
         }
 
-        public static List<string> getSurroundedParts(string line)
+        /**
+        * Recursively gets the name of all files in the rootFolder directory and all of its subfolders for all depth
+        **/
+        private static List<string> getFileNamesOfAllSubdirectories(string rootFolderAbsolutePath)
+        {
+            List<string> results = new List<string>();
+            DirectoryInfo directoryInfo = new DirectoryInfo(rootFolderAbsolutePath);
+
+            foreach (FileInfo fileInfo in directoryInfo.GetFiles())
+            {
+                results.Add(fileInfo.Name);
+            }
+
+            foreach (DirectoryInfo subDirectoryInfo in directoryInfo.GetDirectories())
+            {
+                foreach (string fileInSubdirectory in getFileNamesOfAllSubdirectories(subDirectoryInfo.FullName))
+                {
+                    results.Add(fileInSubdirectory);
+                }
+            }
+
+            return results;
+        }
+
+        /**
+        * Gets all parts between () or [] of a string
+        **/
+        private static List<string> getSurroundedParts(string line)
         {
             List<string> result = new List<string>();
 
@@ -147,10 +188,10 @@ namespace Amatsukaze.Folder_Menu
     public class Series
     {
         public string name { get; set; }
-        public List<Episode> episodes { get; set; } = new List<Episode>();
+        public List<SeriesEpisode> episodes { get; set; } = new List<SeriesEpisode>();
     }
 
-    public class Episode
+    public class SeriesEpisode
     {
         public string seriesName { get; set; }
         public string subGroup { get; set; }
@@ -159,4 +200,5 @@ namespace Amatsukaze.Folder_Menu
         public string hash { get; set; }
         public string extension { get; set; }
     }
+
 }

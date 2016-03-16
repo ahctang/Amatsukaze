@@ -34,6 +34,15 @@ namespace Amatsukaze.View
             InitializeComponent();
         }
 
+        private void openOrganizeDialog(object sender, RoutedEventArgs e)
+        {
+            FolderDetails.Visibility = Visibility.Visible;
+        }
+
+        private void closeOrganizeDialog(object sender, RoutedEventArgs e)
+        {
+            FolderDetails.Visibility = Visibility.Hidden;
+        }
     }
 
 }

@@ -21,17 +21,24 @@ namespace Amatsukaze.ViewModel
         private ObservableCollection<FolderItem> folderContents = new ObservableCollection<FolderItem>();
         private FolderEntity selectedFolder;
 
+        private string organizeContents = "test";
+
         private ICommand displaySelectFolderDialog;
         private ICommand displayDeleteDialog;
-        //private Boolean isSelectDialogOpen;
-        
 
+        /*
+        * 
+        */
         public FolderMenuViewModel(IEventAggregator eventAggregator)
         {
             this.EventAggregator = eventAggregator;
             readFolders();
         }
 
+        /*
+        * Trigerred when clicking the <add> button.
+        * This opens a dialog letting the user select a folder to add.
+        */
         private void openAddFolderDialog()
         {
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -126,7 +133,7 @@ namespace Amatsukaze.ViewModel
 
         private void onFolderSelection()
         {
-            if (selectedFolder != null)
+            if (selectedFolder != null && selectedFolder.path != null && selectedFolder.path != "")
             {
                 //selectedFolderNameTextBlock.Text = selectedFolder.name;
                 DirectoryInfo info = new DirectoryInfo(selectedFolder.path);
@@ -150,6 +157,13 @@ namespace Amatsukaze.ViewModel
                     results.Add(item);
                 }
                 FolderContents = results;
+
+                List<Series> series = FileOrganizerLogic.parseAsSeries(selectedFolder.path);
+                organizeContents = "Folder contains " + series.Count() + " series\n\n";
+                foreach (Series serie in series)
+                {
+                    organizeContents += "Found series " + serie.name + " containing " + serie.episodes.Count() + " episodes\n";
+                }
             }
         }
 
@@ -164,7 +178,6 @@ namespace Amatsukaze.ViewModel
             set
             {
                 folders = value;
-                Console.WriteLine("blop");
                 OnPropertyChanged("Folders");
             }
         }
@@ -178,9 +191,10 @@ namespace Amatsukaze.ViewModel
             set
             {
                 selectedFolder = value;
-                Console.WriteLine("nya");
                 OnPropertyChanged("SelectedFolder");
+                
                 onFolderSelection();
+                OnPropertyChanged("OrganizeContents");
             }
         }
 
@@ -189,10 +203,23 @@ namespace Amatsukaze.ViewModel
             get
             {
                 return folderContents;
-            } set
+            }
+            set
             {
                 folderContents = value;
                 OnPropertyChanged("FolderContents");
+            }
+        }
+
+        public string OrganizeContents
+        {
+            get
+            {
+                return organizeContents;
+            }
+            set
+            {
+                organizeContents = value;
             }
         }
 
@@ -234,13 +261,6 @@ namespace Amatsukaze.ViewModel
             {
                 return "Folder Menu";
             }
-        }
-
-        public class FolderItem
-        {
-            public string name { get; set; }
-            public string type { get; set; }
-            public string contents { get; set; }
         }
 
     }
