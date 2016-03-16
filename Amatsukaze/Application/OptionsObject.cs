@@ -28,6 +28,8 @@ namespace Amatsukaze.ViewModel
         
         //For MAL Api
         public string MALXMLQueryURL { get; set; }      
+        public string MALLogin { get; set; }
+        public string MALPassword { get; set; }
 
         //Sets the options object to default values.
         public void SetDefaults()
