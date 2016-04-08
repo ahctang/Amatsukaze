@@ -62,8 +62,10 @@
                     <TextBlock Style="{StaticResource BodyHeaderText}" Margin="10,10,0,0" DockPanel.Dock="Top" FontSize="14">MAL HTTP Api Settings</TextBlock>
                     <TextBlock Style="{StaticResource BodyHeaderText}" Margin="10,0,0,0" DockPanel.Dock="Top" FontSize="12">MAL XML Query URL</TextBlock>
                     <TextBox Text="{Binding MALXMLQueryURL, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>
-                    
-                    
+                    <TextBlock Style="{StaticResource BodyHeaderText}" Margin="10,0,0,0" DockPanel.Dock="Top" FontSize="12">MAL Login</TextBlock>
+                    <TextBox Text="{Binding MALLogin, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>
+                    <TextBlock Style="{StaticResource BodyHeaderText}" Margin="10,0,0,0" DockPanel.Dock="Top" FontSize="12">MAL Password:</TextBlock>
+                    <TextBox Text="{Binding MALPassword, Mode=TwoWay, UpdateSourceTrigger=Default}" DockPanel.Dock="Top" Margin="10,0,0,0"/>                    
                     <DockPanel />
                 </DockPanel>
             </Grid>

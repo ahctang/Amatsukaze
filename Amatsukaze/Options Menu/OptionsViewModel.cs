@@ -53,6 +53,8 @@ namespace Amatsukaze.ViewModel
         private string aniDBXMLQueryURL;
         private string aniDBRetrieverURL;
         private string malXMLQueryURL;
+        private string malLogin;
+        private string malPassword;
         #endregion
 
         #region Properties
@@ -217,6 +219,43 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public string MALLogin
+        {
+            get
+            {
+                return malLogin;
+            }
+            set
+            {
+                if (malLogin != value)
+                {
+                    malLogin = value;
+                    optionsobject.MALLogin = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("MALLogin");
+                }
+            }
+        }
+
+        public string MALPassword
+        {
+            get
+            {
+                return malPassword;
+            }
+            set
+            {
+                if (malPassword != value)
+                {
+                    malPassword = value;
+                    optionsobject.MALPassword = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("MALPassword");
+                }
+            }
+        }
         #endregion
 
         #region Methods
