@@ -18,6 +18,11 @@ namespace Amatsukaze.ViewModel
         {
             try
             {
+                //remove the first line from the xml file if it is the typical xml line
+                if(xmlinput.IndexOf(@"<?xml version=""1.0"" encoding=""utf-8""?>") != -1)
+                xmlinput = xmlinput.Substring(xmlinput.IndexOf("\n") + 1);
+
+                //Add the entitites for xmlreader
                 string entities = @"<!DOCTYPE documentElement[
                 <!ENTITY Alpha ""&#913;"">
                 <!ENTITY ndash ""&#8211;"">

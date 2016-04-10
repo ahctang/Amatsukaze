@@ -32,7 +32,7 @@ namespace Amatsukaze.Model
 
         #region Properties
 
-        //Bool to block off refresh so it can only be executed in one thread at a time
+        //Bool to block off refresh so it can only be executed in one thread at a time (I'll implement a mutex if it turns out to be necessary)
         public bool IsRefreshInProgess { get; set; }
 
         #endregion
@@ -65,15 +65,18 @@ namespace Amatsukaze.Model
         }
 
         //Downloads the image file using the image in the animeentryobject
-        private void DownloadAnimeCoverArt(List<AnimeEntryObject> NewAnimeBuffer)
+        private void DownloadAnimeCoverArt(List<AnimeEntryObject> NewAnimeBuffer, IProgress<double> CoverArtProgress)
         {
             //Subscribe the event handlers
             AnimeCoverResourceReady += new EventHandler(OnAnimeCoverResourceReady);
 
+            //Progress monitoring counter
+            int CoverCounter = 0;
+
             using (var client = new WebClient())
             {
                 foreach (AnimeEntryObject animeentry in NewAnimeBuffer)
-                {
+                {                    
                     try
                     {
                         if (animeentry.Sources.Contains("MAL"))
@@ -105,7 +108,7 @@ namespace Amatsukaze.Model
                             AnimeCoverResourceReady(this, new AnimeCoverArgs(animeentry));
                         }
 
-                        if (animeentry.Sources.Contains("AniDB"))
+                        else if (animeentry.Sources.Contains("AniDB"))
                         {
                             FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\");
                             folder.Directory.Create();
@@ -132,10 +135,18 @@ namespace Amatsukaze.Model
                             //Raise the event to indicate the stuff is ready
                             AnimeCoverResourceReady(this, new AnimeCoverArgs(animeentry));
                         }
+                        CoverCounter++;
+                        double result = Convert.ToDouble(CoverCounter) / Convert.ToDouble(NewAnimeBuffer.Count) * 100;
+                        Console.WriteLine("CoverProgress reporting: {0}", (int)result);
+                        CoverArtProgress.Report((int)result);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("{0} Cover Art: {1}", animeentry.title, ex.Message);
+                        CoverCounter++;
+                        double result = Convert.ToDouble(CoverCounter) / Convert.ToDouble(NewAnimeBuffer.Count) * 100;
+                        Console.WriteLine("CoverProgress reporting: {0}", (int)result);
+                        CoverArtProgress.Report((int)result);
                         /*string message = "Library: Could not retrieve artwork for: ";
                         if (animeentry.english.Length == 0)
                             message += animeentry.title;
@@ -154,10 +165,13 @@ namespace Amatsukaze.Model
             return;
         }
 
-        private void DownloadAnimeCharacterArt(List<AnimeEntryObject> NewAnimeBuffer)
+        private void DownloadAnimeCharacterArt(List<AnimeEntryObject> NewAnimeBuffer, IProgress<double> CharArtProgress)
         {
             //Subscribe the event handlers
             AnimeCharacterResourceReady += new EventHandler(OnAnimeCharacterResourceReady);
+
+            //Progress monitoring counter
+            int CharCounter = 0;
 
             using (var client = new WebClient())
             {                
@@ -165,7 +179,14 @@ namespace Amatsukaze.Model
                 {
                     try
                     {
-                        if (animeentry.Characters == null || animeentry.Characters.Count == 0) continue;
+                        if (animeentry.Characters == null || animeentry.Characters.Count == 0)
+                        {
+                            CharCounter++;
+                            double result2 = (Convert.ToDouble(CharCounter) / Convert.ToDouble(NewAnimeBuffer.Count)) * 100;
+                            Console.WriteLine("Entry skipped. CharProgress reporting: {0}", (double)result2);
+                            CharArtProgress.Report((double)result2);
+                            continue;
+                        }
 
                         FileInfo folder = new FileInfo(optionsobject.CacheFolderpath + @"Images\" + animeentry.id.ToString() + @"\");
                         folder.Directory.Create();
@@ -180,10 +201,15 @@ namespace Amatsukaze.Model
 
                             character.PicturePath = path;
 
-                            Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());
+                            Console.WriteLine("Downloaded {0}.jpg", animeentry.id.ToString());                            
                             Thread.Sleep(2000);
                         }
+                        CharCounter++;
+                        double result = (Convert.ToDouble(CharCounter) / Convert.ToDouble(NewAnimeBuffer.Count)) * 100;
 
+                        Console.WriteLine("CharProgress reporting: {0}", (double)result);
+                        CharArtProgress.Report((double)result);                                               
+                        
                         AnimeCharacterResourceReady(this, new AnimeCharacterArgs(animeentry, animeentry.Characters));
 
                         /*string message = "Library: Updated character artwork (AniDB) for: ";
@@ -197,7 +223,12 @@ namespace Amatsukaze.Model
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("{0} Character Art: {2}", animeentry.title, ex.Message);
+                        CharCounter++;
+                        double result = (Convert.ToDouble(CharCounter) / Convert.ToDouble(NewAnimeBuffer.Count)) * 100;
+
+                        Console.WriteLine("CharProgress reporting: {0}", (double)result);
+                        CharArtProgress.Report((double)result);
                         /*string message = "Library: Could not retrieve character artwork for: ";
                         if (animeentry.english.Length == 0)
                             message += animeentry.title;
@@ -283,6 +314,7 @@ namespace Amatsukaze.Model
             try
             {                
                 IsRefreshInProgess = true;
+                ProcessChanged(this, new MessageArgs("Updating Library"));
                 string[] files = Directory.GetFiles(optionsobject.CacheFolderpath, "*.xml");
 
                 //Buffer lists to make it easier to only add new objects to AnimeLibraryList                
@@ -412,6 +444,8 @@ namespace Amatsukaze.Model
                             else
                             {
                                 this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse failed."));
+                                IsRefreshInProgess = false;
+                                ProcessChanged(this, new MessageArgs(""));
                                 return false;
                             }
                         }
@@ -523,6 +557,13 @@ namespace Amatsukaze.Model
                                     }
                                 }
                             }
+                            else
+                            {
+                                this.SendMessagetoGUI(this, new MessageArgs("Library: Directory parse failed."));
+                                IsRefreshInProgess = false;
+                                ProcessChanged(this, new MessageArgs(""));
+                                return false;
+                            }
                         }
                     }
 
@@ -564,8 +605,15 @@ namespace Amatsukaze.Model
                     //Start the tasks to retrieve the resources from the internet
                     List<Task> TaskList = new List<Task>();
 
-                    TaskList.Add(Task.Run(() => DownloadAnimeCoverArt(NewAnimeBuffer)));
-                    TaskList.Add(Task.Run(() => DownloadAnimeCharacterArt(NewAnimeBuffer)));
+                    //Objects for reporting progress
+                    var CoverArtProgress = new Progress<double>();
+                    var CharArtProgress = new Progress<double>();
+
+                    CoverArtProgress.ProgressChanged += CoverArtProgressChanged;
+                    CharArtProgress.ProgressChanged += CharArtProgressChanged;
+
+                    TaskList.Add(Task.Run(() => DownloadAnimeCoverArt(NewAnimeBuffer, CoverArtProgress)));
+                    TaskList.Add(Task.Run(() => DownloadAnimeCharacterArt(NewAnimeBuffer, CharArtProgress)));
 
                     await Task.WhenAll(TaskList);
 
@@ -573,8 +621,8 @@ namespace Amatsukaze.Model
                     if (UpdatedAnimeBuffer.Count != 0)
                     {
                         List<Task> TaskList2 = new List<Task>();
-                        TaskList2.Add(Task.Run(() => DownloadAnimeCoverArt(UpdatedAnimeBuffer)));
-                        TaskList2.Add(Task.Run(() => DownloadAnimeCharacterArt(UpdatedAnimeBuffer)));
+                        TaskList2.Add(Task.Run(() => DownloadAnimeCoverArt(UpdatedAnimeBuffer, CoverArtProgress)));
+                        TaskList2.Add(Task.Run(() => DownloadAnimeCharacterArt(UpdatedAnimeBuffer, CharArtProgress)));
                         await Task.WhenAll(TaskList2);
                     }
                 }
@@ -593,8 +641,9 @@ namespace Amatsukaze.Model
                 else
                 {
                     message2 = "Library: Directory scan finished. " + NewAnimeBuffer.Count.ToString() + " new anime added. " + UpdatedAnimeBuffer.Count.ToString() + " anime updated.";
-                }                
+                }
 
+                ProcessChanged(this, new MessageArgs(""));
                 this.SendMessagetoGUI(this, new MessageArgs(message2));
                 return true;
             }
@@ -604,10 +653,11 @@ namespace Amatsukaze.Model
                 //Couldn't fill an animeentryobject correctly
                 Console.WriteLine(ex.Message);
                 this.SendMessagetoGUI(this, new MessageArgs("Library: Refresh operation failed."));
+                ProcessChanged(this, new MessageArgs(""));
                 IsRefreshInProgess = false;
                 return false;
             }
-        }
+        }        
 
 
         //Searches for the animeentryobject on the internets and checks against existing objects again.
@@ -639,6 +689,8 @@ namespace Amatsukaze.Model
         #region Events/EventHandlers
 
         public event EventHandler SendMessagetoGUI = delegate { };
+        public event EventHandler ReportProcessProgress = delegate { };
+        public event EventHandler ProcessChanged = delegate { };
         public event EventHandler AnimeCoverResourceReady;
         public event EventHandler AnimeCharacterResourceReady;
 
@@ -721,16 +773,38 @@ namespace Amatsukaze.Model
 
         }
 
+        private void CharArtProgressChanged(object sender, double e)
+        {
+            ReportProcessProgress(this, new MessageArgs("CharArtProgress", e));
+        }
+
+        public void CoverArtProgressChanged(object sender, double e)
+        {
+            ReportProcessProgress(this, new MessageArgs("CoverArtProgress", e));
+        }
+
         #endregion
     }
 
     class MessageArgs : EventArgs
     {
         public string Message { get; set; }
+        public double Number { get; set; }
 
         public MessageArgs(string message)
         {
             this.Message = message;
+        }
+
+        public MessageArgs(double number)
+        {
+            this.Number = number;
+        }
+
+        public MessageArgs(string message, double number)
+        {
+            this.Message = message;
+            this.Number = number;
         }
     }
 
