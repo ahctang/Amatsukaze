@@ -594,13 +594,17 @@ namespace Amatsukaze.Model
                         if (anime.english.Length == 0)
                             message += anime.title;
                         else
-                            message += anime.english;
-
-                        this.SendMessagetoGUI(this, new MessageArgs(message));
+                            message += anime.english;                
 
                         //Save the AnimeLibraryList cache file
                         SaveCacheFile(AnimeLibraryList);
+
+                        this.SendMessagetoGUI(this, new MessageArgs(message));
                     }
+
+                    //Sort the Collection and save again
+                    this.AnimeLibraryList.AlphabetSort();                    
+                    SaveCacheFile(AnimeLibraryList);
 
                     //Start the tasks to retrieve the resources from the internet
                     List<Task> TaskList = new List<Task>();

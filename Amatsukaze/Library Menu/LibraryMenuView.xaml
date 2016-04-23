@@ -310,10 +310,13 @@
                     <Style>
                         <Setter Property="StackPanel.Opacity" Value="1"></Setter>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding ProcessInProgress}" Value="">
+                            <DataTrigger Binding="{Binding ProcessToggle}" Value="False">
                                 <Setter Property="StackPanel.Opacity" Value="0"></Setter>
+                                <DataTrigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="ProgressOn"></StopStoryboard>
+                                </DataTrigger.EnterActions>
                                 <DataTrigger.ExitActions>
-                                    <BeginStoryboard>
+                                    <BeginStoryboard Name="ProgressOn">
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1"></DoubleAnimation>
                                         </Storyboard>

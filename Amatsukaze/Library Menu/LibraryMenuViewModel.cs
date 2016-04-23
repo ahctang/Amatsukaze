@@ -31,7 +31,7 @@ namespace Amatsukaze.ViewModel
             //Subscribe to message events first thing (so messages can be picked up immediately);
             datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
             datasource.ReportProcessProgress += new EventHandler(onProcessProgressChanged);
-            datasource.ProcessChanged += new EventHandler(onProcessStarted);
+            datasource.ProcessChanged += new EventHandler(onProcessChanged);
 
 
             //Read the cache file
@@ -48,8 +48,6 @@ namespace Amatsukaze.ViewModel
             //Season sort           
             this.RefreshSeasonLists();
         }
-
-
 
         #region Fields
 
@@ -80,6 +78,7 @@ namespace Amatsukaze.ViewModel
         private bool messageLogToggle;
         private bool animeInfoToggle;
         private bool isEditMode = false;
+        private bool processToggle;
 
         //Last View in use before search
         private string lastView;
@@ -450,6 +449,22 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public bool ProcessToggle
+        {
+            get
+            {
+                return processToggle;
+            }
+            set
+            {
+                if (processToggle != value)
+                {
+                    processToggle = value;
+                    OnPropertyChanged("ProcessToggle");
+                }
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -546,6 +561,7 @@ namespace Amatsukaze.ViewModel
                 return;
             }
 
+            //Term for binding
             LastSearchTerm = SearchTerm;
 
             //Search anime list for results based on the search term (linq?) and return a cloned collection
@@ -743,7 +759,8 @@ namespace Amatsukaze.ViewModel
 
         private void onProcessProgressChanged(object sender, EventArgs e)
         {
-            Console.WriteLine("Progress Updated");
+            Console.WriteLine("Progress Updated");            
+
             var message = (e as MessageArgs).Message;
             var number = (e as MessageArgs).Number;
 
@@ -761,14 +778,23 @@ namespace Amatsukaze.ViewModel
             }
 
             //Set the overall progress
-            ProgressBarProgress = (coverArtProgress + charArtProgress) / 200 * 100;
+            ProgressBarProgress = (coverArtProgress + charArtProgress) / 200 * 100;            
         }
 
-        private void onProcessStarted(object sender, EventArgs e)
+        private void onProcessChanged(object sender, EventArgs e)
         {
-            var message = (e as MessageArgs).Message;
-
+            var message = (e as MessageArgs).Message;                        
             this.ProcessInProgress = message;
+
+            //Flip the toggle since the same event is actually triggered on start/end
+            if (ProcessToggle != true) ProcessToggle = true;
+            else ProcessToggle = false;
+
+            //Reset the actual progress values
+            if (ProgressBarProgress != 0) ProgressBarProgress = 0;
+            if (this.charArtProgress != 0) charArtProgress = 0;
+            if (this.coverArtProgress != 0) coverArtProgress = 0;
+
         }
 
 
@@ -837,7 +863,7 @@ namespace Amatsukaze.ViewModel
         }
 
         private void OnAnimeLibraryListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
+        {            
             LibraryViewAreaResized(this.GridColumnCount);
 
             //When the AnimeLibraryList is changed, all of the season lists need to be updated again

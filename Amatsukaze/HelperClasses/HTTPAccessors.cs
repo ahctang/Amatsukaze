@@ -8,9 +8,10 @@ using System.Windows;
 using System.IO;
 using System.IO.Compression;
 using System.Xml;
+using Amatsukaze.ViewModel;
 
 
-namespace Amatsukaze.ViewModel
+namespace Amatsukaze.HelperClasses
 {
     class MALAccessor
     {
@@ -194,15 +195,19 @@ namespace Amatsukaze.ViewModel
         private int GetAniDBID(string AnimeName)
         {
             int AniID = 0;
+            int MinStringDistance = 10; //Just some placeholder value. Too lazy to rewrite this as a for loop
+            
+
             foreach (Anime anime in Animes.animeList)
             {
                 foreach (string name in anime.Names)
                 {
                     //Match is done by string distance as opposed to simple matches as provided by list.contains and or list.findindex
-                    if (calculateStringDistance(AnimeName.ToUpper(), name.ToUpper()) <= 2)
+                    int temp = calculateStringDistance(AnimeName.ToUpper(), name.ToUpper());
+                    if (temp  < MinStringDistance)
                     {
+                        MinStringDistance = temp;
                         AniID = anime.AniID;
-                        return AniID;
                     }
                 }
             }

@@ -63,7 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Application\HTTPAccessors.cs" />
+    <Compile Include="HelperClasses\HTTPAccessors.cs" />
     <Compile Include="Folder Menu\FileOrganizerLogic.cs" />
     <Compile Include="Folder Menu\FolderEntity.cs" />
     <Compile Include="Application\DatsourceObjects\XMLDataSourceObjects.cs" />
@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="HelperClasses\EventAggregator.cs" />
     <Compile Include="HelperClasses\GridHelpers.cs" />
+    <Compile Include="HelperClasses\ObservableCollectionExtensions.cs" />
     <Compile Include="HelperClasses\RelayCommand.cs" />
     <Compile Include="Library Menu\LibraryClasses\DisplaySortClasses.cs" />
     <Compile Include="Library Menu\LibraryMenuModel.cs" />

@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace Amatsukaze.ViewModel
 {
-    public class AnimeEntryObject : ObservableObjectClass
+    public class AnimeEntryObject : ObservableObjectClass, IEquatable<AnimeEntryObject>, IComparable<AnimeEntryObject>
     {
         //Object to hold the properties for one anime (based on the return from myanimelist
         #region Properties
@@ -312,7 +312,65 @@ namespace Amatsukaze.ViewModel
                     columncounter = 0;
                 }
             }
-        }        
+        }
+
+        public bool Equals(AnimeEntryObject other)
+        {
+            //Check if other has an english name
+            string otherName;
+            string thisName;
+
+            if (other.english.Length != 0 && other.english != null)
+            {
+                otherName = other.english;
+            }
+            else
+            {
+                otherName = other.title;
+            }
+
+            //Check if this object has an english name
+            if (this.english.Length != 0 && this.english != null)
+            {
+                thisName = this.english;
+            }
+            else
+            {
+                thisName = this.title;
+            }
+
+            if (thisName.ToLower().Equals(otherName.ToLower())) return true;
+            else return false;
+        }
+
+        public int CompareTo(AnimeEntryObject other)
+        {
+            //Check if other has an english name
+            string otherName;
+            string thisName;
+
+            if (other.english.Length != 0 && other.english != null)
+            {
+                otherName = other.english;
+            }
+            else
+            {
+                otherName = other.title;
+            }
+
+            //Check if this object has an english name
+            if (this.english.Length != 0 && this.english != null)
+            {
+                thisName = this.english;
+            }
+            else
+            {
+                thisName = this.title;
+            }
+
+            //Do the comparison here
+            return thisName.ToLower().CompareTo(otherName.ToLower());
+        }
 
         [Conditional("DEBUG")]
         public void ContentsDump()
@@ -325,6 +383,8 @@ namespace Amatsukaze.ViewModel
                 Console.WriteLine("{0}: {1}", property.Name, property.GetValue(this, null));
             }
         }
+
+      
         #endregion
     }
 }

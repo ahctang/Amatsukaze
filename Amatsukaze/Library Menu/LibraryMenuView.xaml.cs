@@ -21,7 +21,7 @@ namespace Amatsukaze.View
 {
     /// <summary>
     /// Interaction logic for LibraryMenuView.xaml
-    /// </summary>
+    /// </summar>y
     public partial class LibraryMenuView : UserControl
     {
         
