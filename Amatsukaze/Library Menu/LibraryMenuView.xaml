@@ -36,7 +36,7 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" Height="225" Width="161">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync, TargetNullValue={StaticResource NoImgIcon}}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
                                                       Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -307,15 +307,20 @@
             </TextBlock>
             <StackPanel x:Name="ProcessName" DockPanel.Dock="Right">
                 <StackPanel.Style>
-                    <Style>
-                        <Setter Property="StackPanel.Opacity" Value="1"></Setter>
+                    <Style>                        
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding ProcessToggle}" Value="False">
                                 <Setter Property="StackPanel.Opacity" Value="0"></Setter>
                                 <DataTrigger.EnterActions>
                                     <StopStoryboard BeginStoryboardName="ProgressOn"></StopStoryboard>
+                                    <BeginStoryboard Name="ProgressOff">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
                                 </DataTrigger.EnterActions>
                                 <DataTrigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="ProgressOff"></StopStoryboard>
                                     <BeginStoryboard Name="ProgressOn">
                                         <Storyboard>
                                             <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1"></DoubleAnimation>
@@ -359,9 +364,10 @@
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="131*"/>
-                <ColumnDefinition Width="869*"/>
+                <ColumnDefinition Width="744*"/>
+                <ColumnDefinition Width="125*"/>
             </Grid.ColumnDefinitions>
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="3">
                 <ContentControl>
                     <ContentControl.RenderTransform>
                         <TranslateTransform></TranslateTransform>
@@ -440,7 +446,7 @@
 
             <!-- Anime Info Box-->
             <Border x:Name="AnimeInfoPanel" CornerRadius="25" BorderThickness="2" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1"
-                    BorderBrush="White" Grid.ColumnSpan="2" Margin="50,0">
+                    BorderBrush="White" Grid.ColumnSpan="3" Margin="50,0">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AnimeInfoPanelColor}" Opacity="0.85"></SolidColorBrush>
                 </Border.Background>
@@ -677,7 +683,7 @@
             </Border>
 
             <!-- Message Log Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Grid.ColumnSpan="2" Margin="50,0">
+            <Border x:Name="MessageLogPanel" CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Grid.ColumnSpan="3" Margin="50,0">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>

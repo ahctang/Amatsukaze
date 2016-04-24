@@ -81,11 +81,10 @@ namespace Amatsukaze.ViewModel
         //Skipping related anime/similar anime nodes/recommendations
 
         //Staff
-        public List<AnimeStaff> Staff;
+        public List<AnimeStaff> Staff { get; set; }        
 
         //Synoposis
         public string synopsis { get; set; }
-
 
         //Ratings
         public double WeightedRating { get; set; }
@@ -97,10 +96,10 @@ namespace Amatsukaze.ViewModel
         //Skipping resources/tags        
 
         //Character List    
-        public List<AnimeCharacter> Characters;
+        public List<AnimeCharacter> Characters { get; set; }
 
         //Episode list
-        public List<Episode> Episodes;
+        public List<Episode> Episodes { get; set; }
 
         //Save Function
         public void Save(string path)

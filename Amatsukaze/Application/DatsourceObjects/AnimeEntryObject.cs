@@ -205,6 +205,24 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        private void AssignGridRowColumn(List<AnimeStaff> StaffList)
+        {
+            int columncounter = 0, rowcounter = 0;
+            foreach (AnimeStaff Staff in StaffList)
+            {
+                Staff.GridColumn = columncounter;
+                Staff.GridRow = rowcounter;
+
+                columncounter++;
+
+                if (columncounter > (4 - 1))
+                {
+                    rowcounter++;
+                    columncounter = 0;
+                }
+            }
+        }
+
         public void MergeAnimeCover(string ImagePath)
         {
             lock(this)
@@ -268,6 +286,10 @@ namespace Amatsukaze.ViewModel
                     if (AnimeEntryObjectProperty.GetValue(this, null) == null && property.GetValue(Input, null) != null)
                     {
                         AnimeEntryObjectProperty.SetValue(this, property.GetValue(Input, null), null);
+
+                        //Staff and character properties need to be assigned grid rows and columns
+                        if (AnimeEntryObjectProperty.Name == "Characters") AssignGridRowColumn(AnimeEntryObjectProperty.GetValue(this, null) as List<AnimeCharacter>);
+                        if (AnimeEntryObjectProperty.Name == "Staff") AssignGridRowColumn(AnimeEntryObjectProperty.GetValue(this, null) as List<AnimeStaff>);
                     }
                 }                
             }
@@ -296,23 +318,7 @@ namespace Amatsukaze.ViewModel
             if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");
         }*/
 
-        private void AssignGridRowColumn(List<AnimeStaff> StaffList)
-        {
-            int columncounter = 0, rowcounter = 0;
-            foreach (AnimeStaff Staff in StaffList)
-            {
-                Staff.GridColumn = columncounter;
-                Staff.GridRow = rowcounter;
 
-                columncounter++;
-
-                if (columncounter > (4 - 1))
-                {
-                    rowcounter++;
-                    columncounter = 0;
-                }
-            }
-        }
 
         public bool Equals(AnimeEntryObject other)
         {

@@ -794,7 +794,6 @@ namespace Amatsukaze.ViewModel
             if (ProgressBarProgress != 0) ProgressBarProgress = 0;
             if (this.charArtProgress != 0) charArtProgress = 0;
             if (this.coverArtProgress != 0) coverArtProgress = 0;
-
         }
 
 
