@@ -82,13 +82,30 @@
             </Grid>
         </Grid>
 
-        <StackPanel Name="FolderDetails" Background="Black" Opacity="0.8" Visibility="Hidden" Width="Auto">
-            <DockPanel HorizontalAlignment="Right">
+        <StackPanel Name="FolderDetails" Background="Black"  Opacity="0.8" Visibility="Hidden" Width="Auto">
+            <DockPanel Background="Red" Width="Auto" HorizontalAlignment="Right">
+                <TextBlock Text="{Binding SelectedFolder.name}" DockPanel.Dock="Left"/>
                 <Button Height="35" Width="35" Background="White" Click="closeOrganizeDialog" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right">
                     <Image Source="{StaticResource CloseIcon}"></Image>
                 </Button>
             </DockPanel>
-            <TextBlock Text="{Binding OrganizeContents}" Foreground="White" />
+            <TextBlock Padding="10" Text="{Binding SeriesCount}" Foreground="White" />
+            <ListBox Width="Auto" Height="100" ItemsSource="{Binding Series}" SelectedItem="{Binding Path=SelectedSeries, Mode=TwoWay}" VerticalAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,0,0,5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="100" />
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Margin="5">
+                                <TextBlock Text="{Binding name}"/>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+
         </StackPanel>
 
         <Border CornerRadius="25" BorderThickness="2" BorderBrush="White" VerticalAlignment="Bottom" HorizontalAlignment="Center">

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -11,38 +12,48 @@ namespace Amatsukaze.ViewModel
 {
     class FileOrganizerLogic
     {
-
-        private static string[] videoFormats = { ".mkv", ".avi", ".mp4,", ".mov", ".flv", ".ogg", ".wmv", ".rm", ".rmvb", ".m4p ", ".m4v", ".mpg", ".mpeg", ".vob", ".ogv", ".qt", ".mp2", ".mpe", ".mpv", ".f4v"};
+        /// <summary>
+        /// List of accepted video formats. File is not parsed in not in these
+        /// </summary>
+        private static string[] videoFormats = {
+            ".mkv", ".avi", ".mp4,", ".mov", ".flv", ".ogg", ".wmv",
+            ".rm", ".rmvb", ".m4p ", ".m4v", ".mpg", ".mpeg", ".vob",
+            ".ogv", ".qt", ".mp2", ".mpe", ".mpv", ".f4v"
+        };
 
         /**
         * From a root directory. Parses all sub-directories and files to make a list of series
         **/ 
-        public static List<Series> parseAsSeries(string rootFolderAbsolutePath)
+        public static ObservableCollection<Series> parseAsSeries(string rootFolderAbsolutePath)
         {
-            List<Series> seriesList = new List<Series>();
+            ObservableCollection<Series> seriesList = new ObservableCollection<Series>();
 
             // Read the file and display it line by line.
             //System.IO.StreamReader file = new System.IO.StreamReader(
             //    Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\fileNames.txt");
 
-            string line;
+            string fileName;
             //while ((line = file.ReadLine()) != null)
+
+            //TODO : needs to be rewritten to return file path as well
             foreach (string file in getFileNamesOfAllSubdirectories(rootFolderAbsolutePath))
             {
-                line = file;
-                List<string> surroundedStrings = getSurroundedParts(line);
-
-                SeriesEpisode episode = new SeriesEpisode();
+                fileName = file.Substring(file.LastIndexOf("\\"));
 
                 // If file extension not video file format, skip to next file
-                if (!videoFormats.Contains(line.Substring(line.LastIndexOf("."))))
+                if (fileName.LastIndexOf(".") == -1 || !videoFormats.Contains(fileName.Substring(fileName.LastIndexOf("."))))
                 {
                     continue;
                 }
 
+                List<string> surroundedStrings = getSurroundedParts(fileName);
+
+                SeriesEpisode episode = new SeriesEpisode();
+                episode.filePath = file;
+
                 // Extract file extension
-                episode.extension = line.Substring(line.LastIndexOf("."));
-                line = line.Replace(episode.extension, "");
+                episode.extension = fileName.Substring(fileName.LastIndexOf("."));
+                fileName = fileName.Replace(episode.extension, "");
 
                 for (int i = 0; i < surroundedStrings.Count; i++)
                 {
@@ -57,7 +68,7 @@ namespace Amatsukaze.ViewModel
                         else
                         {
                             episode.hash = surroundedString;
-                            line = line.Replace(surroundedString, "");
+                            fileName = fileName.Replace(surroundedString, "");
                         }
                     }
                     else if (Regex.IsMatch(surroundedString, "\\d+x\\d+") || Regex.IsMatch(surroundedString, "\\d+p")
@@ -65,9 +76,9 @@ namespace Amatsukaze.ViewModel
                       || Regex.IsMatch(surroundedString, "Hi\\d+P"))
                     {
                         episode.quality += surroundedString;
-                        line = line.Replace(surroundedString, "");
+                        fileName = fileName.Replace(surroundedString, "");
                     }
-                    else if (surroundedString.Equals(line.Substring(0, surroundedString.Length)))
+                    else if (surroundedString.Equals(fileName.Substring(0, surroundedString.Length)))
                     {
                         if (episode.subGroup != null)
                         {
@@ -76,26 +87,26 @@ namespace Amatsukaze.ViewModel
                         else
                         {
                             episode.subGroup = surroundedString;
-                            line = line.Replace(surroundedString, "");
+                            fileName = fileName.Replace(surroundedString, "");
                         }
                     }
                 }
 
                 // Extract episode number
-                line = line.Replace("_", " ").Trim();
-                episode.episodeNumber = Regex.Match(line, "[ ]([eE][pP][iI][sS][oO][dD][eE][. ]?)?([eE][pP][. ]?)?(Vol[. ][ ]?)?[#]?\\d\\d?([ ]?v\\d([.]?\\d)?)?([ ]?v\\d([.]?\\d)?)?([ ]?[&][&]?[ ]?(\\d\\d?))?([.]\\d\\d)?",
+                fileName = fileName.Replace("_", " ").Trim();
+                episode.episodeNumber = Regex.Match(fileName, "[ ]([eE][pP][iI][sS][oO][dD][eE][. ]?)?([eE][pP][. ]?)?(Vol[. ][ ]?)?[#]?\\d\\d?([ ]?v\\d([.]?\\d)?)?([ ]?v\\d([.]?\\d)?)?([ ]?[&][&]?[ ]?(\\d\\d?))?([.]\\d\\d)?",
                     RegexOptions.RightToLeft).Value.Trim();
                 if (episode.episodeNumber.Length > 0)
                 {
-                    line = line.Replace(episode.episodeNumber, "").Trim();
+                    fileName = fileName.Replace(episode.episodeNumber, "").Trim();
                 }
 
                 // What's left is the anime name, removing useless characters
-                if (line.EndsWith("-"))
+                if (fileName.EndsWith("-"))
                 {
-                    line = line.Remove(line.LastIndexOf("-")).Trim();
+                    fileName = fileName.Remove(fileName.LastIndexOf("-")).Trim();
                 }
-                episode.seriesName = line.Replace("  ", " ").Trim();
+                episode.seriesName = fileName.Replace("  ", " ").Trim();
 
                 bool existingSeries = false;
                 foreach (Series series in seriesList)
@@ -144,7 +155,7 @@ namespace Amatsukaze.ViewModel
 
             foreach (FileInfo fileInfo in directoryInfo.GetFiles())
             {
-                results.Add(fileInfo.Name);
+                results.Add(fileInfo.FullName);
             }
 
             foreach (DirectoryInfo subDirectoryInfo in directoryInfo.GetDirectories())
@@ -164,7 +175,6 @@ namespace Amatsukaze.ViewModel
         private static List<string> getSurroundedParts(string line)
         {
             List<string> result = new List<string>();
-
 
             while (line.IndexOf("[") != -1)
             {
@@ -194,6 +204,7 @@ namespace Amatsukaze.ViewModel
     public class SeriesEpisode
     {
         public string seriesName { get; set; }
+        public string filePath { get; set; }
         public string subGroup { get; set; }
         public string episodeNumber { get; set; }
         public string quality { get; set; }

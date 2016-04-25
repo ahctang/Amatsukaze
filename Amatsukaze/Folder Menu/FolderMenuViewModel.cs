@@ -17,36 +17,68 @@ namespace Amatsukaze.ViewModel
 {
     class FolderMenuViewModel : ObservableObjectClass, ViewModelBase, INotifyPropertyChanged
     {
+        #region Fields
+        
+        /**********************
+        ***** Folder View *****
+        **********************/
+
+        // Folders, displayed in the list on the left
         private ObservableCollection<FolderEntity> folders = new ObservableCollection<FolderEntity>();
-        private ObservableCollection<FolderItem> folderContents = new ObservableCollection<FolderItem>();
+        // The selected folder
         private FolderEntity selectedFolder;
+        // Selected folder contents, displayed on bottom right
+        private ObservableCollection<FolderItem> folderContents = new ObservableCollection<FolderItem>();
 
-        private string organizeContents = "test";
+        /************************
+        ***** Organize View *****
+        ************************/
 
+        // Number of series in the selected folder
+        private string seriesCount;
+        // Series in the selected folder
+        private ObservableCollection<Series> series = new ObservableCollection<Series>();
+        // The selected series
+        private Series selectedSeries;
+        // Episode names in the selected series
+        private string episodesNames;
+
+        /*******************
+        ***** Commands *****
+        *******************/
+
+        // Display the dialog that lets the user add a folder
         private ICommand displaySelectFolderDialog;
+        // Display the dialog that lets the user delete a folder
         private ICommand displayDeleteDialog;
 
-        /*
-        * 
-        */
+        #endregion
+
+        #region methods
+
+        /// <summary>
+        /// Constructor, reads the json file containing saved folders at instanciation.
+        /// </summary>
+        /// <param name="eventAggregator">eventAggregator of the ViewModel</param>
         public FolderMenuViewModel(IEventAggregator eventAggregator)
         {
             this.EventAggregator = eventAggregator;
             readFolders();
         }
 
-        /*
-        * Trigerred when clicking the <add> button.
-        * This opens a dialog letting the user select a folder to add.
-        */
+        /// <summary>
+        /// Trigerred when clicking the <add> button on Folder page.
+        /// This opens a dialog letting the user select a folder to add.
+        /// </summary>
         private void openAddFolderDialog()
         {
+            // Open the dialog
             var dialog = new System.Windows.Forms.FolderBrowserDialog();
             dialog.ShowNewFolderButton = false;
             dialog.ShowDialog();
 
+            // The selected folder is added to saved folders in json
             string selected = dialog.SelectedPath;
-
             if (!folderListContainsByPath(selected))
             {
                 FolderEntity newFolder = new FolderEntity();
@@ -59,33 +91,40 @@ namespace Amatsukaze.ViewModel
             }
             else
             {
-                // TODO: print error message on displayed console
+                Console.WriteLine("Warning: folder " + selected + "already exists in json file.");
             }
         }
 
+        /// <summary>
+        /// Trigerred when clicking the <delete> button on Folder page.
+        /// This opens a dialog prompting the user to confirm deletion of folder in json.
+        /// </summary>
         private void openDeleteDialog()
         {
-            var confirmResult = System.Windows.Forms.MessageBox.Show("Are you sure you want to remove the [" + selectedFolder.name + "] folder?\nThis will not delete the folder from your hard drive.",
-                                     "Remove",
-                                     MessageBoxButtons.YesNo);
+            var confirmResult = System.Windows.Forms.MessageBox.Show(
+                "Are you sure you want to remove the [" + selectedFolder.name + 
+                    "] folder?\nThis will not delete the folder from your hard drive.",
+                "Remove",
+                MessageBoxButtons.YesNo);
             if (confirmResult == DialogResult.Yes)
             {
                 Console.WriteLine("Removed folder " + selectedFolder.name);
                 folders.Remove(selectedFolder);
                 saveFolders(folders);
             }
-            else
-            {
-                // Close dialog and do nothing
-            }
         }
 
+        // TODO
         private void openOrganizeDialog()
         {
 
         }
 
-
+        /// <summary>
+        /// Checks if the folder is already in the json file.
+        /// </summary>
+        /// <param name="path">Path of folder to check</param>
+        /// <returns></returns>
         private Boolean folderListContainsByPath(string path)
         {
             foreach (FolderEntity folder in folders)
@@ -98,8 +137,12 @@ namespace Amatsukaze.ViewModel
             return false;
         }
 
+        /// <summary>
+        /// Reads the json file containing all saved folders.
+        /// </summary>
         private void readFolders()
         {
+            // TODO : Make json file path a constant
             string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Preferences\";
             string filepath = folderpath + @"\folders.json";
 
@@ -107,16 +150,20 @@ namespace Amatsukaze.ViewModel
             {
                 string input = File.ReadAllText(filepath);
                 ObservableCollection<FolderEntity> folderList = JsonConvert.DeserializeObject<ObservableCollection<FolderEntity>>(input);
-                // FIXME: At this point, data context is not initialized, see if it works in view model
                 folders = folderList;
             }
         }
 
+        /// <summary>
+        /// Save all selected folders into the json file.
+        /// </summary>
+        /// <param name="folderList"></param>
         private void saveFolders(ObservableCollection<FolderEntity> folderList)
         {
             string json = JsonConvert.SerializeObject(folderList, Formatting.Indented);
             try
             {
+                // TODO : make json file path a constant.
                 string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Preferences\";
                 string filepath = folderpath + @"\folders.json";
 
@@ -126,19 +173,25 @@ namespace Amatsukaze.ViewModel
             }
             catch (Exception exception)
             {
-                //FileIO exception
+                //TODO : FileIO exception to handle
                 System.Windows.MessageBox.Show(exception.Message);
             }
         }
 
+        /// <summary>
+        /// Trigerred when selecting a folder in the list.
+        /// This gets information on the folder for display, and fills the "series" global variable
+        /// for external use
+        /// </summary>
         private void onFolderSelection()
         {
+            // Display information about the folder
             if (selectedFolder != null && selectedFolder.path != null && selectedFolder.path != "")
             {
-                //selectedFolderNameTextBlock.Text = selectedFolder.name;
                 DirectoryInfo info = new DirectoryInfo(selectedFolder.path);
                 ObservableCollection<FolderItem> results = new ObservableCollection<FolderItem>();
 
+                // Display subfolders informations in the selected folder
                 foreach (DirectoryInfo directoryInfo in info.GetDirectories())
                 {
                     FolderItem item = new FolderItem();
@@ -149,6 +202,7 @@ namespace Amatsukaze.ViewModel
                     results.Add(item);
                 }
 
+                // Display file informations in the selected folder
                 foreach (FileInfo fileInfo in info.GetFiles())
                 {
                     FolderItem item = new FolderItem();
@@ -156,16 +210,22 @@ namespace Amatsukaze.ViewModel
                     item.type = "F";
                     results.Add(item);
                 }
+                // Next line does the display
                 FolderContents = results;
 
-                List<Series> series = FileOrganizerLogic.parseAsSeries(selectedFolder.path);
-                organizeContents = "Folder contains " + series.Count() + " series\n\n";
-                foreach (Series serie in series)
-                {
-                    organizeContents += "Found series " + serie.name + " containing " + serie.episodes.Count() + " episodes\n";
-                }
+                // Fills the series global variable for further use
+                series = FileOrganizerLogic.parseAsSeries(selectedFolder.path);
+                OnPropertyChanged("Series");
+
+                // Fill informations to display in the folder OrganizeView
+                seriesCount = "Found " + series.Count() + " series in folder";
+                // TODO : lots of stuff to add
             }
         }
+
+        #endregion
+
+        #region Properties
 
         public IEventAggregator EventAggregator { get; set; }
 
@@ -192,9 +252,9 @@ namespace Amatsukaze.ViewModel
             {
                 selectedFolder = value;
                 OnPropertyChanged("SelectedFolder");
-                
+
                 onFolderSelection();
-                OnPropertyChanged("OrganizeContents");
+                OnPropertyChanged("SeriesCount");
             }
         }
 
@@ -211,15 +271,53 @@ namespace Amatsukaze.ViewModel
             }
         }
 
-        public string OrganizeContents
+        public string SeriesCount
         {
             get
             {
-                return organizeContents;
+                return seriesCount;
             }
             set
             {
-                organizeContents = value;
+                seriesCount = value;
+            }
+        }
+
+        public ObservableCollection<Series> Series
+        {
+            get
+            {
+                return series;
+            }
+            set
+            {
+                OnPropertyChanged("Series");
+                series = value;
+            }
+        }
+
+        public Series SelectedSeries
+        {
+            get
+            {
+                return selectedSeries;
+            }
+            set
+            {
+                selectedSeries = value;
+                OnPropertyChanged("SelectedSeries");
+            }
+        }
+
+        public string EpisodesNames
+        {
+            get
+            {
+                return episodesNames;
+            }
+            set
+            {
+                episodesNames = value;
             }
         }
 
@@ -263,5 +361,6 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        #endregion
     }
 }
