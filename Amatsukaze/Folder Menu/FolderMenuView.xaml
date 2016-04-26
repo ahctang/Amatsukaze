@@ -10,7 +10,7 @@
 
     <Grid Height="Auto">
 
-        <Grid Background="Pink">
+        <Grid Background="LightSkyBlue">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="3*" />

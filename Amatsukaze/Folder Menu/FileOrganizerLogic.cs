@@ -7,47 +7,86 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using static Amatsukaze.ViewModel.FolderReadingLogic;
 
 namespace Amatsukaze.ViewModel
 {
+    /// <summary>
+    /// Logic for getting the episode information of each file
+    /// </summary>
     public static class FileOrganizerLogic
     {
+        /// <summary>True if you want the logic result to be printed to console</summary>
+        private static readonly bool PRINT_TO_CONSOLE = true;
         /// <summary>List of accepted video formats. File is not parsed if not in these</summary>
         private static readonly string[] VIDEO_FORMATS = {
-            ".mkv", ".avi", ".mp4,", ".mov", ".flv", ".ogg", ".wmv",
-            ".rm", ".rmvb", ".m4p ", ".m4v", ".mpg", ".mpeg", ".vob",
-            ".ogv", ".qt", ".mp2", ".mpe", ".mpv", ".f4v"
+            "mkv", "avi", "mp4,", "mov", "flv", "ogg", "wmv",
+            "rm", "rmvb", "m4p ", "m4v", "mpg", "mpeg", "vob",
+            "ogv", "qt", "mp2", "mpe", "mpv", "f4v"
         };
 
-        /**
-        * From a root directory. Parses all sub-directories and files to make a list of series
-        **/ 
-        public static ObservableCollection<Series> parseAsSeries(string rootFolderAbsolutePath)
+        /// <summary>
+        /// Scan a directory and all its subfolders recursively to return a collection of Series/Anime (and their episodes).
+        /// </summary>
+        /// <param name="rootFolderAbsolutePath">Absolute path to the root folder to scan</param>
+        /// <returns>A collection of all Series/Anime and their found episode in the argument root folder</returns>
+        public static ObservableCollection<Series> parseRootFolderAsSeries(string rootFolderAbsolutePath)
         {
-            ObservableCollection<Series> seriesList = new ObservableCollection<Series>();
+            HashSet<string> allFiles = recursiveGetAllFilePaths(rootFolderAbsolutePath);
+            return parseAsSeries(allFiles);
+        }
 
-            // Read the file and display it line by line.
-            //System.IO.StreamReader file = new System.IO.StreamReader(
-            //    Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\fileNames.txt");
+        // TODO : performance check. This method might take a while to execute.
+        /// <summary>
+        /// Scan all folders saved in cache recursively to return a collection of Series/Anime (and their episodes).
+        /// </summary>
+        /// <returns>A collection of all Series/Anime and their found episode in the saved folder cache</returns>
+        public static ObservableCollection<Series> parseAllSavedFoldersAsSeries()
+        {
+            // Get all folders saved in cache
+            ObservableCollection<FolderEntity> folders = FolderReadingLogic.readFoldersCache();
+            // Will store all the files without duplicates
+            HashSet<string> allFilesInSavedFolders = new HashSet<string>();
 
-            string fileName;
-            //while ((line = file.ReadLine()) != null)
-
-            //TODO : needs to be rewritten to return file path as well
-            foreach (string file in getFileNamesOfAllSubdirectories(rootFolderAbsolutePath))
+            // For each of these folders, get all theirs files, and add them to allFilesInSavedFolders
+            foreach (FolderEntity folder in folders)
             {
-                fileName = file.Substring(file.LastIndexOf("\\"));
+                HashSet<string> allFiles = recursiveGetAllFilePaths(folder.path);
+                foreach (string file in allFiles)
+                {
+                    allFilesInSavedFolders.Add(file);
+                }
+            }
+
+            // Return the result of all these files parsed as Series
+            return parseAsSeries(allFilesInSavedFolders);
+        }
+
+        /// <summary>
+        /// Scan file paths to return a collection of Series/Anime (and their episodes).
+        /// </summary>
+        /// <param name="allFilePaths">HashSet containing absolute path of all the files to scan</param>
+        /// <returns>A collection of all Series/Anime and their found episode in the argument file paths set</returns>
+        private static ObservableCollection<Series> parseAsSeries(HashSet<string> allFilePaths)
+        {
+            ObservableCollection<Series> result = new ObservableCollection<Series>();
+
+            foreach (string filePath in allFilePaths)
+            {
+                // Name of the file, will get little by little stripped of each information found in it when found
+                string fileName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
 
                 // If file extension not video file format, skip to next file
-                if (fileName.LastIndexOf(".") == -1 || !VIDEO_FORMATS.Contains(fileName.Substring(fileName.LastIndexOf("."))))
+                if (fileName.LastIndexOf(".") == -1 || !VIDEO_FORMATS.Contains(fileName.Substring(fileName.LastIndexOf(".") + 1)))
                 {
                     continue;
                 }
 
-                List<string> surroundedStrings = getSurroundedParts(fileName);
-
+                // Make a new episode object
                 SeriesEpisode episode = new SeriesEpisode();
-                episode.filePath = file;
+                episode.filePath = filePath;
+
+                List<string> surroundedStrings = getSurroundedParts(fileName);
 
                 // Extract file extension
                 episode.extension = fileName.Substring(fileName.LastIndexOf("."));
@@ -107,7 +146,7 @@ namespace Amatsukaze.ViewModel
                 episode.seriesName = fileName.Replace("  ", " ").Trim();
 
                 bool existingSeries = false;
-                foreach (Series series in seriesList)
+                foreach (Series series in result)
                 {
                     if (series.name.Equals(episode.seriesName))
                     {
@@ -121,34 +160,40 @@ namespace Amatsukaze.ViewModel
                     Series newSeries = new Series();
                     newSeries.name = episode.seriesName;
                     newSeries.episodes.Add(episode);
-                    seriesList.Add(newSeries);
+                    result.Add(newSeries);
                 }
             }
-            //file.Close();
 
-            foreach (Series series in seriesList)
+            // Print result to console
+            if (PRINT_TO_CONSOLE)
             {
-                Console.WriteLine("SeriesName = " + series.name);
-                foreach (SeriesEpisode episode in series.episodes)
+                foreach (Series series in result)
                 {
-                    Console.WriteLine("    SeriesName = " + episode.seriesName);
-                    Console.WriteLine("        Subgroup = " + episode.subGroup);
-                    Console.WriteLine("        Extension = " + episode.extension);
-                    Console.WriteLine("        Quality = " + episode.quality);
-                    Console.WriteLine("        Hash = " + episode.hash);
-                    Console.WriteLine("        Episode Number = " + episode.episodeNumber);
+                    Console.WriteLine("SeriesName = " + series.name);
+                    foreach (SeriesEpisode episode in series.episodes)
+                    {
+                        Console.WriteLine("    SeriesName = " + episode.seriesName);
+                        Console.WriteLine("        Subgroup = " + episode.subGroup);
+                        Console.WriteLine("        Extension = " + episode.extension);
+                        Console.WriteLine("        Quality = " + episode.quality);
+                        Console.WriteLine("        Hash = " + episode.hash);
+                        Console.WriteLine("        Episode Number = " + episode.episodeNumber);
+                    }
                 }
             }
 
-            return seriesList;
+            return result;
         }
 
-        /**
-        * Recursively gets the name of all files in the rootFolder directory and all of its subfolders for all depth
-        **/
-        private static List<string> getFileNamesOfAllSubdirectories(string rootFolderAbsolutePath)
+        /// <summary>
+        /// Recursively gets the name of all file paths in the rootFolder directory and all of its subfolders for all depth
+        /// </summary>
+        /// <param name="rootFolderAbsolutePath">path of the root folder to scan</param>
+        /// <returns>An Hashset of all file paths contained in the root folder and its subfolders (recursive)</returns>
+        private static HashSet<string> recursiveGetAllFilePaths(string rootFolderAbsolutePath)
         {
-            List<string> results = new List<string>();
+            HashSet<string> results = new HashSet<string>();
+
             DirectoryInfo directoryInfo = new DirectoryInfo(rootFolderAbsolutePath);
 
             foreach (FileInfo fileInfo in directoryInfo.GetFiles())
@@ -158,7 +203,7 @@ namespace Amatsukaze.ViewModel
 
             foreach (DirectoryInfo subDirectoryInfo in directoryInfo.GetDirectories())
             {
-                foreach (string fileInSubdirectory in getFileNamesOfAllSubdirectories(subDirectoryInfo.FullName))
+                foreach (string fileInSubdirectory in recursiveGetAllFilePaths(subDirectoryInfo.FullName))
                 {
                     results.Add(fileInSubdirectory);
                 }
@@ -167,25 +212,27 @@ namespace Amatsukaze.ViewModel
             return results;
         }
 
-        /**
-        * Gets all parts between () or [] of a string
-        **/
-        private static List<string> getSurroundedParts(string line)
+        /// <summary>
+        /// Gets all parts between () or [] of a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>A list of all substrings of input that is between () or []</returns>
+        private static List<string> getSurroundedParts(string input)
         {
             List<string> result = new List<string>();
 
-            while (line.IndexOf("[") != -1)
+            while (input.IndexOf("[") != -1)
             {
-                string surrounded = line.Substring(line.IndexOf("["), line.IndexOf("]") - line.IndexOf("[") + 1);
+                string surrounded = input.Substring(input.IndexOf("["), input.IndexOf("]") - input.IndexOf("[") + 1);
                 result.Add(surrounded);
-                line = line.Remove(line.IndexOf("["), line.IndexOf("]") - line.IndexOf("[") + 1);
+                input = input.Remove(input.IndexOf("["), input.IndexOf("]") - input.IndexOf("[") + 1);
             }
 
-            while (line.IndexOf("(") != -1)
+            while (input.IndexOf("(") != -1)
             {
-                string surrounded = line.Substring(line.IndexOf("("), line.IndexOf(")") - line.IndexOf("(") + 1);
+                string surrounded = input.Substring(input.IndexOf("("), input.IndexOf(")") - input.IndexOf("(") + 1);
                 result.Add(surrounded);
-                line = line.Remove(line.IndexOf("("), line.IndexOf(")") - line.IndexOf("(") + 1);
+                input = input.Remove(input.IndexOf("("), input.IndexOf(")") - input.IndexOf("(") + 1);
             }
 
             return result;
@@ -193,20 +240,35 @@ namespace Amatsukaze.ViewModel
 
     }
 
+    /// <summary>
+    /// Represents a series/anime and all its found episodes
+    /// </summary>
     public class Series
     {
+        /// <summary>Name of the series/anime</summary>
         public string name { get; set; }
+        /// <summary>List of episodes found for that series</summary>
         public List<SeriesEpisode> episodes { get; set; } = new List<SeriesEpisode>();
     }
 
+    /// <summary>
+    /// Represents an episode of a series/anime, and all information that can be taken from its filename
+    /// </summary>
     public class SeriesEpisode
     {
+        /// <summary>Name of the series/anime this episode is in</summary>
         public string seriesName { get; set; }
-        public string filePath { get; set; }
+        /// <summary>Name of the sub group that translated this episode</summary>
         public string subGroup { get; set; }
+        /// <summary>Number of the episode</summary>
         public string episodeNumber { get; set; }
+        /// <summary>Encoding quality</summary>
         public string quality { get; set; }
+        /// <summary>Hashcode of the episode</summary>
         public string hash { get; set; }
+        /// <summary>Path to the actual file</summary>
+        public string filePath { get; set; }
+        /// <summary>File extension</summary>
         public string extension { get; set; }
     }
 

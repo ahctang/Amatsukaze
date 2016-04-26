@@ -84,20 +84,20 @@ namespace Amatsukaze.ViewModel
         {
             /// <summary>Name of the folder</summary>
             public string name { get; set; }
-            public string originalName { get; set; }
+            /// <summary>Absolute path to the folder</summary>
             public string path { get; set; }
-            public string imagePath { get; set; }
-            public string synopsis { get; set; }
-            public string date { get; set; }
         }
 
         /// <summary>
-        /// This represents the content of a folder.
+        /// This represents the contents of a folder, it can either be a file or a subfolder.
         /// </summary>
         public class FolderItem
         {
+            /// <summary>Name of the Item</summary>
             public string name { get; set; }
+            /// <summary>F if the item is a file or D if it's a directory</summary>
             public string type { get; set; }
+            /// <summary>Comment about the contents of this Item if a folder for display in Folder View</summary>
             public string contents { get; set; }
         }
 

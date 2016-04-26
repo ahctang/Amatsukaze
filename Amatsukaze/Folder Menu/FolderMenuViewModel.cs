@@ -84,7 +84,7 @@ namespace Amatsukaze.ViewModel
 
             // The selected folder is added to saved folders in json
             string selected = dialog.SelectedPath;
-            if (!folderListContainsByPath(selected))
+            if (!foldersContainsByPath(selected))
             {
                 FolderEntity newFolder = new FolderEntity();
                 newFolder.name = selected.Substring(selected.LastIndexOf("\\") + 1);
@@ -107,11 +107,11 @@ namespace Amatsukaze.ViewModel
         private void openDeleteDialog()
         {
             var confirmResult = System.Windows.Forms.MessageBox.Show(
-                "Are you sure you want to remove the [" + selectedFolder.name + 
+                "Are you sure you want to remove the [" + selectedFolder.name +
                     "] folder?\nThis will not delete the folder from your hard drive.",
                 "Remove",
                 MessageBoxButtons.YesNo);
-            if (confirmResult == DialogResult.Yes)
+            if (DialogResult.Yes == confirmResult)
             {
                 Console.WriteLine("Removed folder " + selectedFolder.name);
                 folders.Remove(selectedFolder);
@@ -125,12 +125,13 @@ namespace Amatsukaze.ViewModel
 
         }
 
+        //TODO : this should be done by overwriting the equals function of a folder?
         /// <summary>
         /// Checks if the folder in parameter is already in the folders.
         /// </summary>
         /// <param name="folderPath">Path of folder to check</param>
         /// <returns></returns>
-        private Boolean folderListContainsByPath(string folderPath)
+        private Boolean foldersContainsByPath(string folderPath)
         {
             foreach (FolderEntity folder in folders)
             {
@@ -178,7 +179,7 @@ namespace Amatsukaze.ViewModel
                 FolderContents = results;
 
                 // Fills the series global variable for further use
-                series = FileOrganizerLogic.parseAsSeries(selectedFolder.path);
+                series = FileOrganizerLogic.parseRootFolderAsSeries(selectedFolder.path);
                 OnPropertyChanged("Series");
 
                 // Fill informations to display in the folder OrganizeView
