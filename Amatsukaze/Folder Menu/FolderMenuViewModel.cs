@@ -12,44 +12,49 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Diagnostics;
 using System.ComponentModel;
+using static Amatsukaze.ViewModel.FolderReadingLogic;
 
 namespace Amatsukaze.ViewModel
 {
+    /// <summary>
+    /// ViewModel of the Folder tab. This tab is meant to add, remove, and organize folder.
+    /// Actually, this ViewModel also contains what would be the Organize ViewModel.
+    /// </summary>
     class FolderMenuViewModel : ObservableObjectClass, ViewModelBase, INotifyPropertyChanged
     {
         #region Fields
-        
+
         /**********************
         ***** Folder View *****
         **********************/
 
-        // Folders, displayed in the list on the left
+        /// <summary>Folders, displayed in the list on the left</summary>
         private ObservableCollection<FolderEntity> folders = new ObservableCollection<FolderEntity>();
-        // The selected folder
+        /// <summary>The selected folder</summary>
         private FolderEntity selectedFolder;
-        // Selected folder contents, displayed on bottom right
+        /// <summary>Selected folder contents, displayed on bottom right</summary>
         private ObservableCollection<FolderItem> folderContents = new ObservableCollection<FolderItem>();
 
         /************************
         ***** Organize View *****
         ************************/
 
-        // Number of series in the selected folder
+        /// <summary>Number of series in the selected folder</summary>
         private string seriesCount;
-        // Series in the selected folder
+        /// <summary>Series in the selected folder</summary>
         private ObservableCollection<Series> series = new ObservableCollection<Series>();
-        // The selected series
+        /// <summary>The selected series</summary>
         private Series selectedSeries;
-        // Episode names in the selected series
+        /// <summary>Episode names in the selected series</summary>
         private string episodesNames;
 
         /*******************
         ***** Commands *****
         *******************/
 
-        // Display the dialog that lets the user add a folder
+        /// <summary>Display the dialog that lets the user add a folder</summary>
         private ICommand displaySelectFolderDialog;
-        // Display the dialog that lets the user delete a folder
+        /// <summary>Display the dialog that lets the user delete a folder</summary>
         private ICommand displayDeleteDialog;
 
         #endregion
@@ -63,7 +68,7 @@ namespace Amatsukaze.ViewModel
         public FolderMenuViewModel(IEventAggregator eventAggregator)
         {
             this.EventAggregator = eventAggregator;
-            readFolders();
+            folders = readFoldersCache();
         }
 
         /// <summary>
@@ -87,7 +92,7 @@ namespace Amatsukaze.ViewModel
                 folders.Add(newFolder);
                 Console.WriteLine("Added folder " + newFolder.name);
 
-                saveFolders(folders);
+                saveToFoldersCache(folders);
             }
             else
             {
@@ -110,7 +115,7 @@ namespace Amatsukaze.ViewModel
             {
                 Console.WriteLine("Removed folder " + selectedFolder.name);
                 folders.Remove(selectedFolder);
-                saveFolders(folders);
+                saveToFoldersCache(folders);
             }
         }
 
@@ -121,61 +126,20 @@ namespace Amatsukaze.ViewModel
         }
 
         /// <summary>
-        /// Checks if the folder is already in the json file.
+        /// Checks if the folder in parameter is already in the folders.
         /// </summary>
-        /// <param name="path">Path of folder to check</param>
+        /// <param name="folderPath">Path of folder to check</param>
         /// <returns></returns>
-        private Boolean folderListContainsByPath(string path)
+        private Boolean folderListContainsByPath(string folderPath)
         {
             foreach (FolderEntity folder in folders)
             {
-                if (path.Equals(folder.path))
+                if (folderPath.Equals(folder.path))
                 {
                     return true;
                 }
             }
             return false;
-        }
-
-        /// <summary>
-        /// Reads the json file containing all saved folders.
-        /// </summary>
-        private void readFolders()
-        {
-            // TODO : Make json file path a constant
-            string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Preferences\";
-            string filepath = folderpath + @"\folders.json";
-
-            if (File.Exists(filepath))
-            {
-                string input = File.ReadAllText(filepath);
-                ObservableCollection<FolderEntity> folderList = JsonConvert.DeserializeObject<ObservableCollection<FolderEntity>>(input);
-                folders = folderList;
-            }
-        }
-
-        /// <summary>
-        /// Save all selected folders into the json file.
-        /// </summary>
-        /// <param name="folderList"></param>
-        private void saveFolders(ObservableCollection<FolderEntity> folderList)
-        {
-            string json = JsonConvert.SerializeObject(folderList, Formatting.Indented);
-            try
-            {
-                // TODO : make json file path a constant.
-                string folderpath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Preferences\";
-                string filepath = folderpath + @"\folders.json";
-
-                FileInfo folder = new FileInfo(folderpath);
-                folder.Directory.Create();
-                File.WriteAllText(filepath, json);
-            }
-            catch (Exception exception)
-            {
-                //TODO : FileIO exception to handle
-                System.Windows.MessageBox.Show(exception.Message);
-            }
         }
 
         /// <summary>

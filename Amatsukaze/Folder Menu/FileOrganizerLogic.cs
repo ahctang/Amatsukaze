@@ -10,12 +10,10 @@ using System.Threading.Tasks;
 
 namespace Amatsukaze.ViewModel
 {
-    class FileOrganizerLogic
+    public static class FileOrganizerLogic
     {
-        /// <summary>
-        /// List of accepted video formats. File is not parsed in not in these
-        /// </summary>
-        private static string[] videoFormats = {
+        /// <summary>List of accepted video formats. File is not parsed if not in these</summary>
+        private static readonly string[] VIDEO_FORMATS = {
             ".mkv", ".avi", ".mp4,", ".mov", ".flv", ".ogg", ".wmv",
             ".rm", ".rmvb", ".m4p ", ".m4v", ".mpg", ".mpeg", ".vob",
             ".ogv", ".qt", ".mp2", ".mpe", ".mpv", ".f4v"
@@ -41,7 +39,7 @@ namespace Amatsukaze.ViewModel
                 fileName = file.Substring(file.LastIndexOf("\\"));
 
                 // If file extension not video file format, skip to next file
-                if (fileName.LastIndexOf(".") == -1 || !videoFormats.Contains(fileName.Substring(fileName.LastIndexOf("."))))
+                if (fileName.LastIndexOf(".") == -1 || !VIDEO_FORMATS.Contains(fileName.Substring(fileName.LastIndexOf("."))))
                 {
                     continue;
                 }
