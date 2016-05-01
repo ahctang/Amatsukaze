@@ -13,7 +13,7 @@ using System.Text.RegularExpressions;
 
 namespace Amatsukaze.ViewModel
 {
-    public class AnimeEntryObject : ObservableObjectClass
+    public class AnimeEntryObject : ObservableObjectClass, IEquatable<AnimeEntryObject>, IComparable<AnimeEntryObject>
     {
         //Object to hold the properties for one anime (based on the return from myanimelist
         #region Properties
@@ -205,6 +205,24 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        private void AssignGridRowColumn(List<AnimeStaff> StaffList)
+        {
+            int columncounter = 0, rowcounter = 0;
+            foreach (AnimeStaff Staff in StaffList)
+            {
+                Staff.GridColumn = columncounter;
+                Staff.GridRow = rowcounter;
+
+                columncounter++;
+
+                if (columncounter > (4 - 1))
+                {
+                    rowcounter++;
+                    columncounter = 0;
+                }
+            }
+        }
+
         public void MergeAnimeCover(string ImagePath)
         {
             lock(this)
@@ -268,6 +286,10 @@ namespace Amatsukaze.ViewModel
                     if (AnimeEntryObjectProperty.GetValue(this, null) == null && property.GetValue(Input, null) != null)
                     {
                         AnimeEntryObjectProperty.SetValue(this, property.GetValue(Input, null), null);
+
+                        //Staff and character properties need to be assigned grid rows and columns
+                        if (AnimeEntryObjectProperty.Name == "Characters") AssignGridRowColumn(AnimeEntryObjectProperty.GetValue(this, null) as List<AnimeCharacter>);
+                        if (AnimeEntryObjectProperty.Name == "Staff") AssignGridRowColumn(AnimeEntryObjectProperty.GetValue(this, null) as List<AnimeStaff>);
                     }
                 }                
             }
@@ -296,23 +318,65 @@ namespace Amatsukaze.ViewModel
             if (this.Sources.Contains("AniDB") == false) this.Sources.Add("AniDB");
         }*/
 
-        private void AssignGridRowColumn(List<AnimeStaff> StaffList)
+
+
+        public bool Equals(AnimeEntryObject other)
         {
-            int columncounter = 0, rowcounter = 0;
-            foreach (AnimeStaff Staff in StaffList)
+            //Check if other has an english name
+            string otherName;
+            string thisName;
+
+            if (other.english.Length != 0 && other.english != null)
             {
-                Staff.GridColumn = columncounter;
-                Staff.GridRow = rowcounter;
-
-                columncounter++;
-
-                if (columncounter > (4 - 1))
-                {
-                    rowcounter++;
-                    columncounter = 0;
-                }
+                otherName = other.english;
             }
-        }        
+            else
+            {
+                otherName = other.title;
+            }
+
+            //Check if this object has an english name
+            if (this.english.Length != 0 && this.english != null)
+            {
+                thisName = this.english;
+            }
+            else
+            {
+                thisName = this.title;
+            }
+
+            if (thisName.ToLower().Equals(otherName.ToLower())) return true;
+            else return false;
+        }
+
+        public int CompareTo(AnimeEntryObject other)
+        {
+            //Check if other has an english name
+            string otherName;
+            string thisName;
+
+            if (other.english.Length != 0 && other.english != null)
+            {
+                otherName = other.english;
+            }
+            else
+            {
+                otherName = other.title;
+            }
+
+            //Check if this object has an english name
+            if (this.english.Length != 0 && this.english != null)
+            {
+                thisName = this.english;
+            }
+            else
+            {
+                thisName = this.title;
+            }
+
+            //Do the comparison here
+            return thisName.ToLower().CompareTo(otherName.ToLower());
+        }
 
         [Conditional("DEBUG")]
         public void ContentsDump()
@@ -325,6 +389,8 @@ namespace Amatsukaze.ViewModel
                 Console.WriteLine("{0}: {1}", property.Name, property.GetValue(this, null));
             }
         }
+
+      
         #endregion
     }
 }

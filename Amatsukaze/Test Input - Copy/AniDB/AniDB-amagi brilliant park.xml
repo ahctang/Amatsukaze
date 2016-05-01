@@ -1,4 +1,4 @@
-<anime id="10399" restricted="false">
+<?xml version="1.0" encoding="UTF-8"?><anime id="10399" restricted="false">
 <type>TV Series</type>
 <episodecount>13</episodecount>
 <startdate>2014-10-07</startdate>
@@ -16,46 +16,42 @@
 <similaranime>
 <anime id="9466" approval="5" total="11">Hataraku Maou-sama!</anime>
 <anime id="959" approval="4" total="11">Fullmetal Panic? Fumoffu</anime>
-<anime id="9659" approval="1" total="5">
-Yuusha ni Narenakatta Ore wa Shibushibu Shuushoku o Ketsui Shimashita.
-</anime>
+<anime id="9659" approval="1" total="5">Yuusha ni Narenakatta Ore wa Shibushibu Shuushoku o Ketsui Shimashita.</anime>
 </similaranime>
-<recommendations total="8">
-<recommendation type="For Fans" uid="111668">
-The first four episodes were questionable cause it took a while to get into this anime. But after those four episodes this anime picks it up with quality comedy, characters and a fairly decent plot. Sometimes its serious and sometimes it is not which makes it hard to assess the actual situation. For me Tiramie and Macaron were the standout characters that made me fully enjoy this anime. In the end it`s a good anime but it has some flaws.
-</recommendation>
-<recommendation type="For Fans" uid="554857">
-Decent comedy with some really funny moments. The characters, however, fail to be really likable so even if there`s a little bit of drama, you will watch Amagi for the laughs.
-</recommendation>
-<recommendation type="Recommended" uid="503983">
-If you like an anime about management, then go ahead and watch. The main character has to deal with different problems in each episode and it`s interesting to watch how he solves it. If you don`t then probably it won`t appeal to you as much as it did to me. The comedy is ok. Not bad. But not great either. I love the visuals. The story is strong at the beginning and at the ending. In between it`s `episodic`. If you want an anime with a constant story development, this is probably not for you. Otherwise, it would be a fun watch.
-</recommendation>
-<recommendation type="Recommended" uid="478777">
-I really liked it! AMagi brilliant Park is a refreshing anime with a unique touch, yet not a breakthrough to the Comedy genre. Still, this is a very fun watch with a nice , steady plot, AMAZING character design and art style and a somewhat fulfilling ending. What i didn`t like was the underdeveloped romance part of the anime that could have been a strong addition to the spin. Still definitely a recommended watch!
-</recommendation>
-<recommendation type="Must See" uid="413607">
-10/10 For me ! Loved the characters , loved toe story , loved the art . Loved everything about that show . It was fun nice and relaxing , kinda easygoing with good sense of humor . Mixed all together to bring you 1 of my favorite series this season !
-</recommendation>
-<recommendation type="Must See" uid="591695">
-SO SO SO SO SO EXTREMELY UNDERRATED. This is one of the best show out there. At first I thought it is going to be one of those ecchi bs, but no. This is japanese madness at its best. If you wonder how it is possible to make a show about managing a theme park interesting, this is the best you can get. Really a shame that it is so short. But I truly loved it.
-</recommendation>
+<recommendations total="9">
+<recommendation type="For Fans" uid="111668">The first four episodes were questionable cause it took a while to get into this anime. But after those four episodes this anime picks it up with quality comedy, characters and a fairly decent plot. Sometimes its serious and sometimes it is not which makes it hard to assess the actual situation. For me Tiramie and Macaron were the standout characters that made me fully enjoy this anime. In the end it`s a good anime but it has some flaws.</recommendation>
+<recommendation type="Recommended" uid="463724">As far as I`m concerned, it was one enjoyable anime with refreshing plot, interesting and mostly good characters, it had a good combo of seriousness and comedy, but what it lacks is more episodes and more efforts from the villains trying to seriously destroy the princess and/or the whole park.</recommendation>
+<recommendation type="Recommended" uid="503983">If you like an anime about management, then go ahead and watch. The main character has to deal with different problems in each episode and it`s interesting to watch how he solves it. If you don`t then probably it won`t appeal to you as much as it did to me.
+
+The comedy is ok. Not bad. But not great either.
+
+I love the visuals. 
+
+The story is strong at the beginning and at the ending. In between it`s `episodic`. If you want an anime with a constant story development, this is probably not for you. Otherwise, it would be a fun watch.</recommendation>
+<recommendation type="Must See" uid="413607">10/10 For me !
+Loved the characters , loved toe story , loved the art .
+Loved everything about that show .
+It was fun nice and relaxing , kinda easygoing with good sense of humor .
+Mixed all together to bring you 1 of my favorite series this season !</recommendation>
+<recommendation type="Must See" uid="591695">SO SO SO SO SO EXTREMELY UNDERRATED. This is one of the best show out there. At first I thought it is going to be one of those ecchi bs, but no. This is japanese madness at its best. If you wonder how it is possible to make a show about managing a theme park interesting, this is the best you can get. Really a shame that it is so short. But I truly loved it.</recommendation>
+<recommendation type="Must See" uid="430272">This anime just gives the warm and fuzzies. Having said that it actually has a good story with not to much hogwash in it as you might think. The underlining main plot is hidden a little at first but it has great potential!</recommendation>
 </recommendations>
 <url>http://amaburi.jp/animation/</url>
 <creators>
-<name id="537" type="Original Work">Gatou Shouji</name>
-<name id="3569" type="Music">Mitsumune Shinkichi</name>
-<name id="2667" type="Chief Animation Direction">Maruki Nobuaki</name>
-<name id="533" type="Direction">Takemoto Yasuhiro</name>
-<name id="535" type="Series Composition">Shimo Fumihiko</name>
-<name id="2655" type="Character Design">Kadowaki Miku</name>
 <name id="736" type="Animation Work">Kyoto Animation</name>
+<name id="2655" type="Character Design">Kadowaki Miku</name>
+<name id="535" type="Series Composition">Shimo Fumihiko</name>
+<name id="3569" type="Music">Mitsumune Shinkichi</name>
+<name id="537" type="Original Work">Gatou Shouji</name>
+<name id="533" type="Direction">Takemoto Yasuhiro</name>
+<name id="2667" type="Chief Animation Direction">Maruki Nobuaki</name>
 </creators>
-<description>
-* Based on a light novel series written by http://anidb.net/cr537 [Gatou Shouji] and illustrated by http://anidb.net/cr28607 [Nakajima Yuka]. http://anidb.net/ch69329 [Kanie Seiya], a high school boy, is invited on a date in an amusement park by a mysterious beautiful transfer student named http://anidb.net/ch69328 [Sento Isuzu]. He is introduced to http://anidb.net/ch69327 [Latifah], a real princess and the park`s manager, and is asked to be the acting manager of this "disappointing amusement park in the Tokyo suburbs". Source: ANN
-</description>
+<description>* Based on a light novel series written by http://anidb.net/cr537 [Gatou Shouji] and illustrated by http://anidb.net/cr28607 [Nakajima Yuka].
+http://anidb.net/ch69329 [Kanie Seiya], a high school boy, is invited on a date in an amusement park by a mysterious beautiful transfer student named http://anidb.net/ch69328 [Sento Isuzu]. He is introduced to http://anidb.net/ch69327 [Latifah], a real princess and the park`s manager, and is asked to be the acting manager of this "disappointing amusement park in the Tokyo suburbs".
+Source: ANN</description>
 <ratings>
-<permanent count="1313">6.21</permanent>
-<temporary count="1319">7.25</temporary>
+<permanent count="1498">6.23</permanent>
+<temporary count="1506">7.21</temporary>
 <review count="2">6.74</review>
 </ratings>
 <picture>162546.jpg</picture>
@@ -67,21 +63,21 @@ SO SO SO SO SO EXTREMELY UNDERRATED. This is one of the best show out there. At 
 </resource>
 <resource type="2">
 <externalentity>
+<identifier>30206</identifier>
+</externalentity>
+<externalentity>
 <identifier>30056</identifier>
 </externalentity>
 <externalentity>
 <identifier>22147</identifier>
 </externalentity>
-<externalentity>
-<identifier>30206</identifier>
-</externalentity>
 </resource>
 <resource type="4">
 <externalentity>
-<url>http://www.tbs.co.jp/anime/amaburi/</url>
+<url>http://amaburi.jp/animation/</url>
 </externalentity>
 <externalentity>
-<url>http://amaburi.jp/animation/</url>
+<url>http://www.tbs.co.jp/anime/amaburi/</url>
 </externalentity>
 </resource>
 <resource type="6">
@@ -113,71 +109,55 @@ SO SO SO SO SO EXTREMELY UNDERRATED. This is one of the best show out there. At 
 <tags>
 <tag id="362" parentid="2793" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-24">
 <name>dancing</name>
-<description>
-Dance is when people move their body to music. There are many kinds of dance, like ballet or waltz. Dancing can be done for fun but can be also an art.
-</description>
+<description>Dance is when people move their body to music. There are many kinds of dance, like ballet or waltz. Dancing can be done for fun but can be also an art.</description>
 </tag>
 <tag id="2094" parentid="2849" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2015-10-25">
 <name>magic</name>
-<description>
-Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.
-</description>
+<description>Magic is the art of purportedly manipulating aspects of reality either by supernatural means or through knowledge of unknown occult laws.</description>
 <picurl>178878.jpg</picurl>
 </tag>
 <tag id="2355" parentid="2849" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-28">
 <name>dragon</name>
-<description>
-Very intelligent mythical beings - a cross between a very large lizard and a dinosaur - that breath fire, and have a knack for kidnapping damsels, thus distressing them. In Fantasy anime this perceptive species often lives secluded from human civilisation, protectors of long lost knowledge. Dragons seem to be on the verge of extinction.
-</description>
+<description>Very intelligent mythical beings - a cross between a very large lizard and a dinosaur - that breath fire, and have a knack for kidnapping damsels, thus distressing them. In Fantasy anime this perceptive species often lives secluded from human civilisation, protectors of long lost knowledge. Dragons seem to be on the verge of extinction.</description>
 <picurl>32579.jpg</picurl>
 </tag>
 <tag id="2604" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-04-02">
 <name>content indicators</name>
-<description>
-The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.
-</description>
+<description>The content indicators branch is intended to be a less geographically specific tool than the `age rating` used by convention, for warning about things that might cause offence. Obviously there is still a degree of subjectivity involved, but hopefully it will prove useful for parents with delicate children, or children with delicate parents.</description>
 </tag>
 <tag id="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-28">
 <name>dynamic</name>
-<description>
-Some of the central structural elements in anime are: Plot Continuity How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters? Stereotype Characters Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists. Plot Twists Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.
-</description>
+<description>Some of the central structural elements in anime are: 
+Plot Continuity 
+How does the plot or several plots unfold. Are they a strictly linear retelling of one big continuing story, a serial, possibly with several side stories, or is the content chopped into a set of unconnected episodes, only sharing the same setting and characters?
+Stereotype Characters
+Then there is the question of the character set presentation. Is it completely original, or is it your usual stereotypical character cast. Both choices have their merit, for example it would not really make much sense to reinvent the wheel for a harem anime. Fans of that genre come to expect their favourite stereotype protagonists.
+Plot Twists
+Finally there is the question of how complex the plot / the story unfolds. Are there side-plots that merge into the main plot leading to unexpected plot twists, or is the anime quite predictable? The latter would not be appropriate for detective stories. In harem anime on the other hand a foreseeable outcome is actually something the fans will come to expect.</description>
 </tag>
 <tag id="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-29">
 <name>themes</name>
-<description>
-Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.
-</description>
+<description>Themes describe the very central elements important to the anime stories. They set the backdrop against which the protagonists must face their challenges. Be it School Life, present Daily Life, Military action, Cyberpunk, Law and Order detective work, Sports, or the Underworld. These are only but a few of the more typical backgrounds for anime plots. Add to that a Conspiracy setting with a possible tragic outcome, the Themes span most of the imaginable subject matter relevant to anime.</description>
 </tag>
 <tag id="2609" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
 <name>original work</name>
-<description>
-What the anime is based on! Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.
-</description>
+<description>What the anime is based on! Mostly of academic interest, but a useful bit of info, hinting at the possible depth of story.</description>
 </tag>
 <tag id="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
 <name>setting</name>
-<description>
-The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.
-</description>
+<description>The setting describes in what time and place an anime takes place. To a certain extent it describes what you can expect from the world in the anime.</description>
 </tag>
 <tag id="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
 <name>elements</name>
-<description>
-Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?
-</description>
+<description>Next to Themes setting the backdrop for the protagonists in anime, there are the more detailed plot Elements that centre on character interactions: "What do characters do to each other or what is done to them?". Is it violent Action, an awe-inspiring Adventure in a foreign place, the gripping life of a Detective, a slapstick Comedy, an Ecchi Harem anime, a SciFi epic, or some Fantasy travelling adventure?</description>
 </tag>
 <tag id="2612" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
 <name>time</name>
-<description>
-This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past.
-</description>
+<description>This placeholder lists different epochs in human history and more vague but important timelines such as the future, the present and the past. </description>
 </tag>
 <tag id="2613" parentid="2610" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-22">
 <name>place</name>
-<description>
-The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world.
-</description>
+<description>The places the anime can take place in. Includes more specific places such as a country on Earth, as well as more general places such as a dystopia or a mirror world. </description>
 </tag>
 <tag id="2624" parentid="2612" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-30">
 <name>present</name>
@@ -185,111 +165,101 @@ The places the anime can take place in. Includes more specific places such as a 
 </tag>
 <tag id="2630" parentid="2613" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2012-10-13">
 <name>Earth</name>
-<description>
-The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.
-</description>
+<description>The Earth is the third planet from the Sun, and the densest and fifth-largest of the eight planets in the Solar System. It is in effect a ball of hot mud, but on the surface it`s cold enough, so most of us live on it (or are supposed to). It is circa 4.5 billion years old, and, unless we humans succeed in destroying it over the next couple of centuries, it is expected to last for quite another while, though the changes in the Sun`s emissions due to its aging will likely cause the extinction of everything; the species of earthlings are guaranteed to die, even if we fail to kill them -- unless, of course, we find ourselves another planet and figure out a way to take everything there. Our little planet on a corner of this galaxy may mean nothing in the grand scheme of things, but to its inhabitants it is their home, so, as a species, we cherish it dearly, to the point many cultures even to this day deify it. Being the home to the human civilizations, the Earth is the main setting of most fiction, be it anime or otherwise, but not only are many titles set in other places, such as unrelated fantasy worlds, in a considerable number of fictional titles the Earth is actually destroyed by aggressive alien invaders.</description>
 <picurl>126792.jpg</picurl>
 </tag>
 <tag id="2648" parentid="2849" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-04">
 <name>contemporary fantasy</name>
-<description>
-Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy. These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture. Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such. Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital. In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes. Source: wiki
-</description>
+<description>Contemporary fantasy, also known as modern fantasy or indigenous fantasy, is a sub-genre of fantasy, set in the present day. It is perhaps most popular for its sub-genre, urban fantasy.
+These terms are used to describe stories set in the putative real world (often referred to as consensus reality) in contemporary times, in which magic and magical creatures exist, either living in the interstices of our world or leaking over from alternate worlds. It thus has much in common with, and sometimes overlaps with secret history; a work of fantasy in which the magic could not remain secret or does not have any known relationship to known history would not fit into this subgenre. Occasionally certain contemporary fantasy novels will make reference to pop culture.
+Novels in which modern characters travel into alternate worlds, and all the magical action takes place there (except for the portal required to transport them), are not considered contemporary fantasy. Thus, C.S. Lewis`s The Lion, the Witch and the Wardrobe, where all fantasy events take place in the land of Narnia which is reached via a magic wardrobe, would not count as contemporary fantasy; on the other hand, the part of The Magician`s Nephew, where the Empress Jadis gets to London, tries to take over the Earth and clashes with police and a crowd of cockneys, would qualify as such.
+Contemporary fantasy is also to be distinguished from horror fiction, which also often has contemporary settings. When encountering magical events and creatures, the protagonist of a horror novel is horrified, while the protagonist of a fantasy novel (contemporary or otherwise) is filled with a sense of joy and wonder. Horrifying events may happen, but the fundamental distinction is vital.
+In his preface to That Hideous Strength, one of the earlier works falling within this sub-genre, C.S. Lewis explained why, when writing a tale about "magicians, devils, pantomime animals and planetary angels", he chose to start it with a detailed depiction of narrow-minded academic politics at a provincial English university and the schemes of crooked real estate developers: "I am following the traditional fairy-tale. We do not always notice its method, because the cottages, castles, woodcutters and petty kings with which a fairy tale opens have become for us as remote as the witches and ogres to which it proceeds. But they were not remote at all to the men who first made and enjoyed the tales". The same is true for many of the later works in the genre, which often begin with a seemingly normal scene of modern daily life to then disclose supernatural and magical beings and events hidden behind the scenes.
+Source: wiki</description>
 </tag>
 <tag id="2653" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-04">
 <name>slapstick</name>
-<description>
-Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.
-</description>
+<description>Slapstick humour is generally recognized by lots of physical abuse, horseplay and practical jokes. Also often seen are impossible situations, using sounds to illustrate impossible stunts that aren`t shown on-screen and to create tension for audience anticipation.</description>
 </tag>
 <tag id="2655" parentid="2853" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-09">
 <name>parody</name>
-<description>
-Anime that imitate other stories (can be from TV, film, books, historical events, ...) for comic effect by exaggerating the style and changing the content of the original. Also known as spoofs. It can also refer to when whole elements of one work are lifted out of their context and reused.
-</description>
+<description>Anime that imitate other stories (can be from TV, film, books, historical events, ...) for comic effect by exaggerating the style and changing the content of the original. Also known as spoofs. It can also refer to when whole elements of one work are lifted out of their context and reused.</description>
 <picurl>150811.jpg</picurl>
 </tag>
 <tag id="2672" parentid="2834" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2015-05-31">
 <name>Japan</name>
-<description>
-Last stronghold for humanity. If Tokyo falls, it`s all over. Tokyo Tower will undoubtedly fall anyway.
-</description>
+<description>Last stronghold for humanity. If Tokyo falls, it`s all over. Tokyo Tower will undoubtedly fall anyway.</description>
 </tag>
 <tag id="2749" parentid="2604" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
 <name>nudity</name>
-<description>
-Nudity is the state of wearing no clothing. The wearing of clothing is exclusively a human characteristic. The amount of clothing worn depends on functional considerations (such as a need for warmth or protection from the elements) and social considerations. In some situations the minimum amount of clothing (i.e. covering of a person`s genitals) may be socially acceptable, while in others much more clothing is expected. People, as individuals and in groups, have varying attitudes towards their own nudity. Some people are relaxed about appearing less than fully clothed in front of others, while others are uncomfortable or inhibited in that regard. People are nude in a variety of situations, and whether they are prepared to disrobe in front of others depends on the social context in which the issue arises. For example, people need to bathe without clothing, some people also sleep in the nude, some prefer to sunbathe in the nude or at least topless, while others are nude in other situations. Some people adopt naturism as a lifestyle. Though the wearing of clothes is the social norm in most cultures, some cultures, groups and individuals are more relaxed about nudity, though attitudes often depend on context. On the other hand, some people feel uncomfortable in the presence of any nudity, and the presence of a nude person in a public place can give rise to controversy, irrespective of the attitude of the person who is nude. Besides meeting social disapproval, in some places public nudity may constitute a crime of indecent exposure. Many people have strong views on nudity, which to them can involve issues and standards of modesty, decency and morality. Some people have an psychological aversion to nudity, called gymnophobia. Many people regard nudity to be inherently sexual and erotic. Nudity is to be found in a multitude of media, including art, photography, film and on the Internet. It is a factor in adult entertainment of various types. Especially gratuitous fanservice anime shows tend to show their (usually female) characters frequently without any clothes, though often hiding genitals through the means of additions like steam. Source: wiki
-</description>
+<description>Nudity is the state of wearing no clothing. The wearing of clothing is exclusively a human characteristic. The amount of clothing worn depends on functional considerations (such as a need for warmth or protection from the elements) and social considerations. In some situations the minimum amount of clothing (i.e. covering of a person`s genitals) may be socially acceptable, while in others much more clothing is expected.
+People, as individuals and in groups, have varying attitudes towards their own nudity. Some people are relaxed about appearing less than fully clothed in front of others, while others are uncomfortable or inhibited in that regard. People are nude in a variety of situations, and whether they are prepared to disrobe in front of others depends on the social context in which the issue arises. For example, people need to bathe without clothing, some people also sleep in the nude, some prefer to sunbathe in the nude or at least topless, while others are nude in other situations. Some people adopt naturism as a lifestyle.
+Though the wearing of clothes is the social norm in most cultures, some cultures, groups and individuals are more relaxed about nudity, though attitudes often depend on context. On the other hand, some people feel uncomfortable in the presence of any nudity, and the presence of a nude person in a public place can give rise to controversy, irrespective of the attitude of the person who is nude. Besides meeting social disapproval, in some places public nudity may constitute a crime of indecent exposure. Many people have strong views on nudity, which to them can involve issues and standards of modesty, decency and morality. Some people have an psychological aversion to nudity, called gymnophobia. Many people regard nudity to be inherently sexual and erotic.
+Nudity is to be found in a multitude of media, including art, photography, film and on the Internet. It is a factor in adult entertainment of various types.
+Especially gratuitous fanservice anime shows tend to show their (usually female) characters frequently without any clothes, though often hiding genitals through the means of additions like steam.
+Source: wiki</description>
 <picurl>60576.jpg</picurl>
 </tag>
 <tag id="2769" parentid="2653" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-22">
 <name>hyperspace mallet</name>
-<description>
-It comes from nowhere, it strikes without mercy, and disappears again. It`s a mallet the size of a circus sledgehammer, and it`s evidence that anime characters watch too many Bugs Bunny cartoons or Three Stooges shorts. An angry character — usually but not restricted to short-tempered schoolgirls — can often whip out a massive hammer with which to slam the target (and cause) of her ire. In Fan Fic circles, the notional storage place for mallets when not in use is known as hammerspace or malletspace. A recent variation is to have the character pull out a http://anidb.net/t1662 [harisen], a huge folded fan made out of paper or metal, a.k.a. the Paper Fan of Doom, and smack them with that. This is usually less painful-looking than the mallet, unless she uses it to deliver a Megaton Punch. Ironically, this is now a Dead Horse Trope in the West, where it originated; modern Western examples are typically from shows invoking anime, which has added its own touches to the mix, or from homages to Warner Brothers cartoons. Source: TV Tropes
-</description>
+<description>It comes from nowhere, it strikes without mercy, and disappears again. It`s a mallet the size of a circus sledgehammer, and it`s evidence that anime characters watch too many Bugs Bunny cartoons or Three Stooges shorts. An angry character — usually but not restricted to short-tempered schoolgirls — can often whip out a massive hammer with which to slam the target (and cause) of her ire.
+In Fan Fic circles, the notional storage place for mallets when not in use is known as hammerspace or malletspace.
+A recent variation is to have the character pull out a http://anidb.net/t1662 [harisen], a huge folded fan made out of paper or metal, a.k.a. the Paper Fan of Doom, and smack them with that. This is usually less painful-looking than the mallet, unless she uses it to deliver a Megaton Punch.
+Ironically, this is now a Dead Horse Trope in the West, where it originated; modern Western examples are typically from shows invoking anime, which has added its own touches to the mix, or from homages to Warner Brothers cartoons.
+Source: TV Tropes</description>
 <picurl>10253.gif</picurl>
 </tag>
 <tag id="2793" parentid="2883" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-07">
 <name>performance</name>
-<description>
-The song performance on stage or acting in a theatre is a central part of the character`s life in this anime type.
-</description>
+<description>The song performance on stage or acting in a theatre is a central part of the character`s life in this anime type.</description>
 </tag>
 <tag id="2799" parentid="2609" infobox="true" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-05-14">
 <name>novel</name>
-<description>
-Note that novel means book with words in paper, so no comics and no "visual novels", which should go under manga and dating-sim - visual Novel/erotic game respectively. Note that it can be applied to novels as we know them but also the typical light novels for teens and young adults, which are common in Japan and aside from being short include a number of illustrations.
-</description>
+<description>Note that novel means book with words in paper, so no comics and no "visual novels", which should go under manga and dating-sim - visual Novel/erotic game respectively.
+Note that it can be applied to novels as we know them but also the typical light novels for teens and young adults, which are common in Japan and aside from being short include a number of illustrations.</description>
 </tag>
 <tag id="2817" parentid="2856" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-08">
 <name>skimpy clothing</name>
-<description>
-When a job needs to get done you need the appropriate clothing on the appropriate persons. That calls for preferably scantily clad young ladies. Spies will dress in sexy outfits, even when the mission explicitly calls for them to not to be noticed. Female warriors will charge into battle wearing armour that does not protect the vital organs. Bridge officers on a military starship will be issued go-go boots with their uniforms. Examples are the women in VanDread, AIKa or the most famous incarnation of that tag, the Strike Witches and their precursor the Sky Girls.
-</description>
+<description>When a job needs to get done you need the appropriate clothing on the appropriate persons. That calls for preferably scantily clad young ladies. Spies will dress in sexy outfits, even when the mission explicitly calls for them to not to be noticed. Female warriors will charge into battle wearing armour that does not protect the vital organs. Bridge officers on a military starship will be issued go-go boots with their uniforms. Examples are the women in VanDread, AIKa or the most famous incarnation of that tag, the Strike Witches and their precursor the Sky Girls.</description>
 </tag>
 <tag id="2834" parentid="2630" weight="600" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-15">
 <name>Asia</name>
-<description>
-Asia is the world`s largest and most populous continent.
-</description>
+<description>Asia is the world`s largest and most populous continent.</description>
 </tag>
 <tag id="2849" parentid="2611" infobox="true" weight="500" localspoiler="false" globalspoiler="false" verified="true" update="2005-05-07">
 <name>fantasy</name>
-<description>
-Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction). In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today. Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture Source: Wiki
-</description>
+<description>Fantasy is a genre of fiction that uses magic and other supernatural phenomena as a primary element of plot, theme, or setting. Many works within the genre take place in fictional worlds where magic is common. Fantasy is generally distinguished from science fiction and horror by the expectation that it steers clear of (pseudo-)scientific and macabre themes, respectively, though there is a great deal of overlap between the three (which are subgenres of speculative fiction).
+In popular culture, the genre of fantasy is dominated by its medievalist form, especially since the worldwide success of The Lord of the Rings books by J. R. R. Tolkien. In its broadest sense however, fantasy comprises works by many writers, artists, filmmakers, and musicians, from ancient myths and legends to many recent works embraced by a wide audience today.
+Fantasy is a vibrant area of academic study in a number of disciplines (English, cultural studies, comparative literature, history, medieval studies). Work in this area ranges widely, from the structuralist theory of Tzvetan Todorov, which emphasizes the fantastic as a liminal space, to work on the connections (political, historical, literary) between medievalism and popular culture
+Source: Wiki</description>
 <picurl>68768.jpg</picurl>
 </tag>
 <tag id="2853" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2009-08-01">
 <name>comedy</name>
-<description>
-Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience. Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.
-</description>
+<description>Anime whose central struggle causes hilarious results. These stories are built upon funny characters, situations and events. A comedy anime is laced with humour and sets out to provoke laughter from the audience.
+Japanese humour can be a bit strange to westerners, so if you`re new to this type of humour, just bear with it; it`ll most likely grow on you if you`re a fan of other kinds of comedy.</description>
 </tag>
 <tag id="2856" parentid="2611" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-05">
 <name>ecchi</name>
-<description>
-Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi. The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai". The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi. Source: TV Tropes
-</description>
+<description>Fan service is found in many anime, in many forms. When the service has a distinctly sexual slant to it, and it appears to be a major focus of the show, then it`s safe to assume you`re watching ecchi.
+The word "ecchi" is used by English-speaking anime fans to refer to refer to soft-core pornographic or sexually suggestive anime and manga. This is a western invention; in Japanese, it is a catch-all term for all things anyhow sexual in nature, not being limited to porn, but also not really considered a "milder" term, as it may also refer to sexual intercourse itself. The term "ecchi" in Japanese comes from the pronunciation of the letter "H" in English, which is rendered into Japanese syllabary as エッチ, which in turn is transliterated in the English alphabet as "ecchi" or "etchi". It is not, as many believe, short for "hentai" -- that, too, seems to be a western invention. It is, however, nearly as misunderstood and misapplied a term as "hentai".
+The line between ecchi and hentai, from the western perspective over these terms, can be hard to draw at times; one good rule of thumb is: if it was aired on Japanese public TV at all, it probably wasn`t hentai. Ecchi usually features all the specifics to human anatomy that can only be found in anime, and generally avoids full nudity, instead abusing of panty shots. Hentai, on the other hand, will usually show full frontal nudity in some explicit form, including genitalia, and full, intimate sex scenes. At its mildest, ecchi is composed of double entendres, big misunderstandings, and sexual farce; at its most explicit, it is still in the realm of softcore pornography, with full breast shots, full back nudity and similar content, but no display of genitalia. Another good way to distinguish the two is looking for animated sex scenes; if one is found, you have generally left the genre entirely, though a few borderline exceptions apply here. For AniDB`s purposes, the distinction between explicit ecchi and actual hentai is simple: if it was sold with a 18+ restriction in its country of origin, it is hentai; if it was sold without it, it is ecchi.
+Source: TV Tropes</description>
 <picurl>32416.jpg</picurl>
 </tag>
 <tag id="2857" parentid="2611" infobox="true" weight="400" localspoiler="false" globalspoiler="false" verified="true" update="2009-05-03">
 <name>anthropomorphism</name>
-<description>
-Anthropomorphism is the attribution of uniquely human characteristics to non-human beings, inanimate objects, or natural or supernatural phenomena. If it`s an animal or an object (AI excluded) and it speaks and/or does other human-like things (dresses up) then we`re dealing with anthropomorphism.
-</description>
+<description>Anthropomorphism is the attribution of uniquely human characteristics to non-human beings, inanimate objects, or natural or supernatural phenomena. If it`s an animal or an object (AI excluded) and it speaks and/or does other human-like things (dresses up) then we`re dealing with anthropomorphism. </description>
 </tag>
 <tag id="2858" parentid="2611" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2010-09-10">
 <name>romance</name>
-<description>
-Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.
-</description>
+<description>Romance describes a story that deals with love between two or more characters typically also having an optimistic ending. Romance is also a difficulty encountered when creating a harem.</description>
 </tag>
 <tag id="2883" parentid="2607" weight="200" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-07">
 <name>the arts</name>
-<description>
-The arts represent an outlet of human expression, usually influenced by culture, and driven by human creative impulse. Major constituents of the arts include literature – including poetry, novels and short stories, and epics; performing arts – among them music, dance, and theatre; culinary arts such as baking, chocolatiering, and winemaking; media arts like photography and film, and visual arts – including drawing, painting, and sculpting. Some art forms combine a visual element with performance (e.g. film) and the written word (e.g. comics). From prehistoric cave paintings to modern day films, art serves as a vessel for storytelling and conveying mankind`s relationship with its environment. Source: Wiki
-</description>
+<description>The arts represent an outlet of human expression, usually influenced by culture, and driven by human creative impulse. Major constituents of the arts include literature – including poetry, novels and short stories, and epics; performing arts – among them music, dance, and theatre; culinary arts such as baking, chocolatiering, and winemaking; media arts like photography and film, and visual arts – including drawing, painting, and sculpting. Some art forms combine a visual element with performance (e.g. film) and the written word (e.g. comics).
+From prehistoric cave paintings to modern day films, art serves as a vessel for storytelling and conveying mankind`s relationship with its environment.
+Source: Wiki</description>
 </tag>
 <tag id="2931" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-09-07">
 <name>old animetags</name>
@@ -300,72 +270,51 @@ The arts represent an outlet of human expression, usually influenced by culture,
 </tag>
 <tag id="3314" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2011-05-10">
 <name>fate</name>
-<description>
-Fate — The predestined path of all things. The outcome is inevitable and the consequences predetermined. Whether or not the protagonist ultimately decides to follow this path shall weigh heavily on their soul.
-</description>
+<description>Fate — The predestined path of all things. The outcome is inevitable and the consequences predetermined. Whether or not the protagonist ultimately decides to follow this path shall weigh heavily on their soul.</description>
 </tag>
 <tag id="3575" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-03-13">
 <name>damsel in distress</name>
-<description>
-The damsel in distress is usually a young, nubile woman placed in a dire predicament by a villain or a monster and requires a hero to dash to her rescue. Often used to unite the cast of a show for this one goal, to make them put differences aside and become a band of nakama. Examples: Sakoshita Yanagi from Rekka no Honoo, Yuuki Miaka from Fushigi Yuugi or Higurashi Kagome from Inuyasha.
-</description>
-</tag>
-<tag id="3663" parentid="6347" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-14">
-<name>body snatcher</name>
-<description>
-A person`s body is taken over by some foreign intelligence. It`s not brainwashing, because they still have control of their own mind — but that`s all they have. Either they`ve been reduced to a spectator in their own body, or their soul has been booted out of their body entirely. Either way, the rest of the cast will soon find he`s not himself.
-</description>
+<description>The damsel in distress is usually a young, nubile woman placed in a dire predicament by a villain or a monster and requires a hero to dash to her rescue. Often used to unite the cast of a show for this one goal, to make them put differences aside and become a band of nakama. 
+Examples: Sakoshita Yanagi from Rekka no Honoo, Yuuki Miaka from Fushigi Yuugi or Higurashi Kagome from Inuyasha.</description>
 </tag>
 <tag id="3836" parentid="3314" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-06-04">
 <name>the chosen one!</name>
-<description>
-One of the characters in the anime is the "chosen one", the one to bring about change, the only one to "set things right" in a "good" ending, or bring about complete destruction in a "bad" ending.
-</description>
+<description>One of the characters in the anime is the "chosen one", the one to bring about change, the only one to "set things right" in a "good" ending, or bring about complete destruction in a "bad" ending.</description>
 </tag>
-<tag id="4113" parentid="3663" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-11-14">
+<tag id="4113" parentid="6347" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-12-18">
 <name>body exchange</name>
-<description>
-Two or more characters swap bodies (or, equally, swap minds) by some form of magic or applied phlebotinum. When this plot is done, usually the voices also switch as narrative cheat to help viewers keep track of who`s who. More subtly, it`s just the eyes. More serious/action-oriented shows might not do this. The Flip often involves characters of different ages, genders, races, or social classes. Another variation is a protagonist and antagonist switching, which usually involves each trying to undermine the other`s organization while simultaneously trying to switch back. If one or both of the characters have superpowers or other special abilities, they`ll have a lot of trouble figuring their new powers out.
-</description>
+<description>Two or more characters swap bodies (or, equally, swap minds.
+When this plot is done, usually the voices also switch as narrative cheat to help viewers keep track of who`s who. More subtly, it`s just the eyes. More serious/action-oriented shows might not do this. The Flip often involves characters of different ages, genders, races, or social classes. Another variation is a protagonist and antagonist switching, which usually involves each trying to undermine the other`s organization while simultaneously trying to switch back. If one or both of the characters have superpowers or other special abilities, they`ll have a lot of trouble figuring their new powers out.</description>
 </tag>
 <tag id="4117" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2010-07-17">
 <name>rolling boulder trap</name>
-<description>
-Nothing beats the rolling boulder in case you want to smash those tomb raiders to a blood pool to teach them a lesson. Its simplicity and versatility is matched only by its destructiveness and the sheer terror it evokes.
-</description>
+<description>Nothing beats the rolling boulder in case you want to smash those tomb raiders to a blood pool to teach them a lesson. Its simplicity and versatility is matched only by its destructiveness and the sheer terror it evokes.</description>
 </tag>
 <tag id="4176" parentid="6348" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2014-05-14">
 <name>OP and ED sung by characters</name>
-<description>
-OP and/or ED in this anime is sung by the characters and animation shows them singing.
-</description>
+<description>OP and/or ED in this anime is sung by the characters and animation shows them singing.</description>
 </tag>
 <tag id="5585" parentid="2607" weight="100" localspoiler="false" globalspoiler="false" verified="true" update="2015-01-29">
 <name>curse</name>
-<description>
-A "curse" in this manner depicts an adversity placed upon a person or object by a supernatural power often represented by unique designs and symbols found on the inflicted. While not all curses have negative effects, the majority are meant to remain forever hexing to the receiving victim`s soul. A common portrayal is that which is conjured by an individual that has been caused great suffering and thereby extracts revenge against the accuser in the form of a curse. This abuser will then have their soul spirited away to hell to suffer endlessly for the rest of eternity. In some instances (such as in `Jigoku Shoujo`) the character who extracts revenge also condemns their own soul to Hell upon death.
-</description>
+<description>A "curse" in this manner depicts an adversity placed upon a person or object by a supernatural power often represented by unique designs and symbols found on the inflicted. While not all curses have negative effects, the majority are meant to remain forever hexing to the receiving victim`s soul.
+A common portrayal is that which is conjured by an individual that has been caused great suffering and thereby extracts revenge against the accuser in the form of a curse. This abuser will then have their soul spirited away to hell to suffer endlessly for the rest of eternity. In some instances (such as in `Jigoku Shoujo`) the character who extracts revenge also condemns their own soul to Hell upon death.</description>
 </tag>
 <tag id="5948" parentid="6233" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2009-04-18">
 <name>visible aura</name>
-<description>
-Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.
-</description>
+<description>Characters are surrounded by a visible energy field usually representing inner strength, but not restricted to only that.</description>
 </tag>
 <tag id="6230" parentid="2605" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2014-10-20">
 <name>cast</name>
 </tag>
 <tag id="6233" parentid="2611" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-08-11">
 <name>tropes</name>
-<description>
-A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech. Source: Wikipedia
-</description>
+<description>A trope is a commonly recurring literary and rhetorical devices, motifs or clichés in creative works. This use is a broader redefining of a literary trope, the use of figurative language, via word, phrase, or even an image, for artistic effect, such as using a figure of speech.
+Source: Wikipedia</description>
 </tag>
 <tag id="6347" parentid="2607" weight="0" localspoiler="false" globalspoiler="false" verified="true" update="2015-02-17">
 <name>body and host</name>
-<description>
-When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite, or even a hacker (when regarding machines like robots and computers) enters/outright hijacks a body, the possessed subject becomes what is usually called: the host. The basic purpose of the host varies on what the point was for it to have been hijacked in the first place. Sometimes it`s used as a disguise, other times it`s used as a decoy and destraction, even simply being used as a weapon and piece of armor that the possessor uses to cause sheer chaos and destruction, but sometimes... a host can be used for fetish fuel.
-</description>
+<description>When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite, or even a hacker (when regarding machines like robots and computers) enters/outright hijacks a body, the possessed subject becomes what is usually called: the host.
+The basic purpose of the host varies on what the point was for it to have been hijacked in the first place. Sometimes it`s used as a disguise, other times it`s used as a decoy and destraction, even simply being used as a weapon and piece of armor that the possessor uses to cause sheer chaos and destruction, but sometimes... a host can be used for fetish fuel.</description>
 </tag>
 <tag id="6348" parentid="2931" weight="0" localspoiler="false" globalspoiler="false" verified="false" update="2015-02-19">
 <name>old animetags - OP ED</name>
@@ -373,7 +322,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 </tags>
 <characters>
 <character id="69320" type="secondary cast in" update="2014-09-30">
-<rating votes="25">5.07</rating>
+<rating votes="28">4.86</rating>
 <name>Koborii</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -381,7 +330,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="4007" picture="25937.jpg">Mikami Shiori</seiyuu>
 </character>
 <character id="69321" type="secondary cast in" update="2014-09-30">
-<rating votes="29">6.20</rating>
+<rating votes="32">5.99</rating>
 <name>Sarama</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -389,7 +338,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="21823" picture="131326.jpg">Tsuda Minami</seiyuu>
 </character>
 <character id="69322" type="secondary cast in" update="2014-09-30">
-<rating votes="28">5.98</rating>
+<rating votes="31">6.18</rating>
 <name>Sylphy</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -397,7 +346,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="16804" picture="178974.jpg">Kurosawa Tomoyo</seiyuu>
 </character>
 <character id="69323" type="secondary cast in" update="2014-11-28">
-<rating votes="17">5.70</rating>
+<rating votes="19">5.77</rating>
 <name>Tiramii</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -405,7 +354,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="347" picture="41555.jpg">Nonaka Ai</seiyuu>
 </character>
 <character id="69324" type="secondary cast in" update="2014-09-01">
-<rating votes="14">4.80</rating>
+<rating votes="16">4.78</rating>
 <name>Makaron</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -413,7 +362,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="208" picture="20458.jpg">Shiraishi Ryouko</seiyuu>
 </character>
 <character id="69325" type="secondary cast in" update="2014-09-30">
-<rating votes="27">6.17</rating>
+<rating votes="30">5.96</rating>
 <name>Myuusu</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -421,7 +370,7 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="38613" picture="144174.jpg">Aisaka Yuuka</seiyuu>
 </character>
 <character id="69326" type="secondary cast in" update="2014-09-01">
-<rating votes="23">7.06</rating>
+<rating votes="26">6.70</rating>
 <name>Moffle</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -429,18 +378,17 @@ When a foreign entity like that of a symbiote, body snatcher, puppeteer parasite
 <seiyuu id="12" picture="16580.jpg">Kawasumi Ayako</seiyuu>
 </character>
 <character id="69327" type="main character in" update="2015-07-01">
-<rating votes="49">5.61</rating>
+<rating votes="53">5.55</rating>
 <name>Latifah Fleuranza</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
-<description>
-The princess of Maple Land. She gives Seiya some of her magical powers by kissing him. According to Toriken, she is Moffle`s niece and bears a striking resemblance to his sister. Due to some circumstances including her frail body, she cannot leave the garden which is casted with a magic barrier. Latifah was cursed by a wizard, who made her body deficient in Animus, Maple Land`s life force, and the curse renews each year, resetting her memory and age, meaning she has lived as a 14-year old for more than a decade. Source: Wiki
-</description>
+<description>The princess of Maple Land. She gives Seiya some of her magical powers by kissing him. According to Toriken, she is Moffle`s niece and bears a striking resemblance to his sister. Due to some circumstances including her frail body, she cannot leave the garden which is casted with a magic barrier. Latifah was cursed by a wizard, who made her body deficient in Animus, Maple Land`s life force, and the curse renews each year, resetting her memory and age, meaning she has lived as a 14-year old for more than a decade.
+Source: Wiki</description>
 <picture>159435.jpg</picture>
 <seiyuu id="12783" picture="42942.jpg">Fujii Yukiyo</seiyuu>
 </character>
 <character id="69328" type="main character in" update="2014-08-09">
-<rating votes="64">7.62</rating>
+<rating votes="70">7.66</rating>
 <name>Sento Isuzu</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -448,7 +396,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="32939" picture="89641.jpg">Kakuma Ai</seiyuu>
 </character>
 <character id="69329" type="main character in" update="2014-10-07">
-<rating votes="39">6.63</rating>
+<rating votes="43">6.65</rating>
 <name>Kanie Seiya</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -479,7 +427,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="202" picture="25743.jpg">Terashima Takuma</seiyuu>
 </character>
 <character id="70584" type="appears in" update="2014-10-10">
-<rating votes="3">6.99</rating>
+<rating votes="3">6.89</rating>
 <name>Kurisu Takaya</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -511,7 +459,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="37882" picture="173035.jpg">Yamashita Seiichirou</seiyuu>
 </character>
 <character id="70702" type="appears in" update="2014-10-17">
-<rating votes="3">5.79</rating>
+<rating votes="3">5.82</rating>
 <name>Toriken</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -536,7 +484,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="14" picture="75503.jpg">Fukuyama Jun</seiyuu>
 </character>
 <character id="70705" type="appears in" update="2014-10-17">
-<rating votes="10">5.24</rating>
+<rating votes="10">5.28</rating>
 <name>Ashe</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -597,7 +545,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="73" picture="58662.jpg">Hiyama Nobuyuki</seiyuu>
 </character>
 <character id="71279" type="appears in" update="2014-11-10">
-<rating votes="9">5.90</rating>
+<rating votes="9">5.95</rating>
 <name>Chuujou Shiina</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -605,7 +553,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="35415" picture="146334.jpg">Chisuga Haruka</seiyuu>
 </character>
 <character id="71280" type="appears in" update="2014-11-10">
-<rating votes="6">4.58</rating>
+<rating votes="6">4.67</rating>
 <name>Bandou Biino</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -621,7 +569,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="5663" picture="41280.jpg">Igarashi Hiromi</seiyuu>
 </character>
 <character id="71336" type="appears in" update="2014-11-14">
-<rating votes="2">2.85</rating>
+<rating votes="2">3.74</rating>
 <name>Jaw</name>
 <gender>male</gender>
 <charactertype id="1">Character</charactertype>
@@ -636,7 +584,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <seiyuu id="284" picture="43153.jpg">Tanaka Masahiko</seiyuu>
 </character>
 <character id="71646" type="appears in" update="2014-11-25">
-<rating votes="3">6.10</rating>
+<rating votes="3">6.07</rating>
 <name>Tsuchida Kanae</name>
 <gender>female</gender>
 <charactertype id="1">Character</charactertype>
@@ -672,7 +620,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">4</epno>
 <length>25</length>
 <airdate>2014-10-24</airdate>
-<rating votes="14">5.41</rating>
+<rating votes="15">5.66</rating>
 <title xml:lang="ja">秘書が使えない!</title>
 <title xml:lang="en">The Secretary Is Useless!</title>
 <title xml:lang="x-jat">Hisho ga Tsukaenai!</title>
@@ -681,7 +629,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">3</epno>
 <length>25</length>
 <airdate>2014-10-17</airdate>
-<rating votes="14">4.80</rating>
+<rating votes="15">4.94</rating>
 <title xml:lang="ja">テコ入れが効かない!</title>
 <title xml:lang="en">The Plan Isn`t Working!</title>
 <title xml:lang="x-jat">Tekoire ga Kikanai!</title>
@@ -690,7 +638,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">2</epno>
 <length>25</length>
 <airdate>2014-10-10</airdate>
-<rating votes="14">5.56</rating>
+<rating votes="15">5.64</rating>
 <title xml:lang="ja">時間がない!</title>
 <title xml:lang="en">Not Enough Time!</title>
 <title xml:lang="x-jat">Jikan ga Nai!</title>
@@ -699,28 +647,30 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">1</epno>
 <length>25</length>
 <airdate>2014-10-07</airdate>
-<rating votes="16">5.21</rating>
+<rating votes="17">5.31</rating>
 <title xml:lang="ja">お客が来ない!</title>
 <title xml:lang="en">No Visitors!</title>
 <title xml:lang="x-jat">Okyaku ga Konai!</title>
 </episode>
-<episode id="163235" update="2014-10-07">
-<epno type="3">C2</epno>
+<episode id="163235" update="2015-12-12">
+<epno type="3">C5</epno>
 <length>2</length>
 <airdate>2014-10-07</airdate>
+<rating votes="1">2.40</rating>
 <title xml:lang="en">Ending</title>
 </episode>
-<episode id="163236" update="2014-10-07">
+<episode id="163236" update="2015-12-12">
 <epno type="3">C1</epno>
 <length>2</length>
 <airdate>2014-10-07</airdate>
-<title xml:lang="en">Opening</title>
+<rating votes="1">6.46</rating>
+<title xml:lang="en">Opening 1a</title>
 </episode>
 <episode id="163688" update="2014-10-22">
 <epno type="1">8</epno>
 <length>25</length>
 <airdate>2014-11-21</airdate>
-<rating votes="13">5.89</rating>
+<rating votes="14">6.13</rating>
 <title xml:lang="ja">恋心が届かない!</title>
 <title xml:lang="en">Unrequited Love!</title>
 <title xml:lang="x-jat">Koigokoro ga Todokanai!</title>
@@ -729,7 +679,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">7</epno>
 <length>25</length>
 <airdate>2014-11-14</airdate>
-<rating votes="14">5.54</rating>
+<rating votes="15">5.31</rating>
 <title xml:lang="ja">プールが危ない!</title>
 <title xml:lang="en">The Pool Is Dangerous!</title>
 <title xml:lang="x-jat">Pool ga Abunai!</title>
@@ -738,7 +688,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">6</epno>
 <length>25</length>
 <airdate>2014-11-07</airdate>
-<rating votes="16">6.04</rating>
+<rating votes="17">5.94</rating>
 <title xml:lang="ja">人手が足りない!</title>
 <title xml:lang="en">Not Enough Workers!</title>
 <title xml:lang="x-jat">Hitode ga Tarinai!</title>
@@ -747,7 +697,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">5</epno>
 <length>25</length>
 <airdate>2014-10-31</airdate>
-<rating votes="14">4.57</rating>
+<rating votes="15">4.56</rating>
 <title xml:lang="ja">お金が足りない!</title>
 <title xml:lang="en">Not Enough Money!</title>
 <title xml:lang="x-jat">Okane ga Tarinai!</title>
@@ -756,7 +706,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">12</epno>
 <length>25</length>
 <airdate>2014-12-19</airdate>
-<rating votes="15">8.13</rating>
+<rating votes="16">7.93</rating>
 <title xml:lang="ja">未来は誰にもわからない!</title>
 <title xml:lang="en">No One Can Predict the Future!</title>
 <title xml:lang="x-jat">Mirai wa Dare ni mo Wakaranai!</title>
@@ -765,7 +715,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">11</epno>
 <length>25</length>
 <airdate>2014-12-12</airdate>
-<rating votes="13">6.46</rating>
+<rating votes="14">6.49</rating>
 <title xml:lang="ja">これでもう心配ない!</title>
 <title xml:lang="en">No More Worries!</title>
 <title xml:lang="x-jat">Kore de Mou Shinpai Nai!</title>
@@ -774,7 +724,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">10</epno>
 <length>25</length>
 <airdate>2014-12-05</airdate>
-<rating votes="13">5.79</rating>
+<rating votes="14">5.69</rating>
 <title xml:lang="ja">もう打つ手がない!</title>
 <title xml:lang="en">Out of Options!</title>
 <title xml:lang="x-jat">Mou Utsute ga Nai!</title>
@@ -783,7 +733,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">9</epno>
 <length>25</length>
 <airdate>2014-11-28</airdate>
-<rating votes="13">5.28</rating>
+<rating votes="14">5.05</rating>
 <title xml:lang="ja">チームワークが生まれない!</title>
 <title xml:lang="en">Can`t Build Any Teamwork!</title>
 <title xml:lang="x-jat">Teamwork ga Umarenai!</title>
@@ -792,7 +742,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="1">13</epno>
 <length>25</length>
 <airdate>2014-12-26</airdate>
-<rating votes="12">2.87</rating>
+<rating votes="13">2.74</rating>
 <title xml:lang="ja">PVがつまらない!</title>
 <title xml:lang="en">Not a Good PV!</title>
 <title xml:lang="x-jat">PV ga Tsumaranai!</title>
@@ -801,7 +751,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S4</epno>
 <length>3</length>
 <airdate>2015-02-27</airdate>
-<rating votes="3">2.03</rating>
+<rating votes="4">2.43</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その3</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 3</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 3</title>
@@ -810,7 +760,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S3</epno>
 <length>4</length>
 <airdate>2015-01-30</airdate>
-<rating votes="4">2.51</rating>
+<rating votes="6">2.42</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その2</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 2</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 2</title>
@@ -819,7 +769,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S2</epno>
 <length>5</length>
 <airdate>2014-12-26</airdate>
-<rating votes="4">2.66</rating>
+<rating votes="6">2.49</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その1</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 1</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 1</title>
@@ -828,7 +778,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S7</epno>
 <length>4</length>
 <airdate>2015-05-29</airdate>
-<rating votes="3">6.62</rating>
+<rating votes="4">5.99</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その6</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 6</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 6</title>
@@ -837,7 +787,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S6</epno>
 <length>4</length>
 <airdate>2015-04-24</airdate>
-<rating votes="3">2.31</rating>
+<rating votes="4">2.69</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その5</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 5</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 5</title>
@@ -846,7 +796,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S5</epno>
 <length>5</length>
 <airdate>2015-03-27</airdate>
-<rating votes="3">3.08</rating>
+<rating votes="4">2.89</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その4</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 4</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 4</title>
@@ -855,7 +805,7 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S1</epno>
 <length>25</length>
 <airdate>2015-06-26</airdate>
-<rating votes="2">5.95</rating>
+<rating votes="4">4.23</rating>
 <title xml:lang="ja">のんびりしている暇がない!</title>
 <title xml:lang="en">No Time to Be Laid-back!</title>
 <title xml:lang="x-jat">Nonbirishiteiru Hima ga Nai!</title>
@@ -864,10 +814,28 @@ The princess of Maple Land. She gives Seiya some of her magical powers by kissin
 <epno type="2">S8</epno>
 <length>6</length>
 <airdate>2015-06-26</airdate>
-<rating votes="3">7.33</rating>
+<rating votes="4">7.12</rating>
 <title xml:lang="ja">わくわくミニシアター らくがきバックステージ その7</title>
 <title xml:lang="en">Exciting Mini Theater: Graffiti Backstage 7</title>
 <title xml:lang="x-jat">Wakuwaku Mini Theater: Rakugaki Backstage Sono 7</title>
+</episode>
+<episode id="173768" update="2015-12-12">
+<epno type="3">C4</epno>
+<length>2</length>
+<airdate>2014-11-21</airdate>
+<title xml:lang="en">Opening 1d</title>
+</episode>
+<episode id="173769" update="2015-12-12">
+<epno type="3">C3</epno>
+<length>2</length>
+<airdate>2014-11-14</airdate>
+<title xml:lang="en">Opening 1c</title>
+</episode>
+<episode id="173770" update="2015-12-12">
+<epno type="3">C2</epno>
+<length>2</length>
+<airdate>2014-11-07</airdate>
+<title xml:lang="en">Opening 1b</title>
 </episode>
 </episodes>
 </anime>

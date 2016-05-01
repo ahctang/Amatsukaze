@@ -30,6 +30,9 @@ namespace Amatsukaze.ViewModel
 
             //Subscribe to message events first thing (so messages can be picked up immediately);
             datasource.SendMessagetoGUI += new EventHandler(onSendMessagetoGUI);
+            datasource.ReportProcessProgress += new EventHandler(onProcessProgressChanged);
+            datasource.ProcessChanged += new EventHandler(onProcessChanged);
+
 
             //Read the cache file
             datasource.ReadCacheFile();
@@ -45,7 +48,6 @@ namespace Amatsukaze.ViewModel
             //Season sort           
             this.RefreshSeasonLists();
         }
-
 
         #region Fields
 
@@ -70,14 +72,22 @@ namespace Amatsukaze.ViewModel
 
         //Private field for the search term on the top rigiht
         private string searchTerm = "Search";
+        private string lastSearchTerm;
 
         //GUI Toggles
         private bool messageLogToggle;
         private bool animeInfoToggle;
         private bool isEditMode = false;
+        private bool processToggle;
 
         //Last View in use before search
         private string lastView;
+
+        //In progress process related fields
+        private string processInProgress = "";
+        private double progressBarProgress;
+        private double charArtProgress;
+        private double coverArtProgress;
         #endregion    
 
         #region Objects
@@ -375,6 +385,22 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public string LastSearchTerm
+        {
+            get
+            {
+                return lastSearchTerm;
+            }
+            set
+            {
+                if (lastSearchTerm != value)
+                {
+                    lastSearchTerm = value;
+                    OnPropertyChanged("LastSearchTerm");
+                }
+            }
+        }
+
         public bool IsEditMode
         {
             get
@@ -387,6 +413,54 @@ namespace Amatsukaze.ViewModel
                 {
                     isEditMode = value;
                     OnPropertyChanged("IsEditMode");
+                }
+            }
+        }
+
+        public string ProcessInProgress
+        {
+            get
+            {
+                return processInProgress;
+            }
+            set
+            {
+                if (processInProgress != value)
+                {
+                    processInProgress = value;
+                    OnPropertyChanged("ProcessInProgress");
+                }
+            }
+        }
+
+        public double ProgressBarProgress
+        {
+            get
+            {
+                return progressBarProgress;
+            }
+            set
+            {
+                if (progressBarProgress != value)
+                {
+                    progressBarProgress = value;
+                    OnPropertyChanged("ProgressBarProgress");
+                }
+            }
+        }
+
+        public bool ProcessToggle
+        {
+            get
+            {
+                return processToggle;
+            }
+            set
+            {
+                if (processToggle != value)
+                {
+                    processToggle = value;
+                    OnPropertyChanged("ProcessToggle");
                 }
             }
         }
@@ -487,6 +561,9 @@ namespace Amatsukaze.ViewModel
                 return;
             }
 
+            //Term for binding
+            LastSearchTerm = SearchTerm;
+
             //Search anime list for results based on the search term (linq?) and return a cloned collection
             var search = (from anime in AnimeLibraryList                          
 
@@ -536,8 +613,9 @@ namespace Amatsukaze.ViewModel
                 Process.Start(startInfo);
                 return true;
             }
-            catch 
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 return false;
             }                       
         }           
@@ -679,6 +757,46 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        private void onProcessProgressChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Progress Updated");            
+
+            var message = (e as MessageArgs).Message;
+            var number = (e as MessageArgs).Number;
+
+            //Check if the process is actually in progress
+            if(ProcessInProgress == "Updating Library")
+            {
+                if(message == "CoverArtProgress")
+                {
+                    this.coverArtProgress = number;
+                }
+                else if (message == "CharArtProgress")
+                {
+                    this.charArtProgress = number;
+                }
+            }
+
+            //Set the overall progress
+            ProgressBarProgress = (coverArtProgress + charArtProgress) / 200 * 100;            
+        }
+
+        private void onProcessChanged(object sender, EventArgs e)
+        {
+            var message = (e as MessageArgs).Message;                        
+            this.ProcessInProgress = message;
+
+            //Flip the toggle since the same event is actually triggered on start/end
+            if (ProcessToggle != true) ProcessToggle = true;
+            else ProcessToggle = false;
+
+            //Reset the actual progress values
+            if (ProgressBarProgress != 0) ProgressBarProgress = 0;
+            if (this.charArtProgress != 0) charArtProgress = 0;
+            if (this.coverArtProgress != 0) coverArtProgress = 0;
+        }
+
+
         //Every time the size of the display area is changed in the view, the view is hardcoded to call this function to 
         //recalculate the number of columns/rows that fit and to reassign the grid index of every single picture.
         //THIS IS FOR THE FULL LIBRARY VIEW ONLY
@@ -744,7 +862,7 @@ namespace Amatsukaze.ViewModel
         }
 
         private void OnAnimeLibraryListCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
+        {            
             LibraryViewAreaResized(this.GridColumnCount);
 
             //When the AnimeLibraryList is changed, all of the season lists need to be updated again

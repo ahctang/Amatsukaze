@@ -28,6 +28,11 @@ namespace Amatsukaze.ViewModel
             this.CacheFolderPath = optionsobject.CacheFolderpath;
             this.UseMALDataSource = optionsobject.UseMALDataSource;
             this.UseAniDBDataSource = optionsobject.UseAniDBDataSource;
+            this.AniDBImageURL = optionsobject.AniDBImageURL;
+            this.AniDBXMLQueryURL = optionsobject.AniDBXMLQueryURL;
+            this.AniDBRetrieverURL = optionsobject.AniDBIDRetrieverURL;
+            this.MALXMLQueryURL = optionsobject.MALXMLQueryURL;
+            
             this.EventAggregator = eventAggregator;
         }
 
@@ -44,6 +49,12 @@ namespace Amatsukaze.ViewModel
         private string cachefolderpath;
         private bool useMALDataSource;
         private bool useAniDBDataSource;
+        private string aniDBImageURL;
+        private string aniDBXMLQueryURL;
+        private string aniDBRetrieverURL;
+        private string malXMLQueryURL;
+        private string malLogin;
+        private string malPassword;
         #endregion
 
         #region Properties
@@ -132,6 +143,119 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public string AniDBImageURL
+        {
+            get
+            {
+                return aniDBImageURL;
+            }
+            set
+            {
+                if (aniDBImageURL != value)
+                {
+                    aniDBImageURL = value;
+                    optionsobject.AniDBImageURL = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("AniDBImageURL");
+                }
+            }
+        }
+
+        public string AniDBXMLQueryURL
+        {
+            get
+            {
+                return aniDBXMLQueryURL;
+            }
+            set
+            {
+                if (aniDBXMLQueryURL != value)
+                {
+                    aniDBXMLQueryURL = value;
+                    optionsobject.AniDBXMLQueryURL = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("AniDBXMLQueryURL");
+                }
+            }
+        }
+
+        public string AniDBRetrieverURL
+        {
+            get
+            {
+                return aniDBRetrieverURL;
+            }
+            set
+            {
+                if (aniDBRetrieverURL != value)
+                {
+                    aniDBRetrieverURL = value;
+                    optionsobject.AniDBIDRetrieverURL = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("AniDBRetrieverURL");
+                }
+            }
+        }
+
+        public string MALXMLQueryURL
+        {
+            get
+            {
+                return malXMLQueryURL;
+            }
+            set
+            {
+                if (malXMLQueryURL != value)
+                {
+                    malXMLQueryURL = value;
+                    optionsobject.MALXMLQueryURL = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("MALXMLQueryURL");
+                }
+            }
+        }
+
+        public string MALLogin
+        {
+            get
+            {
+                return malLogin;
+            }
+            set
+            {
+                if (malLogin != value)
+                {
+                    malLogin = value;
+                    optionsobject.MALLogin = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("MALLogin");
+                }
+            }
+        }
+
+        public string MALPassword
+        {
+            get
+            {
+                return malPassword;
+            }
+            set
+            {
+                if (malPassword != value)
+                {
+                    malPassword = value;
+                    optionsobject.MALPassword = value;
+
+                    optionsobject.Save();
+                    OnPropertyChanged("MALPassword");
+                }
+            }
+        }
         #endregion
 
         #region Methods

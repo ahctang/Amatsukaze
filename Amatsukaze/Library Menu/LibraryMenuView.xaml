@@ -36,7 +36,7 @@
                                 <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                             </DataTemplate.Resources>
                             <StackPanel Width="{Binding ElementName=CoverImage, Path=ActualWidth}" Height="255" Margin="10,10,10,0">
-                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync}" Height="225" Width="161">
+                                <Image x:Name="CoverImage" Source="{Binding ImagePath, FallbackValue={StaticResource NoImgIcon}, AsyncState=IsAsync, TargetNullValue={StaticResource NoImgIcon}}" Height="225" Width="161">
                                     <Image.InputBindings>
                                         <MouseBinding MouseAction="LeftClick" 
                                                       Command="{Binding DataContext.SelectAnime, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" 
@@ -119,8 +119,8 @@
         </DataTemplate>
 
         <DataTemplate x:Key="SearchResultSort">
-            <StackPanel>                
-                <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="20" Margin="10,10,0,0"><Run Text="Searching for: "></Run><Run Text="{Binding ElementName=SearchBox, Path=Text}"></Run>
+            <StackPanel>
+                <TextBlock FontFamily="SegoeUI" Foreground="{DynamicResource BodyFontColor}" TextWrapping="Wrap" HorizontalAlignment="Left" FontSize="20" Margin="10,10,0,0"><Run Text="Searching for: "></Run><Run Text="{Binding LastSearchTerm}"></Run>
                 </TextBlock>
                 <ItemsControl ItemsSource="{Binding SearchResultList}">
                     <ItemsControl.ItemsPanel>
@@ -187,8 +187,8 @@
 
     </UserControl.Resources>
 
-    <UserControl.InputBindings>        
-            <KeyBinding Key="Esc"  Command="{Binding ClearSearchAnime}"></KeyBinding>
+    <UserControl.InputBindings>
+        <KeyBinding Key="Esc"  Command="{Binding ClearSearchAnime}"></KeyBinding>
     </UserControl.InputBindings>
 
     <DockPanel LastChildFill="True">
@@ -234,22 +234,22 @@
                         <Setter Property="Button.CommandParameter" Value="{Binding ElementName=SearchBox, Path=Text}"></Setter>
                         <Setter Property="Button.Content">
                             <Setter.Value>
-                                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>                                
+                                <Image Source="{StaticResource SearchIcon}" Height="25" Width="25"></Image>
                             </Setter.Value>
                         </Setter>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding CurrentView}" Value="Search">
-                                <Setter Property="Button.Command" Value="{Binding ClearSearchAnime}"></Setter>                                
+                                <Setter Property="Button.Command" Value="{Binding ClearSearchAnime}"></Setter>
                                 <Setter Property="Button.Content">
                                     <Setter.Value>
                                         <Image Source="{StaticResource CloseIcon}" Height="15" Width="15"></Image>
                                     </Setter.Value>
                                 </Setter>
                             </DataTrigger>
-                        </Style.Triggers>                        
+                        </Style.Triggers>
                     </Style>
                 </Button.Style>
-                
+
             </Button>
             <TextBox x:Name="SearchBox" DockPanel.Dock="Right" HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center" Height="35" Width="300" Text="{Binding SearchTerm, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Background="{DynamicResource SelectedMenuColor}" BorderThickness="0" GotFocus="SearchBox_GotFocus" LostFocus="SearchBox_LostFocus">
@@ -305,6 +305,37 @@
                     <MouseBinding MouseAction="LeftClick" Command="{Binding SwitchSort}" CommandParameter="Season"></MouseBinding>
                 </TextBlock.InputBindings>
             </TextBlock>
+            <StackPanel x:Name="ProcessName" DockPanel.Dock="Right">
+                <StackPanel.Style>
+                    <Style>                        
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ProcessToggle}" Value="False">
+                                <Setter Property="StackPanel.Opacity" Value="0"></Setter>
+                                <DataTrigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="ProgressOn"></StopStoryboard>
+                                    <BeginStoryboard Name="ProgressOff">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:1"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="ProgressOff"></StopStoryboard>
+                                    <BeginStoryboard Name="ProgressOn">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:1"></DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <TextBlock Text="{Binding ProcessInProgress}" Style="{StaticResource HeaderText}" HorizontalAlignment="Left" Margin="0"></TextBlock>
+                <ProgressBar Height="10" VerticalAlignment="Bottom" Width="150" Minimum="0" Maximum="100" Value="{Binding ProgressBarProgress}" HorizontalAlignment="Left" Margin="0,0,10,0"/>
+            </StackPanel>
+
+
             <!--<TextBlock Text="View by Genre " DockPanel.Dock="Left" Padding="10,0,10,0" VerticalAlignment="Center">
                 <TextBlock.Style>
                     <Style BasedOn="{StaticResource HeaderText}" TargetType="TextBlock">
@@ -331,7 +362,12 @@
             <Grid.Resources>
                 <local:MessageBoxWidthConverter x:Key="MessageBoxWidthConverter"></local:MessageBoxWidthConverter>
             </Grid.Resources>
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="131*"/>
+                <ColumnDefinition Width="744*"/>
+                <ColumnDefinition Width="125*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" Grid.ColumnSpan="3">
                 <ContentControl>
                     <ContentControl.RenderTransform>
                         <TranslateTransform></TranslateTransform>
@@ -410,7 +446,7 @@
 
             <!-- Anime Info Box-->
             <Border x:Name="AnimeInfoPanel" CornerRadius="25" BorderThickness="2" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1"
-                    BorderBrush="White">
+                    BorderBrush="White" Grid.ColumnSpan="3" Margin="50,0">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AnimeInfoPanelColor}" Opacity="0.85"></SolidColorBrush>
                 </Border.Background>
@@ -443,7 +479,7 @@
                                                     <CubicEase EasingMode="EaseIn"></CubicEase>
                                                 </DoubleAnimation.EasingFunction>
                                             </DoubleAnimation>
-                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.25">                                             
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0" Duration="0:0:0.25">
                                             </DoubleAnimation>
                                         </Storyboard>
                                     </BeginStoryboard>
@@ -647,7 +683,7 @@
             </Border>
 
             <!-- Message Log Box-->
-            <Border CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1">
+            <Border x:Name="MessageLogPanel" CornerRadius="25" BorderThickness="0" Width="{Binding ElementName=DisplayArea, Path=ActualWidth, Converter={StaticResource MessageBoxWidthConverter}}" Height="{Binding ElementName=DisplayArea, Path=ActualHeight}" VerticalAlignment="Bottom" HorizontalAlignment="Center" RenderTransformOrigin="0,1" Grid.ColumnSpan="3" Margin="50,0">
                 <Border.Background>
                     <SolidColorBrush Color="{DynamicResource AmatsukazeRed}" Opacity="0.75"></SolidColorBrush>
                 </Border.Background>
@@ -679,7 +715,7 @@
                     </Style>
                 </Border.Style>
                 <StackPanel Height="{Binding ElementName=DisplayArea, Path=ActualHeight}">
-                    <TextBlock Text="Message Log" FontSize="20" Margin="10,20,0,0"></TextBlock>
+                    <TextBlock Text="Message Log" FontSize="20" Margin="10,20,0,0" Foreground="{StaticResource BodyFontColor}"></TextBlock>
                     <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="{Binding ElementName=DisplayArea, Path=ActualHeight}" Padding="0,0,0,50">
                         <ListView ItemsSource="{Binding LibraryMessageLog}" Background="Transparent" FontFamily="SegoeUI" Foreground="{StaticResource BodyFontColor}">
                         </ListView>

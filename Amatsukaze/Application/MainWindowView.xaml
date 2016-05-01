@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Amatsukaze.View"
         xmlns:ViewModel="clr-namespace:Amatsukaze.ViewModel"
         mc:Ignorable="d"
-        Title="Amatsukaze" Height="720" Width="1280"
+        Title="Amatsukaze" Height="768" Width="1366"
         MinWidth="640" MinHeight="480"
         WindowStartupLocation="CenterScreen">
     <Window.Resources>
