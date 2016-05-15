@@ -493,7 +493,7 @@
                         <local:UnsetConverter x:Key="UnsetConverter"></local:UnsetConverter>
                     </StackPanel.Resources>
                     <StackPanel HorizontalAlignment="Right">
-                        <DockPanel HorizontalAlignment="Right">
+                        <DockPanel HorizontalAlignment="Right" Background="White">
                             <Button Height="35" Width="35" Background="Transparent" Click="Button_Click" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right">
                                 <Image Source="{StaticResource CloseIcon}"></Image>
                             </Button>
@@ -502,6 +502,9 @@
                             </Button>
                             <Button Height="35" Width="35" Background="Transparent" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right" Command="{Binding EditModeSwitch}">
                                 <Image Source="{StaticResource RefreshIcon}"></Image>
+                            </Button>
+                            <Button Height="35" Width="35" Background="Transparent" BorderBrush="Transparent" Margin="0,10,10,0" DockPanel.Dock="Right" Command="{Binding FetchCommand}">
+                                <Image Source="{StaticResource SearchIcon}"></Image>
                             </Button>
                         </DockPanel>
                     </StackPanel>

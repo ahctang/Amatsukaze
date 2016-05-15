@@ -13,12 +13,12 @@ namespace Amatsukaze.ViewModel
     /// <summary>
     /// Logic for reading the folder json file.
     /// </summary>
-    public static class FolderReadingLogic
+    class FolderReadingLogic
     {
         #region Fields
 
         /// <summary>Directory that contains the json files</summary>
-        private static readonly string JSON_DIRECTORY = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Preferences\";
+        private static readonly string JSON_DIRECTORY = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\Cache\";
         /// <summary>File that contains the saved folders</summary>
         private static readonly string FOLDER_JSON_FILE = JSON_DIRECTORY + @"\folders.json";
 
@@ -75,8 +75,7 @@ namespace Amatsukaze.ViewModel
 
         #endregion
 
-        #region Internal classes
-
+        #region Internal Classes
         /// <summary>
         /// This represents a folder. It is displayed on the left of the folder view.
         /// </summary>
@@ -97,11 +96,10 @@ namespace Amatsukaze.ViewModel
             public string name { get; set; }
             /// <summary>F if the item is a file or D if it's a directory</summary>
             public string type { get; set; }
-            /// <summary>Comment about the contents of this Item if a folder for display in Folder View</summary>
+            /// <summary>If this item is a folder, comment about the contents to display in Folder View</summary>
             public string contents { get; set; }
         }
 
         #endregion
-
     }
 }

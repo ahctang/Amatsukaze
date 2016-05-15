@@ -9,6 +9,10 @@ using System.Collections.Specialized;
 using System.Windows;
 using System.Linq;
 using System.Diagnostics;
+using System.Windows.Forms;
+using System.Windows.Forms.Integration;
+using System.Windows.Data;
+using System.Windows.Controls;
 
 namespace Amatsukaze.ViewModel
 {
@@ -53,6 +57,7 @@ namespace Amatsukaze.ViewModel
 
         //Commands
         private ICommand _refreshCommand;
+        private ICommand _fetchCommand;
         private ICommand _selectAnime;
         private ICommand _switchSort;
         private ICommand _searchAnime;
@@ -73,6 +78,9 @@ namespace Amatsukaze.ViewModel
         //Private field for the search term on the top rigiht
         private string searchTerm = "Search";
         private string lastSearchTerm;
+
+        //Private field for the fetch view
+        private string fetchAnimeName;
 
         //GUI Toggles
         private bool messageLogToggle;
@@ -132,6 +140,20 @@ namespace Amatsukaze.ViewModel
                         p => datasource.IsRefreshInProgess != true);
                 }
                 return _refreshCommand;
+            }
+        }
+
+        public ICommand FetchCommand
+        {
+            get
+            {
+                if (_fetchCommand == null)
+                {
+                    _fetchCommand = new RelayCommand(
+                        p => openFetchDialog(),
+                        p => true);
+                }
+                return _fetchCommand;
             }
         }
 
@@ -369,6 +391,22 @@ namespace Amatsukaze.ViewModel
             }
         }
 
+        public string FetchAnimeName
+        {
+            get
+            {
+                return fetchAnimeName;
+            }
+            set
+            {
+                if (fetchAnimeName != value)
+                {
+                    fetchAnimeName = value;
+                    OnPropertyChanged("FetchAnimeName");
+                }
+            }
+        }
+
         public string SearchTerm
         {
             get
@@ -520,7 +558,10 @@ namespace Amatsukaze.ViewModel
             //Go through all of the anime to dig out which dates are present and add them to their respective collections
             foreach (AnimeEntryObject anime in this.AnimeLibraryList)
             {
-
+                if (anime.start_date == null || anime.end_date == null)
+                {
+                    continue;
+                }
                 int SeasonSortCollectionIndex = temporarylist.FindIndex(season => season.SortCriteria == SeasonConverter(anime.start_date));
 
                 //If the index is found it won't be -1
@@ -615,7 +656,7 @@ namespace Amatsukaze.ViewModel
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                System.Windows.MessageBox.Show(e.Message);
                 return false;
             }                       
         }           
@@ -625,13 +666,9 @@ namespace Amatsukaze.ViewModel
         {
             string ret;
             //Check the format of the date
-            try
+            if (startDate == null || startDate.Length != 10)
             {
-                if (startDate.Length != 10) throw new Exception();
-            }
-            catch
-            {
-                MessageBox.Show("Cache file corrupted");
+                //MessageBox.Show("Cache file corrupted");
                 return "None";
             }
 
@@ -734,6 +771,49 @@ namespace Amatsukaze.ViewModel
             }            
         }
 
+        /// <summary>
+        /// Opens the fetch from AniDB/MAL dialog.
+        /// </summary>
+        private void openFetchDialog()
+        {
+            //Window window = new Window();
+            //window.ResizeMode = ResizeMode.CanMinimize;
+            //window.SizeToContent = SizeToContent.WidthAndHeight;
+            //window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+
+            // Define dialog
+            Form form = new Form();
+            form.StartPosition = FormStartPosition.CenterParent;
+            form.AutoSize = true;
+            form.FormBorderStyle = FormBorderStyle.FixedSingle;
+            form.Height = 100;
+
+            // Create view
+            Amatsukaze.View.FetchDataDialog dialog = new Amatsukaze.View.FetchDataDialog();
+
+            // Update fetchAnimeName
+            fetchAnimeName = selectedAnime.title;
+
+            // Bind anime name to FetchAnimeName
+            System.Windows.Data.Binding binding = new System.Windows.Data.Binding();
+            binding.Source = this;
+            binding.Path = new PropertyPath("FetchAnimeName");
+            binding.Mode = BindingMode.TwoWay;
+            dialog.AnimeNameTextBox.SetBinding(AutoCompleteBox.TextProperty, binding);
+
+            // Use host to add view
+            ElementHost host = new ElementHost();
+            host.AutoSize = true;
+            host.Child = dialog;
+            form.Controls.Add(host);
+
+            //window.Content = host;
+            //window.Show();
+
+            // Display dialog
+            form.ShowDialog();
+        }
+
 
         #endregion
 
@@ -746,7 +826,7 @@ namespace Amatsukaze.ViewModel
             var message = (e as MessageArgs).Message;
 
             //Try and invoke the actual adding action on the main UI thread to avoid the stupid object not suppoted exception
-            Application.Current.Dispatcher.Invoke((Action)(() =>
+            System.Windows.Application.Current.Dispatcher.Invoke((Action)(() =>
             {
                 LibraryMessageLog.Add(message);
             }));            

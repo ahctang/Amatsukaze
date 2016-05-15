@@ -26,31 +26,36 @@ C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\D
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csprojResolveAssemblyReference.cache
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.dll
 C:\Users\littl\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.xml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe.config
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.pdb
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.dll
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.xml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Application\MainWindowView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Folder Menu\FolderMenuView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\LibraryMenuView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Options Menu\OptionsMenuView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Playback Menu\PlaybackMenuView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Social Network menu\SocialNetworkMenuView.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.cache
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.lref
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Application\MainWindowView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Folder Menu\FolderMenuView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\LibraryMenuView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Options Menu\OptionsMenuView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Playback Menu\PlaybackMenuView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Social Network menu\SocialNetworkMenuView.baml
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.g.resources
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.Properties.Resources.resources
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csproj.GenerateResource.Cache
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.exe
-C:\Users\David\Documents\Visual Studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.pdb
-C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csprojResolveAssemblyReference.cache
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe.config
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.exe
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Amatsukaze.pdb
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.dll
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\Newtonsoft.Json.xml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Application\MainWindowView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Folder Menu\FolderMenuView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\FetchDataDialog.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\LibraryMenuView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Options Menu\OptionsMenuView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Playback Menu\PlaybackMenuView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Social Network menu\SocialNetworkMenuView.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.cache
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze_MarkupCompile.lref
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\App.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Application\MainWindowView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Folder Menu\FolderMenuView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\FetchDataDialog.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Library Menu\LibraryMenuView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Options Menu\OptionsMenuView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Playback Menu\PlaybackMenuView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Social Network menu\SocialNetworkMenuView.baml
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.g.resources
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.Properties.Resources.resources
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.csproj.GenerateResource.Cache
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.exe
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\obj\Debug\Amatsukaze.pdb
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\WPFToolkit.dll
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\System.Windows.Controls.Input.Toolkit.dll
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\System.Windows.Controls.Layout.Toolkit.dll
+C:\Users\David\documents\visual studio 2015\Projects\Amatsukaze\Amatsukaze\bin\Debug\WPFToolkit.pdb

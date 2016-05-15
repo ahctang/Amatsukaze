@@ -106,6 +106,11 @@ namespace Amatsukaze.ViewModel
         /// </summary>
         private void openDeleteDialog()
         {
+            // If no folder, no folder selected, do nothing.
+            if (selectedFolder == null)
+            {
+                return;
+            }
             var confirmResult = System.Windows.Forms.MessageBox.Show(
                 "Are you sure you want to remove the [" + selectedFolder.name +
                     "] folder?\nThis will not delete the folder from your hard drive.",
@@ -133,11 +138,13 @@ namespace Amatsukaze.ViewModel
         /// <returns></returns>
         private Boolean foldersContainsByPath(string folderPath)
         {
-            foreach (FolderEntity folder in folders)
-            {
-                if (folderPath.Equals(folder.path))
+            if (folders != null) {
+                foreach (FolderEntity folder in folders)
                 {
-                    return true;
+                    if (folderPath.Equals(folder.path))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

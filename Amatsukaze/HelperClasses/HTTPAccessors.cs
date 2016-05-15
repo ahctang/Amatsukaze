@@ -13,26 +13,39 @@ using Amatsukaze.ViewModel;
 
 namespace Amatsukaze.HelperClasses
 {
-    class MALAccessor
+    public static class MALAccessor
     {
+        #region Constants
+
+        /// <summary>Base URL for MAL API</summary>
+        private static readonly string MAL_API_ANIME_BASE_URL = "http://myanimelist.net/api/";
+        /// <summary>URL for MAL Anime Search</summary>
+        private static readonly string MAL_API_ANIME_SEARCH_URL = MAL_API_ANIME_BASE_URL + "anime/search.xml?q=";
+
+        #endregion
+
+        private static string AnimeXMLQueryURL;
+        private static string MALLogin;
+        private static string MALPassword;
+        private static string cacheFolderPath;
+
         //These are the URL strings that are taken from the optionsobject when the accessor is initialized
         //For the time being I am taking only the query api url, but maybe in the future we will use the add/list/favorite http apis as well.
-        public MALAccessor(OptionsObject optionsObject)
+        static MALAccessor()
         {
-            initializeURLstrings(optionsObject);
+            OptionsObject optionsObject = null;
+            AnimeXMLQueryURL = optionsObject.MALXMLQueryURL;
+            MALLogin = optionsObject.MALLogin;
+            MALPassword = optionsObject.MALPassword;
+            cacheFolderPath = optionsObject.CacheFolderpath;
         }
-
-        private string AnimeXMLQueryURL;
-        private string MALLogin;
-        private string MALPassword;
-        private string cacheFolderPath;
 
         //Gets an anime XML. Returns true if animeXML is downloaded successfully, but return false if it can't find the anime or if an exception is thrown. 
         //Error handling should be done in the viewmodel
-        public bool GetAnimeXML(string AnimeName)
+        public static bool GetAnimeXML(string AnimeName)
         {
             //Construct the URL
-            string url = constructQueryURL(AnimeName);
+            string url = MAL_API_ANIME_SEARCH_URL + AnimeName;
 
             //Construct the local path
             string localpath = cacheFolderPath + "MAL-" + AnimeName + ".xml";
@@ -73,18 +86,6 @@ namespace Amatsukaze.HelperClasses
             return true;
         }
 
-        private void initializeURLstrings(OptionsObject optionsObject)
-        {
-            this.AnimeXMLQueryURL = optionsObject.MALXMLQueryURL;
-            this.MALLogin = optionsObject.MALLogin;
-            this.MALPassword = optionsObject.MALPassword;
-            this.cacheFolderPath = optionsObject.CacheFolderpath;
-        }
-
-        private string constructQueryURL(string AnimeName)
-        {
-            return AnimeXMLQueryURL + AnimeName;
-        }
     }
 
     class AniDBAccessor
