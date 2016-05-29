@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Amatsukaze.HelperClasses;
 using Amatsukaze.Model;
+using Amatsukaze.View;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Collections.Specialized;
@@ -58,6 +59,8 @@ namespace Amatsukaze.ViewModel
         //Commands
         private ICommand _refreshCommand;
         private ICommand _fetchCommand;
+        /// <summary>When clicking the "Fetch" button of fetch dialog. Actually fetches the data.</summary>
+        private ICommand _fetchAnimeCommand;
         private ICommand _selectAnime;
         private ICommand _switchSort;
         private ICommand _searchAnime;
@@ -81,6 +84,11 @@ namespace Amatsukaze.ViewModel
 
         //Private field for the fetch view
         private string fetchAnimeName;
+        //Private field for the selected anime in Fetch dialog
+        private Item selectedFetchAnimeItem;
+        //Form for fetching anime data
+        private Form fetchAnimeForm;
+        //TODO : Replace by Window
 
         //GUI Toggles
         private bool messageLogToggle;
@@ -154,6 +162,20 @@ namespace Amatsukaze.ViewModel
                         p => true);
                 }
                 return _fetchCommand;
+            }
+        }
+
+        public ICommand FetchAnimeCommand
+        {
+            get
+            {
+                if (_fetchAnimeCommand == null)
+                {
+                    _fetchAnimeCommand = new RelayCommand(
+                        p => fetchAnime(),
+                        p => true);
+                }
+                return _fetchAnimeCommand;
             }
         }
 
@@ -403,6 +425,22 @@ namespace Amatsukaze.ViewModel
                 {
                     fetchAnimeName = value;
                     OnPropertyChanged("FetchAnimeName");
+                }
+            }
+        }
+
+        public Item SelectedFetchAnimeItem
+        {
+            get
+            {
+                return selectedFetchAnimeItem;
+            }
+            set
+            {
+                if (selectedFetchAnimeItem != value)
+                {
+                    selectedFetchAnimeItem = value;
+                    OnPropertyChanged("SelectedFetchAnimeItem");
                 }
             }
         }
@@ -782,44 +820,69 @@ namespace Amatsukaze.ViewModel
             //window.WindowStartupLocation = WindowStartupLocation.CenterOwner;
 
             // Define dialog
-            Form form = new Form();
-            form.StartPosition = FormStartPosition.CenterParent;
-            form.AutoSize = true;
-            form.FormBorderStyle = FormBorderStyle.FixedSingle;
-            form.Height = 100;
+            fetchAnimeForm = new Form();
+            fetchAnimeForm.Text = "Fetch Anime Data";
+            fetchAnimeForm.StartPosition = FormStartPosition.CenterParent;
+            fetchAnimeForm.AutoSize = true;
+            fetchAnimeForm.FormBorderStyle = FormBorderStyle.FixedSingle;
+            fetchAnimeForm.Height = 100;
 
             // Create view
-            Amatsukaze.View.FetchDataDialog dialog = new Amatsukaze.View.FetchDataDialog();
+            FetchDataDialog dialog = new FetchDataDialog();
 
             // Update fetchAnimeName
             fetchAnimeName = selectedAnime.title;
 
-            // Bind anime name to FetchAnimeName
-            System.Windows.Data.Binding binding = new System.Windows.Data.Binding();
-            binding.Source = this;
-            binding.Path = new PropertyPath("FetchAnimeName");
-            binding.Mode = BindingMode.TwoWay;
-            dialog.AnimeNameTextBox.SetBinding(AutoCompleteBox.TextProperty, binding);
+            // Bind selected item
+            System.Windows.Data.Binding selectedItemBinding = new System.Windows.Data.Binding();
+            selectedItemBinding.Source = this;
+            selectedItemBinding.Path = new PropertyPath("SelectedFetchAnimeItem");
+            selectedItemBinding.Mode = BindingMode.TwoWay;
+            dialog.AnimeNameTextBox.SetBinding(AutoCompleteBox.SelectedItemProperty, selectedItemBinding);
+
+            // Bind default name
+            System.Windows.Data.Binding textBinding = new System.Windows.Data.Binding();
+            textBinding.Source = this;
+            textBinding.Path = new PropertyPath("FetchAnimeName");
+            textBinding.Mode = BindingMode.TwoWay;
+            dialog.AnimeNameTextBox.SetBinding(AutoCompleteBox.TextProperty, textBinding);
+
+            // Add command when clicking the fetch button
+            dialog.FetchAnimeButton.Command = FetchAnimeCommand;
 
             // Use host to add view
             ElementHost host = new ElementHost();
             host.AutoSize = true;
             host.Child = dialog;
-            form.Controls.Add(host);
+            fetchAnimeForm.Controls.Add(host);
 
             //window.Content = host;
             //window.Show();
 
             // Display dialog
-            form.ShowDialog();
+            fetchAnimeForm.ShowDialog();
+        }
+
+        private void fetchAnime()
+        {
+            if (fetchAnimeName == null || fetchAnimeName.Equals(""))
+            {
+                return;
+            } else
+            {
+                MalXmlParser.test("");
+                //MALDataSource result = MALAccessor.getAnimeXML(fetchAnimeName);
+                fetchAnimeForm.Close();
+            }
+            Console.WriteLine("Test");
         }
 
 
         #endregion
 
-        #region Events/EventHandlers
+            #region Events/EventHandlers
 
-        //All SendtoGUI events from the model are handled here. and they send the message to the EventAggregator which calls up the black popup menu 
+            //All SendtoGUI events from the model are handled here. and they send the message to the EventAggregator which calls up the black popup menu 
         private void onSendMessagetoGUI(object sender, EventArgs e)
         {
             Console.WriteLine("Library Event Fired!");

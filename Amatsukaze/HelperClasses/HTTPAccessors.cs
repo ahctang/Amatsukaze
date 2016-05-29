@@ -9,7 +9,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Xml;
 using Amatsukaze.ViewModel;
-
+using Newtonsoft.Json;
 
 namespace Amatsukaze.HelperClasses
 {
@@ -17,10 +17,16 @@ namespace Amatsukaze.HelperClasses
     {
         #region Constants
 
+        /// <summary>Base URL for MAL</summary>
+        private static readonly string MAL_URL = "http://myanimelist.net/";
         /// <summary>Base URL for MAL API</summary>
-        private static readonly string MAL_API_ANIME_BASE_URL = "http://myanimelist.net/api/";
-        /// <summary>URL for MAL Anime Search</summary>
+        private static readonly string MAL_API_ANIME_BASE_URL = MAL_URL + "api/";
+        /// <summary>URL for MAL API Anime Search</summary>
         private static readonly string MAL_API_ANIME_SEARCH_URL = MAL_API_ANIME_BASE_URL + "anime/search.xml?q=";
+        /// <summary>MAL website search parameters</summary>
+        private static readonly string MAL_WEBSITE_SEARCH_URL_PREFIX = "type=anime&keyword=";
+        /// <summary>URL for MAL website search</summary>
+        private static readonly string MAL_WEBSITE_SEARCH_URL = MAL_URL + "search/prefix.json?" + MAL_WEBSITE_SEARCH_URL_PREFIX;
 
         #endregion
 
@@ -33,11 +39,89 @@ namespace Amatsukaze.HelperClasses
         //For the time being I am taking only the query api url, but maybe in the future we will use the add/list/favorite http apis as well.
         static MALAccessor()
         {
-            OptionsObject optionsObject = null;
-            AnimeXMLQueryURL = optionsObject.MALXMLQueryURL;
-            MALLogin = optionsObject.MALLogin;
-            MALPassword = optionsObject.MALPassword;
-            cacheFolderPath = optionsObject.CacheFolderpath;
+            MALLogin = "Fenpwet";
+            MALPassword = "esg567";
+            //OptionsObject optionsObject = null;
+            //AnimeXMLQueryURL = optionsObject.MALXMLQueryURL;
+            //MALLogin = optionsObject.MALLogin;
+            //MALPassword = optionsObject.MALPassword;
+            //cacheFolderPath = optionsObject.CacheFolderpath;
+        }
+
+        /// <summary>
+        /// Uses the website API to search for an API
+        /// </summary>
+        /// <param name="animeName">user input for anime search</param>
+        /// <returns>A list of JSON parsed Anime Items from MAL</returns>
+        public static List<Item> searchAnimeByName(string animeName)
+        {
+            List<Item> result = new List<Item>();
+            // If no anime name, don't search
+            if (animeName == null || animeName.Trim().Equals(""))
+            {
+                return result;
+            }
+
+            try
+            {
+                // Prepare string for research
+                string urlAnimeName = new string(animeName.ToCharArray());
+                urlAnimeName = Uri.EscapeUriString(urlAnimeName.Trim().Replace(" ", "+"));
+
+                // Do a GET request
+                var webClient = new WebClient();
+                string returnString = webClient.DownloadString(new Uri(MAL_WEBSITE_SEARCH_URL + urlAnimeName));
+
+                // Parse JSON response and give result
+                MALSearchResponse MALSearchResponse = JsonConvert.DeserializeObject<MALSearchResponse>(returnString);
+                result = MALSearchResponse.categories.First().items;
+
+                // Free memory
+                webClient.Dispose();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error parsing MAL search Json. Nested exception is :");
+                Console.WriteLine(e.ToString());
+            }
+            return result;
+        }
+
+        public static MALDataSource getAnimeXML(string animeName)
+        {
+            MALDataSource result = null;
+            // If no anime name, don't search
+            if (animeName == null || animeName.Trim().Equals(""))
+            {
+                throw new Exception("Anime Name should not be null or empty.");
+            }
+
+            try
+            {
+                // Create web client
+                var webClient = new WebClient();
+
+                // Give request credentials header
+                string credentials = Convert.ToBase64String(Encoding.ASCII.GetBytes(MALLogin + ":" + MALPassword));
+                webClient.Headers[HttpRequestHeader.Authorization] = string.Format("Basic {0}", credentials);
+
+                // Do a GET request
+                string returnstring = webClient.DownloadString(new Uri(MAL_API_ANIME_SEARCH_URL + animeName));
+
+                // Parses response XML
+                result = new MALDataSource();
+                XMLParsers.MALParseXML(returnstring, result);
+
+                // Free memory
+                webClient.Dispose();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error parsing MAL API search XML. Nested exception is :");
+                Console.WriteLine(e.ToString());
+            }
+
+            return result;
         }
 
         //Gets an anime XML. Returns true if animeXML is downloaded successfully, but return false if it can't find the anime or if an exception is thrown. 
@@ -197,7 +281,7 @@ namespace Amatsukaze.HelperClasses
         {
             int AniID = 0;
             int MinStringDistance = 10; //Just some placeholder value. Too lazy to rewrite this as a for loop
-            
+
 
             foreach (Anime anime in Animes.animeList)
             {
@@ -205,7 +289,7 @@ namespace Amatsukaze.HelperClasses
                 {
                     //Match is done by string distance as opposed to simple matches as provided by list.contains and or list.findindex
                     int temp = calculateStringDistance(AnimeName.ToUpper(), name.ToUpper());
-                    if (temp  < MinStringDistance)
+                    if (temp < MinStringDistance)
                     {
                         MinStringDistance = temp;
                         AniID = anime.AniID;
@@ -220,7 +304,7 @@ namespace Amatsukaze.HelperClasses
             this.aniDBIDURL = optionsobject.AniDBIDRetrieverURL;
             this.aniDBXMLQueryURL = optionsobject.AniDBXMLQueryURL;
             this.cacheFolderPath = optionsobject.CacheFolderpath;
-        }       
+        }
 
         //The while loop is different in this than the anidb parser because the elements are not separated by \n
         private bool ParseAniDBID(string input)
@@ -299,6 +383,35 @@ namespace Amatsukaze.HelperClasses
                             );
             return d[n, m];
         }
+    }
+
+    class MALSearchResponse
+    {
+        public List<Categorie> categories { get; set; }
+    }
+
+    class Categorie
+    {
+        public string type { get; set; }
+        public List<Item> items { get; set; }
+    }
+
+    public class Item
+    {
+        public int id { get; set; }
+        public string name { get; set; }
+        public string image_url { get; set; }
+        public string thumbnail_url { get; set; }
+        public Payload payload { get; set; }
+    }
+
+    public class Payload
+    {
+        public string media_type { get; set; }
+        public int start_year { get; set; }
+        public string aired { get; set; }
+        public string score { get; set; }
+        public string status { get; set; }
     }
 
     class AnimeList

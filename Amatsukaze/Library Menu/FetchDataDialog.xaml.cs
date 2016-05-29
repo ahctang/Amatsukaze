@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Amatsukaze.HelperClasses;
 
 namespace Amatsukaze.View
 {
@@ -23,6 +24,15 @@ namespace Amatsukaze.View
         public FetchDataDialog()
         {
             InitializeComponent();
+        }
+
+        private void PopulateAnimeNameTextBox(object sender, PopulatingEventArgs e)
+        {
+            string text = AnimeNameTextBox.Text;
+
+            List<Item> searchResults = MALAccessor.searchAnimeByName(text);
+            AnimeNameTextBox.ItemsSource = searchResults;
+            AnimeNameTextBox.PopulateComplete();
         }
     }
 }

@@ -87,6 +87,7 @@
     <Compile Include="HelperClasses\EventAggregator.cs" />
     <Compile Include="HelperClasses\GridHelpers.cs" />
     <Compile Include="HelperClasses\Logics\FolderReadingLogic.cs" />
+    <Compile Include="HelperClasses\MalXmlParser.cs" />
     <Compile Include="HelperClasses\ObservableCollectionExtensions.cs" />
     <Compile Include="HelperClasses\RelayCommand.cs" />
     <Compile Include="Library Menu\FetchDataDialog.xaml.cs">

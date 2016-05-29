@@ -8,6 +8,25 @@
       xmlns:toolkit="clr-namespace:System.Windows.Controls;assembly=System.Windows.Controls.Input.Toolkit"
       mc:Ignorable="d">
 
+    <UserControl.Resources>
+        <DataTemplate x:Key="AutoCompleteBoxItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Image Source="{Binding thumbnail_url}" Width="100" Height="65" />
+                <StackPanel>
+                    <TextBlock Text="{Binding name}" Foreground="Purple"/>
+                    <TextBlock Foreground="Gray" >
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="({0}, {1})">
+                                <Binding Path="payload.media_type"/>
+                                <Binding Path="payload.start_year"/>
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid Width="Auto" Height="Auto">
         <Border Padding="10">
             <StackPanel>
@@ -17,9 +36,8 @@
                     <ComboBoxItem>AniDB</ComboBoxItem>
                 </ComboBox>
                 <TextBlock Text="Anime name:" Margin="0,10,0,0" />
-                <toolkit:AutoCompleteBox Name="AnimeNameTextBox" IsTextCompletionEnabled="False" FilterMode="Custom" Height="18" Margin="0,10,0,10" MaxWidth="300" VerticalAlignment="Center" />
-                <!--<TextBox Name="AnimeNameTextBox" Height="18" Margin="0,10,0,10" MaxWidth="300" VerticalAlignment="Center" />-->
-                <Button Content="Fetch !" Width="50" HorizontalAlignment="Right" />
+                <toolkit:AutoCompleteBox Name="AnimeNameTextBox" Populating="PopulateAnimeNameTextBox" MinimumPopulateDelay="400" FilterMode="None" MinimumPrefixLength="1" ItemTemplate="{StaticResource AutoCompleteBoxItemTemplate}" ValueMemberPath="name" Height="18" Margin="0,10,0,10" MaxWidth="300" VerticalAlignment="Center" />
+                <Button Name="FetchAnimeButton" Content="Fetch !" Width="50" HorizontalAlignment="Right" />
             </StackPanel>
         </Border>
     </Grid>
