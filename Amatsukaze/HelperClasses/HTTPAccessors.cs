@@ -40,7 +40,7 @@ namespace Amatsukaze.HelperClasses
         static MALAccessor()
         {
             MALLogin = "Fenpwet";
-            MALPassword = "esg567";
+            MALPassword = "PASSWORD";
             //OptionsObject optionsObject = null;
             //AnimeXMLQueryURL = optionsObject.MALXMLQueryURL;
             //MALLogin = optionsObject.MALLogin;
